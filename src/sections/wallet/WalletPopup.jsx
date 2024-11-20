@@ -1,0 +1,94 @@
+import React, { useState } from "react";
+import {
+  Box,
+  Button,
+  Rating,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Close } from "@mui/icons-material";
+
+const WalletPopup = ({ handleClose }) => {
+  const [value, setValue] = useState(0);
+  return (
+    <Stack
+      sx={{
+        // width: "fit-content",
+        width: "985px",
+        // height: "706px",
+        padding: "27px",
+      }}
+    >
+      <Box
+        sx={{
+          width: "60px",
+          height: "60px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          border: "1px solid",
+          color: "colors.mainBlack",
+          marginRight: "auto",
+        }}
+      >
+        <Close
+          sx={{
+            width: "50px",
+            height: "50px",
+            cursor: "pointer",
+          }}
+          onClick={handleClose}
+        />
+      </Box>
+      <Stack
+        sx={{
+          alignItems: "center",
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: "40px",
+            fontWeight: "800",
+            lineHeight: "45px",
+            color: "colors.mainBlack",
+            textAlign: "center",
+            mt: "14px",
+            mb: "27px",
+          }}
+        >
+          رصيد محفظتك الحالى{" "}
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: "48px",
+            fontWeight: "800",
+            lineHeight: "86px",
+            color: "colors.mainGreen",
+          }}
+        >
+          1600 ج.م{" "}
+        </Typography>
+        <Stack
+          sx={{
+            gap: "27px",
+            alignItems: "center",
+            mt: "23px",
+            mb: "67px",
+            "& p": {
+              fontSize: "24px",
+              fontWeight: "700",
+              lineHeight: "27px",
+              color: "#292D32",
+            },
+          }}
+        >
+          <Typography>الأربعاء , 6 ديسمبر ,2023</Typography>
+          <Typography>10:10م</Typography>
+        </Stack>
+      </Stack>
+    </Stack>
+  );
+};
+
+export default WalletPopup;

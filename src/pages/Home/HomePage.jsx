@@ -1,0 +1,182 @@
+import { Box, styled } from "@mui/material";
+import ProductsSlider from "../../sections/common/Products/ProductsSlider";
+import Gallery from "../../sections/home/Gallery";
+import Landing from "../../sections/home/Landing";
+
+import image1 from "../../assets/home/1.png";
+import image2 from "../../assets/home/2.png";
+import image3 from "../../assets/home/3.png";
+import image4 from "../../assets/home/4.png";
+import image5 from "../../assets/home/5.png";
+import image6 from "../../assets/home/6.png";
+import image7 from "../../assets/home/7.png";
+import image8 from "../../assets/home/8.png";
+import section1 from "../../assets/home/Ellipse 3.png";
+import section2 from "../../assets/home/Ellipse 5.png";
+import section3 from "../../assets/home/Ellipse 6.png";
+import section4 from "../../assets/home/Ellipse 8.png";
+import productImage from "../../assets/home/camera 2.png";
+import TestComponent from "../../components/TestComponent";
+
+const itemData = [
+  image1,
+  image2,
+  image3,
+  image4,
+  image5,
+  image6,
+  image7,
+  image8,
+];
+const sections = {
+  title: "",
+  link: "#",
+  sections: [
+    {
+      id: "1",
+      name: "الألكترونيات",
+      // price: "250 ج.م", oldPrice: "700 ج.م",
+      image: section1,
+    },
+    {
+      id: "2",
+      name: "الألكترونيات",
+      // name: "كاميرا كانون اصدار حديث",
+      // price: "250 ج.م", oldPrice: "700 ج.م",
+      image: section2,
+    },
+    {
+      id: "3",
+      name: "الألكترونيات",
+      // name: "كاميرا كانون اصدار حديث",
+      // price: "250 ج.م", oldPrice: "700 ج.م",
+      image: section3,
+    },
+    {
+      id: "4",
+      name: "الألكترونيات",
+      // name: "كاميرا كانون اصدار حديث",
+      // price: "250 ج.م", oldPrice: "700 ج.م",
+      image: section4,
+    },
+    {
+      id: "5",
+      name: "الألكترونيات",
+      // price: "250 ج.م", oldPrice: "700 ج.م",
+      image: section1,
+    },
+  ],
+};
+const products = {
+  title: "",
+  link: "#",
+  products: [
+    {
+      id: "1",
+      name: "كاميرا كانون اصدار حديث",
+      price: "250",
+      oldPrice: "700",
+      image: productImage,
+    },
+    {
+      id: "2",
+      name: "كاميرا كانون اصدار حديث",
+      price: "250",
+      oldPrice: "700",
+      image: productImage,
+    },
+    {
+      id: "3",
+      name: "كاميرا كانون اصدار حديث",
+      price: "250 ",
+      oldPrice: "700",
+      image: productImage,
+    },
+    {
+      id: "4",
+      name: "كاميرا كانون اصدار حديث",
+      price: "250 ",
+      oldPrice: "700",
+      image: productImage,
+    },
+    {
+      id: "5",
+      name: "كاميرا كانون اصدار حديث",
+      price: "250",
+      oldPrice: "700 ",
+      image: productImage,
+    },
+    {
+      id: "6",
+      name: "كاميرا كانون اصدار حديث",
+      price: "250 ",
+      oldPrice: "700",
+      image: productImage,
+    },
+  ],
+};
+const Image = styled("img")({});
+
+const HomePage = () => {
+  return (
+    <Box sx={{ backgroundColor: "#b8aeae", position: "relative" }}>
+      {/* start landing */}
+      <Landing />
+      {/* end landing */}
+      {/* Gallery  */}
+      <Box
+        sx={{
+          position: "relative",
+          transform: "translateY(-340px)",
+          mb: "-340px",
+          zIndex: 1300,
+        }}
+      >
+        <Gallery data={itemData} />
+      </Box>
+      <Box>
+        {/* Gallery  */}
+        {/* <Gallery data={itemData} /> */}
+        {/* المتجر */}
+        <ProductsSlider
+          title={"المتجر"}
+          products={products.products}
+          link={"/store"}
+        />
+
+        {/* أفضل العروض والخصومات */}
+        <ProductsSlider
+          title={"أفضل العروض والخصومات"}
+          products={products.products}
+          link={"/store/best-sale"}
+        />
+        {/* أحدث المنتجات */}
+        <ProductsSlider
+          title={"أحدث المنتجات"}
+          products={products.products}
+          link={"/store/new"}
+        />
+        {/* الأقسام */}
+        <ProductsSlider
+          title={"الأقسام"}
+          products={products.products}
+          link={"/sections"}
+        />
+        {/* Gallery  */}
+        <Gallery data={itemData.slice(0, 4)} />
+        {/* عروض اليوم */}
+        <ProductsSlider
+          title={"عروض اليوم"}
+          products={products.products}
+          link={"/store"}
+        />
+        {/* Gallery  */}
+        <Box sx={{ pb: "24px" }}>
+          <Gallery data={itemData.slice(0, 4)} />
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export default HomePage;
