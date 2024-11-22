@@ -5,10 +5,11 @@ import { Box } from "@mui/material";
 import ProductsSection from "../../sections/common/Products/ProductsSection";
 import SectionTitle from "../../sections/common/Products/SectionTitle";
 import ProductsSidebar from "../../sections/common/Products/ProductsSidebar";
-
+import Cart from "../../sections/common/Products/Cart";  
 const StorePage = () => {
   return (
     <Box>
+      <Cart />
       <SectionTitle
         sectionTitle={{ main: "المتجر", second: "جميع المنتجات" }}
       />

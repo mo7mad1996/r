@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import {
@@ -25,6 +26,7 @@ import {
   MailOutline,
   ShoppingBag,
 } from "@mui/icons-material";
+import Magnifier from "../../components/Magnifier";
 import Reviews from "../../components/Reviews";
 import userAvatar from "../../assets/product/user.png";
 import productImage from "../../assets/product/product.png";
@@ -254,6 +256,9 @@ const Product = () => {
   // const quantityOptions = useMemo(()=> Array(totalQuantity)
   //   .fill(1)
   //   .map((item, index) => ++index), [product.id]);
+
+
+  
   return (
     <>
       {/* first section  */}
@@ -311,15 +316,19 @@ const Product = () => {
               }}
             >
               <Box
-                component={"img"}
-                src={images[0]}
+                // component={"img"}
+                // src={images[0]}
                 sx={{
                   width: { xs: "300px", lg: "540px" },
                   height: { xs: "375px", sm: "560px" },
                   cursor: "pointer",
+                  // backgroundColor: "colors.mainGreen",
                 }}
                 onClick={() => changeImages(images[0], 0)}
-              ></Box>
+              >
+                 <Magnifier src={productImage3} width={500} height={500} zoomLevel={3} />
+
+              </Box>
               <StyledIcons>
                 <IconButton size="small" disableRipple>
                   <AddShoppingCart />
@@ -331,6 +340,10 @@ const Product = () => {
               </StyledIcons>
             </Box>
           </Box>
+
+
+
+
           {/* Product Info  */}
           <Stack sx={{ mt: { xs: "30px", md: "150px" }, gap: "30px" }}>
             <Typography

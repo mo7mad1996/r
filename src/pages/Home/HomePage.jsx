@@ -1,6 +1,7 @@
 import { Box, styled } from "@mui/material";
 import ProductsSlider from "../../sections/common/Products/ProductsSlider";
 import Gallery from "../../sections/home/Gallery";
+import Secondgallery from "../../sections/home/secondgallery";
 import Landing from "../../sections/home/Landing";
 
 import image1 from "../../assets/home/1.png";
@@ -132,7 +133,10 @@ const HomePage = () => {
           zIndex: 1300,
         }}
       >
-        <Gallery data={itemData} />
+        <Gallery
+          sx={{ display:'none' }}
+          data={itemData}  
+          />
       </Box>
       <Box>
         {/* Gallery  */}
@@ -163,7 +167,7 @@ const HomePage = () => {
           link={"/sections"}
         />
         {/* Gallery  */}
-        <Gallery data={itemData.slice(0, 4)} />
+        <Secondgallery data={itemData.slice(0, 4)} />
         {/* عروض اليوم */}
         <ProductsSlider
           title={"عروض اليوم"}
@@ -171,8 +175,8 @@ const HomePage = () => {
           link={"/store"}
         />
         {/* Gallery  */}
-        <Box sx={{ pb: "24px" }}>
-          <Gallery data={itemData.slice(0, 4)} />
+        <Box sx={{ pb: "240px" }}>
+          <Secondgallery data={itemData.slice(0, 4)} />
         </Box>
       </Box>
     </Box>

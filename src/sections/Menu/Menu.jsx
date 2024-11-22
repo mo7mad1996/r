@@ -1,59 +1,43 @@
-import { Grid, Paper, Stack, Typography } from "@mui/material";
-import React, { useState } from "react";
+import { Grid, Paper, Stack, Box } from "@mui/material";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import ModalComponent from "../../components/ModalComponent";
 import useShowModal from "../../hooks/useShowModal";
 
-const Menu = ({ items, dashboard }) => {
-  // const [open, setOpen] = useState(false);
-  // const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
-  // const [message, setMessage] = useState("");
+const Menu = ({ items }) => {
   const { open, handleOpen, handleClose, message, setMessage } = useShowModal();
-
   const navigate = useNavigate();
+
   return (
     <>
       <Stack
         sx={{
-          // alignItems: "center",
-          px: { xs: "10px", sm: "80px", md: "150px", lg: "160px", xl: "170px" },
+          px: { xs: "10px", sm: "80px", md: "100px", lg: "115px", xl: "170px" },
           mt: "-98px",
           mb: "100px",
+          width: "100%",
         }}
       >
         <Grid
           container
-          //   spacing={"40px"}
-          columnSpacing={["0", "40px"]}
+          columnSpacing={["0", "47px"]}
           rowSpacing={"40px"}
           columns={items.length > 7 ? [12, 12, 12, 15] : [12, 12, 12, 12]}
         >
-          {/* <Box
-    gap={"40px"}
-    sx={{
-      width: "fit-content",
-      display: "flex",
-      // justifyContent: "center",
-      flexWrap: "wrap",
-    }}
-  > */}
-          {items.map((item, index, array) => (
+          {items.map((item, index) => (
             <Grid
               item
               xs={9}
               sm={6}
               md={4}
-              lg={array.length > 7 ? 3 : 4}
+              lg={items.length > 7 ? 3 : 4}
               key={item.name}
               sx={{ mx: { xs: "auto", sm: "0" } }}
             >
-              {/* <Box key={item.name}> */}
               <Paper
-                // elevation={8}
                 sx={{
-                  // width: "200px",
                   height: "200px",
+                  width: "200px",
                   borderRadius: "5px",
                   px: "5px",
                   display: "flex",
@@ -64,13 +48,32 @@ const Menu = ({ items, dashboard }) => {
                   fontSize: "28px",
                   fontWeight: "800",
                   lineHeight: "31px",
-                  color: "colors.mainBlack",
+                  backgroundColor:
+                    index === items.length - 1 ? "#cc0000" : "colors.mainWhite",
+                  color: index === items.length - 1 ? "white" : "colors.mainBlack",
                   boxShadow: "2.5px 2.5px 8px 4px #00000040",
                   cursor: "pointer",
+                  transition: "all 0.3s ease", // Smooth transition for all properties
+                  ":hover": index === items.length - 1
+                    ? {
+                      transform: "scale(1.05)",
+
+                    } // No hover effect for the last item
+                    : {
+                        backgroundColor: "colors.website",
+                        color: "colors.wi8",
+                        transform: "scale(1.05)",
+                        boxShadow: "5px 5px 12px 6px #00000040",
+                      },
+                  "&:hover img": index === items.length - 1
+                    ? {}
+                    : {
+                        filter: "invert(5)", // Icon turns white for other items
+                        transition: "filter .8s ease", // Smooth transition for icon color
+                      },
                 }}
                 onClick={() => {
                   if (item.link === "/signout") {
-                    console.log("ss");
                     setMessage("هل ترغب حقا في تسجيل الخروج");
                     handleOpen();
                     return;
@@ -78,25 +81,24 @@ const Menu = ({ items, dashboard }) => {
                   navigate(item.link);
                 }}
               >
-                {dashboard && (
-                  <Typography
-                    sx={{
-                      fontSize: "40px",
-                      fontWeight: "800",
-                      lineHeight: "45px",
-                      color: "colors.website",
-                    }}
-                  >
-                    {item.num}
-                  </Typography>
-                )}
+                {/* Render the icon */}
+                <Box
+                  component="img"
+                  src={item.icon}
+                  alt={`${item.name} icon`}
+                  sx={{
+                    width: "50px",
+                    height: "50px",
+                    mb: "10px",
+                    transition: "filter 0.3s ease", // Smooth transition for icon filter
+                  }}
+                />
                 {item.name}
               </Paper>
             </Grid>
           ))}
         </Grid>
       </Stack>
-      {/* <Signout open={open} handleOpen={handleOpen} handleClose={handleClose} /> */}
       <ModalComponent
         open={open}
         handleOpen={handleOpen}

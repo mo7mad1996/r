@@ -5,7 +5,7 @@ const Image = styled("img")({
   objectFit: "cover", // Ensures the image covers its container
 });
 
-const Gallery = ({ data }) => {
+const Secondgallery = ({ data }) => {
   return (
     <Box 
       sx={{
@@ -26,7 +26,7 @@ const Gallery = ({ data }) => {
             gap: "50px",
             alignItems: "center",
             padding: "0px",
-            // backgroundColor: "#cc0000",
+            backgroundColor: "#cc0000",
             padding: "50px",
           }}
         >
@@ -286,4 +286,4 @@ const Gallery = ({ data }) => {
   );
 };
 
-export default Gallery;
+export default Secondgallery;

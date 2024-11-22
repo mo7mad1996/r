@@ -1,10 +1,28 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import Reviews from "../../components/Reviews";
-
+import Sellerbanner from "../../assets/Seller/SellerBanner.png"
 const Seller = ({ seller }) => {
   return (
-    <Box sx={{ display: "flex", gap: "29px" }}>
+    <Box>
+    <Box
+      sx={{
+        width: "120%",
+        height: "50vh",
+        backgroundColor: "red", // Fallback background color if image is not loaded
+        backgroundImage: `url(${Sellerbanner})`, // Use the imported image as background
+        backgroundSize: "cover", // Ensure the image covers the entire area
+        backgroundPosition: "center", // Position the image in the center
+        marginRight: "-23.8%",
+        marginBottom: "50px"
+      }}
+    >
+      
+    </Box>
+  );
+};
+    <Box sx={{ display: "flex", gap: "29px",}}>
+
       <Box
         component={"img"}
         sx={{ width: "221px", height: "181px" }}
@@ -81,6 +99,7 @@ const Seller = ({ seller }) => {
           </Typography>
         </Box>
       </Stack>
+    </Box>
     </Box>
   );
 };

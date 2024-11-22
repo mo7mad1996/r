@@ -14,6 +14,7 @@ const StyledTypo = styled(Typography)(({ theme }) => ({
 const SectionTitle = ({ sectionTitle }) => {
   return (
     <Stack
+      
       display={"flex"}
       alignItems={"center"}
       sx={{ mt: "56px", mb: "133px", minHeight: "90px" }}

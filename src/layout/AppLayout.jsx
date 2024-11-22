@@ -265,6 +265,7 @@ const AppLayout = () => {
           <Route path="/my-account" element={<UserAcountPage />} />
           <Route path="/user">
             <Route path="orders">
+
               <Route index={true} element={<OrdersPage />} />
               <Route path="all" element={<AllOrdersPage />} />
               <Route path="new" element={<NewOrdersPage />} />

@@ -14,7 +14,7 @@ import UploadButton from "../../../components/UploadButton";
 
 const StyledTextField = styled(TextField)(({ theme, active }) => ({
   height: "60px",
-  borderRadius: "10px",
+  borderRadius: "10px",sasd
   backgroundColor: theme.palette.colors.mainGreen,
   "& input": {
     height: "57px",
