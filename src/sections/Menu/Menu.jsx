@@ -30,7 +30,8 @@ const Menu = ({ items }) => {
               xs={9}
               sm={6}
               md={4}
-              lg={items.length > 7 ? 3 : 4}
+              lg={3 > items.length > 7 ? 3 : 4}
+              lg={items.length > 3 ? 3 : 5}
               key={item.name}
               sx={{ mx: { xs: "auto", sm: "0" } }}
             >

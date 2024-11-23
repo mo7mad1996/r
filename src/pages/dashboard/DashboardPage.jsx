@@ -1,26 +1,41 @@
 import React from "react";
 import SectionTitle from "../../sections/common/Products/SectionTitle";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Icon, Stack, Typography } from "@mui/material";
 import logoImg from "../../assets/dashboard/logo.png";
 import Menu from "../../sections/Menu/Menu";
 import SellerBox from "../../sections/Dashboard/common/SellerBox";
+import orderIcon from "../../assets/Seller/SellerDashboard_Icon/Ordera.svg";
+import ProductsIcon from "../../assets/Seller/SellerDashboard_Icon/Products.svg";
+import ReviewsIcon from "../../assets/Seller/SellerDashboard_Icon/Reviews.svg";
+import ShippingIcon from "../../assets/Seller/SellerDashboard_Icon/Shipping.svg";
+import MyStoreIcon from "../../assets/Seller/SellerDashboard_Icon/Store.svg";
+import AddnewProductsIcon from "../../assets/Seller/SellerDashboard_Icon/AddNewProducts.svg";
+import MyAccountIcon from "../../assets/Seller/SellerDashboard_Icon/MyAccount.svg";
+import MyFundsIcon from "../../assets/Seller/SellerDashboard_Icon/MyFunds.svg";
+import ReportsIcon from "../../assets/Seller/SellerDashboard_Icon/MyReports.svg";
+import MyWAlletIcon from "../../assets/Seller/SellerDashboard_Icon/MyWallet.svg";
+import NotificationsIcon from "../../assets/Seller/SellerDashboard_Icon/Notifications.svg";
+import SupportIcon from "../../assets/Seller/SellerDashboard_Icon/Support.svg";
+import NewsIcon from "../../assets/Seller/SellerDashboard_Icon/News.svg";
+import WithdrawIcon from "../../assets/Seller/SellerDashboard_Icon/FundsOrder.svg";
+import SignOutIcon from "../../assets/Seller/SellerDashboard_Icon/Logout.svg";
 
 const items = [
-  { name: "الطلبات", link: "/dashboard/orders" },
-  { name: "المنتجات", link: "/dashboard/products" },
-  { name: "المراجعات", link: "/dashboard/products/reviews" },
-  { name: "مناطق الشحن", link: "/dashboard/delivery" },
-  { name: "متجري", link: "/dashboard/store" },
-  { name: "إضافة منتج جديد", link: "/dashboard/products/add" },
-  { name: "حسابي", link: "/dashboard/account" },
-  { name: "مستحقاتي", link: "/dashboard/dues" },
-  { name: "التقارير", link: "/dashboard/reports" },
-  { name: "محفظتي", link: "/wallet" },
-  { name: "الأشعارات", link: "/notifications" },
-  { name: "الدعم", link: "/support" },
-  { name: "نشرة چوملا", link: "/goomla-news" },
-  { name: "طلبات السحب", link: "/dashboard/withdraw" },
-  { name: "تسجيل الخروج", link: "" },
+  { name: "الطلبات", link: "/dashboard/orders", icon: orderIcon },
+  { name: "المنتجات", link: "/dashboard/products",icon:ProductsIcon },
+  { name: "المراجعات", link: "/dashboard/products/reviews",icon:ReviewsIcon },
+  { name: "مناطق الشحن", link: "/dashboard/delivery",icon:ShippingIcon },
+  { name: "متجري", link: "/dashboard/store",icon:MyStoreIcon },
+  { name: "إضافة منتج جديد", link: "/dashboard/products/add",icon: AddnewProductsIcon },
+  { name: "حسابي", link: "/dashboard/account",icon:MyAccountIcon },
+  { name: "مستحقاتي", link: "/dashboard/dues",icon:MyFundsIcon },
+  { name: "التقارير", link: "/dashboard/reports",icon:ReportsIcon },
+  { name: "محفظتي", link: "/wallet",icon:MyWAlletIcon },
+  { name: "الأشعارات", link: "/notifications",icon:NotificationsIcon },
+  { name: "الدعم", link: "/support",icon:SupportIcon },
+  { name: "نشرة چوملا", link: "/goomla-news",icon:NewsIcon },
+  { name: "طلبات السحب", link: "/dashboard/withdraw",icon:WithdrawIcon },
+  { name: "تسجيل الخروج", link: "",icon:SignOutIcon },
 ];
 const DashboardPage = () => {
   return (

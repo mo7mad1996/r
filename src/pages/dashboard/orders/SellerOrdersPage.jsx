@@ -1,13 +1,15 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Icon, Stack, Typography } from "@mui/material";
 import React from "react";
 import SectionTitle from "../../../sections/common/Products/SectionTitle";
 
 import logoImg from "../../../assets/dashboard/logo.png";
 import Menu from "../../../sections/Menu/Menu";
+import Orders from "../../../assets/Seller/SellerDashboard_Icon/Ordera.svg";
+import NewOrders from "../../../assets/Seller/SellerDashboard_Icon/NewOrders.svg";
 
 const items = [
-  { name: "جميع الطلبات", link: "/dashboard/orders/all", num: 45 },
-  { name: "الطلبات الجديدة", link: "/dashboard/orders/new", num: 45 },
+  { name: "جميع الطلبات", link: "/dashboard/orders/all", num: 45 ,icon:Orders},
+  { name: "الطلبات الجديدة", link: "/dashboard/orders/new", num: 45,icon:NewOrders },
   {
     name: "الطلبات قيد التنفيذ",
     link: "/dashboard/orders/progress",

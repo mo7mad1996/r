@@ -774,6 +774,30 @@ const Orders = ({ statusArray, status, isDashboard }) => {
             ""
           )}
         </Stack>
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}>
+          <Box 
+            sx={{
+            width: "558px",
+            height: "77px",
+            borderRadius: "12px",
+            border: "4px solid #008C5D",
+            display:"flex",
+            justifyContent:"center",
+            alignItems:"center",
+            fontSize: "28px",
+            color: "#008C5D",
+            fontWeight: "800",
+          }}>
+            تم تسليم الطلب لمندوب الشحن
+            
+            </Box>
+        </Box>
       </Stack>
       <ModalComponent
         open={open}

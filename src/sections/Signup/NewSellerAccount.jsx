@@ -286,7 +286,56 @@ const NewSellerAccount = ({ changeForm }) => {
         </Stack>
         {/* صورة البطاقة الشخصية */}
         <Stack sx={{ mt: "138px", alignItems: "center" }}>
-          <StyledText sx={{ mb: "64px" }}>صورة البطاقة الشخصية </StyledText>
+          <StyledText sx={{ mb: "64px" }}>  صورة البطاقة الشخصية  (من الوجهه)</StyledText>
+          <Box
+            sx={{
+              width: { xs: "350px", sm: "446px" },
+              height: "263px",
+              borderRadius: "15px",
+              border: "2px solid #505050",
+              backgroundColor: "#F6F6F6",
+            }}
+          >
+            <Box component="img"></Box>
+          </Box>
+          <Box sx={{ mt: "21px" }}>
+            <StyledText sx={{ textAlign: "start", mb: "7px" }}>
+              صورة البطاقة الشخصية{" "}
+            </StyledText>
+            <StyledText
+              sx={{ fontWeight: "400", color: "#3B3A3A", textAlign: "start" }}
+            >
+              {" "}
+              صورة واضحة لبطاقتك الشخصية
+            </StyledText>
+          </Box>
+          <UploadButton
+            component="label"
+            variant="contained"
+            disableElevation
+            sx={{ mt: "48px" }}
+            endIcon={
+              <Box
+                component="img"
+                src={uploadImg}
+                sx={{
+                  width: "29px",
+                  height: "29px",
+                  mr: "10px",
+                }}
+              />
+            }
+          >
+            تحميل صورة
+            <VisuallyHiddenInput
+              type="file"
+              onChange={(e) => setSlogan(e.target.value)}
+            />
+          </UploadButton>
+        </Stack>
+        {/* صورة البطاقة الشخصية */}
+        <Stack sx={{ mt: "138px", alignItems: "center" }}>
+          <StyledText sx={{ mb: "64px" }}>  صورة البطاقة الشخصية (من الخلف)</StyledText>
           <Box
             sx={{
               width: { xs: "350px", sm: "446px" },

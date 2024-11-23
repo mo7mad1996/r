@@ -30,18 +30,18 @@ import ModalComponent from "./ModalComponent";
 import DateFilter from "./DateFilter";
 import AddressPopup from "../sections/Address/AddressPopup";
 // const Logo = styled(Typography)({
-//   fontSize: "60px",
-//   fontWeight: 800,
+  //   fontSize: "60px",
+  //   fontWeight: 800,
 //   lineHeight: "67px",
-//   letterSpacing: "0em",
 //   textAlign: "right",
 //   color: "#292D32",
 //   marginLeft: "16px",
+//   letterSpacing: "0em",
 // });
 // const LogoSpan = styled("span")({
-//   color: "#008C5D",
-// });
-const LocationIcon = styled("img")({
+  //   color: "#008C5D",
+  // });
+  const LocationIcon = styled("img")({
   marginLeft: "3px",
 });
 const Search = styled(Box)(({ theme }) => ({

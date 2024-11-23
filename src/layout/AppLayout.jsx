@@ -289,7 +289,7 @@ const AppLayout = () => {
               <Route path="modify" element={<ModifyAddressPage />} />
             </Route>
           </Route>
-          {/* <Route path="/user-profile" element={<UserProfilePage />} /> */}
+          <Route path="/user-profile" element={<UserProfilePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/login-seller" element={<LoginSellerPage />} />
           <Route path="/signup" element={<SignupPage />} />

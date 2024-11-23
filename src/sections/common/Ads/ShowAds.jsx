@@ -108,7 +108,7 @@ const ShowAds = ({ title, admin }) => {
           setCurrentPage={setPage}
         />
       </Box>
-      <Box
+      {/* <Box
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -132,7 +132,7 @@ const ShowAds = ({ title, admin }) => {
         >
           إضافة اعلان جديد
         </Button>
-      </Box>
+      </Box> */}
       <ModalComponent
         open={open}
         handleOpen={handleOpen}
