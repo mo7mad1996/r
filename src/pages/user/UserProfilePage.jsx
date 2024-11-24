@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SectionTitle from "../../sections/common/Products/SectionTitle";
 import {
   Box,
-  IconButton,
   InputAdornment,
   Stack,
   Typography,
@@ -13,22 +12,107 @@ import {
   StyledTextField,
   StyledTypography,
 } from "../../components/FormElements";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+import axios from "axios";
 
 const UserProfilePage = () => {
+  const [userData, setUserData] = useState({
+    name: "",
+    second_name: "",
+    family_name: "",
+    phone: "",
+    email: "",
+    date_of_birth: "",
+    apartment_number: "",
+    residence_number: "",
+    street_name: "",
+    city: "",
+    governorate: "",
+  });
+
   const [isVerified, setIsVerified] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-  const [showNewPassword, setShowNewPassword] = useState(false);
-  const [showNewPasswordConfirm, setShowNewPasswordConfirm] = useState(false);
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleClickShowNewPassword = () => setShowNewPassword((show) => !show);
-  const handleClickShowNewPasswordConfirm = () =>
-    setShowNewPasswordConfirm((show) => !show);
+  const fetchUserProfile = async () => {
+    const API_URL = `https://joumla.store/api/v1/user/profile/show/${localStorage.getItem(
+      "userId"
+    )}`;
+    const token = localStorage.getItem("token");
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
+    try {
+      const response = await axios.get(API_URL, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+        },
+      });
+
+      const data = response.data.user;
+
+      setUserData({
+        name: data.name || "",
+        second_name: data.second_name || "",
+        family_name: data.family_name || "",
+        phone: data.phone || "",
+        email: data.email || "",
+        date_of_birth: data.date_of_birth || "",
+        apartment_number: data.apartment_number || "",
+        residence_number: data.residence_number || "",
+        street_name: data.street_name || "",
+        city: data.city || "",
+        governorate: data.governorate || "",
+      });
+    } catch (error) {
+      console.error("Error:", error.response?.data || error.message);
+    }
   };
+
+  const handleInputChange = (field, value) => {
+    setUserData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const updateUserProfile = async () => {
+    const API_URL = `https://joumla.store/api/v1/user/profile/update/${localStorage.getItem(
+      "userId"
+    )}`;
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await axios.patch(
+        API_URL,
+        {
+          name: userData.name,
+          second_name: userData.second_name,
+          family_name: userData.family_name,
+          phone: userData.phone,
+          date_of_birth: userData.date_of_birth,
+          governorate: userData.governorate,
+          city: userData.city,
+          street_name: userData.street_name,
+          residence_number: userData.residence_number,
+          apartment_number: userData.apartment_number,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      console.log("Profile updated successfully:", response.data);
+      alert("تم تحديث بياناتك بنجاح!");
+    } catch (error) {
+      console.error("Error updating profile:", error.response?.data || error.message);
+      alert("حدث خطأ أثناء تحديث بياناتك. حاول مرة أخرى.");
+    }
+  };
+
+  useEffect(() => {
+    fetchUserProfile();
+  }, []);
+
   return (
     <>
       <SectionTitle sectionTitle={{ main: "الملف الشخصى" }} />
@@ -62,143 +146,86 @@ const UserProfilePage = () => {
           gap: { xs: "50px", sm: "104px" },
           width: { lg: "fit-content" },
           mx: { xs: "auto" },
-          //   , lg: "0"
           alignItems: { md: "center", lg: "end" },
-          //   left: { xl: "50%" },
-          //   transform: { xl: "translateX(-50%)" },
         }}
       >
         <FormItem>
           <StyledTypography>الأسم الأول</StyledTypography>
-          <StyledTextField></StyledTextField>
+          <StyledTextField
+            value={userData.name}
+            onChange={(e) => handleInputChange("name", e.target.value)}
+          />
         </FormItem>
         <FormItem>
           <StyledTypography>اسم الأب</StyledTypography>
-          <StyledTextField></StyledTextField>
+          <StyledTextField
+            value={userData.second_name}
+            onChange={(e) => handleInputChange("second_name", e.target.value)}
+          />
         </FormItem>
         <FormItem>
           <StyledTypography>اسم الجد او اللقب</StyledTypography>
-          <StyledTextField></StyledTextField>
+          <StyledTextField
+            value={userData.family_name}
+            onChange={(e) => handleInputChange("family_name", e.target.value)}
+          />
         </FormItem>
-
         <FormItem>
           <StyledTypography>رقم الهاتف</StyledTypography>
           <StyledTextField
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  {isVerified && (
-                    <Typography
-                      sx={{
-                        fontSize: "22px",
-                        fontWeight: "700",
-                        lineHeight: "24.55px",
-                        letterSpacing: "0em",
-                      }}
-                    >
-                      تم التحقق
-                    </Typography>
-                  )}
-                </InputAdornment>
-              ),
-            }}
-          ></StyledTextField>
+            value={userData.phone}
+            onChange={(e) => handleInputChange("phone", e.target.value)}
+          />
         </FormItem>
         <FormItem>
           <StyledTypography>البريد الألكتروني</StyledTypography>
-          <StyledTextField></StyledTextField>
-        </FormItem>
-      </Stack>
-      <Stack
-        sx={{
-          position: "relative",
-          px: { xs: "15px", sm: "45px" },
-          gap: { xs: "50px", sm: "64px" },
-          width: { lg: "fit-content" },
-          mx: { xs: "auto" },
-          //   , lg: "0"
-          alignItems: { md: "center", lg: "end" },
-          //   left: { xl: "50%" },
-          //   transform: { xl: "translateX(-50%)" },
-        }}
-      >
-        <Typography
-          sx={{
-            width: "100%",
-            fontSize: "28px",
-            fontWeight: "700",
-            lineHeight: "31px",
-            textAlign: "center",
-            marginTop: "58px",
-            /* text-align: right; */
-          }}
-        >
-          تغيير كلمة المرور
-        </Typography>
-
-        <FormItem>
-          <StyledTypography> كلمة المرور الحالية</StyledTypography>
           <StyledTextField
-            type={showPassword ? "text" : "password"}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          ></StyledTextField>
+            value={userData.email}
+            disabled
+          />
         </FormItem>
         <FormItem>
-          <StyledTypography> كلمة المرور الجديدة</StyledTypography>
+          <StyledTypography>تاريخ الميلاد</StyledTypography>
           <StyledTextField
-            type={showNewPassword ? "text" : "password"}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowNewPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {showNewPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          ></StyledTextField>
+            type="date"
+            value={userData.date_of_birth}
+            onChange={(e) => handleInputChange("date_of_birth", e.target.value)}
+          />
         </FormItem>
         <FormItem>
-          <StyledTypography>تأكيد كلمة المرور الجديدة </StyledTypography>
+          <StyledTypography>المحافظة</StyledTypography>
           <StyledTextField
-            type={showNewPasswordConfirm ? "text" : "password"}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowNewPasswordConfirm}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {showNewPasswordConfirm ? (
-                      <VisibilityOff />
-                    ) : (
-                      <Visibility />
-                    )}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          ></StyledTextField>
+            value={userData.governorate}
+            onChange={(e) => handleInputChange("governorate", e.target.value)}
+          />
+        </FormItem>
+        <FormItem>
+          <StyledTypography>المدينة</StyledTypography>
+          <StyledTextField
+            value={userData.city}
+            onChange={(e) => handleInputChange("city", e.target.value)}
+          />
+        </FormItem>
+        <FormItem>
+          <StyledTypography>اسم الشارع</StyledTypography>
+          <StyledTextField
+            value={userData.street_name}
+            onChange={(e) => handleInputChange("street_name", e.target.value)}
+          />
+        </FormItem>
+        <FormItem>
+          <StyledTypography>رقم السكن</StyledTypography>
+          <StyledTextField
+            value={userData.residence_number}
+            onChange={(e) => handleInputChange("residence_number", e.target.value)}
+          />
+        </FormItem>
+        <FormItem>
+          <StyledTypography>رقم الشقة</StyledTypography>
+          <StyledTextField
+            value={userData.apartment_number}
+            onChange={(e) => handleInputChange("apartment_number", e.target.value)}
+          />
         </FormItem>
       </Stack>
       <Box
@@ -212,7 +239,7 @@ const UserProfilePage = () => {
           sx={{
             mt: "168px",
           }}
-          onClick={() => changeForm(1)}
+          onClick={updateUserProfile}
         >
           حفظ
         </ConfirmButton>

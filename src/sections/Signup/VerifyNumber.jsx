@@ -1,7 +1,11 @@
 import React from "react";
 import { Box, Button, TextField, Typography, styled } from "@mui/material";
 import SectionTitle from "../common/Products/SectionTitle";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
 
+// الحقول المخصصة
 const StyledTextField = styled(TextField)(({ theme }) => ({
   "& input": {
     width: "131.23px",
@@ -33,10 +37,10 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
     border: 0,
   },
 }));
+
 const StyledButton = styled(Button)(({ theme }) => ({
   width: "141px",
   height: "57.43px",
-  // padding: "25px 94px",
   borderRadius: "15px",
   backgroundColor: theme.palette.colors.mainGreen,
   fontSize: "24px",
@@ -46,7 +50,31 @@ const StyledButton = styled(Button)(({ theme }) => ({
     backgroundColor: theme.palette.colors.mainGreen,
   },
 }));
+
+// تعريف التحقق باستخدام Yup
+const validationSchema = Yup.object().shape({
+  digit1: Yup.string().required("مطلوب").matches(/^\d$/, "يجب أن يكون رقم"),
+  digit2: Yup.string().required("مطلوب").matches(/^\d$/, "يجب أن يكون رقم"),
+  digit3: Yup.string().required("مطلوب").matches(/^\d$/, "يجب أن يكون رقم"),
+  digit4: Yup.string().required("مطلوب").matches(/^\d$/, "يجب أن يكون رقم"),
+});
+
 const VerifyNumber = ({ changeForm }) => {
+  const handleSubmit = async (values, { setSubmitting }) => {
+    const username = Object.values(values).join(""); // دمج الأرقام
+    try {
+      const response = await axios.post("https://api.example.com/verify", {
+        username,
+      });
+      console.log("Response:", response.data);
+      // التعامل مع الاستجابة
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <>
       <SectionTitle sectionTitle={{ main: "أدخل الرمز" }} />
@@ -64,86 +92,81 @@ const VerifyNumber = ({ changeForm }) => {
         <Typography>لقد أرسلنا رمز من اربع عناصر الي </Typography>
         <Typography>xxxxxxxxxxx</Typography>
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-          gap: { xs: "10px", sm: "25px", md: "72px" },
-          justifyContent: "center",
-          mt: "77px",
-        }}
+      <Formik
+        initialValues={{ digit1: "", digit2: "", digit3: "", digit4: "" }}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
       >
-        <StyledTextField
-          type="text"
-          inputProps={{
-            inputMode: "numeric",
-            pattern: "[0-9]", // Restrict input to a single digit
-            maxLength: 1, // Limit input length to 1 character
-          }}
-        ></StyledTextField>
-        <StyledTextField
-          type="text"
-          inputProps={{
-            inputMode: "numeric",
-            pattern: "[0-9]", // Restrict input to a single digit
-            maxLength: 1, // Limit input length to 1 character
-          }}
-        ></StyledTextField>
-        <StyledTextField
-          type="text"
-          inputProps={{
-            inputMode: "numeric",
-            pattern: "[0-9]", // Restrict input to a single digit
-            maxLength: 1, // Limit input length to 1 character
-          }}
-        ></StyledTextField>
-        <StyledTextField
-          type="text"
-          inputProps={{
-            inputMode: "numeric",
-            pattern: "[0-9]", // Restrict input to a single digit
-            maxLength: 1, // Limit input length to 1 character
-          }}
-        ></StyledTextField>
-      </Box>
-      <Button
-        variant="text"
-        disableRipple
-        sx={{
-          display: "block",
-          color: "#000000",
-          fontSize: "20px",
-          fontWeight: "400",
-          lineHeight: "33px",
-          textAlign: "center",
-          width: "fit-content",
-          mx: "auto",
-          my: "89px",
-          "&:hover": {
-            backgroundColor: "transparent",
-          },
-        }}
-      >
-        اعادة ارسال الرمز خلال 20 ثانية{" "}
-      </Button>
-      <Box
-        sx={{
-          display: "flex",
-          gap: { xs: "40px", sm: "60px" },
-          justifyContent: "center",
-          mb: "100px",
-        }}
-      >
-        <StyledButton
-          variant="contained"
-          disableElevation
-          sx={{ textTransform: "lowercase" }}
-        >
-          sms
-        </StyledButton>
-        <StyledButton variant="contained" disableElevation>
-          واتس اب
-        </StyledButton>
-      </Box>
+        {({ errors, touched, isSubmitting }) => (
+          <Form>
+            <Box
+              sx={{
+                display: "flex",
+                gap: { xs: "10px", sm: "25px", md: "72px" },
+                justifyContent: "center",
+                mt: "77px",
+              }}
+            >
+              {["digit1", "digit2", "digit3", "digit4"].map((field, index) => (
+                <Field
+                  key={index}
+                  name={field}
+                  as={StyledTextField}
+                  type="text"
+                  inputProps={{
+                    inputMode: "numeric",
+                    pattern: "[0-9]",
+                    maxLength: 1,
+                  }}
+                  error={touched[field] && Boolean(errors[field])}
+                  helperText={touched[field] && errors[field]}
+                />
+              ))}
+            </Box>
+            <Button
+              type="submit"
+              variant="text"
+              disableRipple
+              disabled={isSubmitting}
+              sx={{
+                display: "block",
+                color: "#000000",
+                fontSize: "20px",
+                fontWeight: "400",
+                lineHeight: "33px",
+                textAlign: "center",
+                width: "fit-content",
+                mx: "auto",
+                my: "89px",
+                "&:hover": {
+                  backgroundColor: "transparent",
+                },
+              }}
+            >
+              اعادة ارسال الرمز خلال 20 ثانية
+            </Button>
+            <Box
+              sx={{
+                display: "flex",
+                gap: { xs: "40px", sm: "60px" },
+                justifyContent: "center",
+                mb: "100px",
+              }}
+            >
+              <StyledButton
+                variant="contained"
+                disableElevation
+                sx={{ textTransform: "lowercase" }}
+              >
+                sms
+              </StyledButton>
+              <StyledButton variant="contained" disableElevation>
+                واتس اب
+              </StyledButton>
+            </Box>
+          </Form>
+        )}
+      </Formik>
     </>
   );
 };
