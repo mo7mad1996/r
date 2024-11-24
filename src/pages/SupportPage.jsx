@@ -1,7 +1,7 @@
 import React from "react";
 import SectionTitle from "../sections/common/Products/SectionTitle";
 import { Box, Paper, Stack, Typography, styled } from "@mui/material";
-
+import ChatButton from "../components/LiveChat";
 const items = [
   { name: "المتجر", link: "/store" },
   { name: "بائعين چوملا (المتاجر)", link: "/sellers" },
@@ -61,6 +61,7 @@ const SupportPage = () => {
           البريد الإليكتروني
         </StyledBox>
       </Box>
+      <ChatButton />
     </>
   );
 };

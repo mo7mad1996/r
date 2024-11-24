@@ -1,22 +1,24 @@
 import React from "react";
 import SectionTitle from "../../sections/common/Products/SectionTitle";
-import Menu from "../../sections/Menu/Menu";
+import OrdersMenu from "../../sections/Menu/OrdersMenu";
 import { Box } from "@mui/material";
+
 const items = [
-  { name: "جميع الطلبات", link: "/user/orders/all" },
-  { name: "الطلبات الجديدة", link: "/user/orders/new" },
-  { name: "الطلبات قيد التنفيذ", link: "/user/orders/progress" },
-  { name: "الطلبات المرتجعة", link: "/user/orders/returned" },
-  { name: "الطلبات الملغاة", link: "/user/orders/canceled" },
-  { name: "الطلبات المكتملة", link: "/user/orders/completed" },
-  { name: "شراء مرة أخرى", link: "/user/orders/buy-again" },
+  { name: "جميع الطلبات", link: "/user/orders/all", count: 5 },
+  { name: "الطلبات الجديدة", link: "/user/orders/new", count: 2 },
+  { name: "الطلبات قيد التنفيذ", link: "/user/orders/progress", count: 3 },
+  { name: "الطلبات المرتجعة", link: "/user/orders/returned", count: 1 },
+  { name: "الطلبات الملغاة", link: "/user/orders/canceled", count: 0 },
+  { name: "الطلبات المكتملة", link: "/user/orders/completed", count: 8 },
+  { name: "شراء مرة أخرى", link: "/user/orders/buy-again", count: 4 },
 ];
+
 const OrdersPage = () => {
   return (
     <>
       <SectionTitle sectionTitle={{ main: "الطلبات" }} />
       <Box sx={{ mt: "153px" }}>
-        <Menu items={items} />
+        <OrdersMenu items={items} />
       </Box>
     </>
   );

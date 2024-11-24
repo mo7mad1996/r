@@ -1,20 +1,31 @@
 import React from "react";
 import SectionTitle from "../../sections/common/Products/SectionTitle";
 import Menu from "../../sections/Menu/Menu";
-
+import Orders from "../../assets/MyAccountUser_Icons/Orders.svg";
+import Notifications from "../../assets/MyAccountUser_Icons/Notifications.svg";
+import Wallet from "../../assets/MyAccountUser_Icons/Wallet.svg";
+import Copons from "../../assets/MyAccountUser_Icons/Coupons.svg";
+import MyProfile from "../../assets/MyAccountUser_Icons/MyProfile.svg";
+import addresses from "../../assets/MyAccountUser_Icons/Adresses.svg";
+import Support from "../../assets/MyAccountUser_Icons/Support.svg";
+import MailPosts from "../../assets/MyAccountUser_Icons/E-mailPosts.svg";
+import JoumlaPosts from "../../assets/MyAccountUser_Icons/JoumlaPosts.svg";
+import AboutUs from "../../assets/MyAccountUser_Icons/AboutUs.svg";
+import TermsNConditions from "../../assets/MyAccountUser_Icons/Terms&Conditions.svg";
+import SignOut from "../../assets/MyAccountUser_Icons/Logout.svg";
 const items = [
-  { name: "الطلبات", link: "/user/orders" },
-  { name: "الأشعارات", link: "/user/notifications" },
-  { name: "محفظة چوملا", link: "/user/wallet" },
-  { name: "كوبونات الخصم", link: "/discount" },
-  { name: "الملف الشخصي", link: "/user/profile" },
-  { name: "العناوين", link: "/user/address" },
-  { name: "الدعم خدمة العملاء", link: "" },
-  { name: "النشرة البريدية", link: "/mail-news" },
-  { name: "نشرة چوملا", link: "/goomla-news" },
-  { name: "نبذة عن الموقع", link: "/about" },
-  { name: "الشروط والأحكام", link: "/terms-and-conditions" },
-  { name: "تسجيل الخروج", link: "/signout" },
+  { name: "الطلبات", link: "/user/orders",icon:Orders },
+  { name: "الأشعارات", link: "/user/notifications",icon:Notifications },
+  { name: "محفظة چوملا", link: "/user/wallet",icon:Wallet },
+  { name: "كوبونات الخصم", link: "/discount",icon:Copons },
+  { name: "الملف الشخصي", link: "/user/profile",icon:MyProfile },
+  { name: "العناوين", link: "/user/address",icon:addresses },
+  { name: "الدعم وخدمة العملاء", link: "/support",icon:Support },
+  { name: "النشرة البريدية", link: "/mail-news",icon:MailPosts },
+  { name: "نشرة چوملا", link: "/goomla-news",icon:JoumlaPosts },
+  { name: "نبذة عن الموقع", link: "/about",icon:AboutUs },
+  { name: "الشروط والأحكام", link: "/terms-and-conditions",icon:TermsNConditions },
+  { name: "تسجيل الخروج", link: "/signout",icon:SignOut },
 ];
 const UserAcountPage = () => {
   return (

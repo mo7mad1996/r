@@ -200,8 +200,7 @@ const ProgressOrdersPage = lazy(() =>
   import("../pages/orders/ProgressOrdersPage")
 );
 const ReturnedOrdersPage = lazy(() =>
-  import("../pages/orders/ReturnedOrdersPage")
-);
+7);
 const CanceledOrdersPage = lazy(() =>
   import("../pages/orders/CanceledOrdersPage")
 );
