@@ -7,14 +7,17 @@ import ar from "date-fns/locale/ar-EG";
 import ScrollToTop from "./components/ScrollToTop";
 
 import AppLayout from "./layout/AppLayout";
+import { ContextProvider } from "./components/Context/Context";
 
 function App() {
   return (
     <BrowserRouter>
-      <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ar}>
-        <ScrollToTop />
-        <AppLayout />
-      </LocalizationProvider>
+      <ContextProvider>
+        <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ar}>
+          <ScrollToTop />
+          <AppLayout />
+        </LocalizationProvider>
+      </ContextProvider>
     </BrowserRouter>
   );
 }

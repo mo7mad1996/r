@@ -5,7 +5,7 @@ import { Box, Stack, Typography, styled } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+// import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 import Logo from "./Logo";
 import faceIcon from "../assets/home/face.png";
@@ -429,14 +429,14 @@ const Footer = () => {
             >
               {lang}
             </Typography>
-            <ArrowDropDownIcon
+            {/* <ArrowDropDownIcon
               sx={{ fontSize: "40px", cursor: "pointer" }}
               id="choose-lang"
               aria-controls={open ? "choose-lang-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
               onClick={handleClick}
-            />
+            /> */}
           </Stack>
           {/* menu  */}
           <Menu
