@@ -24,14 +24,15 @@ import cartImage from "/cart.png";
 import searchImage from "/search.png";
 
 import { navItems } from "../utils/navItems";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useShowModal from "../hooks/useShowModal";
 import ModalComponent from "./ModalComponent";
 import DateFilter from "./DateFilter";
 import AddressPopup from "../sections/Address/AddressPopup";
+import { Context } from "./Context/Context";
 // const Logo = styled(Typography)({
-  //   fontSize: "60px",
-  //   fontWeight: 800,
+//   fontSize: "60px",
+//   fontWeight: 800,
 //   lineHeight: "67px",
 //   textAlign: "right",
 //   color: "#292D32",
@@ -39,9 +40,9 @@ import AddressPopup from "../sections/Address/AddressPopup";
 //   letterSpacing: "0em",
 // });
 // const LogoSpan = styled("span")({
-  //   color: "#008C5D",
-  // });
-  const LocationIcon = styled("img")({
+//   color: "#008C5D",
+// });
+const LocationIcon = styled("img")({
   marginLeft: "3px",
 });
 const Search = styled(Box)(({ theme }) => ({
@@ -92,9 +93,17 @@ const NavItem = styled(Link)(({ theme }) => ({
 const langs = ["AR", "EN"];
 
 const Header = () => {
-  const navigate = useNavigate();
+  let navigate = useNavigate();
   const [lang, setLang] = useState(langs[0]);
   const [anchorEl, setAnchorEl] = useState(null);
+  const { userName } = useContext(Context);
+
+  function handleLogout() {
+    localStorage.removeItem("userId");
+    localStorage.removeItem("token");
+  }
+
+  const [profile, setProfile] = useState(false);
   const {
     open: openModal,
     handleOpen: handleOpenModal,
@@ -237,57 +246,94 @@ const Header = () => {
                   </MenuItem>
                 ))}
               </Menu>
-              {/* if logged  */}
-              {/* <UserBox>
-            <Typography
-              sx={{
-                  fontSize: "12px",
-                  fontWeight: "800",
-                  lineHeight: "13px",
-                letterSpacing: " 0em",
-              }}
-            >
-              مرحبا ABDELRAHEMAN
-            </Typography>
-            <Box
-            sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "end",
-                fontSize: "14px",
-                fontWeight: " 800",
-                lineHeight: "16px",
-            }}
-            >
-            حسابي
-              <ArrowDropDownIcon sx={{ fontSize: "30px", mr: "-5px" }} />
-              </Box>
-            </UserBox> */}
-              <Button
-                variant="outlined"
-                sx={{
-                  display: "block",
-                  //   py: "10px",
-                  height: "55px",
-                  color: "colors.mainBlack",
-                  mr: "24px",
-                  ml: "18px",
-                  //   outline: "colors.mainBlack",
-                  borderColor: "colors.mainBlack",
-                  borderRadius: "5px solid",
-                  fontSize: "14px",
-                  fontWeight: "800",
-                  lineHeight: "15.62px",
-                  letterSpacing: "0em",
-                  textAlign: "right",
-                  "&:hover": {
-                    borderColor: "colors.mainGreen",
-                  },
-                }}
-                onClick={() => navigate("/signup")}
-              >
-                تسجيل دخول
-              </Button>
+              {localStorage.getItem("userId") ? (
+                <UserBox sx={{ position: "relative" }}>
+                  <Typography
+                    sx={{
+                      fontSize: "12px",
+                      fontWeight: "800",
+                      lineHeight: "13px",
+                      letterSpacing: " 0em",
+                      color: "#000",
+                    }}
+                  >
+                    مرحبا {userName}
+                  </Typography>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "end",
+                      fontSize: "14px",
+                      fontWeight: " 800",
+                      lineHeight: "16px",
+                      color: "#000",
+                    }}
+                  >
+                    حسابي
+                    <ArrowDropDownIcon
+                      style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        setProfile(!profile);
+                      }}
+                      sx={{ fontSize: "30px", mr: "-5px" }}
+                    />
+                  </Box>
+
+                  {profile && (
+                    <Box
+                      sx={{
+                        width: "100px",
+                        height: "100px",
+                        backgroundColor: "#ccc",
+                        color: "#000",
+                        borderRadius: "10px",
+                        position: "absolute",
+                        top: "100%",
+                        right: "-30px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Link to={"/Login"} onClick={handleLogout}>
+                        <Button
+                          sx={{ textTransform: "capitalize", color: "#000" }}
+                        >
+                          تسجيل الخروج{" "}
+                        </Button>
+                      </Link>
+                    </Box>
+                  )}
+                </UserBox>
+              ) : (
+                <Button
+                  variant="outlined"
+                  sx={{
+                    display: "block",
+                    //   py: "10px",
+                    height: "55px",
+                    color: "colors.mainBlack",
+                    mr: "24px",
+                    ml: "18px",
+                    //   outline: "colors.mainBlack",
+                    borderColor: "colors.mainBlack",
+                    borderRadius: "5px solid",
+                    fontSize: "14px",
+                    fontWeight: "800",
+                    lineHeight: "15.62px",
+                    letterSpacing: "0em",
+                    textAlign: "right",
+                    "&:hover": {
+                      borderColor: "colors.mainGreen",
+                    },
+                  }}
+                  onClick={() => navigate("/signup")}
+                >
+                  تسجيل دخول
+                </Button>
+              )}
+
               <ShoppingCart>
                 <Typography
                   sx={{

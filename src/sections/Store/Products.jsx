@@ -23,6 +23,8 @@ import ModalComponent from "../../components/ModalComponent";
 import useShowModal from "../../hooks/useShowModal";
 import DeletePopup from "./DeletePopup";
 import CustomCheckbox from "../Dashboard/delivery/CustomCheckbox";
+import {useEffect,useContext} from "react"
+import { Context } from "../../components/Context/Context";
 
 const StyledIcons = styled(Box)(({ theme }) => ({
   position: "absolute",
@@ -74,6 +76,13 @@ const Products = ({ products }) => {
   const isCustom = location.pathname.endsWith("/custom-product");
   const isAds = location.pathname.includes("/ads");
   const { open, handleOpen, handleClose, message, setMessage } = useShowModal();
+const {addToCart} = useContext(Context)
+
+  async function addToUserCart(id){
+    let res = await addToCart(id)
+    console.log(res)
+  }
+
 
   return (
     <>
@@ -124,8 +133,10 @@ const Products = ({ products }) => {
                 <ProductPagination />
               </Box>
               <StyledIcons>
-                <IconButton size="small" disableRipple>
-                  <AddShoppingCart />
+                <IconButton size="small" disableRipple onClick={(e)=>{
+                  addToUserCart(product.id)
+                }}>
+                  <AddShoppingCart  />
                 </IconButton>
                 <IconButton size="small" disableRipple>
                   {/* <FavoriteBorder /> */}
@@ -224,7 +235,7 @@ const Products = ({ products }) => {
                     color: "colors.mainGreen",
                   }}
                 >
-                  {product.price} ج.م
+                  {Math.ceil(product.price_afte_discount)} ج.م
                 </Typography>
                 <Typography
                   sx={{
@@ -244,7 +255,7 @@ const Products = ({ products }) => {
                     },
                   }}
                 >
-                  {product.oldPrice} ج.م
+                  {product.main_price} ج.م
                 </Typography>
               </Box>
               <Box
@@ -267,7 +278,7 @@ const Products = ({ products }) => {
                     color: "colors.website",
                   }}
                 >
-                  {product.discount} %
+                  {product.percentage_discount} %
                 </Typography>
               </Box>
               <Box

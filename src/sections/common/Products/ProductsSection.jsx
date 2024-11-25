@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { Box, MenuItem, Select } from "@mui/material";
 // import UsePagination from "../hooks/UsePagination";
@@ -7,8 +7,21 @@ import UsePagination from "../../../hooks/UsePagination";
 import { PRODUCTS } from "../../../utils/products";
 import Products from "../../Store/Products";
 import usePaginate from "../../../hooks/usePaginate";
+import { Context } from "../../../components/Context/Context";
 
 const ProductsSection = ({ isReview, admin }) => {
+  let [products,setProducts]=useState([])
+  const { getProducts} = useContext(Context);
+  async function getAllProducts() {
+    let res = await getProducts();
+    console.log(res?.data?.products?.data)
+    setProducts(res?.data?.products?.data)
+  }
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
+
   const itemsPerPage = 12;
   const {
     page,
@@ -30,7 +43,7 @@ const ProductsSection = ({ isReview, admin }) => {
   return (
     <>
       <Box sx={{ position: "relative" }}>
-        <Products products={displayedProducts} isReview={isReview} />
+        <Products products={products} isReview={isReview} />
         <Box
           sx={{
             position: "absolute",

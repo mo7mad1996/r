@@ -60,7 +60,7 @@ const StyledLink = styled(Link)(({ theme }) => ({
 const Login = ({ seller = false }) => {
   let navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  let { userName, setUserName ,baseUrl} = useContext(Context);
+  let { userName, setUserName, baseUrl } = useContext(Context);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -68,11 +68,27 @@ const Login = ({ seller = false }) => {
     event.preventDefault();
   };
 
-  // Handle OAuth login
- 
-  
+  // Handle Google OAuth login
+  const handleGoogleLogin = async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/user/auth/google`);
+      // window.location.href = response.data.url; // Redirect to Google login page
+      console.log(response)
+    } catch (error) {
+      console.error("Error during Google login request:", error);
+    }
+  };
 
-  
+  // Handle Facebook OAuth login
+  const handleFacebookLogin = async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/user/auth/google`);
+      // window.location.href = response.data.url; // Redirect to Facebook login page
+      console.log(response)
+    } catch (error) {
+      console.error("Error during Facebook login request:", error);
+    }
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -91,66 +107,34 @@ const Login = ({ seller = false }) => {
         .required("كلمة المرور مطلوبة"),
     }),
     onSubmit: async (values) => {
-      console.log(values.username);
-      console.log(values.password);
       try {
         const response = await axios.post(
-          "https://joumla.store/api/v1/user/login",
+          `${baseUrl}/user/login`,
           {
             username: values.username,
             password: values.password,
           }
         );
-        console.log("تم تسجيل الدخول بنجاح:", response.data);
-        console.log(response?.data?.user?.name);
-        console.log(response?.data?.user.id);
         localStorage.setItem("token", response.data.access_token);
         localStorage.setItem("userId", response.data.user.id);
 
         setUserName(response?.data?.user?.name);
-
         navigate("/");
       } catch (error) {
-        console.error(
-          "حدث خطأ أثناء تسجيل الدخول:",
-          error.response?.data || error.message
-        );
+        console.error("حدث خطأ أثناء تسجيل الدخول:", error.response?.data || error.message);
       }
     },
   });
 
-
-
-  const handleOAuthLogin = async (provider) => {
-    try {
-      // إرسال الطلب إلى API لتسجيل الدخول عبر OAuth
-      const response = await axios.get(
-        `${baseUrl}/auth/${provider}`,
-       
-      );
-  
-      console.log("OAuth response:", response.data);
-  
-  
-      navigate("/dashboard"); 
-    } catch (error) {
-      console.error("خطأ أثناء تسجيل الدخول عبر OAuth:", error.response?.data || error.message);
-  
-      if (error.response) {
-        console.error("حالة الخطأ:", error.response.status);
-        console.error("تفاصيل الخطأ:", error.response.data);
-      }
-    }
-  };
   return (
     <>
       <SectionTitle sectionTitle={{ main: "تسجيل دخول" }} />
       <Stack gap="31px" alignItems={"center"} mt={"-75px"}>
-        <StyledBox onClick={() => handleOAuthLogin("google")}>
+        <StyledBox onClick={handleGoogleLogin}>
           <Box component="img" src={googleImage} />
           <StyledTypography>تسجيل الدخول بواسطة Google</StyledTypography>
         </StyledBox>
-        <StyledBox onClick={() => handleOAuthLogin("facebook")}>
+        <StyledBox onClick={handleFacebookLogin}>
           <Box component="img" src={faceImage} />
           <StyledTypography>تسجيل الدخول بواسطة Facebook</StyledTypography>
         </StyledBox>
