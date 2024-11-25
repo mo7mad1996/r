@@ -36,7 +36,7 @@ export default function ProductPagination() {
   const { getProducts } = useContext(Context);
   async function getProductsImages() {
     let res = await getProducts();
-    console.log(res?.data?.products?.data);
+    // console.log(res?.data?.products?.data);
     setAllProducts(res?.data?.products?.data);
   }
   useEffect(() => {
@@ -58,8 +58,8 @@ export default function ProductPagination() {
         modules={[Autoplay, Pagination]}
         className="mySwiper"
       >
-        {allProducts?.map((item) => (
-          <SwiperSlide>
+        {allProducts?.map((item,index) => (
+          <SwiperSlide key={index}>
             <Box
               component={"img"}
               sx={{

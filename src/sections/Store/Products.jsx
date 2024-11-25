@@ -87,7 +87,7 @@ const {addToCart} = useContext(Context)
   return (
     <>
       <Grid container spacing={["40px"]}>
-        {products.map((product) => (
+        {products.map((product,index) => (
           <Grid
             item
             xs={12}
@@ -98,7 +98,7 @@ const {addToCart} = useContext(Context)
             sx={{
               margin: { xs: "auto", md: "0" },
             }}
-            key={product.id}
+            key={index}
           >
             <Box
               sx={{

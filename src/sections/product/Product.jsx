@@ -1,5 +1,4 @@
-import React, { useMemo, useState } from "react";
-
+import React, { useMemo, useState,useEffect,useContext } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import {
@@ -37,7 +36,9 @@ import instaIcon from "../../assets/store/insta.png";
 import whatsIcon from "../../assets/store/whats.png";
 import phoneIcon from "../../assets/store/phone.png";
 import ProductsSlider from "../../sections/common/Products/ProductsSlider";
-
+import axios from "axios";
+ import { Context } from "../../components/Context/Context";
+import { useParams } from "react-router-dom";
 // import productImage from "../assets/home/shoes.png";
 const products = {
   title: "",
@@ -250,6 +251,27 @@ const Product = () => {
     setAnchorEl(null);
   };
 
+
+  let [product,setProduct]=useState({})
+
+let {baseUrl} = useContext(Context)
+let params= useParams()
+// console.log(params)
+async function productDetails(){
+  let res = await axios.get(`${baseUrl}/products/${params.id}`)
+  // console.log(res)
+  setProduct(res?.data?.product)
+  console.log(res)
+}
+
+
+
+useEffect(()=>{
+  productDetails()
+
+
+},[])
+
   const quantityOptions = Array(totalQuantity)
     .fill(1)
     .map((item, index) => ++index);
@@ -266,6 +288,7 @@ const Product = () => {
         sx={{
           p: { xs: "15px", md: "0" },
           mt: "178px",
+
         }}
       >
         <Box sx={{ display: { md: "flex" } }}>
@@ -326,7 +349,7 @@ const Product = () => {
                 }}
                 onClick={() => changeImages(images[0], 0)}
               >
-                 <Magnifier src={productImage3} width={500} height={500} zoomLevel={3} />
+                 <Magnifier src={product?.image} width={500} height={500} zoomLevel={3} />
 
               </Box>
               <StyledIcons>
@@ -356,7 +379,7 @@ const Product = () => {
                 color: "colors.mainBlack",
               }}
             >
-              {PRODUCT.title}
+              {product.title}
             </Typography>
             <Link to="" sx={{ textDecorationColor: "transparent" }}>
               <Typography
@@ -473,7 +496,7 @@ const Product = () => {
                   color: "colors.website",
                 }}
               >
-                {PRODUCT.price} ج.م
+                {Math.ceil(product.price_afte_discount)} ج.م
               </Typography>
               <Typography
                 sx={{
@@ -493,7 +516,7 @@ const Product = () => {
                   },
                 }}
               >
-                {PRODUCT.oldPrice} ج.م
+                {Math.ceil(product.main_price)} ج.م
               </Typography>
             </Box>
             <Box sx={{ display: "flex", gap: "9px", mb: "50px" }}>
@@ -515,7 +538,7 @@ const Product = () => {
                   color: "colors.website",
                 }}
               >
-                {PRODUCT.discount} %
+                {product.percentage_discount} %
               </Typography>
             </Box>
             <ProductCustom>
