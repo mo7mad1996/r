@@ -26,9 +26,13 @@ const Cart = () => {
     console.log(res);
   }
 
+
+  
+
   async function updateQuantity(productId, quantity) {
     let res = await axios.patch(
-      `${baseUrl}/user/cart/${productId}`,
+      `https://joumla.store/api/v1/user/cart/${productId}`,
+
       {
         quantity: quantity,
       },
@@ -40,6 +44,8 @@ const Cart = () => {
       }
     );
     console.log(res);
+
+    
   }
 
   useEffect(() => {
@@ -211,7 +217,7 @@ const Cart = () => {
                   fontSize: "20px",
                 }}
               >
-                {product.product.quantity}
+                {product.quantity}
               </Box>
               <Box
                 sx={{
@@ -223,9 +229,11 @@ const Cart = () => {
                   justifyContent: "center",
                 }}
                 onClick={() => {
+
+                  console.log(product.di)
                   updateQuantity(
-                    product.product.id,
-                    product.product.quantity + 1
+                    product.di,
+                    product.quantity + 1
                   );
                 }}
               >
