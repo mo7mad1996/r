@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -15,8 +15,21 @@ import { sections } from "../../../utils/sections";
 import UsePagination from "../../../hooks/UsePagination";
 import usePaginate from "../../../hooks/usePaginate";
 import Search from "../../../sections/common/Search";
+import { Context } from "../../../components/Context/Context";
 
 const ShowSections = () => {
+  const { allCategories } = useContext(Context);
+  let [categories,setCategories]=useState([])
+
+  async function getAllCategories() {
+    let res = await allCategories();
+    setCategories(res?.data?.categories)
+    console.log(res);
+  }
+
+  useEffect(() => {
+    getAllCategories();
+  },[]);
   const navigate = useNavigate();
   const itemsPerPage = 20;
 
@@ -89,7 +102,7 @@ const ShowSections = () => {
             {Array(totalPages)
               .fill("")
               .map((item, index) => (
-                <MenuItem value={index + 1}>{index + 1}</MenuItem>
+                <MenuItem key={index} value={index + 1}>{index + 1}</MenuItem>
               ))}
           </Select>
           من {totalPages} صفحات{" "}
@@ -101,7 +114,7 @@ const ShowSections = () => {
           // spacing={"42px"}
           spacing={["20px", "25px", "28px", "35px", "45px"]}
         >
-          {displayedSections.map((section) => (
+          {categories?.map((section) => (
             <Grid
               item
               key={section.id}
@@ -137,7 +150,8 @@ const ShowSections = () => {
                   >
                     <Box
                       component={"img"}
-                      src={section.image}
+                      src={section.photo}
+                      alt={section.name}
                       sx={{
                         width: "100%",
                         height: "179px",

@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Spinner from "../components/Spinner";
 import AdminAllSectionsPage from "../pages/Admin/sections/AdminAllSectionsPage";
 import AdminAddSection from "../pages/Admin/sections/AdminAddSection";
+import LatestProducts from "../components/LatestProducts/LatestProducts";
 
 const SellerProductsPage = lazy(() =>
   import("../pages/dashboard/products/SellerProductsPage")
@@ -236,6 +237,8 @@ const AppLayout = () => {
             // ]}
           >
             <Route path=":id" element={<ProductPage />} />
+            <Route path="latest-products" element={<LatestProducts />} />
+
             <Route index={true} element={<StorePage />} />
             <Route path="new" element={<NewProductsPage />} />
             <Route path="best-sale" element={<BestSalesPage />} />

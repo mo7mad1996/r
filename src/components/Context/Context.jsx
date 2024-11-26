@@ -50,6 +50,46 @@ export function ContextProvider({ children }) {
     }
   }
 
+
+
+  // Get All Vendors
+
+  async function allVendors() {
+    try {
+      let res = await axios.get(`${baseUrl}/vendor`);
+      return res;
+    } catch (err) {
+      return err;
+    }
+  }
+
+
+  // Get Vendor Data 
+  async function vendorData(id) {
+    try {
+      let res = await axios.get(`${baseUrl}/vendor/${id}`);
+      return res;
+    } catch (err) {
+      return err;
+    }
+  }
+
+
+  // All Categories
+  async function allCategories() {
+    try {
+      let res = await axios.get(`${baseUrl}/main_categories`);
+      return res;
+    } catch (err) {
+      return err;
+    }
+  }
+
+
+  
+
+
+
   return (
     <Context.Provider
       value={{
@@ -59,6 +99,9 @@ export function ContextProvider({ children }) {
         getProducts,
         addToCart,
         getUserCart,
+        allCategories,
+        allVendors,
+        vendorData
       }}
     >
       {children}

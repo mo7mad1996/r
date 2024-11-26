@@ -65,7 +65,7 @@ export default function ProductPagination() {
               sx={{
                 // width: "240px",
                 // height: "240px",
-                width: "138px",
+                width: "138px", 
                 height: "182px",
                 cursor: "pointer",
                 mb: "29px",

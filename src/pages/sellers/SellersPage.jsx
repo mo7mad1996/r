@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect, useContext } from "react";
 import SectionTitle from "../../sections/common/Products/SectionTitle";
 
 import sellerImage from "../../assets/seller.png";
@@ -10,8 +10,11 @@ import { useNavigate } from "react-router-dom";
 import { sellers } from "../../utils/sellers";
 import UsePagination from "../../hooks/UsePagination";
 import usePaginate from "../../hooks/usePaginate";
+import { Context } from "../../components/Context/Context";
 const SellersPage = () => {
   const navigate = useNavigate();
+  const {allVendors} = useContext(Context)
+  let [vendors,setVendors]=useState([])
   const itemsPerPage = 20;
 
   const {
@@ -24,10 +27,28 @@ const SellersPage = () => {
     items: sellers,
   });
 
+
+
+
+  
+  async function getAllVendors(){
+    let res = await allVendors()
+    setVendors(res?.data?.vendor)
+    console.log(res?.data?.vendor)
+  }
+
+
+
+
+  useEffect(()=>{
+    getAllVendors()
+  },[])
+
   return (
     <Box>
       {/* بائعين چوملا (المتاجر) */}
       <SectionTitle
+     
         sectionTitle={{ main: "بائعين چوملا", second: "المتاجر" }}
       />
       <Stack>
@@ -43,8 +64,10 @@ const SellersPage = () => {
             // spacing={"10px"}
             columns={[12, 12, 12, 12, 15]}
           >
-            {displayedSellers.map((seller) => (
+            {vendors.map((seller) => (
               <Grid
+
+              id={seller.id}
                 item
                 xs={8}
                 sm={6}
@@ -62,7 +85,7 @@ const SellersPage = () => {
                 >
                   <Box
                     component={"img"}
-                    src={seller.image}
+                    src={seller.ID_card_photo}
                     sx={{ maxWidth: "221.06px", height: "181.84px" }}
                   ></Box>
                   <Typography
@@ -76,7 +99,7 @@ const SellersPage = () => {
                       mb: "26px",
                     }}
                   >
-                    {seller.name}
+                    {seller.vendor_name}
                   </Typography>
                   <Box
                     sx={{
@@ -101,7 +124,7 @@ const SellersPage = () => {
                         // textAlign: "right",
                       }}
                     >
-                      {seller.reviewsNum}
+                      {/* {seller.reviewsNum} */}
                     </Typography>
                   </Box>
                   <Box
@@ -135,7 +158,7 @@ const SellersPage = () => {
                         color: "colors.greyStrock",
                       }}
                     >
-                      {seller.totalProducts}
+                      {seller.products.length}
                     </Typography>
                   </Box>
                   <MainButton

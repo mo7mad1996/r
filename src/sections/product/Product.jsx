@@ -261,7 +261,7 @@ async function productDetails(){
   let res = await axios.get(`${baseUrl}/products/${params.id}`)
   // console.log(res)
   setProduct(res?.data?.product)
-  console.log(res)
+  // console.log(res)
 }
 
 

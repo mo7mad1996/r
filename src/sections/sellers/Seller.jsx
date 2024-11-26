@@ -19,8 +19,7 @@ const Seller = ({ seller }) => {
     >
       
     </Box>
-  );
-};
+  
     <Box sx={{ display: "flex", gap: "29px",}}>
 
       <Box
@@ -95,7 +94,7 @@ const Seller = ({ seller }) => {
               color: "colors.greyStrock",
             }}
           >
-            129
+          {seller.productCount}
           </Typography>
         </Box>
       </Stack>

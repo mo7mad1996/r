@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import ProductsSection from "../../sections/common/Products/ProductsSection";
 import ProductsSidebar from "../../sections/common/Products/ProductsSidebar";
 import sellerImage from "../../assets/seller.png";
 import Reviews from "../../components/Reviews";
 import Seller from "../../sections/sellers/Seller";
+import { Context } from "../../components/Context/Context";
+import { useParams } from "react-router-dom";
 
 const SellerPage = () => {
+let params=useParams()
+
+
+let [vendor,setVendor]=useState({})
+
+console.log(params.id)
+
+  let {vendorData} = useContext(Context)
+async function getVendorInfo(id){
+  let res= await vendorData(id)
+  setVendor(res?.data?.vendor)
+  console.log(res)
+}
+
+useEffect(()=>{
+  getVendorInfo(params.id)
+},[])
+
   return (
     <>
       <Box sx={{ mt: "75px", mr: "331px" }}>
@@ -89,8 +109,9 @@ const SellerPage = () => {
         </Box> */}
         <Seller
           seller={{
-            img: sellerImage,
-            info: "ملابس الصيرفى ",
+            img: vendor.logo,
+            info: vendor.vendor_name,
+            productCount:vendor?.products?.length
           }}
         />
         <Typography

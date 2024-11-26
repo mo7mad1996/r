@@ -10,8 +10,8 @@ import usePaginate from "../../../hooks/usePaginate";
 import { Context } from "../../../components/Context/Context";
 
 const ProductsSection = ({ isReview, admin }) => {
-  let [products,setProducts]=useState([])
   const { getProducts} = useContext(Context);
+  let [products,setProducts]=useState([])
   async function getAllProducts() {
     let res = await getProducts();
     console.log(res?.data?.products?.data)
@@ -80,7 +80,7 @@ const ProductsSection = ({ isReview, admin }) => {
             {Array(totalPages)
               .fill("")
               .map((item, index) => (
-                <MenuItem value={index + 1}>{index + 1}</MenuItem>
+                <MenuItem key={index} value={index + 1}>{index + 1}</MenuItem>
               ))}
             {/* <MenuItem value={10}>Ten</MenuItem>
             <MenuItem value={20}>Twenty</MenuItem>
