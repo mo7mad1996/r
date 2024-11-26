@@ -10,13 +10,14 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { Context } from "../../components/Context/Context";
+import { useParams } from "react-router-dom";
 
-const Address = () => {
+const ModifyAddress = () => {
   let { baseUrl } = useContext(Context);
-
+  let params = useParams()
   const formik = useFormik({
     initialValues: {
-      type: "Home",
+      name: "Home",
       address: "",
       governorate: "",
       city: "",
@@ -24,7 +25,7 @@ const Address = () => {
       residence_number: "",
       apartment_number: "",
       floor: "",
-      // default_address: false, // يمكن إضافته عند الحاجة
+      default_address: 1,
     },
     validationSchema: Yup.object({
       address: Yup.string().required("العنوان مطلوب"),
@@ -32,20 +33,20 @@ const Address = () => {
       city: Yup.string().required("المدينة مطلوبة"),
       street_name: Yup.string().required("اسم الشارع مطلوب"),
       residence_number: Yup.string().required("رقم السكن مطلوب"),
-      apartment_number: Yup.string(), 
-      floor: Yup.string(), 
+      apartment_number: Yup.string(),
+      floor: Yup.string(),
     }),
+
     onSubmit: async (values) => {
+      console.log(values)
+      console.log(localStorage.getItem('token'))
+      console.log(params)
       try {
-        let res = await axios.post(
-          `${baseUrl}/user/address`,
-          values,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
+        let res = await axios.patch(`${baseUrl}/user/address/${params.id}`, values, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
         console.log(res);
       } catch (err) {
         console.error(err);
@@ -66,7 +67,7 @@ const Address = () => {
         }}
       >
         <FormItem>
-          <StyledTypography >العنوان</StyledTypography>
+          <StyledTypography>العنوان</StyledTypography>
           <StyledTextField
             name="address"
             value={formik.values.address}
@@ -84,8 +85,7 @@ const Address = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={
-              formik.touched.governorate &&
-              Boolean(formik.errors.governorate)
+              formik.touched.governorate && Boolean(formik.errors.governorate)
             }
             helperText={formik.touched.governorate && formik.errors.governorate}
           />
@@ -108,7 +108,9 @@ const Address = () => {
             value={formik.values.street_name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            error={formik.touched.street_name && Boolean(formik.errors.street_name)}
+            error={
+              formik.touched.street_name && Boolean(formik.errors.street_name)
+            }
             helperText={formik.touched.street_name && formik.errors.street_name}
           />
         </FormItem>
@@ -123,7 +125,9 @@ const Address = () => {
               formik.touched.residence_number &&
               Boolean(formik.errors.residence_number)
             }
-            helperText={formik.touched.residence_number && formik.errors.residence_number}
+            helperText={
+              formik.touched.residence_number && formik.errors.residence_number
+            }
           />
         </FormItem>
         <FormItem>
@@ -137,7 +141,9 @@ const Address = () => {
               formik.touched.apartment_number &&
               Boolean(formik.errors.apartment_number)
             }
-            helperText={formik.touched.apartment_number && formik.errors.apartment_number}
+            helperText={
+              formik.touched.apartment_number && formik.errors.apartment_number
+            }
           />
         </FormItem>
         <FormItem>
@@ -172,4 +178,4 @@ const Address = () => {
   );
 };
 
-export default Address;
+export default ModifyAddress;

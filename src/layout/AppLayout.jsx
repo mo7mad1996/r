@@ -288,7 +288,7 @@ const AppLayout = () => {
             <Route path="address">
               <Route index={true} element={<AddressPage />} />
               <Route path="new" element={<NewAddressPage />} />
-              <Route path="modify" element={<ModifyAddressPage />} />
+              <Route path="modify/:id" element={<ModifyAddressPage />} />
             </Route>
           </Route>
           <Route path="/user-profile" element={<UserProfilePage />} />

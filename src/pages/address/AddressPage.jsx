@@ -30,7 +30,8 @@ const AddressPage = () => {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   const { baseUrl } = useContext(Context);
-  const [errMessage, setErrMessage] = useState("");
+  const [errMessage, setErrMessage] = useState(false);
+  const [addresses, setAddresses] = useState([]);
   async function getAllAddresses() {
     try {
       let res = await axios.get(`${baseUrl}/user/address`, {
@@ -40,13 +41,16 @@ const AddressPage = () => {
       });
 
       console.log(res);
+      setAddresses(res?.data?.address);
     } catch (error) {
       console.log(error);
-      setErrMessage("لا يوجد اى عناوين حاليا");
+      setErrMessage(true);
     }
   }
 
-  
+
+
+
 
   useEffect(() => {
     getAllAddresses();
@@ -81,8 +85,6 @@ const AddressPage = () => {
             width: "371px",
           }}
           onClick={() => navigate("new")}
-    
-
         >
           اضف عنوان جديد
         </StyledButton>
@@ -93,133 +95,80 @@ const AddressPage = () => {
         </Typography>
       ) : (
         <>
-          <Stack sx={{ px: "132px" }}>
+          <Box sx={{ px: "132px"  }}>
             {/* address  */}
-            <Stack sx={{ gap: "71px" }}>
-              <Box
-                sx={{
-                  backgroundColor: "colors.liteGrey",
-                  py: "23px",
-                  pr: "31px",
-                  pl: "152px",
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Stack>
-                  <Typography
+
+            {addresses?.map((address, index) => {
+              return (
+                <Box id={address.id} key={index} sx={{ gap: "71px" ,mb:'10px'}}>
+                  <Box
                     sx={{
-                      fontSize: "28px",
-                      fontWeight: "800",
-                      lineHeight: "31px",
-                      color: "colors.mainBlack",
+                      backgroundColor: "colors.liteGrey",
+                      py: "23px",
+                      pr: "31px",
+                      pl: "152px",
+                      display: "flex",
+                      justifyContent: "space-between",
                     }}
                   >
-                    منزل
-                  </Typography>
-                  <Stack sx={{ gap: "11px", mt: "16px" }}>
-                    <StyledAddress>روينة أحمد</StyledAddress>
-                    <StyledAddress>01558087877</StyledAddress>
-                    <StyledAddress>
-                      98 , طريق الواحات , حورس , 6 اكتوبر ,الجيزة
-                    </StyledAddress>
-                  </Stack>
-                </Stack>
-                <Stack sx={{ justifyContent: "space-between" }}>
-                  <StyledButton
-                    sx={{
-                      width: "232px",
-                      color: "colors.website",
-                      backgroundColor: "transparent",
-                      "&:hover": {
-                        backgroundColor: "transparent",
-                      },
-                    }}
-                    onClick={() => navigate("modify")}
-                  >
-                    تعديل
-                  </StyledButton>
-                  <StyledButton
-                    sx={{
-                      width: "232px",
-                      color: "colors.mainRed",
-                      backgroundColor: "transparent",
-                      "&:hover": {
-                        backgroundColor: "transparent",
-                      },
-                    }}
-                    onClick={() => {
-                      setMessage("هل ترغب حقا فى حذف هذا العنوان");
-                      handleOpen();
-                    }}
-                  >
-                    حذف
-                  </StyledButton>
-                </Stack>
-              </Box>
-              <Box
-                sx={{
-                  backgroundColor: "colors.liteGrey",
-                  py: "23px",
-                  pr: "31px",
-                  pl: "152px",
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Stack>
-                  <Typography
-                    sx={{
-                      fontSize: "28px",
-                      fontWeight: "800",
-                      lineHeight: "31px",
-                      color: "colors.mainBlack",
-                    }}
-                  >
-                    منزل (أساسي)
-                  </Typography>
-                  <Stack sx={{ gap: "11px", mt: "16px" }}>
-                    <StyledAddress>روينة asdasd أحمد</StyledAddress>
-                    <StyledAddress>01558087877</StyledAddress>
-                    <StyledAddress>
-                      98 , طريق الواحات , حورس , 6 اكتوبر ,الجيزة
-                    </StyledAddress>
-                  </Stack>
-                </Stack>
-                <Stack sx={{ justifyContent: "space-between" }}>
-                  <StyledButton
-                    sx={{
-                      width: "232px",
-                      color: "colors.website",
-                      backgroundColor: "transparent",
-                      "&:hover": {
-                        backgroundColor: "transparent",
-                      },
-                    }}
-                    onClick={() => navigate("modify")}
-                  >
-                    تعديل
-                  </StyledButton>
-                  <StyledButton
-                    sx={{
-                      width: "232px",
-                      color: "colors.mainRed",
-                      backgroundColor: "transparent",
-                      "&:hover": {
-                        backgroundColor: "transparent",
-                      },
-                    }}
-                    onClick={() => {
-                      setMessage("هل ترغب حقا فى حذف هذا العنوان");
-                      handleOpen();
-                    }}
-                  >
-                    حذف
-                  </StyledButton>
-                </Stack>
-              </Box>
-            </Stack>
-          </Stack>
+                    <Stack>
+                      <Typography
+                        sx={{
+                          fontSize: "28px",
+                          fontWeight: "800",
+                          lineHeight: "31px",
+                          color: "colors.mainBlack",
+                        }}
+                      >
+                        منزل
+                      </Typography>
+                      <Stack sx={{ gap: "11px", mt: "16px" }}>
+                        <StyledAddress>روينة أحمد</StyledAddress>
+                        <StyledAddress>01558087877</StyledAddress>
+                        <StyledAddress>
+                          {address.residence_number} , {address.street_name} ,{" "}
+                          {address.city} , {address.governorate}
+                        </StyledAddress>
+                      </Stack>
+                    </Stack>
+                    <Stack sx={{ justifyContent: "space-between" }}>
+                      <StyledButton
+                        sx={{
+                          width: "232px",
+                          color: "colors.website",
+                          backgroundColor: "transparent",
+                          "&:hover": {
+                            backgroundColor: "transparent",
+                          },
+                        }}
+                        onClick={() => navigate(`modify/${address.id}`)}
+                      >
+                        تعديل
+                      </StyledButton>
+                      <StyledButton
+                        sx={{
+                          width: "232px",
+                          color: "colors.mainRed",
+                          backgroundColor: "transparent",
+                          "&:hover": {
+                            backgroundColor: "transparent",
+                          },
+                        }}
+                        onClick={() => {
+                          setMessage("هل ترغب حقا فى حذف هذا العنوان");
+                          handleOpen();
+                        }}
+                      >
+                        حذف
+                      </StyledButton>
+                    </Stack>
+                  </Box>
+                
+                </Box>
+              );
+            })}
+          
+          </Box>
           <ModalComponent
             open={open}
             handleOpen={handleOpen}
