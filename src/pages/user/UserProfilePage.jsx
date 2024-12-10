@@ -101,7 +101,6 @@ const UserProfilePage = () => {
         }
       );
 
-      console.log("Profile updated successfully:", response.data);
       alert("تم تحديث بياناتك بنجاح!");
     } catch (error) {
       console.error("Error updating profile:", error.response?.data || error.message);

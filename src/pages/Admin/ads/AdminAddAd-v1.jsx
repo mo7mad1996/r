@@ -42,7 +42,6 @@ const AdminAddAd = () => {
     setSectionValue(event.target.value);
   };
   const handleSectionBlur = (event) => {
-    console.log(event.target.value.length == 0);
     if (event.target.value.length == 0) {
       setSectionInput(false);
       //   setSectionInput(false);
@@ -159,7 +158,7 @@ const AdminAddAd = () => {
                   // readOnly: !sectionInput,
                 }
               }
-              active={sectionInput}
+              active={sectionInput.toString()}
               onChange={handleSectionInputChange}
               onClick={handleSectionInputClick}
               onBlur={handleSectionBlur}

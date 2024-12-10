@@ -104,7 +104,6 @@ const NewSellerAccount = ({ changeForm }) => {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log("Response:", response);
       changeForm();  // تابع العملية بعد النجاح
     } catch (error) {
       console.error("Error submitting form:", error);

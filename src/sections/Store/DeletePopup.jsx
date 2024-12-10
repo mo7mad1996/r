@@ -18,7 +18,6 @@ const StyledTypo = styled(Typography)(({ theme }) => ({
 }));
 const DeletePopup = ({ handleClose, refused }) => {
   const [showSuccess, setShowSuccess] = useState(false);
-  console.log(refused);
   return (
     <Box
       sx={{

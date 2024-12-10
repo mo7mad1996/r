@@ -1,54 +1,38 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 
+// components
 import { Box, MenuItem, Select } from "@mui/material";
-// import UsePagination from "../hooks/UsePagination";
-import UsePagination from "../../../hooks/UsePagination";
+import Products from "@/sections/Store/Products";
+import Spinner from "@/components/Spinner";
 
-import { PRODUCTS } from "../../../utils/products";
-import Products from "../../Store/Products";
-import usePaginate from "../../../hooks/usePaginate";
-import { Context } from "../../../components/Context/Context";
+// utils
+import UsePagination from "@/hooks/UsePagination";
 
-const ProductsSection = ({ isReview, admin }) => {
-  const { getProducts} = useContext(Context);
-  let [products,setProducts]=useState([])
-  async function getAllProducts() {
-    let res = await getProducts();
-    console.log(res?.data?.products?.data)
-    setProducts(res?.data?.products?.data)
-  }
-
-  useEffect(() => {
-    getAllProducts();
-  }, []);
-
-  const itemsPerPage = 12;
-  const {
-    page,
-    setPage,
-    displayedItems: displayedProducts,
-    totalPages,
-  } = usePaginate({
-    itemsPerPage,
-    items: PRODUCTS,
-  });
-  console.log(page);
+// component
+const ProductsSection = ({
+  isReview,
+  admin,
+  products = [],
+  totalPages = 1,
+  loading = false,
+  page = 1,
+  setPage,
+}) => {
   const handleChange = (event) => {
     setPage(event.target.value);
   };
-  useEffect(() => {
-    // console.log(page);
-  }, [page]);
 
+  // render
   return (
     <>
       <Box sx={{ position: "relative" }}>
-        <Products products={products} isReview={isReview} />
+        {loading && <Spinner />}
+        {!loading && products.length && (
+          <Products products={products} isReview={isReview} />
+        )}
         <Box
           sx={{
-            position: "absolute",
-            top: "-120px",
-            left: "0",
+            mt: 3,
             fontSize: "20px",
             lineHeight: "22px",
             color: "colors.mainBlack",
@@ -80,11 +64,10 @@ const ProductsSection = ({ isReview, admin }) => {
             {Array(totalPages)
               .fill("")
               .map((item, index) => (
-                <MenuItem key={index} value={index + 1}>{index + 1}</MenuItem>
+                <MenuItem key={index} value={index + 1}>
+                  {index + 1}
+                </MenuItem>
               ))}
-            {/* <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem> */}
           </Select>
           من {totalPages} صفحات{" "}
         </Box>
@@ -104,7 +87,6 @@ const ProductsSection = ({ isReview, admin }) => {
           setCurrentPage={setPage}
         />
       </Box>
-      {/* </Box> */}
     </>
   );
 };

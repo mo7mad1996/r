@@ -205,7 +205,6 @@ const StyledBox = styled(Box)(({ theme, isAds }) => ({
 const AddNewSellerPage = () => {
   const { pathname } = useLocation();
   const isAds = pathname.includes("ads");
-  console.log(isAds);
   const itemsPerPage = 13;
   const { page, setPage, displayedItems, totalPages } = usePaginate({
     itemsPerPage,
@@ -214,7 +213,6 @@ const AddNewSellerPage = () => {
   const handleChange = (event) => {
     setPage(event.target.value);
   };
-  console.log(displayedItems);
   return (
     <Stack>
       <SectionTitle

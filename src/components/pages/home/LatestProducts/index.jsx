@@ -1,19 +1,15 @@
-import React, { useCallback, useRef } from "react";
-import { Box, Typography, styled } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import React, { useCallback, useRef, useEffect, useState } from "react";
+import { Navigation } from "swiper/modules";
+import useApi from "@/hooks/useApi";
 
-// Import Swiper React components
+// components
+import { Link, useNavigate } from "react-router-dom";
+import { Box, Typography, styled } from "@mui/material";
+import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-// import required modules
-import { Navigation } from "swiper/modules";
+import css from "./style.module.css";
 
-import productImg from "../assets/home/camera 2.png";
-import ProductPagination from "../sections/common/Products/ProductPagination";
 const LinkItem = styled(Link)(({ theme }) => ({
   textDecoration: "none",
   color: theme.palette.colors.website,
@@ -38,17 +34,12 @@ const ArrowBox = styled(Box)(({ theme }) => ({
       height: "",
     },
   },
-  //   width: "89px",
-  height: "130px",
-  // border: "1px solid black",
+  // height: "130px",
   "&:first-of-type": {
-    // borderRight: "none",
-    // borderRadius: "5px",
     borderTopLeftRadius: "5px",
     borderBottomLeftRadius: "5px",
   },
   "&:last-of-type": {
-    // borderLeft: "none",
     borderTopRightRadius: "5px",
     borderBottomRightRadius: "5px",
   },
@@ -59,7 +50,49 @@ const ArrowBox = styled(Box)(({ theme }) => ({
   zIndex: 1500,
   cursor: "pointer",
 }));
-const TestComponent = ({ products, title, link }) => {
+
+// component
+export default function LatestProducts() {
+  const api = useApi();
+  const [products, setProducts] = useState([]);
+
+  const getSection = async () => {
+    try {
+      const res = await api.get("/product/latest_products");
+      const data = res.data.products.data;
+      setProducts(data);
+
+      console.log(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getSection();
+  }, []);
+
+  return (
+    <Box
+      sx={{
+        position: "relative",
+        py: "25px",
+        my: "24px",
+        backgroundColor: "colors.wi8",
+        px: { xs: "36px", sm: "77px" },
+      }}
+    >
+      {/* header */}
+      <header className={css.header}>
+        <span className={css.header_span}>أحدث المنتجات</span>
+        <LinkItem to="/store/latest-products">شاهد المزيد</LinkItem>
+      </header>
+
+      <Slider items={products} />
+    </Box>
+  );
+}
+function Slider({ items }) {
   const navigate = useNavigate();
   const sliderRef = useRef(null);
   const navigationPrevRef = useRef(null);
@@ -75,45 +108,11 @@ const TestComponent = ({ products, title, link }) => {
     sliderRef.current.swiper.slideNext();
   }, []);
   return (
-    <Box
-      sx={{
-        position: "relative",
-        backgroundColor: "colors.wi8",
-        // pt: "63px",
-        // pb: "10px",
-        py: "25px",
-        px: { xs: "36px", sm: "77px" },
-        my: "24px",
-      }}
-    >
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          gap: "15px",
-          mb: "10px",
-        }}
-      >
-        <Typography
-          sx={{
-            fontSize: "22px",
-            fontWeight: "800",
-            lineHeight: "24.55px",
-            letterSpacing: "0em",
-            textAlign: "right",
-          }}
-        >
-          {title}
-        </Typography>
-        <LinkItem to={link} sx={{}}>
-          شاهد المزيد
-        </LinkItem>
-      </Box>
-      {/* products  */}
+    <>
+      {/* items  */}
       <Box
         sx={{
           position: "relative",
-          //   zIndex: 1350,
           zIndex: 1100,
         }}
       >
@@ -124,15 +123,12 @@ const TestComponent = ({ products, title, link }) => {
           breakpoints={{
             640: {
               slidesPerView: 2,
-              // spaceBetween: 20,
             },
             768: {
               slidesPerView: 3,
-              // spaceBetween: 40,
             },
             1024: {
-              slidesPerView: 4,
-              // spaceBetween: 50,
+              slidesPerView: 5,
             },
           }}
           ref={sliderRef}
@@ -146,35 +142,24 @@ const TestComponent = ({ products, title, link }) => {
           }}
           modules={[Navigation]}
         >
-          {products.map((product) => (
-            <SwiperSlide key={product.id}>
+          {items.map((item) => (
+            <SwiperSlide key={item.id}>
               <Box
                 sx={{
-                  //   width: "328px",
-                  height: "375px",
-                  //   textAlign: "center",
                   borderRadius: "5px",
                   border: "1px solid",
+                  padding: "1em",
                   borderColor: "colors.website",
                   backgroundColor: "rgba(255, 242, 242, 0.949)",
                   mt: "16px",
                 }}
+                onClick={navigate(`/store/${item.id}`)}
               >
-                {/* <Box
-                  component={"img"}
-                  sx={{
-                    // width: "240px",
-                    // height: "240px",
-                    width: "138px",
-                    height: "182px",
-                    cursor: "pointer",
-                  }}
-                  src={productImg}
-                  onClick={() => {
-                    navigate("/store/1");
-                  }}
-                /> */}
-                <ProductPagination />
+                <img
+                  src={item.image}
+                  className={css.product_img}
+                  alt={item.name}
+                />
                 <Box>
                   <Typography
                     sx={{
@@ -182,11 +167,11 @@ const TestComponent = ({ products, title, link }) => {
                       fontSize: "20px",
                       fontWeight: "600",
                       lineHeight: "30px",
-                      mb: "16px",
+                      my: "16px",
                       mx: "22px",
                     }}
                   >
-                    {product.name}{" "}
+                    {item.name}
                   </Typography>
                   <Box
                     sx={{
@@ -201,33 +186,48 @@ const TestComponent = ({ products, title, link }) => {
                       },
                     }}
                   >
-                    <Typography
+                    <Box
                       sx={{
-                        color: "colors.website",
-                        // mt: "5px",
-                      }}
-                    >
-                      {product.price}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        position: "relative",
-                        color: "colors.mainRed",
-                        // mt: "5px",
-                        "&::after": {
-                          content: '""',
-                          position: "absolute",
-                          width: "50px",
-                          height: "2px",
-                          top: "50%",
-                          right: "0",
-                          backgroundColor: "colors.mainRed",
-                          transform: "rotate(-20deg) translateY(-50%)",
+                        display: "flex",
+                        gap: "10px",
+                        "& p": {
+                          fontFamily: "Poppins",
+                          fontSize: "25px",
+                          fontWeight: "600",
+                          lineHeight: "37.5px",
                         },
                       }}
                     >
-                      {product.oldPrice}
-                    </Typography>
+                      <Typography
+                        sx={{
+                          color: "colors.website",
+                          // mt: "5px",
+                        }}
+                      >
+                        {item.price_afte_discount} ج.م
+                      </Typography>
+                      {item.percentage_discount && (
+                        <Typography
+                          sx={{
+                            position: "relative",
+                            color: "colors.mainRed",
+                            // mt: "5px",
+                            "&::after": {
+                              content: '""',
+                              position: "absolute",
+                              width: "80%",
+                              height: "2px",
+                              top: "50%",
+                              right: "10%",
+                              backgroundColor: "colors.mainRed",
+                              transform: "rotate(-20deg)",
+                            },
+                          }}
+                        >
+                          {item.main_price} ج.م
+                        </Typography>
+                      )}
+                    </Box>
                   </Box>
                 </Box>
               </Box>
@@ -235,8 +235,10 @@ const TestComponent = ({ products, title, link }) => {
           ))}
         </Swiper>
       </Box>
+      {/*  */}
       <Box
         sx={{
+          //   pointerEvents: "none",
           position: "absolute",
           display: "flex",
           justifyContent: "space-between",
@@ -244,24 +246,15 @@ const TestComponent = ({ products, title, link }) => {
           top: "50%",
           transform: "translateY(-50%)",
           right: "0",
-          //   zIndex: 1300,
         }}
       >
         <ArrowBox onClick={handlePrev}>
-          {/* <Box component={"img"} src={leftArrow}></Box> */}
           <ChevronRight />
         </ArrowBox>
         <ArrowBox onClick={handleNext}>
-          {/* <Box
-            component={"img"}
-            src={leftArrow}
-            sx={{ transform: "rotate(180deg)" }}
-          ></Box> */}
           <ChevronLeft />
         </ArrowBox>
       </Box>
-    </Box>
+    </>
   );
-};
-
-export default TestComponent;
+}

@@ -23,7 +23,7 @@ import ModalComponent from "../../components/ModalComponent";
 import useShowModal from "../../hooks/useShowModal";
 import DeletePopup from "./DeletePopup";
 import CustomCheckbox from "../Dashboard/delivery/CustomCheckbox";
-import {useEffect,useContext} from "react"
+import { useEffect, useContext } from "react";
 import { Context } from "../../components/Context/Context";
 
 const StyledIcons = styled(Box)(({ theme }) => ({
@@ -76,21 +76,19 @@ const Products = ({ products }) => {
   const isCustom = location.pathname.endsWith("/custom-product");
   const isAds = location.pathname.includes("/ads");
   const { open, handleOpen, handleClose, message, setMessage } = useShowModal();
-const {addToCart} = useContext(Context)
+  const { addToCart } = useContext(Context);
 
-  async function addToUserCart(id){
-    let res = await addToCart(id)
-    console.log(res)
+  async function addToUserCart(id) {
+    let res = await addToCart(id);
   }
-
 
   return (
     <>
       <Grid container spacing={["40px"]}>
-        {products?.map((product,index) => (
+        {products?.map((product, index) => (
           <Grid
-          key={index}
-          id={product.id}
+            key={index}
+            id={product.id}
             item
             xs={12}
             sm={10}
@@ -99,7 +97,8 @@ const {addToCart} = useContext(Context)
             // xl={3}
             sx={{
               margin: { xs: "auto", md: "0" },
-            }}       >
+            }}
+          >
             <Box
               sx={{
                 backgroundColor: "#FFF2F2F2",
@@ -133,10 +132,14 @@ const {addToCart} = useContext(Context)
                 <ProductPagination />
               </Box>
               <StyledIcons>
-                <IconButton size="small" disableRipple onClick={(e)=>{
-                  addToUserCart(product.id)
-                }}>
-                  <AddShoppingCart  />
+                <IconButton
+                  size="small"
+                  disableRipple
+                  onClick={(e) => {
+                    addToUserCart(product.id);
+                  }}
+                >
+                  <AddShoppingCart />
                 </IconButton>
                 <IconButton size="small" disableRipple>
                   {/* <FavoriteBorder /> */}

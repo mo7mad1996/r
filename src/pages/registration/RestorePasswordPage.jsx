@@ -25,7 +25,6 @@ const Typo = styled(StyledTypography)(({ theme }) => ({
 const RestorePasswordPage = () => {
   //   const navigate = useNavigate();
   let [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams.get("type"));
   const confirm = searchParams.get("type");
   return (
     <>

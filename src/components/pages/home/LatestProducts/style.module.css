@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.header .header_span {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: right;
+}
+
+.header .header_link {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 20.09px;
+  letter-spacing: 0em;
+  text-align: right;
+  cursor: pointer;
+}
+
+.product_img {
+  height: 300px;
+  display: block;
+  width: 100%;
+  object-fit: contain;
+}

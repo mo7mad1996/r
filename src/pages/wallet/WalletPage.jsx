@@ -66,7 +66,7 @@ const WalletPage = () => {
             navigate("interactions");
           }}
         >
-          عرض عمليات المحفظة
+          عرض عمليات المحفظة 
         </Paper>
       </Box>
       <Box

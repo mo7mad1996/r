@@ -60,7 +60,8 @@ const StyledLink = styled(Link)(({ theme }) => ({
 const Login = ({ seller = false }) => {
   let navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  let { userName, setUserName, baseUrl } = useContext(Context);
+  let { setUser, baseUrl } = useContext(Context);
+  const [error, setError] = useState(null);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -73,7 +74,6 @@ const Login = ({ seller = false }) => {
     try {
       const response = await axios.get(`${baseUrl}/user/auth/google`);
       // window.location.href = response.data.url; // Redirect to Google login page
-      console.log(response)
     } catch (error) {
       console.error("Error during Google login request:", error);
     }
@@ -84,7 +84,6 @@ const Login = ({ seller = false }) => {
     try {
       const response = await axios.get(`${baseUrl}/user/auth/google`);
       // window.location.href = response.data.url; // Redirect to Facebook login page
-      console.log(response)
     } catch (error) {
       console.error("Error during Facebook login request:", error);
     }
@@ -108,20 +107,19 @@ const Login = ({ seller = false }) => {
     }),
     onSubmit: async (values) => {
       try {
-        const response = await axios.post(
-          `${baseUrl}/user/login`,
-          {
-            username: values.username,
-            password: values.password,
-          }
-        );
+        const response = await axios.post(`${baseUrl}/user/login`, values);
         localStorage.setItem("token", response.data.access_token);
         localStorage.setItem("userId", response.data.user.id);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
 
-        setUserName(response?.data?.user?.name);
+        setUser(response?.data?.user);
         navigate("/");
       } catch (error) {
-        console.error("حدث خطأ أثناء تسجيل الدخول:", error.response?.data || error.message);
+        console.error(
+          "حدث خطأ أثناء تسجيل الدخول:",
+          error.response?.data?.message || error.message
+        );
+        setError(error.response?.data?.message || error.message);
       }
     },
   });
@@ -139,6 +137,9 @@ const Login = ({ seller = false }) => {
           <StyledTypography>تسجيل الدخول بواسطة Facebook</StyledTypography>
         </StyledBox>
       </Stack>
+      <Box sx={{ color: "red", textAlign: "center", fontSize: 30, m: 4 }}>
+        {error}
+      </Box>
       <Typography
         sx={{
           fontSize: { xs: "32px", sm: "40px" },

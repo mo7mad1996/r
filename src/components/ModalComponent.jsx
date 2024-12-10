@@ -1,13 +1,4 @@
-import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  Modal,
-  Slide,
-  Stack,
-  Typography,
-  styled,
-} from "@mui/material";
+import { Box, Button, Modal, Stack, Typography, styled } from "@mui/material";
 import { useLocation } from "react-router-dom";
 
 const Btn = styled(Button)(({ theme }) => ({
@@ -44,25 +35,13 @@ const style = {
   boxShadow: 24,
   //   p: 4,
 };
-const ModalComponent = ({
-  open,
-  handleOpen,
-  handleClose,
-  children,
-  message,
-}) => {
+const ModalComponent = ({ open, action, handleClose, children, message }) => {
   const location = useLocation();
   const customAreas = location.pathname.includes("/custom-areas");
-  console.log(customAreas);
+
   return (
     <>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        sx={{ border: "0" }}
-        // aria-labelledby="modal-modal-title"
-        // aria-describedby="modal-modal-description"
-      >
+      <Modal open={open} onClose={handleClose} sx={{ border: "0" }}>
         <Box
           sx={[
             style,
@@ -75,8 +54,6 @@ const ModalComponent = ({
           {!children && (
             <Stack
               sx={{
-                //   width: "985px",
-                //   height: "473px",
                 py: { xs: "14px", sm: "60px", md: "114px" },
                 px: { xs: "20px", sm: "64px" },
                 alignItems: "center",
@@ -107,7 +84,7 @@ const ModalComponent = ({
                       backgroundColor: "colors.mainRed",
                     },
                   }}
-                  onClick={() => console.log("clicked")}
+                  onClick={action}
                 >
                   نعم
                 </Btn>

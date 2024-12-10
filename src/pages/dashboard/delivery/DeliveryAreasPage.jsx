@@ -30,7 +30,6 @@ const DeliveryAreasPage = () => {
   //     });
   //     return updatedArray;
   //   });
-  // console.log(selectedGovernments);
   return (
     <Stack
       sx={{

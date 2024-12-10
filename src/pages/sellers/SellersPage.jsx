@@ -34,7 +34,6 @@ const SellersPage = () => {
   async function getAllVendors(){
     let res = await allVendors()
     setVendors(res?.data?.vendor)
-    console.log(res?.data?.vendor)
   }
 
 
@@ -164,7 +163,6 @@ const SellersPage = () => {
                   <MainButton
                     content={"عرض منتجات البائع"}
                     onClick={() => {
-                      console.log(seller.id);
                       navigate(`${seller.id}`);
                     }}
                   />

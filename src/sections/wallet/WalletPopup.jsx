@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -8,9 +8,33 @@ import {
   Typography,
 } from "@mui/material";
 import { Close } from "@mui/icons-material";
+import useApi from "@/hooks/useApi";
 
 const WalletPopup = ({ handleClose }) => {
+  // config
+  const api = useApi();
+
+  // data
   const [value, setValue] = useState(0);
+  const [balance, setBalance] = useState(0);
+
+  // methods
+  const getWalletBalance = async () => {
+    try {
+      const res = await api.get("/user/wallet/balance");
+      const data = res.data.balance;
+      setBalance(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // on component render
+  useEffect(() => {
+    getWalletBalance();
+  }, []);
+
+  // render
   return (
     <Stack
       sx={{
@@ -57,7 +81,7 @@ const WalletPopup = ({ handleClose }) => {
             mb: "27px",
           }}
         >
-          رصيد محفظتك الحالى{" "}
+          رصيد محفظتك الحالى
         </Typography>
         <Typography
           sx={{
@@ -67,7 +91,11 @@ const WalletPopup = ({ handleClose }) => {
             color: "colors.mainGreen",
           }}
         >
-          1600 ج.م{" "}
+          {new Intl.NumberFormat("ar-EG", {
+            style: "currency",
+            currency: "EGP",
+            minimumFractionDigits: 2,
+          }).format(balance)}
         </Typography>
         <Stack
           sx={{

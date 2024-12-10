@@ -79,7 +79,6 @@
   
 //     async function addToUserCart(id){
 //       let res = await addToCart(id)
-//       console.log(res)
 //     }
   
   

@@ -36,7 +36,6 @@ export default function ProductPagination() {
   const { getProducts } = useContext(Context);
   async function getProductsImages() {
     let res = await getProducts();
-    // console.log(res?.data?.products?.data);
     setAllProducts(res?.data?.products?.data);
   }
   useEffect(() => {
@@ -72,7 +71,6 @@ export default function ProductPagination() {
               }}
               src={item.image}
               onClick={() => {
-                console.log("product clicked");
                 navigate("/store/1");
               }}
             />

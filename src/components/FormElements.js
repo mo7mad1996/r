@@ -1,4 +1,12 @@
-import { Box, Button, TextField, Typography, styled } from "@mui/material";
+import {
+  Box,
+  Button,
+  TextField,
+  Typography,
+  styled,
+  Select,
+  Checkbox,
+} from "@mui/material";
 
 export const FormItem = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -92,6 +100,64 @@ export const StyledTextField = styled(TextField)(({ theme }) => ({
   //   // borderColor: "colors.mainGreen",
   // },
 }));
+export const StyledSelect = styled(Select)(({ theme }) => ({
+  //   width: "200px",
+  //   [theme.breakpoints.up("sm")]: {
+  //     width: "200px",
+  //   },
+  position: "relative",
+  [theme.breakpoints.up("xs")]: {
+    width: "100%",
+  },
+  [theme.breakpoints.up("sm")]: {
+    // width: "635px",
+  },
+  [theme.breakpoints.up("md")]: {
+    width: "800px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    width: "550px",
+  },
+  [theme.breakpoints.up("xl")]: {
+    width: "635px",
+  },
+  //   height: "69px",
+  //   border: "1px solid #000000",
+  // border: "none",
+  backgroundColor: "#DADADA",
+  border: "1px solid #000000",
+  borderRadius: "5px",
+  outline: "none",
+  "& input": {
+    fontSize: "22px",
+    // color: "red!important",
+    color: `${theme.palette.colors.mainGreen} !important`,
+    // height: "69px",
+  },
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      // borderColor: `${theme.palette.colors.mainGreen} !important`,
+    },
+    "&:hover fieldset": {
+      // borderColor: `${theme.palette.colors.mainGreen} !important`,
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: `${theme.palette.colors.mainGreen} !important`,
+    },
+  },
+  // "&.mui-focused input": {
+  //   border: "0 !important",
+  //   outline: "none",
+  // },
+  // "& input:focus *": {
+  //   // outline: "none",
+  //   // borderColor: "colors.mainGreen",
+  // },
+  // "&:hover *": {
+  //   // border: "0",
+  //   // borderColor: "colors.mainGreen",
+  // },
+}));
 export const ConfirmButton = styled(Button)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     width: "350px",
@@ -107,5 +173,12 @@ export const ConfirmButton = styled(Button)(({ theme }) => ({
   color: theme.palette.colors.wi8,
   "&:hover": {
     backgroundColor: theme.palette.colors.website,
+  },
+}));
+
+export const StyledCheckbox = styled(Checkbox)(({ theme }) => ({
+  color: theme.palette.colors.mainGreen,
+  "&.Mui-checked": {
+    color: theme.palette.colors.mainGreen,
   },
 }));

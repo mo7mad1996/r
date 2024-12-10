@@ -144,8 +144,6 @@ const ProductsSlider = ({ products, title, link }) => {
             swiper.params.navigation.prevEl = navigationPrevRef.current;
             swiper.params.navigation.nextEl = navigationNextRef.current;
           }}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
           modules={[Navigation]}
         >
           {products.map((product) => (
@@ -173,7 +171,6 @@ const ProductsSlider = ({ products, title, link }) => {
                   }}
                   src={productImg}
                   onClick={() => {
-                    console.log("product clicked");
                     navigate("/store/1");
                   }}
                 /> */}

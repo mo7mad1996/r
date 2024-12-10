@@ -1,9 +1,40 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
-import React from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useApi from "@/hooks/useApi";
 
 const AddressPopup = ({ handleClose }) => {
+  // config
+  const api = useApi();
   const navigate = useNavigate();
+
+  // data
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [location, setLocation] = useState(null);
+
+  // methods
+  const getDefaultUserAddress = async () => {
+    try {
+      setLoading(true);
+      const res = await api.get("/user/address/default");
+
+      const data = res.data.address;
+      setLocation(data);
+    } catch (err) {
+      setError(err.response?.data?.message || err.message);
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // on component starts
+  useEffect(() => {
+    getDefaultUserAddress();
+  }, []);
+
+  // render
   return (
     <Box
       sx={{
@@ -34,47 +65,11 @@ const AddressPopup = ({ handleClose }) => {
       >
         قد تختلف خيارات و سرعة التوصيل وفقا للموقع
       </Typography>
-      <Stack
-        sx={{
-          width: "853px",
-          height: "171px",
-          border: "1px solid #A68E8C",
-          backgroundColor: "#F6E9E3",
-          padding: "25px",
-          mb: "25px",
-          "& p": {
-            fontSize: "30px",
-            lineHeight: "34px",
-            color: "#292D32",
-          },
-        }}
-      >
-        <Typography
-          sx={{
-            fontWeight: "700",
-            mb: "8px",
-          }}
-        >
-          ممدوح الصيرفي
-        </Typography>
-        <Typography
-          sx={{
-            fontWeight: "400",
-            mb: "20px",
-          }}
-        >
-          الاسكندرية ش الشيخ حسين سليمان{" "}
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: "25px",
-            fontWeight: "700",
-            lineHeight: "28px",
-          }}
-        >
-          العنوان الرئيسي{" "}
-        </Typography>
-      </Stack>
+
+      {loading && <Loading />}
+      {error && <Err err={error} />}
+      {location && <Location location={location} />}
+
       <Box
         sx={{
           display: "flex",
@@ -110,3 +105,57 @@ const AddressPopup = ({ handleClose }) => {
 };
 
 export default AddressPopup;
+
+function Err({ err }) {
+  return <h3>{err}</h3>;
+}
+
+function Loading() {
+  return <div>Loading...</div>;
+}
+
+function Location({ address }) {
+  return (
+    <Stack
+      sx={{
+        width: "853px",
+        height: "171px",
+        border: "1px solid #A68E8C",
+        backgroundColor: "#F6E9E3",
+        padding: "25px",
+        mb: "25px",
+        "& p": {
+          fontSize: "30px",
+          lineHeight: "34px",
+          color: "#292D32",
+        },
+      }}
+    >
+      <Typography
+        sx={{
+          fontWeight: "700",
+          mb: "8px",
+        }}
+      >
+        ممدوح الصيرفي
+      </Typography>
+      <Typography
+        sx={{
+          fontWeight: "400",
+          mb: "20px",
+        }}
+      >
+        الاسكندرية ش الشيخ حسين سليمان{" "}
+      </Typography>
+      <Typography
+        sx={{
+          fontSize: "25px",
+          fontWeight: "700",
+          lineHeight: "28px",
+        }}
+      >
+        العنوان الرئيسي{" "}
+      </Typography>
+    </Stack>
+  );
+}

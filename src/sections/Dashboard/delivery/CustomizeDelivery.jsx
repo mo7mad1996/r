@@ -45,7 +45,6 @@ const CustomizeDelivery = ({ items, title }) => {
     itemsPerPage,
     items: selectedItems,
   });
-  console.log(page);
   const handleChange = (event) => {
     setPage(event.target.value);
   };

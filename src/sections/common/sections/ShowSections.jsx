@@ -19,17 +19,20 @@ import { Context } from "../../../components/Context/Context";
 
 const ShowSections = () => {
   const { allCategories } = useContext(Context);
-  let [categories,setCategories]=useState([])
+  let [categories, setCategories] = useState([]);
 
   async function getAllCategories() {
-    let res = await allCategories();
-    setCategories(res?.data?.categories)
-    console.log(res);
+    try {
+      let res = await allCategories();
+      setCategories(res?.data?.categories);
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   useEffect(() => {
     getAllCategories();
-  },[]);
+  }, []);
   const navigate = useNavigate();
   const itemsPerPage = 20;
 
@@ -45,9 +48,6 @@ const ShowSections = () => {
   const handleChange = (event) => {
     setPage(event.target.value);
   };
-  useEffect(() => {
-    // console.log(page);
-  }, [page]);
 
   return (
     <Container>
@@ -102,7 +102,9 @@ const ShowSections = () => {
             {Array(totalPages)
               .fill("")
               .map((item, index) => (
-                <MenuItem key={index} value={index + 1}>{index + 1}</MenuItem>
+                <MenuItem key={index} value={index + 1}>
+                  {index + 1}
+                </MenuItem>
               ))}
           </Select>
           من {totalPages} صفحات{" "}
@@ -141,7 +143,7 @@ const ShowSections = () => {
                     borderRadius: "5px",
                     cursor: "pointer",
                   }}
-                  onClick={() => navigate("/sections/1")}
+                  onClick={() => navigate("/sections/" + section.id)}
                 >
                   <Box
                     sx={{

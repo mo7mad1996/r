@@ -20,7 +20,6 @@ const ProductReviewPage = () => {
   const [searchParams] = useSearchParams();
   const isAdmin = location.pathname.startsWith("/admin");
   const isPending = searchParams.get("pending");
-  console.log(isPending === "true");
   return (
     <Stack>
       <SectionTitle sectionTitle={{ main: "مراجعات المنتج" }} />

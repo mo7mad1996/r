@@ -72,7 +72,6 @@ const NewAccount = ({ changeForm }) => {
           "https://joumla.store/api/v1/user/register",
           values
         );
-        console.log("تم التسجيل بنجاح:", response.data);
         changeForm(1); // الانتقال إلى الخطوة التالية
       } catch (error) {
         console.error("خطأ أثناء التسجيل:", error.response?.data || error.message);

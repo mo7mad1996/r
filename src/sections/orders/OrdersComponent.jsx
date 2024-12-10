@@ -23,14 +23,10 @@ const OrdersComponent = ({ title, orders, ordersPerPage }) => {
     itemsPerPage,
     items: orders,
   });
-  console.log(page);
   const handleChange = (event) => {
     setPage(event.target.value);
   };
 
-  useEffect(() => {
-    // console.log(page);
-  }, [page]);
   return (
     <Stack>
       {/* title and search and filter  */}

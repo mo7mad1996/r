@@ -90,7 +90,6 @@ export default function UsePagination({
       setCurrentPage(value);
     },
   });
-  console.log("current", currentPage);
   const matches = useMediaQuery("(max-width:600px)");
 
   return (
@@ -104,7 +103,7 @@ export default function UsePagination({
                 disableRipple
                 disableElevation
                 type="button"
-                active={currentPage == 1 ? false : true}
+                active={currentPage == 1 ? "false" : "true"}
                 {...item}
               >
                 {/* <ChevronRight /> */}
@@ -117,7 +116,7 @@ export default function UsePagination({
                 disableRipple
                 disableElevation
                 type="button"
-                active={currentPage == totalPages ? false : true}
+                active={currentPage == totalPages ? "false" : "true"}
                 sx={{
                   // fontWeight: selected ? "bold!important" : undefined,
                   color: selected ? "#000000!important" : undefined,

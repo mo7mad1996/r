@@ -1,10 +1,12 @@
 import { Box, Button, Stack, Typography, styled } from "@mui/material";
 import React, { useState } from "react";
-import SectionTitle from "../../../sections/common/Products/SectionTitle";
-import ProductsSidebar from "../../../sections/common/Products/ProductsSidebar";
-import ProductsSection from "../../../sections/common/Products/ProductsSection";
-import Search from "../../../sections/common/Search";
-import CustomCheckbox from "../../../sections/Dashboard/delivery/CustomCheckbox";
+
+// components
+import SectionTitle from "@/sections/common/Products/SectionTitle";
+import ProductsSidebar from "@/sections/common/Products/ProductsSidebar";
+import ProductsSection from "@/sections/common/Products/ProductsSection";
+import Search from "@/sections/common/Search";
+import CustomCheckbox from "@/sections/Dashboard/delivery/CustomCheckbox";
 import CustomizeSection from "./CustomizeSection";
 
 const StyledTypo = styled(Typography)(({ theme }) => ({
@@ -13,6 +15,8 @@ const StyledTypo = styled(Typography)(({ theme }) => ({
   lineHeight: "45px",
   color: theme.palette.colors.mainBlack,
 }));
+
+// component
 const ProductCustomDeliveryPage = () => {
   const [showNext, setShowNext] = useState(false);
 

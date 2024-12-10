@@ -1,11 +1,35 @@
 import { Box, Button, InputBase, Stack, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import WithdrawAgree from "./WithdrawAgree";
 import WithdrawRefuse from "./WithdrawRefuse";
 import { Close } from "@mui/icons-material";
 
+import useApi from "@/hooks/useApi";
+
 const WithdrawPopup = ({ handleClose }) => {
+  // config
+  const api = useApi();
+
+  // data
   const [withdrawState, setWithdrawState] = useState(0);
+  // const [balance, setBalance] = useState(0);
+  // methods
+  const getWalletBalance = async () => {
+    try {
+      // const res = await api.get("/user/balance");
+      // const data = res;
+      // setBalance(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // on component render
+  useEffect(() => {
+    getWalletBalance();
+  }, []);
+
+  // render
   return (
     <Stack
       sx={{

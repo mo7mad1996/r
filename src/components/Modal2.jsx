@@ -88,7 +88,6 @@ const Modal2 = ({ open, handleOpen, handleClose, children, message }) => {
                       backgroundColor: "colors.mainRed",
                     },
                   }}
-                  onClick={() => console.log("clicked")}
                 >
                   نعم
                 </Btn>

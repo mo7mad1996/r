@@ -24,12 +24,14 @@ import cartImage from "/cart.png";
 import searchImage from "/search.png";
 
 import { navItems } from "../utils/navItems";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useShowModal from "../hooks/useShowModal";
 import ModalComponent from "./ModalComponent";
 import DateFilter from "./DateFilter";
 import AddressPopup from "../sections/Address/AddressPopup";
 import { Context } from "./Context/Context";
+
+import useApi from "@/hooks/useApi";
 // const Logo = styled(Typography)({
 //   fontSize: "60px",
 //   fontWeight: 800,
@@ -93,14 +95,26 @@ const NavItem = styled(Link)(({ theme }) => ({
 const langs = ["AR", "EN"];
 
 const Header = () => {
+  // config
+  const { user } = useContext(Context);
+  const api = useApi();
   let navigate = useNavigate();
+
+  // data
   const [lang, setLang] = useState(langs[0]);
   const [anchorEl, setAnchorEl] = useState(null);
-  const { userName } = useContext(Context);
+  const [location, setLocation] = useState(null);
 
-  function handleLogout() {
+  async function handleLogout() {
     localStorage.removeItem("userId");
+    localStorage.removeItem("user");
     localStorage.removeItem("token");
+
+    try {
+      const res = await api.post("/user/logout");
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   const [profile, setProfile] = useState(false);
@@ -119,6 +133,20 @@ const Header = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const getLocation = async () => {
+    try {
+      const res = await api.get("/users/address/default");
+
+      const data = res.data.address;
+
+      console.log({ data });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => getLocation(), []);
   return (
     <>
       <AppBar
@@ -150,25 +178,28 @@ const Header = () => {
                 </Logo> */}
                 <Logo />
               </Box>
-              <Box
-                sx={{
-                  fontSize: "14px",
-                  fontWeight: "800",
-                  lineHeight: "16px",
-                  letterSpacing: "0em",
-                  textAlign: "right",
-                  color: "colors.darkIcons",
-                  mx: "16px",
-                  cursor: "pointer",
-                }}
-                onClick={handleOpenModal}
-              >
-                التوصيل إلى{" "}
-                <Box>
-                  <LocationIcon src={locationImage} />
-                  القاهرة
+
+              {location && (
+                <Box
+                  sx={{
+                    fontSize: "14px",
+                    fontWeight: "800",
+                    lineHeight: "16px",
+                    letterSpacing: "0em",
+                    textAlign: "right",
+                    color: "colors.darkIcons",
+                    mx: "16px",
+                    cursor: "pointer",
+                  }}
+                  onClick={handleOpenModal}
+                >
+                  التوصيل إلى{" "}
+                  <Box>
+                    <LocationIcon src={locationImage} />
+                    {location?.governorate} {location?.city}
+                  </Box>
                 </Box>
-              </Box>
+              )}
             </Stack>
             <Search>
               {/* <TextField id="outlined-basic" variant="filled" /> */}
@@ -246,7 +277,7 @@ const Header = () => {
                   </MenuItem>
                 ))}
               </Menu>
-              {localStorage.getItem("userId") ? (
+              {user ? (
                 <UserBox sx={{ position: "relative" }}>
                   <Typography
                     sx={{
@@ -257,7 +288,7 @@ const Header = () => {
                       color: "#000",
                     }}
                   >
-                    مرحبا {userName}
+                    مرحبا {user?.name}
                   </Typography>
                   <Box
                     sx={{
@@ -300,7 +331,7 @@ const Header = () => {
                         <Button
                           sx={{ textTransform: "capitalize", color: "#000" }}
                         >
-                          تسجيل الخروج{" "}
+                          تسجيل الخروج
                         </Button>
                       </Link>
                     </Box>

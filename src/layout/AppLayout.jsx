@@ -1,12 +1,12 @@
 import React, { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Spinner from "../components/Spinner";
-import AdminAllSectionsPage from "../pages/Admin/sections/AdminAllSectionsPage";
-import AdminAddSection from "../pages/Admin/sections/AdminAddSection";
-import LatestProducts from "../components/LatestProducts/LatestProducts";
+// components
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import Spinner from "@/components/Spinner";
+import AdminAddSection from "@/pages/Admin/sections/AdminAddSection";
+import LatestProducts from "@/components/LatestProducts/LatestProducts";
 
 const SellerProductsPage = lazy(() =>
   import("../pages/dashboard/products/SellerProductsPage")
@@ -145,7 +145,7 @@ const HomePage = lazy(() => import("../pages/Home/HomePage"));
 const StorePage = lazy(() => import("../pages/store/StorePage"));
 const TodayOffersPage = lazy(() => import("../pages/store/TodayOffersPage"));
 const ProductPage = lazy(() => import("../pages/product/ProductPage"));
-const NewProductsPage = lazy(() => import("../pages/store/NewProductsPage"));
+const NewProductsPage = lazy(() => import("@/pages/store/NewProductsPage"));
 const BestSalesPage = lazy(() => import("../pages/store/BestSalesPage"));
 const SellersPage = lazy(() => import("../pages/sellers/SellersPage"));
 const SellerPage = lazy(() => import("../pages/sellers/SellerPage"));
@@ -200,8 +200,7 @@ const NewOrdersPage = lazy(() => import("../pages/orders/NewOrdersPage"));
 const ProgressOrdersPage = lazy(() =>
   import("../pages/orders/ProgressOrdersPage")
 );
-const ReturnedOrdersPage = lazy(() =>
-7);
+const ReturnedOrdersPage = lazy(() => 7);
 const CanceledOrdersPage = lazy(() =>
   import("../pages/orders/CanceledOrdersPage")
 );
@@ -236,10 +235,9 @@ const AppLayout = () => {
             //   { index: true, element: <StorePage /> },
             // ]}
           >
+            <Route index={true} element={<StorePage />} />
             <Route path=":id" element={<ProductPage />} />
             <Route path="latest-products" element={<LatestProducts />} />
-
-            <Route index={true} element={<StorePage />} />
             <Route path="new" element={<NewProductsPage />} />
             <Route path="best-sale" element={<BestSalesPage />} />
             <Route path="favourite" element={<FavouriteProductsPage />} />
@@ -267,7 +265,6 @@ const AppLayout = () => {
           <Route path="/my-account" element={<UserAcountPage />} />
           <Route path="/user">
             <Route path="orders">
-
               <Route index={true} element={<OrdersPage />} />
               <Route path="all" element={<AllOrdersPage />} />
               <Route path="new" element={<NewOrdersPage />} />

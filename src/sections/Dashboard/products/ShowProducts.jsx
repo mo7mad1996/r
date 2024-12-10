@@ -26,7 +26,6 @@ const ShowProducts = ({ title, admin, secondTitle }) => {
     itemsPerPage,
     items: PRODUCTS,
   });
-  console.log(page);
   const handleChange = (event) => {
     setPage(event.target.value);
   };

@@ -1,22 +1,28 @@
 import React, { useContext } from "react";
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, MenuItem } from "@mui/material";
 import {
   ConfirmButton,
   FormItem,
   StyledTextField,
+  StyledSelect,
   StyledTypography,
+  StyledCheckbox,
 } from "../../components/FormElements";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
-import { Context } from "../../components/Context/Context";
+
+import { Context } from "@/components/Context/Context";
+import useApi from "@/hooks/useApi";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Address = () => {
-  let { baseUrl } = useContext(Context);
+  const api = useApi();
+  const navigate = useNavigate();
+  const { address_type } = useContext(Context);
 
   const formik = useFormik({
     initialValues: {
-      type: "Home",
       address: "",
       governorate: "",
       city: "",
@@ -24,7 +30,8 @@ const Address = () => {
       residence_number: "",
       apartment_number: "",
       floor: "",
-      // default_address: false, // يمكن إضافته عند الحاجة
+      type: "Home",
+      default_address: true,
     },
     validationSchema: Yup.object({
       address: Yup.string().required("العنوان مطلوب"),
@@ -32,23 +39,19 @@ const Address = () => {
       city: Yup.string().required("المدينة مطلوبة"),
       street_name: Yup.string().required("اسم الشارع مطلوب"),
       residence_number: Yup.string().required("رقم السكن مطلوب"),
-      apartment_number: Yup.string(), 
-      floor: Yup.string(), 
+      apartment_number: Yup.string(),
+      floor: Yup.string(),
     }),
     onSubmit: async (values) => {
       try {
-        let res = await axios.post(
-          `${baseUrl}/user/address`,
-          values,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-        console.log(res);
+        let res = await api.post(`/user/address`, values);
+        const data = res.data.message;
+        toast.success(data);
+
+        navigate("/user/address");
       } catch (err) {
         console.error(err);
+        toast.error(err.response?.data?.message || err.message);
       }
     },
   });
@@ -66,7 +69,7 @@ const Address = () => {
         }}
       >
         <FormItem>
-          <StyledTypography >العنوان</StyledTypography>
+          <StyledTypography>العنوان</StyledTypography>
           <StyledTextField
             name="address"
             value={formik.values.address}
@@ -77,6 +80,25 @@ const Address = () => {
           />
         </FormItem>
         <FormItem>
+          <StyledTypography>نوع المكان</StyledTypography>
+          <StyledSelect
+            name="type"
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={formik.values.type}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.name && Boolean(formik.errors.name)}
+            helperText={formik.touched.name && formik.errors.name}
+          >
+            {address_type.map((t) => (
+              <MenuItem value={t.key} key={t.key}>
+                {t.value}
+              </MenuItem>
+            ))}
+          </StyledSelect>
+        </FormItem>
+        <FormItem>
           <StyledTypography>المحافظة</StyledTypography>
           <StyledTextField
             name="governorate"
@@ -84,8 +106,7 @@ const Address = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={
-              formik.touched.governorate &&
-              Boolean(formik.errors.governorate)
+              formik.touched.governorate && Boolean(formik.errors.governorate)
             }
             helperText={formik.touched.governorate && formik.errors.governorate}
           />
@@ -108,7 +129,9 @@ const Address = () => {
             value={formik.values.street_name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            error={formik.touched.street_name && Boolean(formik.errors.street_name)}
+            error={
+              formik.touched.street_name && Boolean(formik.errors.street_name)
+            }
             helperText={formik.touched.street_name && formik.errors.street_name}
           />
         </FormItem>
@@ -123,7 +146,9 @@ const Address = () => {
               formik.touched.residence_number &&
               Boolean(formik.errors.residence_number)
             }
-            helperText={formik.touched.residence_number && formik.errors.residence_number}
+            helperText={
+              formik.touched.residence_number && formik.errors.residence_number
+            }
           />
         </FormItem>
         <FormItem>
@@ -137,7 +162,9 @@ const Address = () => {
               formik.touched.apartment_number &&
               Boolean(formik.errors.apartment_number)
             }
-            helperText={formik.touched.apartment_number && formik.errors.apartment_number}
+            helperText={
+              formik.touched.apartment_number && formik.errors.apartment_number
+            }
           />
         </FormItem>
         <FormItem>
@@ -150,6 +177,44 @@ const Address = () => {
             error={formik.touched.floor && Boolean(formik.errors.floor)}
             helperText={formik.touched.floor && formik.errors.floor}
           />
+        </FormItem>
+
+        <FormItem sx={{ width: "100% !important" }}>
+          <Box
+            component="label"
+            htmlFor="default_address"
+            sx={{
+              display: "flex",
+              gap: "1em",
+              width: "100%",
+              alignItems: "center",
+            }}
+          >
+            <StyledCheckbox
+              name="default_address"
+              value={formik.values.default_address}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={
+                formik.touched.default_address &&
+                Boolean(formik.errors.default_address)
+              }
+              helperText={
+                formik.touched.default_address && formik.errors.default_address
+              }
+              id="default_address"
+            />
+
+            <StyledTypography
+              sx={{
+                position: "static !important",
+                transform: "unset !important",
+                width: "auto !important",
+              }}
+            >
+              تعين كعنوان افتراضي
+            </StyledTypography>
+          </Box>
         </FormItem>
       </Stack>
       <Box

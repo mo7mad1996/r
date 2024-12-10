@@ -66,7 +66,6 @@ const VerifyNumber = ({ changeForm }) => {
       const response = await axios.post("https://api.example.com/verify", {
         username,
       });
-      console.log("Response:", response.data);
       // التعامل مع الاستجابة
     } catch (error) {
       console.error("Error:", error);

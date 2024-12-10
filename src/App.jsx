@@ -1,13 +1,16 @@
-import "./App.css";
-import { BrowserRouter } from "react-router-dom";
-import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import ar from "date-fns/locale/ar-EG";
 
-import ScrollToTop from "./components/ScrollToTop";
+// css
+import "react-toastify/dist/ReactToastify.css";
 
-import AppLayout from "./layout/AppLayout";
-import { ContextProvider } from "./components/Context/Context";
+// components
+import { BrowserRouter } from "react-router-dom";
+import { ContextProvider } from "@/components/Context/Context";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import ScrollToTop from "@/components/ScrollToTop";
+import AppLayout from "@/layout/AppLayout";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -16,6 +19,7 @@ function App() {
         <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ar}>
           <ScrollToTop />
           <AppLayout />
+          <ToastContainer />
         </LocalizationProvider>
       </ContextProvider>
     </BrowserRouter>

@@ -1,10 +1,36 @@
 import axios from "axios";
 import { createContext, useState } from "react";
 
+import useApi from "@/hooks/useApi";
+
 export let Context = createContext("");
 export function ContextProvider({ children }) {
-  let [userName, setUserName] = useState("");
-  let baseUrl = "https://joumla.store/api/v1";
+  let [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  let baseUrl = import.meta.env.VITE_API_URL;
+  const address_type = [
+    {
+      key: "Home",
+      value: "منزل",
+    },
+    {
+      key: "Office",
+      value: "مكتب",
+    },
+    {
+      key: "Work",
+      value: "عمل",
+    },
+    {
+      key: "Company",
+      value: "شركة",
+    },
+    {
+      key: "Other",
+      value: "أخرى",
+    },
+  ];
+
+  const api = useApi();
 
   //  Get All Products
   async function getProducts() {
@@ -50,8 +76,6 @@ export function ContextProvider({ children }) {
     }
   }
 
-
-
   // Get All Vendors
 
   async function allVendors() {
@@ -63,8 +87,7 @@ export function ContextProvider({ children }) {
     }
   }
 
-
-  // Get Vendor Data 
+  // Get Vendor Data
   async function vendorData(id) {
     try {
       let res = await axios.get(`${baseUrl}/vendor/${id}`);
@@ -73,7 +96,6 @@ export function ContextProvider({ children }) {
       return err;
     }
   }
-
 
   // All Categories
   async function allCategories() {
@@ -85,23 +107,19 @@ export function ContextProvider({ children }) {
     }
   }
 
-
-  
-
-
-
   return (
     <Context.Provider
       value={{
-        userName,
-        setUserName,
+        user,
+        setUser,
         baseUrl,
         getProducts,
         addToCart,
         getUserCart,
         allCategories,
         allVendors,
-        vendorData
+        vendorData,
+        address_type,
       }}
     >
       {children}

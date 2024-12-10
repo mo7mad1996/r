@@ -1,31 +1,40 @@
-import React, { useContext } from "react";
-import { Box, Stack } from "@mui/material";
+import React, { useContext, useEffect } from "react";
+import { Box, Stack, MenuItem } from "@mui/material";
+
 import {
   ConfirmButton,
   FormItem,
   StyledTextField,
+  StyledSelect,
+  StyledCheckbox,
   StyledTypography,
 } from "../../components/FormElements";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
-import { Context } from "../../components/Context/Context";
-import { useParams } from "react-router-dom";
+import { Context } from "@/components/Context/Context";
+
+import { toast } from "react-toastify";
+import { useNavigate, useParams } from "react-router-dom";
+import useApi from "@/hooks/useApi";
 
 const ModifyAddress = () => {
-  let { baseUrl } = useContext(Context);
-  let params = useParams()
+  // config
+  const { address_type } = useContext(Context);
+  let { id } = useParams();
+  const api = useApi();
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
-      name: "Home",
       address: "",
       governorate: "",
-      city: "",
       street_name: "",
+      type: "",
+      city: "",
       residence_number: "",
       apartment_number: "",
       floor: "",
-      default_address: 1,
+      default_address: false,
     },
     validationSchema: Yup.object({
       address: Yup.string().required("العنوان مطلوب"),
@@ -38,22 +47,40 @@ const ModifyAddress = () => {
     }),
 
     onSubmit: async (values) => {
-      console.log(values)
-      console.log(localStorage.getItem('token'))
-      console.log(params)
       try {
-        let res = await axios.patch(`${baseUrl}/user/address/${params.id}`, values, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
-        console.log(res);
+        let res = await api.patch(`/user/address/${id}`, values);
+
+        const data = res.data.message;
+        toast.success(data);
+        navigate("/user/address");
       } catch (err) {
         console.error(err);
+        toast.error(err.response?.data?.message || err.message);
       }
     },
   });
 
+  const getLocation = async () => {
+    try {
+      const res = await api.get(`/user/address/${id}`);
+      const data = res.data.adress;
+
+      formik.setValues({
+        ...formik.values,
+        ...data,
+      });
+    } catch (err) {
+      console.error(err);
+      toast.error(err.response?.data?.message || err.message);
+    }
+  };
+
+  // on component render
+  useEffect(() => {
+    getLocation();
+  }, []);
+
+  // render
   return (
     <form onSubmit={formik.handleSubmit}>
       <Stack
@@ -76,6 +103,25 @@ const ModifyAddress = () => {
             error={formik.touched.address && Boolean(formik.errors.address)}
             helperText={formik.touched.address && formik.errors.address}
           />
+        </FormItem>
+        <FormItem>
+          <StyledTypography>نوع المكان</StyledTypography>
+          <StyledSelect
+            name="type"
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={formik.values.type}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.name && Boolean(formik.errors.name)}
+            helperText={formik.touched.name && formik.errors.name}
+          >
+            {address_type.map((t) => (
+              <MenuItem value={t.key} key={t.key}>
+                {t.value}
+              </MenuItem>
+            ))}
+          </StyledSelect>
         </FormItem>
         <FormItem>
           <StyledTypography>المحافظة</StyledTypography>
@@ -157,6 +203,44 @@ const ModifyAddress = () => {
             helperText={formik.touched.floor && formik.errors.floor}
           />
         </FormItem>
+
+        <FormItem sx={{ width: "100% !important" }}>
+          <Box
+            component="label"
+            htmlFor="default_address"
+            sx={{
+              display: "flex",
+              gap: "1em",
+              width: "100%",
+              alignItems: "center",
+            }}
+          >
+            <StyledCheckbox
+              name="default_address"
+              value={formik.values.default_address}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={
+                formik.touched.default_address &&
+                Boolean(formik.errors.default_address)
+              }
+              helperText={
+                formik.touched.default_address && formik.errors.default_address
+              }
+              id="default_address"
+            />
+
+            <StyledTypography
+              sx={{
+                position: "static !important",
+                transform: "unset !important",
+                width: "auto !important",
+              }}
+            >
+              تعين كعنوان افتراضي
+            </StyledTypography>
+          </Box>
+        </FormItem>
       </Stack>
       <Box
         sx={{
@@ -171,7 +255,7 @@ const ModifyAddress = () => {
           }}
           type="submit"
         >
-          تسجيل
+          تعديل
         </ConfirmButton>
       </Box>
     </form>

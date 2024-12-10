@@ -19,6 +19,10 @@ import section4 from "../../assets/home/Ellipse 8.png";
 import productImage from "../../assets/home/camera 2.png";
 import TestComponent from "../../components/TestComponent";
 
+// components
+import LatestProducts from "@/components/pages/home/LatestProducts/index.jsx";
+import SectionsSlider from "@/components/pages/home/SectionsSlider/index.jsx";
+
 const itemData = [
   image1,
   image2,
@@ -121,10 +125,7 @@ const Image = styled("img")({});
 const HomePage = () => {
   return (
     <Box sx={{ backgroundColor: "#b8aeae", position: "relative" }}>
-      {/* start landing */}
       <Landing />
-      {/* end landing */}
-      {/* Gallery  */}
       <Box
         sx={{
           position: "relative",
@@ -133,48 +134,28 @@ const HomePage = () => {
           zIndex: 1300,
         }}
       >
-        <Gallery
-          sx={{ display:'none' }}
-          data={itemData}  
-          />
+        <Gallery sx={{ display: "none" }} data={itemData} />
       </Box>
       <Box>
-        {/* Gallery  */}
-        {/* <Gallery data={itemData} /> */}
-        {/* المتجر */}
         <ProductsSlider
           title={"المتجر"}
           products={products.products}
           link={"/store"}
         />
 
-        {/* أفضل العروض والخصومات */}
         <ProductsSlider
           title={"أفضل العروض والخصومات"}
           products={products.products}
           link={"/store/best-sale"}
         />
-        {/* أحدث المنتجات */}
-        <ProductsSlider
-          title={"أحدث المنتجات"}
-          products={products.products}
-          link={"/store/new"}
-        />
-        {/* الأقسام */}
-        <ProductsSlider
-          title={"الأقسام"}
-          products={products.products}
-          link={"/sections"}
-        />
-        {/* Gallery  */}
+        <LatestProducts />
+        <SectionsSlider />
         <Secondgallery data={itemData.slice(0, 4)} />
-        {/* عروض اليوم */}
         <ProductsSlider
           title={"عروض اليوم"}
           products={products.products}
           link={"/store"}
         />
-        {/* Gallery  */}
         <Box sx={{ pb: "240px" }}>
           <Secondgallery data={itemData.slice(0, 4)} />
         </Box>

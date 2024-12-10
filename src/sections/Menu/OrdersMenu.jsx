@@ -1,12 +1,44 @@
 import { Grid, Paper, Stack, Box, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ModalComponent from "../../components/ModalComponent";
 import useShowModal from "../../hooks/useShowModal";
 
+import useApi from "@/hooks/useApi";
+
 const OrdersMenu = ({ items }) => {
   const { open, handleOpen, handleClose, message, setMessage } = useShowModal();
   const navigate = useNavigate();
+
+  const api = useApi();
+  const [orders, setOrders] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  // methods
+  const getOrders = async () => {
+    try {
+      setLoading(true);
+      const res = await api.get("/user/order");
+
+      const data = res.data.orders;
+
+      setOrders(data);
+    } catch (err) {
+      console.error(err);
+
+      setErrorMessage(err.response?.data?.message);
+    } finally {
+      setLoading(true);
+    }
+  };
+
+  // on mounted
+  useEffect(() => {
+    getOrders();
+  }, []);
+
+  if (errorMessage) return <h4>{errorMessage}</h4>;
 
   return (
     <>
@@ -51,16 +83,17 @@ const OrdersMenu = ({ items }) => {
                   boxShadow: "2.5px 2.5px 8px 4px #00000040",
                   cursor: "pointer",
                   transition: "all 0.3s ease", // Smooth transition for all properties
-                  ":hover": index === items.length - 1
-                    ? {
-                      transform: "scale(1.05)",
-                    } // No hover effect for the last item
-                    : {
-                        backgroundColor: "colors.website",
-                        color: "colors.wi8",
-                        transform: "scale(1.05)",
-                        boxShadow: "5px 5px 12px 6px #00000040",
-                      },
+                  ":hover":
+                    index === items.length - 1
+                      ? {
+                          transform: "scale(1.05)",
+                        } // No hover effect for the last item
+                      : {
+                          backgroundColor: "colors.website",
+                          color: "colors.wi8",
+                          transform: "scale(1.05)",
+                          boxShadow: "5px 5px 12px 6px #00000040",
+                        },
                 }}
                 onClick={() => {
                   if (item.link === "/signout") {
@@ -89,7 +122,10 @@ const OrdersMenu = ({ items }) => {
                 >
                   {item.count}
                 </Typography>
-                <Typography variant="h6" sx={{ fontWeight: "600", fontSize: "20px" }}>
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: "600", fontSize: "20px" }}
+                >
                   {item.name}
                 </Typography>
               </Paper>

@@ -16,7 +16,7 @@ export const PRODUCTS = [
   },
   {
     productImage,
-    name: "كاميرا كانون اصدار حديث",
+    name: "كاميراtest كانون اصدار حديث",
     description:
       "كاميرا كانون اصدار حديث 12PX مزودة ببطارية تدوم 12 ساعة متواصل.....",
 

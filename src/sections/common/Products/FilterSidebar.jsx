@@ -20,7 +20,6 @@ const FilterSidebar = () => {
     step = 1;
   }
   const handleChange = (event, newValue) => {
-    console.log(newValue);
     if (range >= 100000) {
       if (newValue[1] - newValue[0] < 1000) return;
     } else if (range >= 10000) {

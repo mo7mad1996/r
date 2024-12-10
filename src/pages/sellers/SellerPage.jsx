@@ -14,13 +14,11 @@ let params=useParams()
 
 let [vendor,setVendor]=useState({})
 
-console.log(params.id)
 
   let {vendorData} = useContext(Context)
 async function getVendorInfo(id){
   let res= await vendorData(id)
   setVendor(res?.data?.vendor)
-  console.log(res)
 }
 
 useEffect(()=>{

@@ -13,7 +13,6 @@ const Cart = () => {
   let { getUserCart, baseUrl } = useContext(Context);
   async function getUserAllItems() {
     let res = await getUserCart();
-    console.log(res);
     setProducts(res?.data?.cart_products);
   }
 
@@ -23,7 +22,6 @@ const Cart = () => {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-    console.log(res);
   }
 
 
@@ -43,7 +41,6 @@ const Cart = () => {
         },
       }
     );
-    console.log(res);
 
     
   }
@@ -230,7 +227,6 @@ const Cart = () => {
                 }}
                 onClick={() => {
 
-                  console.log(product.di)
                   updateQuantity(
                     product.di,
                     product.quantity + 1
