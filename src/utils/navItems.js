@@ -1,4 +1,12 @@
+// icons
+import MenuIcon from "@mui/icons-material/Menu";
+
 export const navItems = [
+  {
+    title: "القائمه",
+    icon: MenuIcon,
+    path: "/menu",
+  },
   {
     title: "بيع على چوملا",
     path: "signup-seller",

@@ -3,6 +3,7 @@ import ar from "date-fns/locale/ar-EG";
 
 // css
 import "react-toastify/dist/ReactToastify.css";
+import "react-perfect-scrollbar/dist/css/styles.css";
 
 // components
 import { BrowserRouter } from "react-router-dom";

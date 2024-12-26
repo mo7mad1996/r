@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 // components
 import * as MUI from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "~/components/Logo";
 import MobileComponents from "./MobileComponents";
+import PerfectScrollbar from "react-perfect-scrollbar";
 
 // icons
 import SearchIcon from "@mui/icons-material/Search";
@@ -54,8 +54,6 @@ const NavItem = MUI.styled(Link)(({ theme }) => ({
   textDecoration: "none",
   color: theme.palette.colors.wi8,
   fontSize: "16px",
-  fontWeight: "800",
-  lineHeight: "17.86px",
   letterSpacing: "0em",
   textAlign: "right",
 }));
@@ -213,18 +211,16 @@ const Header = () => {
 
       {/* nav section */}
       <Nav>
-        <NavItem
-          to={"/menu"}
-          sx={{ display: "flex", alignItems: "center", gap: "4px" }}
-        >
-          <MenuIcon />
-          القائمة
-        </NavItem>
-        {navItems.map((item) => (
-          <NavItem to={item.path} key={item.title}>
-            {item.title}
-          </NavItem>
-        ))}
+        <PerfectScrollbar style={{ width: "100%" }}>
+          <div className={css.flex}>
+            {navItems.map((item) => (
+              <NavItem to={item.path} key={item.title} className={css.navItem}>
+                <MUI.Box component={item.icon} />
+                {item.title}
+              </NavItem>
+            ))}
+          </div>
+        </PerfectScrollbar>
       </Nav>
       <ModalComponent
         open={openModal}

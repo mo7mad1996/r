@@ -34,3 +34,16 @@
   margin-inline: 1em;
   text-decoration: none;
 }
+
+.flex {
+  display: flex;
+  gap: 1em;
+}
+
+.navItem {
+  display: flex;
+  min-width: max-content;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
