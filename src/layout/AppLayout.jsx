@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 
 // components
-import Header from "@/components/Header";
+import Header from "@/components/layouts/mainLayout/Header/index.jsx";
 import Footer from "@/components/Footer";
 import Spinner from "@/components/Spinner";
 import AdminAddSection from "@/pages/Admin/sections/AdminAddSection";
@@ -154,7 +154,7 @@ const FavouriteProductsPage = lazy(() =>
   import("../pages/store/FavouriteProductsPage")
 );
 const SectionPage = lazy(() => import("../pages/sections/SectionPage"));
-const AdsPage = lazy(() => import("../pages/AdsPage"));
+const MyAdsPage = lazy(() => import("@/pages/MyAdsPage"));
 const AboutPage = lazy(() => import("../pages/AboutPage"));
 const TermsPage = lazy(() => import("../pages/TermsPage"));
 const UserAcountPage = lazy(() => import("../pages/user/UserAcountPage"));
@@ -248,19 +248,19 @@ const AppLayout = () => {
             <Route path=":id" element={<SectionPage />} />
           </Route>
           <Route path="/discount" element={<DiscountPage />} />
-          <Route path="/ads" element={<AdsPage />} />
+          <Route path="/ads" element={<MyAdsPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/terms-and-conditions" element={<TermsPage />} />
           {/* <Route path="/new-products" element={<NewProductsPage />} />
-          <Route path="/best-sale" element={<BestSalesPage />} /> */}
+    <Route path="/best-sale" element={<BestSalesPage />} /> */}
           <Route path="/sellers">
             <Route index={true} element={<SellersPage />} />
             <Route path=":id" element={<SellerPage />} />
           </Route>
           {/* <Route
-            path="/favourite-products"
-            element={<FavouriteProductsPage />}
-          /> */}
+      path="/favourite-products"
+      element={<FavouriteProductsPage />}
+    /> */}
 
           <Route path="/my-account" element={<UserAcountPage />} />
           <Route path="/user">
@@ -399,8 +399,8 @@ const AppLayout = () => {
             <Route path="store">
               <Route index={true} element={<AdminStorePage />} />
               {/* <Route path="pending" element={<NewPendingReviewsPage />} />
-              <Route path="products" element={<AdminProductsReviewsPage />} />
-              <Route path="products/:id" element={<ProductReviewPage />} /> */}
+        <Route path="products" element={<AdminProductsReviewsPage />} />
+        <Route path="products/:id" element={<ProductReviewPage />} /> */}
             </Route>
             <Route path="ads">
               <Route index={true} element={<AdminAdsPage />} />
@@ -410,18 +410,18 @@ const AppLayout = () => {
               <Route path="add-section" element={<AddSectionPage />} />
               <Route path="add-product" element={<AdminAddProductPage />} />
               {/* <Route path="products" element={<AdminProductsReviewsPage />} />
-              <Route path="products/:id" element={<ProductReviewPage />} /> */}
+        <Route path="products/:id" element={<ProductReviewPage />} /> */}
             </Route>
             <Route path="sections">
               <Route index={true} element={<AdminSectionsPage />} />
               <Route path="all" element={<SectionsPage />} />
               <Route path="add" element={<AdminAddSection />} />
               {/* <Route path="add" element={<AdminAddAd />} />
-              <Route path="add-seller" element={<AddNewSellerPage />} />
-              <Route path="add-section" element={<AddSectionPage />} />
-              <Route path="add-product" element={<AdminAddProductPage />} /> */}
+        <Route path="add-seller" element={<AddNewSellerPage />} />
+        <Route path="add-section" element={<AddSectionPage />} />
+        <Route path="add-product" element={<AdminAddProductPage />} /> */}
               {/* <Route path="products" element={<AdminProductsReviewsPage />} />
-              <Route path="products/:id" element={<ProductReviewPage />} /> */}
+        <Route path="products/:id" element={<ProductReviewPage />} /> */}
             </Route>
           </Route>
         </Routes>

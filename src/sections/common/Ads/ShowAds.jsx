@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Button, Grid, Stack } from "@mui/material";
-import UsePagination from "../../../hooks/UsePagination";
-("../../../");
-import { ads } from "../../../utils/ads";
-import SectionTitle from "../../../sections/common/Products/SectionTitle";
-import usePaginate from "../../../hooks/usePaginate";
-import useShowModal from "../../../hooks/useShowModal";
-import ModalComponent from "../../../components/ModalComponent";
+import UsePagination from "@/hooks/UsePagination";
+import { ads } from "@/utils/ads";
+import SectionTitle from "@/sections/common/Products/SectionTitle";
+import usePaginate from "@/hooks/usePaginate";
+import useShowModal from "@/hooks/useShowModal";
+import ModalComponent from "@/components/ModalComponent";
 import DeleteAdsPopup from "./DeleteAdsPopup";
 
 const ShowAds = ({ title, admin }) => {

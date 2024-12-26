@@ -1,0 +1,36 @@
+.btn {
+  cursor: pointer;
+  padding: 0.5em;
+  aspect-ratio: 1/1;
+  display: block;
+  height: 100%;
+  border: none;
+  color: white;
+}
+
+.dropDown {
+  /* width: 100px; */
+  /* height: 100px; */
+  background: #ccc;
+  color: #000;
+  border-radius: 10px;
+  position: absolute;
+  top: 100%;
+  right: -30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginBtn {
+  display: block;
+  border-radius: 5px;
+  margin-inline: 1em;
+}
+
+.link {
+  color: #000;
+  font-weight: 600;
+  margin-inline: 1em;
+  text-decoration: none;
+}

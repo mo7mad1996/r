@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// css
-import "./index.css";
 // Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
+
+// css
+import "./index.css";
 
 import App from "./App.jsx";
 import CssBaseline from "@mui/material/CssBaseline";

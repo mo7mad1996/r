@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, InputBase, styled } from "@mui/material";
-import searchImage from "/search.png";
+import SearchIcon from "@mui/icons-material/Search";
 
 const StyledSearch = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -27,19 +27,13 @@ const Search = ({ placeholder }) => {
           borderRadius: "12px",
         }}
       >
-        <Box
-          component={"img"}
-          src={searchImage}
-          sx={{ width: "35px", height: "35px" }}
-        />
+        <SearchIcon />
       </Box>
       <InputBase
         placeholder={placeholder || "البحث في الطلبات برقم الطلب..."}
         sx={{
           position: "relative",
-          padding: "20px",
           flex: "1",
-          fontSize: "28px",
         }}
       />
     </StyledSearch>

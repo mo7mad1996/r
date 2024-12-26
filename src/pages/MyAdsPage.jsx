@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import SectionTitle from "../sections/common/Products/SectionTitle";
-import { Box, Grid } from "@mui/material";
-import UsePagination from "../hooks/UsePagination";
-import { useNavigate } from "react-router-dom";
+// import SectionTitle from "@/sections/common/Products/SectionTitle";
+// import { Box, Grid } from "@mui/material";
+// import UsePagination from "@/hooks/UsePagination";
+// import { useNavigate } from "react-router-dom";
 
-import { ads } from "../utils/ads";
-import usePaginate from "../hooks/usePaginate";
-import ShowAds from "../sections/common/Ads/ShowAds";
+// import { ads } from "@/utils/ads";
+// import usePaginate from "@/hooks/usePaginate";
+import ShowAds from "@/sections/common/Ads/ShowAds";
 
-const AdsPage = () => {
+export default function MyAdsPage() {
   // const navigate = useNavigate();
   // const itemsPerPage = 20;
 
@@ -65,6 +65,4 @@ const AdsPage = () => {
       </Box> */}
     </>
   );
-};
-
-export default AdsPage;
+}

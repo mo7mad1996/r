@@ -3,9 +3,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const LogoBox = styled(Typography)(({ theme, secondary }) => ({
-  fontSize: secondary ? "35px" : "60px",
+  fontSize: "2em",
   fontWeight: 800,
-  lineHeight: secondary ? "39px" : "67px",
+  lineHeight: secondary ? "39px" : "1",
   letterSpacing: "0em",
   textAlign: "right",
   color: "#292D32",

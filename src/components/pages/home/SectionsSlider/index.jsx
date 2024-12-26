@@ -67,9 +67,7 @@ export default function SectionsSlider() {
     }
   };
 
-  useEffect(() => {
-    getSection();
-  }, []);
+  useEffect(() => getSection(), []);
 
   return (
     <Box
@@ -141,8 +139,8 @@ function Slider({ items }) {
           }}
           modules={[Navigation]}
         >
-          {items.map((item) => (
-            <SwiperSlide key={item.id}>
+          {items.map((item, n) => (
+            <SwiperSlide key={n}>
               <Box
                 sx={{
                   height: "375px",

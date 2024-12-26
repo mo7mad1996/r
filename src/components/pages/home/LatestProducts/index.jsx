@@ -68,9 +68,7 @@ export default function LatestProducts() {
     }
   };
 
-  useEffect(() => {
-    getSection();
-  }, []);
+  useEffect(() => getSection(), []);
 
   return (
     <Box
@@ -142,8 +140,8 @@ function Slider({ items }) {
           }}
           modules={[Navigation]}
         >
-          {items.map((item) => (
-            <SwiperSlide key={item.id}>
+          {items.map((item, n) => (
+            <SwiperSlide key={n}>
               <Box
                 sx={{
                   borderRadius: "5px",
@@ -235,7 +233,7 @@ function Slider({ items }) {
           ))}
         </Swiper>
       </Box>
-      {/*  */}
+
       <Box
         sx={{
           //   pointerEvents: "none",

@@ -1,23 +1,23 @@
 import { Box, styled } from "@mui/material";
-import ProductsSlider from "../../sections/common/Products/ProductsSlider";
-import Gallery from "../../sections/home/Gallery";
-import Secondgallery from "../../sections/home/secondgallery";
-import Landing from "../../sections/home/Landing";
+import ProductsSlider from "@/sections/common/Products/ProductsSlider";
+import Gallery from "@/sections/home/Gallery";
+import Secondgallery from "@/sections/home/secondgallery";
+import Landing from "@/sections/home/Landing";
 
-import image1 from "../../assets/home/1.png";
-import image2 from "../../assets/home/2.png";
-import image3 from "../../assets/home/3.png";
-import image4 from "../../assets/home/4.png";
-import image5 from "../../assets/home/5.png";
-import image6 from "../../assets/home/6.png";
-import image7 from "../../assets/home/7.png";
-import image8 from "../../assets/home/8.png";
-import section1 from "../../assets/home/Ellipse 3.png";
-import section2 from "../../assets/home/Ellipse 5.png";
-import section3 from "../../assets/home/Ellipse 6.png";
-import section4 from "../../assets/home/Ellipse 8.png";
-import productImage from "../../assets/home/camera 2.png";
-import TestComponent from "../../components/TestComponent";
+import image1 from "@/assets/home/1.png";
+import image2 from "@/assets/home/2.png";
+import image3 from "@/assets/home/3.png";
+import image4 from "@/assets/home/4.png";
+import image5 from "@/assets/home/5.png";
+import image6 from "@/assets/home/6.png";
+import image7 from "@/assets/home/7.png";
+import image8 from "@/assets/home/8.png";
+import section1 from "@/assets/home/Ellipse 3.png";
+import section2 from "@/assets/home/Ellipse 5.png";
+import section3 from "@/assets/home/Ellipse 6.png";
+import section4 from "@/assets/home/Ellipse 8.png";
+import productImage from "@/assets/home/camera 2.png";
+import TestComponent from "@/components/TestComponent";
 
 // components
 import LatestProducts from "@/components/pages/home/LatestProducts/index.jsx";
