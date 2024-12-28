@@ -4,6 +4,8 @@ import ar from "date-fns/locale/ar-EG";
 // css
 import "react-toastify/dist/ReactToastify.css";
 import "react-perfect-scrollbar/dist/css/styles.css";
+import "swiper/css";
+import "swiper/css/navigation";
 
 // components
 import { BrowserRouter } from "react-router-dom";
@@ -12,6 +14,8 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import ScrollToTop from "@/components/ScrollToTop";
 import AppLayout from "@/layout/AppLayout";
 import { ToastContainer } from "react-toastify";
+
+import "./langs/i18n";
 
 function App() {
   return (

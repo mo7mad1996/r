@@ -9,6 +9,8 @@ import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import css from "./style.module.css";
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const LinkItem = styled(Link)(({ theme }) => ({
   textDecoration: "none",
@@ -54,6 +56,7 @@ const ArrowBox = styled(Box)(({ theme }) => ({
 // component
 export default function SectionsSlider() {
   const api = useApi();
+  const { t } = useTranslation();
   const [categories, setCategories] = useState([]);
 
   const getSection = async () => {
@@ -67,7 +70,9 @@ export default function SectionsSlider() {
     }
   };
 
-  useEffect(() => getSection(), []);
+  useEffect(() => {
+    getSection();
+  }, []);
 
   return (
     <Box
@@ -81,8 +86,8 @@ export default function SectionsSlider() {
     >
       {/* header */}
       <header className={css.header}>
-        <span className={css.header_span}>الأقسام</span>
-        <LinkItem to="/sections">شاهد المزيد</LinkItem>
+        <span className={css.header_span}>{t("sections")}</span>
+        <LinkItem to="/sections">{t("View more")}</LinkItem>
       </header>
 
       <Slider items={categories} />

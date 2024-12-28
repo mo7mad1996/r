@@ -3,20 +3,20 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 export const navItems = [
   {
-    title: "القائمه",
+    title: "menu",
     icon: MenuIcon,
     path: "/menu",
   },
   {
-    title: "بيع على چوملا",
+    title: "signup-seller",
     path: "signup-seller",
   },
   {
-    title: "المتجر",
+    title: "store",
     path: "store",
   },
   {
-    title: "أحدث المنتجات",
+    title: "The latest products",
     path: "store/new",
   },
   // {
@@ -24,7 +24,7 @@ export const navItems = [
   //   path: "new-products",
   // },
   {
-    title: "أفضل العروض والخصومات",
+    title: "The best offers and discounts",
     path: "store/best-sale",
   },
   // {
@@ -32,35 +32,35 @@ export const navItems = [
   //   path: "best-sale",
   // },
   {
-    title: "الأقسام",
+    title: "sections",
     path: "sections",
   },
   {
-    title: "عروض اليوم",
+    title: "Today's offers",
     path: "store/today-offers",
   },
   {
-    title: "كوبونات الخصم",
+    title: "Discount coupons",
     path: "discount",
   },
   {
-    title: "إعلانات چوملا",
+    title: "Gomla ads",
     path: "ads",
   },
   {
-    title: "بائعين چوملا",
+    title: "Gomla sellers",
     path: "sellers",
   },
   {
-    title: "عن چوملا",
+    title: "About Gomla",
     path: "about",
   },
   {
-    title: "المساعدة",
+    title: "Help",
     path: "support",
   },
   {
-    title: "تواصل معنا",
+    title: "",
     path: "dashboard",
   },
 ];

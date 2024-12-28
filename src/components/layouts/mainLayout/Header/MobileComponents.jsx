@@ -1,5 +1,7 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Context } from "~/components/Context/Context";
+import { useTranslation } from "react-i18next";
+import useLocalStorage from "use-local-storage";
 
 // components
 import * as MUI from "@mui/material";
@@ -25,11 +27,12 @@ const Language = MUI.styled(MUI.Box)(({ theme }) => ({
 
 export default function MobileComponents() {
   // config
+  const { t, i18n } = useTranslation();
   const { user } = useContext(Context);
 
   // data
   const langs = ["AR", "EN"];
-  const [lang, setLang] = useState(langs[0]);
+  const [lang, setLang] = useLocalStorage("lang", "EN");
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const [profile, setProfile] = useState(false);
@@ -48,6 +51,10 @@ export default function MobileComponents() {
       console.error(err);
     }
   }
+
+  useEffect(() => {
+    i18n.changeLanguage(lang);
+  }, [lang]);
 
   // render
   return (
@@ -103,7 +110,7 @@ export default function MobileComponents() {
               color: "#000",
             }}
           >
-            مرحبا {user?.name}
+            {t("hello")} {user?.name}
           </MUI.Typography>
           <MUI.Box
             sx={{
@@ -116,7 +123,7 @@ export default function MobileComponents() {
               color: "#000",
             }}
           >
-            حسابي
+            {t("my account")}
             <ArrowDropDownIcon
               style={{ cursor: "pointer" }}
               onClick={() => {
@@ -130,7 +137,7 @@ export default function MobileComponents() {
             <MUI.Box className={css.dropDown}>
               <Link to="/Login" onClick={handleLogout}>
                 <MUI.Button sx={{ textTransform: "capitalize", color: "#000" }}>
-                  تسجيل الخروج
+                  {t("logout")}
                 </MUI.Button>
               </Link>
             </MUI.Box>

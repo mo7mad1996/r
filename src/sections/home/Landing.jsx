@@ -3,21 +3,11 @@ import React, { useCallback, useRef } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
 // import required modules
 import { Navigation } from "swiper/modules";
 
-import landingImage from "../../assets/home/landing.png";
-import leftArrow from "../../assets/home/left-arrow.png";
-import rightArrow from "../../assets/home/right-arrow.png";
-import {
-  ChevronLeft,
-  ChevronLeftRounded,
-  ChevronRight,
-  ChevronRightRounded,
-} from "@mui/icons-material";
+import landingImage from "~/assets/home/landing.png";
+import { ChevronLeftRounded, ChevronRightRounded } from "@mui/icons-material";
 
 const ArrowBox = styled(Box)(({ theme }) => ({
   width: "70px",
@@ -64,39 +54,36 @@ const Landing = () => {
         slidesPerView={1}
         modules={[Navigation]}
       >
-        <SwiperSlide>
-          <Box
-            sx={{ width: "100%", height: "611px" }}
-            component={"img"}
-            src={landingImage}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Box
-            sx={{ width: "100%", height: "611px" }}
-            component={"img"}
-            src={landingImage}
-          />
-        </SwiperSlide>
+        {[landingImage, landingImage, landingImage].map((img, n) => (
+          <SwiperSlide key={n}>
+            <Box
+              sx={{
+                height: "100dvh",
+                width: "100%",
+                background: `url('${img}')`,
+                backgroundPosition: "top center",
+                backgroundSize: "cover",
+              }}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
       <Box
         sx={{
           position: "absolute",
           display: "flex",
           justifyContent: "space-between",
-          width: "96%",
-          top: "93px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          zIndex: 100,
+          width: "100%",
+          top: "100px",
+          left: "0",
+          padding: "1em",
+          zIndex: 1,
         }}
       >
         <ArrowBox sx={{ cursor: "pointer" }} onClick={handlePrev}>
-          {/* <Box component={"img"} src={rightArrow}></Box> */}
           <ChevronRightRounded />
         </ArrowBox>
         <ArrowBox sx={{ cursor: "pointer" }} onClick={handleNext}>
-          {/* <Box component={"img"} src={leftArrow}></Box> */}
           <ChevronLeftRounded />
         </ArrowBox>
       </Box>

@@ -4,3 +4,11 @@
 a {
   color: inherit;
 }
+
+.lang-AR {
+  direction: rtl;
+}
+
+.lang-EN {
+  direction: ltr;
+}

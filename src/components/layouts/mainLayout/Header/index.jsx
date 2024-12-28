@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 // components
 import * as MUI from "@mui/material";
@@ -39,13 +40,13 @@ const Search = MUI.styled(MUI.Box)(({ theme }) => ({
 const ShoppingCart = MUI.styled(MUI.Stack)({
   position: "relative",
 });
-const UserBox = MUI.styled(MUI.Stack)({
-  color: "colors.mainBlack",
-});
 
 const Nav = MUI.styled(MUI.Stack)({
   padding: "12px 16px",
   color: "colors.wi8",
+  position: "sticky",
+  top: "0",
+  zIndex: "2",
   backgroundColor: "#5B5B5B",
   flexDirection: "row",
   gap: "20px",
@@ -61,6 +62,7 @@ const NavItem = MUI.styled(Link)(({ theme }) => ({
 const Header = () => {
   // config
   const api = useApi();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const {
     open: openModal,
@@ -124,17 +126,17 @@ const Header = () => {
                   }}
                   onClick={handleOpenModal}
                 >
-                  التوصيل إلى{" "}
+                  {t("Delivery to")}{" "}
                   <MUI.Box>
                     <LocationIcon src={locationImage} />
-                    {location?.governorate} {location?.city}
+                    {location?.governorate}
                   </MUI.Box>
                 </MUI.Box>
               )}
             </MUI.Stack>
             <Search>
               <MUI.InputBase
-                placeholder="ابحث عن منتجك هنا"
+                placeholder={t("Find your product here")}
                 sx={{
                   position: "relative",
                   flex: "1",
@@ -194,12 +196,11 @@ const Header = () => {
                     fontSize: "14px",
                     fontWeight: "800",
                     lineHeight: "16px",
-                    letterSpacing: "0em",
-                    textAlign: "right",
+                    textAlign: "center",
                     color: "colors.mainBlack",
                   }}
                 >
-                  عربة التسوق
+                  {t("cart")}
                 </MUI.Typography>
               </ShoppingCart>
             </MUI.Toolbar>
@@ -216,7 +217,7 @@ const Header = () => {
             {navItems.map((item) => (
               <NavItem to={item.path} key={item.title} className={css.navItem}>
                 <MUI.Box component={item.icon} />
-                {item.title}
+                {t(item.title)}
               </NavItem>
             ))}
           </div>

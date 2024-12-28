@@ -1,11 +1,13 @@
 import React from "react";
-import SectionTitle from "../../sections/common/Products/SectionTitle";
+import SectionTitle from "@/sections/common/Products/SectionTitle";
 import { Box } from "@mui/material";
-import ProductsSidebar from "../../sections/common/Products/ProductsSidebar";
-import ProductsSection from "../../sections/common/Products/ProductsSection";
-import Search from "../../sections/common/Search";
+import ProductsSidebar from "@/sections/common/Products/ProductsSidebar";
+import ProductsSection from "@/sections/common/Products/ProductsSection";
+import Search from "@/sections/common/Search";
+import { useTranslation } from "react-i18next";
 
 const SectionPage = () => {
+  const { t } = useTranslation();
   return (
     // <>
     //   <SectionTitle sectionTitle={{ main: "قسم الألكترونيات" }} />
@@ -34,7 +36,7 @@ const SectionPage = () => {
               mx: "20px",
             }}
           >
-            <Search placeholder="البحث في المنتجات" />
+            <Search placeholder={t("Search in products")} />
           </Box>
           <ProductsSidebar />
         </Box>

@@ -5,9 +5,11 @@ import * as MUI from "@mui/material";
 
 // css
 import css from "./style.module.css";
+import { useTranslation } from "react-i18next";
 
 // component
 export default function AuthBtns() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   // render
@@ -25,11 +27,11 @@ export default function AuthBtns() {
         }}
         onClick={() => navigate("/login")}
       >
-        تسجيل دخول
+        {t("login")}
       </MUI.Button>
 
       <Link className={css.link} to="/signup">
-        سجل الان
+        {t("Register now")}
       </Link>
     </>
   );

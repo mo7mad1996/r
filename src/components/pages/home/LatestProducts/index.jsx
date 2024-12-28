@@ -68,7 +68,9 @@ export default function LatestProducts() {
     }
   };
 
-  useEffect(() => getSection(), []);
+  useEffect(() => {
+    getSection();
+  }, []);
 
   return (
     <Box

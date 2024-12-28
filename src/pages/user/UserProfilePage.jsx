@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
-import SectionTitle from "../../sections/common/Products/SectionTitle";
-import {
-  Box,
-  InputAdornment,
-  Stack,
-  Typography,
-} from "@mui/material";
+import SectionTitle from "@/sections/common/Products/SectionTitle";
+import { Box, Stack, Typography } from "@mui/material";
 import {
   ConfirmButton,
   FormItem,
   StyledTextField,
   StyledTypography,
-} from "../../components/FormElements";
+} from "@/components/FormElements";
 import axios from "axios";
 
 const UserProfilePage = () => {
@@ -103,7 +98,10 @@ const UserProfilePage = () => {
 
       alert("تم تحديث بياناتك بنجاح!");
     } catch (error) {
-      console.error("Error updating profile:", error.response?.data || error.message);
+      console.error(
+        "Error updating profile:",
+        error.response?.data || error.message
+      );
       alert("حدث خطأ أثناء تحديث بياناتك. حاول مرة أخرى.");
     }
   };
@@ -178,10 +176,7 @@ const UserProfilePage = () => {
         </FormItem>
         <FormItem>
           <StyledTypography>البريد الألكتروني</StyledTypography>
-          <StyledTextField
-            value={userData.email}
-            disabled
-          />
+          <StyledTextField value={userData.email} disabled />
         </FormItem>
         <FormItem>
           <StyledTypography>تاريخ الميلاد</StyledTypography>
@@ -216,14 +211,18 @@ const UserProfilePage = () => {
           <StyledTypography>رقم السكن</StyledTypography>
           <StyledTextField
             value={userData.residence_number}
-            onChange={(e) => handleInputChange("residence_number", e.target.value)}
+            onChange={(e) =>
+              handleInputChange("residence_number", e.target.value)
+            }
           />
         </FormItem>
         <FormItem>
           <StyledTypography>رقم الشقة</StyledTypography>
           <StyledTextField
             value={userData.apartment_number}
-            onChange={(e) => handleInputChange("apartment_number", e.target.value)}
+            onChange={(e) =>
+              handleInputChange("apartment_number", e.target.value)
+            }
           />
         </FormItem>
       </Stack>

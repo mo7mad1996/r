@@ -11,6 +11,7 @@ const Gallery = ({ data }) => {
       sx={{
         display: "flex",
         flexDirection: "column",
+        flexWrap: "wrap",
         justifyContent: "Space-between",
         alignItems: "stretch",
       }}

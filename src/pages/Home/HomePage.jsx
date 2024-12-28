@@ -1,9 +1,8 @@
 import { Box, styled } from "@mui/material";
 import ProductsSlider from "@/sections/common/Products/ProductsSlider";
-import Gallery from "@/sections/home/Gallery";
-import Secondgallery from "@/sections/home/secondgallery";
 import Landing from "@/sections/home/Landing";
 
+// assets
 import image1 from "@/assets/home/1.png";
 import image2 from "@/assets/home/2.png";
 import image3 from "@/assets/home/3.png";
@@ -17,11 +16,13 @@ import section2 from "@/assets/home/Ellipse 5.png";
 import section3 from "@/assets/home/Ellipse 6.png";
 import section4 from "@/assets/home/Ellipse 8.png";
 import productImage from "@/assets/home/camera 2.png";
-import TestComponent from "@/components/TestComponent";
 
 // components
+import Secondgallery from "@/sections/home/secondgallery";
+import Gallery from "@/sections/home/Gallery";
 import LatestProducts from "@/components/pages/home/LatestProducts/index.jsx";
 import SectionsSlider from "@/components/pages/home/SectionsSlider/index.jsx";
+import { useTranslation } from "react-i18next";
 
 const itemData = [
   image1,
@@ -123,6 +124,8 @@ const products = {
 const Image = styled("img")({});
 
 const HomePage = () => {
+  const { t } = useTranslation();
+
   return (
     <Box sx={{ backgroundColor: "#b8aeae", position: "relative" }}>
       <Landing />
@@ -131,20 +134,20 @@ const HomePage = () => {
           position: "relative",
           transform: "translateY(-340px)",
           mb: "-340px",
-          zIndex: 1300,
+          zIndex: 1,
         }}
       >
         <Gallery sx={{ display: "none" }} data={itemData} />
       </Box>
       <Box>
         <ProductsSlider
-          title={"المتجر"}
+          title={t("store")}
           products={products.products}
           link={"/store"}
         />
 
         <ProductsSlider
-          title={"أفضل العروض والخصومات"}
+          title={t("The best offers and discounts")}
           products={products.products}
           link={"/store/best-sale"}
         />
