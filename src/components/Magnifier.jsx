@@ -91,7 +91,7 @@ const Magnifier = ({ src, width = 300, height = 300, zoomLevel = 2, fixedPositio
             backgroundRepeat: "no-repeat",
             pointerEvents: "none",
             display: "block",
-            zIndex: 999999999,
+            zIndex: 3,
             boxShadow: "0px 2px 10px 2px #00000040",
             ...setFixedPositionStyles(), // Apply fixed position styles
           }}

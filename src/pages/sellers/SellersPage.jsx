@@ -1,4 +1,4 @@
-import React, { useState,useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import SectionTitle from "../../sections/common/Products/SectionTitle";
 
 import sellerImage from "../../assets/seller.png";
@@ -13,8 +13,8 @@ import usePaginate from "../../hooks/usePaginate";
 import { Context } from "../../components/Context/Context";
 const SellersPage = () => {
   const navigate = useNavigate();
-  const {allVendors} = useContext(Context)
-  let [vendors,setVendors]=useState([])
+  const { allVendors } = useContext(Context);
+  let [vendors, setVendors] = useState([]);
   const itemsPerPage = 20;
 
   const {
@@ -27,28 +27,19 @@ const SellersPage = () => {
     items: sellers,
   });
 
-
-
-
-  
-  async function getAllVendors(){
-    let res = await allVendors()
-    setVendors(res?.data?.vendor)
+  async function getAllVendors() {
+    let res = await allVendors();
+    setVendors(res?.data?.vendor);
   }
 
-
-
-
-  useEffect(()=>{
-    getAllVendors()
-  },[])
+  useEffect(() => {
+    getAllVendors();
+  }, []);
 
   return (
     <Box>
-      {/* بائعين چوملا (المتاجر) */}
       <SectionTitle
-     
-        sectionTitle={{ main: "بائعين چوملا", second: "المتاجر" }}
+        sectionTitle={{ main: "Joumla sellers", second: "المتاجر" }}
       />
       <Stack>
         <Box
@@ -65,8 +56,7 @@ const SellersPage = () => {
           >
             {vendors.map((seller) => (
               <Grid
-
-              id={seller.id}
+                id={seller.id}
                 item
                 xs={8}
                 sm={6}

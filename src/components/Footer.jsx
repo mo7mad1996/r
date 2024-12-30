@@ -15,8 +15,10 @@ import whatsIcon from "../assets/home/whats.png";
 import emailIcon from "/email.png";
 import phoneIcon from "../assets/home/phone.png";
 import mobileIcon from "/mobile.png";
+import { useTranslation } from "react-i18next";
+import useLocalStorage from "use-local-storage";
 
-const langs = ["اللغة العربية", "اللغة الانجليزية"];
+const langs = ["AR", "EN"];
 
 const LinkItem = styled(Link)(({ theme }) => ({
   color: theme.palette.colors.wi8,
@@ -46,7 +48,8 @@ const StyledBox = styled(Box)(({ theme }) => ({
   paddingLeft: "40px",
 }));
 const Footer = () => {
-  const [lang, setLang] = useState(langs[0]);
+  const { t } = useTranslation();
+  const [lang, setLang] = useLocalStorage("lang", "EN");
   const [anchorEl, setAnchorEl] = useState(null);
 
   const open = Boolean(anchorEl);
@@ -130,7 +133,7 @@ const Footer = () => {
           <Typography
             sx={{ mb: "39px", fontSize: "22px", lineHeight: "24.55px" }}
           >
-            عن چوملا
+            {t("About Joumla")}
           </Typography>
           <Typography
             sx={{
@@ -141,14 +144,15 @@ const Footer = () => {
               mb: "51px",
             }}
           >
-            چوملا سوق تجاري مصري يشمل ويعرض جميع انواع البضائع التى يصرح بها
-            القانون المصري.
+            {t("______long____text______")}
           </Typography>
 
           <Stack>
-            <LinkItem>سياسة الخصوصية</LinkItem>
-            <LinkItem>سياسة إرجاع المنتجات</LinkItem>
-            <LinkItem to={"/terms-and-conditions"}>شروط و أحكام چوملا</LinkItem>
+            <LinkItem>{t("Privacy Policy")}</LinkItem>
+            <LinkItem>{t("Product Return Policy")}</LinkItem>
+            <LinkItem to={"/terms-and-conditions"}>
+              {t("Joumla Terms and Conditions")}
+            </LinkItem>
           </Stack>
           <Box
             sx={{
@@ -201,7 +205,7 @@ const Footer = () => {
           <Typography
             sx={{ mb: "39px", fontSize: "22px", lineHeight: "24.55px" }}
           >
-            حسابي{" "}
+            {t("my account")}
           </Typography>
           {/* <Typography
           sx={{
@@ -212,8 +216,7 @@ const Footer = () => {
             mb: "51px",
           }}
         >
-          چوملا سوق تجاري مصري يشمل ويعرض جميع انواع البضائع التى يصرح بها
-          القانون المصري.
+            {t("______long____text______")}
         </Typography> */}
           {/* <List
           disablePadding
@@ -232,38 +235,38 @@ const Footer = () => {
         >
           <ListItem>
             <ListItemButton disableGutters sx={{ m: "0px" }}>
-              سياسة الخصوصية
+              {t("Privacy Policy")}
             </ListItemButton>
           </ListItem>
           <ListItem>
             <ListItemButton disableGutters sx={{ m: "0px" }}>
-              سياسة إرجاع المنتجات
+              {t("Product Return Policy")}
             </ListItemButton>
           </ListItem>
           <ListItem>
             <ListItemButton disableGutters sx={{ m: "0px" }}>
-              شروط و أحكام چوملا
+              {t("Joumla Terms and Conditions")}
             </ListItemButton>
           </ListItem>
         </List> */}
           <Stack>
-            <LinkItem to={"/my-account"}>حسابك</LinkItem>
-            <LinkItem to={"/user/orders"}>طلباتك</LinkItem>
-            <LinkItem to={"/cart"}>سلة المشتريات</LinkItem>
-            <LinkItem to={"/store/favourite"}>قائمة الرغبات</LinkItem>
-            <LinkItem to={"/user/address"}>عناوينك</LinkItem>
-            <LinkItem>المساعدة للعملاء</LinkItem>
+            <LinkItem to={"/my-account"}>{t("your account")}</LinkItem>
+            <LinkItem to={"/user/orders"}>{t("Your Orders")}</LinkItem>
+            <LinkItem to={"/cart"}>{t("Shopping Cart")}</LinkItem>
+            <LinkItem to={"/store/favourite"}>{t("Wishlist")}</LinkItem>
+            <LinkItem to={"/user/address"}>{t("Your Addresses")}</LinkItem>
+            <LinkItem>{t("Customer Support")}</LinkItem>
           </Stack>
         </StyledBox>
         <StyledBox>
           <Typography
             sx={{ mb: "39px", fontSize: "22px", lineHeight: "24.55px" }}
           >
-            بائعين چوملا{" "}
+            {t("Joumla sellers")}
           </Typography>
 
           <Stack>
-            <LinkItem to={"/signup-seller"}>بيع على چوملا</LinkItem>
+            <LinkItem to={"/signup-seller"}>{t("signup-seller")}</LinkItem>
             <LinkItem
               sx={{
                 display: "flex",
@@ -273,16 +276,16 @@ const Footer = () => {
               }}
             >
               <Box component={"img"} src={mobileIcon} alt="" />
-              حمل تطبيق بائعين چوملا
+              {t("Download the Joumla Sellers App")}
             </LinkItem>
-            <LinkItem>المساعدة للبائعين</LinkItem>
+            <LinkItem>{t("Seller Assistance")}</LinkItem>
           </Stack>
         </StyledBox>
         <StyledBox>
           <Typography
             sx={{ mb: "39px", fontSize: "22px", lineHeight: "24.55px" }}
           >
-            خدمة العملاء{" "}
+            {t("Customer Service")}
           </Typography>
           <Typography
             sx={{
@@ -293,7 +296,9 @@ const Footer = () => {
               mb: "51px",
             }}
           >
-            نحن هنا دائما لخدمتك يمكنك الاتصال بنا من خلال الطرق التالية{" "}
+            {t(
+              "We are always here to serve you. You can contact us through the following methods."
+            )}
           </Typography>
 
           <Stack>
@@ -311,7 +316,7 @@ const Footer = () => {
               }}
             >
               <Box component={"img"} src={callIcon} alt="" />
-              رقم الهاتف 01155123609{" "}
+              {t("Phone Number")} 01155123609
             </Box>
             <Box
               sx={{
@@ -326,13 +331,13 @@ const Footer = () => {
                 lineHeight: "22.32px",
               }}
             >
-              <Box component={"img"} src="chat.png" alt="" /> المحادثة الفورية{" "}
+              <Box component={"img"} src="chat.png" alt="" /> {t("Live Chat")}{" "}
               <Box
                 component={Link}
                 to="#"
                 sx={{ color: "colors.wi8", textDecoration: "none" }}
               >
-                اضغط هنا
+                {t("Click Here")}
               </Box>{" "}
             </Box>
             <Box
@@ -352,7 +357,7 @@ const Footer = () => {
             >
               <Box component={"img"} src={emailIcon} alt="" />
               <Box sx={{ textAlign: "right" }}>
-                بريد أليكتروني :{" "}
+                {t("Email")}:{" "}
                 <Box
                   component={Link}
                   sx={{
@@ -362,7 +367,7 @@ const Footer = () => {
                     mt: "5px",
                   }}
                 >
-                  support@joumla-eg.com
+                  support@Joumla-eg.com
                 </Box>
               </Box>
             </Box>
@@ -375,7 +380,7 @@ const Footer = () => {
               }}
             >
               <Box component={"img"} src={mobileIcon} alt="" />
-              حمل تطبيق چوملا{" "}
+              {t("Download the Joumla App")}
             </LinkItem>
           </Stack>
         </StyledBox>
@@ -462,7 +467,7 @@ const Footer = () => {
                   handleClose();
                 }}
               >
-                {lang}
+                {t(lang)}
               </MenuItem>
             ))}
           </Menu>

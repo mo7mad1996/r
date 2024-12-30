@@ -15,8 +15,10 @@ import { Context } from "@/components/Context/Context";
 import useApi from "@/hooks/useApi";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const Address = () => {
+  const { t } = useTranslation();
   const api = useApi();
   const navigate = useNavigate();
   const { address_type } = useContext(Context);
@@ -34,11 +36,11 @@ const Address = () => {
       default_address: true,
     },
     validationSchema: Yup.object({
-      address: Yup.string().required("العنوان مطلوب"),
-      governorate: Yup.string().required("المحافظة مطلوبة"),
-      city: Yup.string().required("المدينة مطلوبة"),
-      street_name: Yup.string().required("اسم الشارع مطلوب"),
-      residence_number: Yup.string().required("رقم السكن مطلوب"),
+      address: Yup.string().required("العنوان " + t("Required")),
+      governorate: Yup.string().required(t("Governorate") + t("Is Required")),
+      city: Yup.string().required(t("City") + t("Is Required"),
+      street_name: Yup.string().required(t("Street Name") + t("Required")),
+      residence_number: Yup.string().required("رقم السكن " + t("Required")),
       apartment_number: Yup.string(),
       floor: Yup.string(),
     }),
@@ -99,7 +101,7 @@ const Address = () => {
           </StyledSelect>
         </FormItem>
         <FormItem>
-          <StyledTypography>المحافظة</StyledTypography>
+          <StyledTypography>{t("Governorate")}</StyledTypography>
           <StyledTextField
             name="governorate"
             value={formik.values.governorate}
@@ -112,7 +114,7 @@ const Address = () => {
           />
         </FormItem>
         <FormItem>
-          <StyledTypography>المدينة</StyledTypography>
+          <StyledTypography>{t("City")}</StyledTypography>
           <StyledTextField
             name="city"
             value={formik.values.city}
@@ -123,7 +125,7 @@ const Address = () => {
           />
         </FormItem>
         <FormItem>
-          <StyledTypography>اسم الشارع</StyledTypography>
+          <StyledTypography>{t("Street Name")}</StyledTypography>
           <StyledTextField
             name="street_name"
             value={formik.values.street_name}
@@ -152,7 +154,7 @@ const Address = () => {
           />
         </FormItem>
         <FormItem>
-          <StyledTypography>رقم الشقة</StyledTypography>
+          <StyledTypography>{t("Apartment Number")}</StyledTypography>
           <StyledTextField
             name="apartment_number"
             value={formik.values.apartment_number}

@@ -54,7 +54,7 @@ const DeleteAdsPopup = ({ handleClose }) => {
               }}
               onClick={() => setShowSuccess(true)}
             >
-              نعم
+              {t("yes")}
             </Button>
             <Button
               sx={{
@@ -64,7 +64,7 @@ const DeleteAdsPopup = ({ handleClose }) => {
                 },
               }}
             >
-              لا
+              {t("no")}
             </Button>
           </Box>
         </>

@@ -24,12 +24,9 @@ const Cart = () => {
     });
   }
 
-
-  
-
   async function updateQuantity(productId, quantity) {
     let res = await axios.patch(
-      `https://joumla.store/api/v1/user/cart/${productId}`,
+      `https://Joumla.store/api/v1/user/cart/${productId}`,
 
       {
         quantity: quantity,
@@ -41,8 +38,6 @@ const Cart = () => {
         },
       }
     );
-
-    
   }
 
   useEffect(() => {
@@ -85,7 +80,7 @@ const Cart = () => {
           backgroundColor: "white",
           borderRight: "1px solid #ccc",
           width: "8.5%",
-          zIndex: 9999,
+          zIndex: 2,
           position: "fixed",
           overflowY: "auto",
           left: 0,
@@ -226,11 +221,7 @@ const Cart = () => {
                   justifyContent: "center",
                 }}
                 onClick={() => {
-
-                  updateQuantity(
-                    product.di,
-                    product.quantity + 1
-                  );
+                  updateQuantity(product.di, product.quantity + 1);
                 }}
               >
                 <img

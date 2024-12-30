@@ -4,6 +4,7 @@ import SectionTitle from "../common/Products/SectionTitle";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 // الحقول المخصصة
 const StyledTextField = styled(TextField)(({ theme }) => ({
@@ -51,15 +52,24 @@ const StyledButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-// تعريف التحقق باستخدام Yup
-const validationSchema = Yup.object().shape({
-  digit1: Yup.string().required("مطلوب").matches(/^\d$/, "يجب أن يكون رقم"),
-  digit2: Yup.string().required("مطلوب").matches(/^\d$/, "يجب أن يكون رقم"),
-  digit3: Yup.string().required("مطلوب").matches(/^\d$/, "يجب أن يكون رقم"),
-  digit4: Yup.string().required("مطلوب").matches(/^\d$/, "يجب أن يكون رقم"),
-});
-
 const VerifyNumber = ({ changeForm }) => {
+  const { t } = useTranslation();
+
+  const validationSchema = Yup.object().shape({
+    digit1: Yup.string()
+      .required(t("Required"))
+      .matches(/^\d$/, "يجب أن يكون رقم"),
+    digit2: Yup.string()
+      .required(t("Required"))
+      .matches(/^\d$/, "يجب أن يكون رقم"),
+    digit3: Yup.string()
+      .required(t("Required"))
+      .matches(/^\d$/, "يجب أن يكون رقم"),
+    digit4: Yup.string()
+      .required(t("Required"))
+      .matches(/^\d$/, "يجب أن يكون رقم"),
+  });
+
   const handleSubmit = async (values, { setSubmitting }) => {
     const username = Object.values(values).join(""); // دمج الأرقام
     try {

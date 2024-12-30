@@ -2,11 +2,18 @@ import React from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import { Check, RemoveCircleOutline } from "@mui/icons-material";
 import SectionTitle from "../common/Products/SectionTitle";
+import { useTranslation } from "react-i18next";
 
 const RegisterSuccess = ({ seller }) => {
+  const { t } = useTranslation();
+
   return (
     <>
-      <SectionTitle sectionTitle={{ main: "تم تسجيل حسابك بنجاح" }} />
+      <SectionTitle
+        sectionTitle={{
+          main: "Your account has been successfully registered.",
+        }}
+      />
       <Box
         sx={{
           width: "200px",
@@ -54,7 +61,7 @@ const RegisterSuccess = ({ seller }) => {
                 color: "colors.darkIcons",
               }}
             >
-              يرجي الأنتظار حتي يتم مراجعة طلبك والموافقة عليه
+              {t("Please wait until your request is reviewed and approved.")}
             </Typography>
           </Box>
           <Box
@@ -80,7 +87,7 @@ const RegisterSuccess = ({ seller }) => {
                 color: "colors.darkIcons",
               }}
             >
-              سيتم اعلامك بالموافقة برسالة عبر بريدك الألكتروني
+              {t("You will be notified of approval via an email message.")}
             </Typography>
           </Box>
         </Stack>

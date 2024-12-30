@@ -78,7 +78,7 @@ const RestorePasswordPage = () => {
                           color: "#000000",
                         }}
                       >
-                        رقم الهاتف
+                        {t("Phone Number")}
                       </Box>
                     </InputAdornment>
                   ),

@@ -18,7 +18,7 @@ const StyledCheckbox = styled(Box)(({ theme, isProduct, single }) => ({
     width: "55px",
     height: "55px",
   },
-  zIndex: 20,
+  zIndex: 1,
 }));
 const CustomCheckbox = ({ selected = false, single = false }) => {
   const { pathname } = useLocation();

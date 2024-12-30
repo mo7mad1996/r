@@ -4,6 +4,7 @@ import usePagination from "@mui/material/usePagination";
 import { styled } from "@mui/material/styles";
 import { Button } from "@mui/material";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 const List = styled("ul")({
   listStyle: "none",
@@ -125,6 +126,8 @@ export default function UsePagination({
   currentPage,
   setCurrentPage,
 }) {
+  const { t } = useTranslation();
+
   const { items } = usePagination({
     count: totalPages,
     // page: currentPage,
@@ -151,7 +154,7 @@ export default function UsePagination({
                 {...item}
               >
                 <ChevronRight />
-                {!matches && "السابقة"}
+                {!matches && t("Previous")}
               </StyledButton>
             );
           } else if (type === "next") {
@@ -165,7 +168,7 @@ export default function UsePagination({
                 }}
                 {...item}
               >
-                {!matches && "التالي"}
+                {!matches && t("Next")}
                 <ChevronLeft />
               </StyledButton>
             );

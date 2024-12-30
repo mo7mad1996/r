@@ -530,7 +530,7 @@ const AddSectionPage = () => {
             color: "colors.mainBlack",
           }}
         >
-          الصفحات
+          {t("Pages")}
           <Select
             value={page}
             onChange={handleChange}

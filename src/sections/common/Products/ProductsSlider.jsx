@@ -2,6 +2,7 @@ import React, { useCallback, useRef } from "react";
 import { Box, Typography, styled } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -56,7 +57,7 @@ const ArrowBox = styled(Box)(({ theme }) => ({
     fontSize: "75px",
     color: theme.palette.colors.wi8,
   },
-  zIndex: 1500,
+  zIndex: 2,
   cursor: "pointer",
 }));
 const ProductsSlider = ({ products, title, link }) => {
@@ -64,6 +65,7 @@ const ProductsSlider = ({ products, title, link }) => {
   const sliderRef = useRef(null);
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
+  const { t } = useTranslation();
 
   const handlePrev = useCallback(() => {
     if (!sliderRef.current) return;
@@ -106,7 +108,7 @@ const ProductsSlider = ({ products, title, link }) => {
           {title}
         </Typography>
         <LinkItem to={link} sx={{}}>
-          شاهد المزيد
+          {t("View more")}
         </LinkItem>
       </Box>
       {/* products  */}
@@ -114,7 +116,7 @@ const ProductsSlider = ({ products, title, link }) => {
         sx={{
           position: "relative",
           //   zIndex: 1350,
-          zIndex: 1100,
+          zIndex: 1,
         }}
       >
         <Swiper

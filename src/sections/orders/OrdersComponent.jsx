@@ -65,7 +65,7 @@ const OrdersComponent = ({ title, orders, ordersPerPage }) => {
             color: "colors.mainBlack",
           }}
         >
-          الصفحات
+          {t("Pages")}
           <Select
             value={page}
             onChange={handleChange}

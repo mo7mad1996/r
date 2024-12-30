@@ -1,4 +1,5 @@
 import { Box, Button, Modal, Stack, Typography, styled } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 
 const Btn = styled(Button)(({ theme }) => ({
@@ -37,6 +38,7 @@ const style = {
 };
 const ModalComponent = ({ open, action, handleClose, children, message }) => {
   const location = useLocation();
+  const { t } = useTranslation();
   const customAreas = location.pathname.includes("/custom-areas");
 
   return (
@@ -86,7 +88,7 @@ const ModalComponent = ({ open, action, handleClose, children, message }) => {
                   }}
                   onClick={action}
                 >
-                  نعم
+                  {t("yes")}
                 </Btn>
                 <Btn
                   sx={{
@@ -97,7 +99,7 @@ const ModalComponent = ({ open, action, handleClose, children, message }) => {
                   }}
                   onClick={handleClose}
                 >
-                  لا
+                  {t("no")}
                 </Btn>
               </Box>
             </Stack>

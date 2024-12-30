@@ -8,6 +8,7 @@ import {
   Typography,
   styled,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const Btn = styled(Button)(({ theme }) => ({
   //   fontSize: "28px",
@@ -44,6 +45,7 @@ const style = {
   //   p: 4,
 };
 const Modal2 = ({ open, handleOpen, handleClose, children, message }) => {
+  const { t } = useTranslation();
   return (
     <>
       <Modal
@@ -89,7 +91,7 @@ const Modal2 = ({ open, handleOpen, handleClose, children, message }) => {
                     },
                   }}
                 >
-                  نعم
+                  {t("yes")}
                 </Btn>
                 <Btn
                   sx={{
@@ -100,7 +102,7 @@ const Modal2 = ({ open, handleOpen, handleClose, children, message }) => {
                   }}
                   onClick={handleClose}
                 >
-                  لا
+                  {t("no")}
                 </Btn>
               </Box>
             </Stack>

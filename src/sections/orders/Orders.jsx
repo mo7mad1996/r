@@ -289,7 +289,7 @@ const Orders = ({ statusArray, status, isDashboard }) => {
                       </Typography>
                     </StyledBox>
                     <StyledBox>
-                      <Typography>رقم الهاتف</Typography>
+                      <Typography>{t("Phone Number")}</Typography>
                       <Typography
                         sx={{
                           color: "#505050!important",

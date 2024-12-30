@@ -101,7 +101,7 @@ const ShowProducts = ({ title, admin, secondTitle }) => {
             color: "colors.mainBlack",
           }}
         >
-          الصفحات
+          {t("Pages")}
           <Select
             value={page}
             onChange={handleChange}

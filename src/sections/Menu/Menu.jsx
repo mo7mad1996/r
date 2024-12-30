@@ -3,10 +3,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import ModalComponent from "../../components/ModalComponent";
 import useShowModal from "../../hooks/useShowModal";
+import { useTranslation } from "react-i18next";
 
 const Menu = ({ items }) => {
   const { open, handleOpen, handleClose, message, setMessage } = useShowModal();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -77,7 +79,7 @@ const Menu = ({ items }) => {
                 }}
                 onClick={() => {
                   if (item.link === "/signout") {
-                    setMessage("هل ترغب حقا في تسجيل الخروج");
+                    setMessage(t("Do you really want to log out?"));
                     handleOpen();
                     return;
                   }
@@ -96,7 +98,7 @@ const Menu = ({ items }) => {
                     transition: "filter 0.3s ease", // Smooth transition for icon filter
                   }}
                 />
-                {item.name}
+                {t(item.name)}
               </Paper>
             </Grid>
           ))}

@@ -44,7 +44,7 @@ const StyledIcons = styled(Box)(({ theme }) => ({
     backgroundColor: theme.palette.colors.wi8,
     boxShadow: "0px 0px 10px 2px #00000040",
     cursor: "pointer",
-    zIndex: "1200",
+    zIndex: "2",
   },
   "& svg": {
     width: "90%",

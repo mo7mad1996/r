@@ -20,7 +20,7 @@ export const navItems = [
     path: "store/new",
   },
   // {
-  //   title: "أحدث المنتجات",
+  //   title: "The latest products",
   //   path: "new-products",
   // },
   {
@@ -44,15 +44,15 @@ export const navItems = [
     path: "discount",
   },
   {
-    title: "Gomla ads",
+    title: "Joumla ads",
     path: "ads",
   },
   {
-    title: "Gomla sellers",
+    title: "Joumla sellers",
     path: "sellers",
   },
   {
-    title: "About Gomla",
+    title: "About Joumla",
     path: "about",
   },
   {

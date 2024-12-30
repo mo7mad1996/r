@@ -19,7 +19,7 @@ const AdminAdsPage = () => {
         mb: "50px",
       }}
     >
-      <SectionTitle sectionTitle={{ main: "إعلانات چوملا" }} />
+      <SectionTitle sectionTitle={{ main: "Joumla ads" }} />
       <Stack
         sx={{
           mt: "-70px",

@@ -9,6 +9,7 @@ import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import css from "./style.module.css";
+import { useTranslation } from "react-i18next";
 
 const LinkItem = styled(Link)(({ theme }) => ({
   textDecoration: "none",
@@ -47,13 +48,14 @@ const ArrowBox = styled(Box)(({ theme }) => ({
     fontSize: "75px",
     color: theme.palette.colors.wi8,
   },
-  zIndex: 1500,
+  zIndex: 1,
   cursor: "pointer",
 }));
 
 // component
 export default function LatestProducts() {
   const api = useApi();
+  const { t } = useTranslation();
   const [products, setProducts] = useState([]);
 
   const getSection = async () => {
@@ -84,8 +86,8 @@ export default function LatestProducts() {
     >
       {/* header */}
       <header className={css.header}>
-        <span className={css.header_span}>أحدث المنتجات</span>
-        <LinkItem to="/store/latest-products">شاهد المزيد</LinkItem>
+        <span className={css.header_span}>{t("The latest products")}</span>
+        <LinkItem to="/store/latest-products">{t("View more")}</LinkItem>
       </header>
 
       <Slider items={products} />
@@ -113,7 +115,7 @@ function Slider({ items }) {
       <Box
         sx={{
           position: "relative",
-          zIndex: 1100,
+          zIndex: 1,
         }}
       >
         <Swiper

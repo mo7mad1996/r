@@ -10,14 +10,14 @@ const items = [
   { name: "الإشعارات", link: "/dashboard/notifications" },
   { name: "المحفظة", link: "/dashboard/products/wallet" },
   { name: "الملف الشخصى", link: "/dashboard/profile" },
-  { name: "العناوين", link: "/dashboard/adresses" },
-  { name: "الدعم", link: "/support" },
+  { name: "Addresses", link: "/dashboard/adresses" },
+  { name: "Support", link: "/support" },
   { name: "نشرة چوملا", link: "" },
   { name: "إعدادت المتجر", link: "" },
   { name: "طلبات السحب", link: "" },
   { name: "التقارير", link: "" },
   { name: "شروط وأحكام بائعين چوملا", link: "" },
-  { name: "تسجيل الخروج", link: "" },
+  { name: "logout", link: "" },
 ];
 const SellerAccountPage = () => {
   return (

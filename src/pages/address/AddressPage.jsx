@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Button, Stack, Typography, styled } from "@mui/material";
-import ModalComponent from "../../components/ModalComponent";
-import SectionTitle from "../../sections/common/Products/SectionTitle";
-import useShowModal from "../../hooks/useShowModal";
+import ModalComponent from "~/components/ModalComponent";
+import SectionTitle from "~/sections/common/Products/SectionTitle";
+import useShowModal from "~/hooks/useShowModal";
 import useApi from "@/hooks/useApi";
 import { toast } from "react-toastify";
 import { Context } from "@/components/Context/Context";
@@ -79,7 +79,7 @@ const AddressPage = () => {
   // render
   return (
     <>
-      <SectionTitle sectionTitle={{ main: "العناوين" }} />
+      <SectionTitle sectionTitle={{ main: "Addresses" }} />
 
       <Box
         sx={{

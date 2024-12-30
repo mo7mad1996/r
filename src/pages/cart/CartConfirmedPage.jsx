@@ -93,11 +93,11 @@ const CartConfirmedPage = () => {
           <Typography>م مينز</Typography>
         </StyledBox>
         <StyledBox>
-          <Typography>رقم الهاتف :</Typography>
+          <Typography>{t("Phone Number")} :</Typography>
           <Typography>4522025</Typography>
         </StyledBox>
         <StyledBox>
-          <Typography>البريد الألكتروني</Typography>
+          <Typography>{t("Email")}</Typography>
           <Typography>Rony33@gmail.com</Typography>
         </StyledBox>
         <StyledBox>

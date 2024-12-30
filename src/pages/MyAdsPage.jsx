@@ -24,8 +24,8 @@ export default function MyAdsPage() {
 
   return (
     <>
-      <ShowAds title="أعلانات ‌چوملا" />
-      {/* <SectionTitle sectionTitle={{ main: "أعلانات ‌چوملا" }} />
+      <ShowAds title="Joumla ads" />
+      {/* <SectionTitle sectionTitle={{ main: "Joumla ads" }} />
       <Box
         sx={{
           mx: "20px",

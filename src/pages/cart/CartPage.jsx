@@ -74,14 +74,14 @@ const CartPage = () => {
   if (errorMessage)
     return (
       <>
-        <SectionTitle sectionTitle={{ main: "سلة المشتريات" }} />
+        <SectionTitle sectionTitle={{ main: "{t("Shopping Cart")}" }} />
         <h4>{errorMessage}</h4>;
       </>
     );
 
   return (
     <>
-      <SectionTitle sectionTitle={{ main: "سلة المشتريات" }} />
+      <SectionTitle sectionTitle={{ main: "{t("Shopping Cart")}" }} />
       <Stack
         sx={{
           flexDirection: "row",
@@ -113,7 +113,7 @@ const CartPage = () => {
               color: "#000000",
             }}
           >
-            اجمالي سلة المشتريات
+            اجمالي {t("Shopping Cart")}
           </Typography>
           <Box
             sx={{

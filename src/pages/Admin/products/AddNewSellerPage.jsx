@@ -244,7 +244,7 @@ const AddNewSellerPage = () => {
             color: "colors.mainBlack",
           }}
         >
-          الصفحات
+          {t("Pages")}
           <Select
             value={page}
             onChange={handleChange}
@@ -273,7 +273,8 @@ const AddNewSellerPage = () => {
                 <MenuItem value={index + 1}>{index + 1}</MenuItem>
               ))}
           </Select>
-          من {totalPages} صفحات{" "}
+          من {totalPages}
+          {t("Pages")}{" "}
         </Box>
       </Box>
       <Typography

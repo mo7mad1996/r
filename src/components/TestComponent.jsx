@@ -14,6 +14,7 @@ import { Navigation } from "swiper/modules";
 
 import productImg from "../assets/home/camera 2.png";
 import ProductPagination from "../sections/common/Products/ProductPagination";
+import { useTranslation } from "react-i18next";
 const LinkItem = styled(Link)(({ theme }) => ({
   textDecoration: "none",
   color: theme.palette.colors.website,
@@ -56,10 +57,11 @@ const ArrowBox = styled(Box)(({ theme }) => ({
     fontSize: "75px",
     color: theme.palette.colors.wi8,
   },
-  zIndex: 1500,
+  zIndex: 1,
   cursor: "pointer",
 }));
 const TestComponent = ({ products, title, link }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const sliderRef = useRef(null);
   const navigationPrevRef = useRef(null);
@@ -106,7 +108,7 @@ const TestComponent = ({ products, title, link }) => {
           {title}
         </Typography>
         <LinkItem to={link} sx={{}}>
-          شاهد المزيد
+          {t("View more")}
         </LinkItem>
       </Box>
       {/* products  */}
@@ -114,7 +116,7 @@ const TestComponent = ({ products, title, link }) => {
         sx={{
           position: "relative",
           //   zIndex: 1350,
-          zIndex: 1100,
+          zIndex: 1,
         }}
       >
         <Swiper

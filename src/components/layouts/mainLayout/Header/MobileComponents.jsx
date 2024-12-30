@@ -95,7 +95,7 @@ export default function MobileComponents() {
               handleClose();
             }}
           >
-            {lang}
+            {t(lang)}
           </MenuItem>
         ))}
       </Menu>

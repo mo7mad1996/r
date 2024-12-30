@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -8,13 +8,12 @@ import "swiper/css/pagination";
 
 // import "./styles.css";
 // import required modules
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 
-import productImg from "../../../assets/home/camera 2.png";
+import productImg from "~/assets/home/camera 2.png";
 import { Box, styled } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { Context } from "../../../components/Context/Context";
+import { Context } from "~/components/Context/Context";
 
 const SwiperBox = styled(Swiper)({
   marginBottom: "29px",
@@ -40,7 +39,7 @@ export default function ProductPagination() {
   }
   useEffect(() => {
     getProductsImages();
-  },[]);
+  }, []);
   return (
     <Box>
       <SwiperBox
@@ -57,14 +56,12 @@ export default function ProductPagination() {
         modules={[Autoplay, Pagination]}
         className="mySwiper"
       >
-        {allProducts?.map((item,index) => (
+        {allProducts?.map((item, index) => (
           <SwiperSlide key={index}>
             <Box
               component={"img"}
               sx={{
-                // width: "240px",
-                // height: "240px",
-                width: "138px", 
+                width: "138px",
                 height: "182px",
                 cursor: "pointer",
                 mb: "29px",

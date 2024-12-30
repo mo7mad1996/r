@@ -18,7 +18,7 @@ import {
   StyledTypography,
 } from "../../components/FormElements";
 
-const  RegisterNumber = ({ changeForm }) => {
+const RegisterNumber = ({ changeForm }) => {
   return (
     <>
       <SectionTitle sectionTitle={{ main: "ما هو رقم هاتفك ؟" }} />
@@ -62,7 +62,7 @@ const  RegisterNumber = ({ changeForm }) => {
           ></StyledTextField>
         </FormItem>
         <FormItem>
-          <StyledTypography>رقم الهاتف</StyledTypography>
+          <StyledTypography>{t("Phone Number")}</StyledTypography>
           <StyledTextField></StyledTextField>
         </FormItem>
       </Stack>

@@ -6,11 +6,14 @@ import { Box } from "@mui/material";
 import ProductsSection from "@/sections/common/Products/ProductsSection";
 import SectionTitle from "@/sections/common/Products/SectionTitle";
 import ProductsSidebar from "@/sections/common/Products/ProductsSidebar";
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 // component
 const NewProductsPage = () => {
   // config
   const api = useApi();
+  const { t } = useTranslation();
 
   // data
   const [products, setProducts] = useState([]);
@@ -47,7 +50,10 @@ const NewProductsPage = () => {
   return (
     <Box>
       <SectionTitle
-        sectionTitle={{ main: "أحدث المنتجات", second: "جميع المنتجات" }}
+        sectionTitle={{
+          main: t("The latest products"),
+          second: "جميع المنتجات",
+        }}
       />
       <Box
         sx={{

@@ -61,7 +61,7 @@ const items = [
   },
   {
     id: 5,
-    title: "إعلانات چوملا",
+    title: "Joumla ads",
     link: "/admin/dashboard/ads",
     img: adsImg,
   },
@@ -73,13 +73,13 @@ const items = [
   },
   {
     id: 7,
-    title: "الأقسام",
+    title: "Categories",
     link: "/admin/dashboard/sections",
     img: sectionsImg,
   },
   {
     id: 8,
-    title: "حسابي",
+    title: "my account",
     link: "/admin/dashboard/",
     img: accountImg,
   },
@@ -109,7 +109,7 @@ const items = [
   },
   {
     id: 13,
-    title: "مركز الدعم",
+    title: "Support Center",
     link: "/admin/dashboard/",
     img: supportImg,
   },

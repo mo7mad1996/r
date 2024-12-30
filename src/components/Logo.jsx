@@ -2,6 +2,8 @@ import { Typography, styled } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+import { Trans } from "react-i18next";
+
 const LogoBox = styled(Typography)(({ theme, secondary }) => ({
   fontSize: "2em",
   fontWeight: 800,
@@ -20,7 +22,9 @@ const Logo = ({ secondary }) => {
 
   return (
     <LogoBox onClick={() => navigate("/")} secondary={secondary}>
-      <LogoSpan>چ</LogoSpan>وملا
+      <Trans i18nKey="logo.text">
+        <LogoSpan>چ</LogoSpan>وملا
+      </Trans>
     </LogoBox>
   );
 };

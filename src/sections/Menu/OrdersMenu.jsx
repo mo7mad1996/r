@@ -97,7 +97,7 @@ const OrdersMenu = ({ items }) => {
                 }}
                 onClick={() => {
                   if (item.link === "/signout") {
-                    setMessage("هل ترغب حقا في تسجيل الخروج");
+                    setMessage(t("Do you really want to log out?"));
                     handleOpen();
                     return;
                   }

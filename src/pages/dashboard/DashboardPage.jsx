@@ -22,20 +22,24 @@ import SignOutIcon from "../../assets/Seller/SellerDashboard_Icon/Logout.svg";
 
 const items = [
   { name: "الطلبات", link: "/dashboard/orders", icon: orderIcon },
-  { name: "المنتجات", link: "/dashboard/products",icon:ProductsIcon },
-  { name: "المراجعات", link: "/dashboard/products/reviews",icon:ReviewsIcon },
-  { name: "مناطق الشحن", link: "/dashboard/delivery",icon:ShippingIcon },
-  { name: "متجري", link: "/dashboard/store",icon:MyStoreIcon },
-  { name: "إضافة منتج جديد", link: "/dashboard/products/add",icon: AddnewProductsIcon },
-  { name: "حسابي", link: "/dashboard/account",icon:MyAccountIcon },
-  { name: "مستحقاتي", link: "/dashboard/dues",icon:MyFundsIcon },
-  { name: "التقارير", link: "/dashboard/reports",icon:ReportsIcon },
-  { name: "محفظتي", link: "/wallet",icon:MyWAlletIcon },
-  { name: "الأشعارات", link: "/notifications",icon:NotificationsIcon },
-  { name: "الدعم", link: "/support",icon:SupportIcon },
-  { name: "نشرة چوملا", link: "/goomla-news",icon:NewsIcon },
-  { name: "طلبات السحب", link: "/dashboard/withdraw",icon:WithdrawIcon },
-  { name: "تسجيل الخروج", link: "",icon:SignOutIcon },
+  { name: "المنتجات", link: "/dashboard/products", icon: ProductsIcon },
+  { name: "المراجعات", link: "/dashboard/products/reviews", icon: ReviewsIcon },
+  { name: "مناطق الشحن", link: "/dashboard/delivery", icon: ShippingIcon },
+  { name: "متجري", link: "/dashboard/store", icon: MyStoreIcon },
+  {
+    name: "إضافة منتج جديد",
+    link: "/dashboard/products/add",
+    icon: AddnewProductsIcon,
+  },
+  { name: "my account", link: "/dashboard/account", icon: MyAccountIcon },
+  { name: "مستحقاتي", link: "/dashboard/dues", icon: MyFundsIcon },
+  { name: "التقارير", link: "/dashboard/reports", icon: ReportsIcon },
+  { name: "محفظتي", link: "/wallet", icon: MyWAlletIcon },
+  { name: "الأشعارات", link: "/notifications", icon: NotificationsIcon },
+  { name: "Support", link: "/support", icon: SupportIcon },
+  { name: "نشرة چوملا", link: "/goomla-news", icon: NewsIcon },
+  { name: "طلبات السحب", link: "/dashboard/withdraw", icon: WithdrawIcon },
+  { name: "logout", link: "", icon: SignOutIcon },
 ];
 const DashboardPage = () => {
   return (

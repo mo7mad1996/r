@@ -24,6 +24,7 @@ import SectionTitle from "../common/Products/SectionTitle";
 import faceImage from "../../assets/login/face.png";
 import googleImage from "../../assets/login/google.png";
 import { Context } from "../../components/Context/Context";
+import { useTranslation } from "react-i18next";
 
 const StyledBox = styled(Box)(({ theme }) => ({
   backgroundColor: "#F6F6F6",
@@ -59,6 +60,7 @@ const StyledLink = styled(Link)(({ theme }) => ({
 
 const Login = ({ seller = false }) => {
   let navigate = useNavigate();
+  const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
   let { setUser, baseUrl } = useContext(Context);
   const [error, setError] = useState(null);
@@ -96,14 +98,14 @@ const Login = ({ seller = false }) => {
     },
     validationSchema: Yup.object({
       username: Yup.string()
-        .required("البريد الإلكتروني أو رقم الهاتف مطلوب")
+        .required(t("Email Address or Phone Number") + t("Required"))
         .matches(
           /^(\d{10}|\S+@\S+\.\S+)$/,
           "أدخل رقم هاتف صحيح أو بريد إلكتروني صالح"
         ),
       password: Yup.string()
         .min(8, "يجب أن تكون كلمة المرور مكونة من 8 أحرف على الأقل")
-        .required("كلمة المرور مطلوبة"),
+        .required(t("Password") + t("Is Required"),
     }),
     onSubmit: async (values) => {
       try {
@@ -164,7 +166,9 @@ const Login = ({ seller = false }) => {
           }}
         >
           <FormItem sx={{ gap: { lg: "54px" } }}>
-            <StyledTypography>البريد الألكترونى أو رقم الهاتف</StyledTypography>
+            <StyledTypography>
+              {t("Email Address or Phone Number")}
+            </StyledTypography>
             <StyledTextField
               name="username"
               value={formik.values.username}
@@ -175,7 +179,7 @@ const Login = ({ seller = false }) => {
             />
           </FormItem>
           <FormItem sx={{ gap: { lg: "54px" } }}>
-            <StyledTypography>كلمة المرور</StyledTypography>
+            <StyledTypography>{t("Password")}</StyledTypography>
             <StyledTextField
               name="password"
               type={showPassword ? "text" : "password"}
@@ -210,7 +214,7 @@ const Login = ({ seller = false }) => {
               color: "colors.darkIcons",
             }}
           >
-            نسيت كلمة المرور
+            {t("Forgot Password")}
           </StyledLink>
         </Stack>
         <Box
@@ -235,9 +239,11 @@ const Login = ({ seller = false }) => {
               gap: "5px",
             }}
           >
-            ليس لدى حساب
+            {t("I don't have an account")}{" "}
             {!seller && (
-              <StyledLink to={"/signup"}>إنشاء حساب جديد </StyledLink>
+              <StyledLink to={"/signup"}>
+                {t("Create a New Account")}
+              </StyledLink>
             )}
             {seller && (
               <StyledLink to={"/signup-seller"}>

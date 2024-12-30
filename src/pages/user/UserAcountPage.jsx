@@ -14,23 +14,27 @@ import AboutUs from "../../assets/MyAccountUser_Icons/AboutUs.svg";
 import TermsNConditions from "../../assets/MyAccountUser_Icons/Terms&Conditions.svg";
 import SignOut from "../../assets/MyAccountUser_Icons/Logout.svg";
 const items = [
-  { name: "الطلبات", link: "/user/orders",icon:Orders },
-  { name: "الأشعارات", link: "/user/notifications",icon:Notifications },
-  { name: "محفظة چوملا", link: "/user/wallet",icon:Wallet },
-  { name: "كوبونات الخصم", link: "/discount",icon:Copons },
-  { name: "الملف الشخصي", link: "/user/profile",icon:MyProfile },
-  { name: "العناوين", link: "/user/address",icon:addresses },
-  { name: "الدعم وخدمة العملاء", link: "/support",icon:Support },
-  { name: "النشرة البريدية", link: "/mail-news",icon:MailPosts },
-  { name: "نشرة چوملا", link: "/goomla-news",icon:JoumlaPosts },
-  { name: "نبذة عن الموقع", link: "/about",icon:AboutUs },
-  { name: "الشروط والأحكام", link: "/terms-and-conditions",icon:TermsNConditions },
-  { name: "تسجيل الخروج", link: "/signout",icon:SignOut },
+  { name: "الطلبات", link: "/user/orders", icon: Orders },
+  { name: "الأشعارات", link: "/user/notifications", icon: Notifications },
+  { name: "محفظة چوملا", link: "/user/wallet", icon: Wallet },
+  { name: "كوبونات الخصم", link: "/discount", icon: Copons },
+  { name: "الملف الشخصي", link: "/user/profile", icon: MyProfile },
+  { name: "Addresses", link: "/user/address", icon: addresses },
+  { name: "Support and Customer Service", link: "/support", icon: Support },
+  { name: "النشرة البريدية", link: "/mail-news", icon: MailPosts },
+  { name: "نشرة چوملا", link: "/goomla-news", icon: JoumlaPosts },
+  { name: "نبذة عن الموقع", link: "/about", icon: AboutUs },
+  {
+    name: "الشروط والأحكام",
+    link: "/terms-and-conditions",
+    icon: TermsNConditions,
+  },
+  { name: "logout", link: "/signout", icon: SignOut },
 ];
 const UserAcountPage = () => {
   return (
     <>
-      <SectionTitle sectionTitle={{ main: "حسابي" }} />
+      <SectionTitle sectionTitle={{ main: "my account" }} />
       <Menu items={items} />
     </>
   );

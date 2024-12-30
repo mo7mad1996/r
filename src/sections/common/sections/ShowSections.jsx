@@ -10,14 +10,16 @@ import {
   Typography,
 } from "@mui/material";
 
-import SectionTitle from "../../../sections/common/Products/SectionTitle";
-import { sections } from "../../../utils/sections";
-import UsePagination from "../../../hooks/UsePagination";
-import usePaginate from "../../../hooks/usePaginate";
-import Search from "../../../sections/common/Search";
-import { Context } from "../../../components/Context/Context";
+import SectionTitle from "~/sections/common/Products/SectionTitle";
+import { sections } from "~/utils/sections";
+import UsePagination from "~/hooks/UsePagination";
+import usePaginate from "~/hooks/usePaginate";
+import Search from "~/sections/common/Search";
+import { Context } from "~/components/Context/Context";
+import { useTranslation } from "react-i18next";
 
 const ShowSections = () => {
+  const { t } = useTranslation();
   const { allCategories } = useContext(Context);
   let [categories, setCategories] = useState([]);
 
@@ -76,7 +78,7 @@ const ShowSections = () => {
             color: "colors.mainBlack",
           }}
         >
-          الصفحات
+          {t("Pages")}
           <Select
             value={page}
             onChange={handleChange}

@@ -105,7 +105,7 @@ const DeletePopup = ({ handleClose, refused }) => {
               }}
               onClick={() => setShowSuccess(true)}
             >
-              نعم
+              {t("yes")}
             </Button>
             <Button
               variant="contained"
@@ -117,7 +117,7 @@ const DeletePopup = ({ handleClose, refused }) => {
               }}
               onClick={handleClose}
             >
-              لا
+              {t("no")}
             </Button>
           </Box>
         </>

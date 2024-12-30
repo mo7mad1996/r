@@ -2,10 +2,11 @@ import React from "react";
 import SectionTitle from "../sections/common/Products/SectionTitle";
 import { Box, Paper, Stack, Typography, styled } from "@mui/material";
 import ChatButton from "../components/LiveChat";
+import { useTranslation } from "react-i18next";
 const items = [
   { name: "المتجر", link: "/store" },
-  { name: "بائعين چوملا (المتاجر)", link: "/sellers" },
-  { name: "أحدث المنتجات", link: "/new-products" },
+  { name: "Joumla Vendors (Stores)", link: "/sellers" },
+  { name: "The latest products", link: "/new-products" },
   { name: "أفضل العروض والخصومات", link: "/best-sale" },
 ];
 const StyledBox = styled(Paper)(({ theme }) => ({
@@ -25,9 +26,10 @@ const StyledBox = styled(Paper)(({ theme }) => ({
   cursor: "pointer",
 }));
 const SupportPage = () => {
+  const { t } = useTranslation();
   return (
     <>
-      <SectionTitle sectionTitle={{ main: "الدعم" }} />
+      <SectionTitle sectionTitle={{ main: "Support" }} />
       <Stack
         sx={{
           gap: "26px",
@@ -40,8 +42,8 @@ const SupportPage = () => {
           },
         }}
       >
-        <Typography>هل لديك اسئلة ؟</Typography>
-        <Typography>تواصل مع مركز خدمة العملاء</Typography>
+        <Typography>{t("Do you have any questions?")}</Typography>
+        <Typography>{t("Contact the Customer Service Center")}</Typography>
       </Stack>
       <Box
         sx={{
@@ -51,15 +53,9 @@ const SupportPage = () => {
           mb: "112px",
         }}
       >
-        <StyledBox sx={{}} onClick={() => {}}>
-          المحادثة الفورية
-        </StyledBox>
-        <StyledBox sx={{}} onClick={() => {}}>
-          الواتس آب
-        </StyledBox>
-        <StyledBox sx={{}} onClick={() => {}}>
-          البريد الإليكتروني
-        </StyledBox>
+        <StyledBox>{t("Live Chat")}</StyledBox>
+        <StyledBox>الواتس آب</StyledBox>
+        <StyledBox>البريد الإليكتروني</StyledBox>
       </Box>
       <ChatButton />
     </>

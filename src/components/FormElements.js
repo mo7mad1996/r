@@ -30,12 +30,12 @@ export const StyledTypography = styled(Typography)(({ theme }) => ({
   color: "#000000",
   marginBottom: "30px",
   [theme.breakpoints.up("lg")]: {
-    position: "absolute",
+    // position: "absolute",
     width: "400px",
-    textAlign: "end",
+    textAlign: "start",
     top: "50%",
     transform: "translateY(-50%)",
-    right: "-415px",
+    // right: "-415px",
     marginBottom: "0px",
   },
   [theme.breakpoints.between(1200, 1360)]: {

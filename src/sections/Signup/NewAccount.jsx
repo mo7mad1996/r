@@ -18,8 +18,10 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 const NewAccount = ({ changeForm }) => {
+  const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -46,35 +48,43 @@ const NewAccount = ({ changeForm }) => {
       apartment_number: "",
     },
     validationSchema: Yup.object({
-      name: Yup.string().required("الاسم مطلوب"),
+      name: Yup.string().required("الاسم " + t("Required")),
       email: Yup.string()
         .email("البريد الإلكتروني غير صحيح")
-        .required("البريد الإلكتروني مطلوب"),
-      phone: Yup.string().required("رقم الهاتف مطلوب"),
+        .required(t("Email") + t("Required")),
+      phone: Yup.string().required(t("Phone Number") + +t("Required")),
       password: Yup.string()
         .min(6, "يجب أن تكون كلمة المرور 6 أحرف على الأقل")
-        .required("كلمة المرور مطلوبة"),
+        .required(t("Password") + t("Is Required")),
       password_confirmation: Yup.string()
-        .oneOf([Yup.ref("password"), null], "تأكيد كلمة المرور غير متطابق")
-        .required("تأكيد كلمة المرور مطلوب"),
-      second_name: Yup.string().required("اسم الأب مطلوب"),
-      family_name: Yup.string().required("اسم الجد أو اللقب مطلوب"),
-      date_of_birth: Yup.date().required("تاريخ الميلاد مطلوب"),
-      governorate: Yup.string().required("المحافظة مطلوبة"),
-      city: Yup.string().required("المدينة مطلوبة"),
-      street_name: Yup.string().required("اسم الشارع مطلوب"),
-      residence_number: Yup.string().required("رقم العقار مطلوب"),
-      apartment_number: Yup.string().required("رقم الشقة مطلوب"),
+        .oneOf(
+          [Yup.ref("password"), null],
+          t("Confirm Password") + "   غير متطابق"
+        )
+        .required(t("Confirm Password") + t("Is Required")),
+      second_name: Yup.string().required(t("Father's Name") + t("Required")),
+      family_name: Yup.string().required("اسم الجد أو اللقب " + t("Required")),
+      date_of_birth: Yup.date().required("تاريخ الميلاد " + t("Required")),
+      governorate: Yup.string().required(t("Governorate") + t("Is Required")),
+      city: Yup.string().required(t("City") + t("Is Required")),
+      street_name: Yup.string().required(t("Street Name") + t("Required")),
+      residence_number: Yup.string().required("رقم العقار " + t("Required")),
+      apartment_number: Yup.string().required(
+        t("Apartment Number") + t("Required")
+      ),
     }),
     onSubmit: async (values) => {
       try {
         const response = await axios.post(
-          "https://joumla.store/api/v1/user/register",
+          "https://Joumla.store/api/v1/user/register",
           values
         );
-        changeForm(1); // الانتقال إلى الخطوة التالية
+        changeForm(1);
       } catch (error) {
-        console.error("خطأ أثناء التسجيل:", error.response?.data || error.message);
+        console.error(
+          "خطأ أثناء التسجيل:",
+          error.response?.data || error.message
+        );
       }
     },
   });
@@ -82,7 +92,7 @@ const NewAccount = ({ changeForm }) => {
   return (
     <>
       <Box sx={{ mb: "100px" }}>
-        <SectionTitle sectionTitle={{ main: "إنشاء حساب جديد" }} />
+        <SectionTitle sectionTitle={{ main: "Create a New Account" }} />
         <form onSubmit={formik.handleSubmit}>
           <Stack
             sx={{
@@ -95,7 +105,7 @@ const NewAccount = ({ changeForm }) => {
             }}
           >
             <FormItem>
-              <StyledTypography>الأسم الأول</StyledTypography>
+              <StyledTypography>{t("First Name")}</StyledTypography>
               <StyledTextField
                 name="name"
                 value={formik.values.name}
@@ -106,29 +116,37 @@ const NewAccount = ({ changeForm }) => {
               />
             </FormItem>
             <FormItem>
-              <StyledTypography>اسم الأب</StyledTypography>
+              <StyledTypography>{t("Father's Name")}</StyledTypography>
               <StyledTextField
                 name="second_name"
                 value={formik.values.second_name}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
-                  formik.touched.second_name && Boolean(formik.errors.second_name)
+                  formik.touched.second_name &&
+                  Boolean(formik.errors.second_name)
                 }
-                helperText={formik.touched.second_name && formik.errors.second_name}
+                helperText={
+                  formik.touched.second_name && formik.errors.second_name
+                }
               />
             </FormItem>
             <FormItem>
-              <StyledTypography>اسم الجد او اللقب</StyledTypography>
+              <StyledTypography>
+                {t("Grandfather's Name or Surname")}
+              </StyledTypography>
               <StyledTextField
                 name="family_name"
                 value={formik.values.family_name}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
-                  formik.touched.family_name && Boolean(formik.errors.family_name)
+                  formik.touched.family_name &&
+                  Boolean(formik.errors.family_name)
                 }
-                helperText={formik.touched.family_name && formik.errors.family_name}
+                helperText={
+                  formik.touched.family_name && formik.errors.family_name
+                }
               />
             </FormItem>
             <FormItem>
@@ -140,7 +158,8 @@ const NewAccount = ({ changeForm }) => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
-                  formik.touched.date_of_birth && Boolean(formik.errors.date_of_birth)
+                  formik.touched.date_of_birth &&
+                  Boolean(formik.errors.date_of_birth)
                 }
                 helperText={
                   formik.touched.date_of_birth && formik.errors.date_of_birth
@@ -148,20 +167,23 @@ const NewAccount = ({ changeForm }) => {
               />
             </FormItem>
             <FormItem>
-              <StyledTypography>المحافظة</StyledTypography>
+              <StyledTypography>{t("Governorate")}</StyledTypography>
               <StyledTextField
                 name="governorate"
                 value={formik.values.governorate}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
-                  formik.touched.governorate && Boolean(formik.errors.governorate)
+                  formik.touched.governorate &&
+                  Boolean(formik.errors.governorate)
                 }
-                helperText={formik.touched.governorate && formik.errors.governorate}
+                helperText={
+                  formik.touched.governorate && formik.errors.governorate
+                }
               />
             </FormItem>
             <FormItem>
-              <StyledTypography>المدينة</StyledTypography>
+              <StyledTypography>{t("City")}</StyledTypography>
               <StyledTextField
                 name="city"
                 value={formik.values.city}
@@ -172,20 +194,25 @@ const NewAccount = ({ changeForm }) => {
               />
             </FormItem>
             <FormItem>
-              <StyledTypography>اسم الشارع</StyledTypography>
+              <StyledTypography>{t("Street Name")}</StyledTypography>
               <StyledTextField
                 name="street_name"
                 value={formik.values.street_name}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
-                  formik.touched.street_name && Boolean(formik.errors.street_name)
+                  formik.touched.street_name &&
+                  Boolean(formik.errors.street_name)
                 }
-                helperText={formik.touched.street_name && formik.errors.street_name}
+                helperText={
+                  formik.touched.street_name && formik.errors.street_name
+                }
               />
             </FormItem>
             <FormItem>
-              <StyledTypography>رقم العقار او اسم العقار</StyledTypography>
+              <StyledTypography>
+                {t("Building Number or Name")}
+              </StyledTypography>
               <StyledTextField
                 name="residence_number"
                 value={formik.values.residence_number}
@@ -196,12 +223,13 @@ const NewAccount = ({ changeForm }) => {
                   Boolean(formik.errors.residence_number)
                 }
                 helperText={
-                  formik.touched.residence_number && formik.errors.residence_number
+                  formik.touched.residence_number &&
+                  formik.errors.residence_number
                 }
               />
             </FormItem>
             <FormItem>
-              <StyledTypography>رقم الشقة</StyledTypography>
+              <StyledTypography>{t("Apartment Number")}</StyledTypography>
               <StyledTextField
                 name="apartment_number"
                 value={formik.values.apartment_number}
@@ -212,12 +240,13 @@ const NewAccount = ({ changeForm }) => {
                   Boolean(formik.errors.apartment_number)
                 }
                 helperText={
-                  formik.touched.apartment_number && formik.errors.apartment_number
+                  formik.touched.apartment_number &&
+                  formik.errors.apartment_number
                 }
               />
             </FormItem>
             <FormItem>
-              <StyledTypography>رقم الهاتف</StyledTypography>
+              <StyledTypography>{t("Phone Number")}</StyledTypography>
               <StyledTextField
                 name="phone"
                 value={formik.values.phone}
@@ -228,7 +257,7 @@ const NewAccount = ({ changeForm }) => {
               />
             </FormItem>
             <FormItem>
-              <StyledTypography>البريد الألكتروني</StyledTypography>
+              <StyledTypography>{t("Email")}</StyledTypography>
               <StyledTextField
                 name="email"
                 value={formik.values.email}
@@ -239,14 +268,16 @@ const NewAccount = ({ changeForm }) => {
               />
             </FormItem>
             <FormItem>
-              <StyledTypography>كلمة المرور</StyledTypography>
+              <StyledTypography>{t("Password")}</StyledTypography>
               <StyledTextField
                 name="password"
                 type={showPassword ? "text" : "password"}
                 value={formik.values.password}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                error={formik.touched.password && Boolean(formik.errors.password)}
+                error={
+                  formik.touched.password && Boolean(formik.errors.password)
+                }
                 helperText={formik.touched.password && formik.errors.password}
                 InputProps={{
                   endAdornment: (
@@ -264,7 +295,7 @@ const NewAccount = ({ changeForm }) => {
               />
             </FormItem>
             <FormItem>
-              <StyledTypography>تأكيد كلمة المرور</StyledTypography>
+              <StyledTypography>{t("Confirm Password")}</StyledTypography>
               <StyledTextField
                 name="password_confirmation"
                 type={showPassword ? "text" : "password"}

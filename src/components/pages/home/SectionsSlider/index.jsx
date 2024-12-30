@@ -49,7 +49,7 @@ const ArrowBox = styled(Box)(({ theme }) => ({
     fontSize: "75px",
     color: theme.palette.colors.wi8,
   },
-  zIndex: 1500,
+  zIndex: 1,
   cursor: "pointer",
 }));
 
@@ -115,7 +115,7 @@ function Slider({ items }) {
       <Box
         sx={{
           position: "relative",
-          zIndex: 1100,
+          zIndex: 1,
         }}
       >
         <Swiper

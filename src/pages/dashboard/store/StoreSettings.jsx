@@ -136,7 +136,7 @@ const StoreSettings = () => {
             <StyledInput defaultValue="56165465165051"></StyledInput>
           </StyledBox>
           <StyledBox>
-            <StyledLabel>رقم الهاتف</StyledLabel>
+            <StyledLabel>{t("Phone Number")}</StyledLabel>
             <StyledInput defaultValue="01234567389"></StyledInput>
           </StyledBox>
         </Stack>

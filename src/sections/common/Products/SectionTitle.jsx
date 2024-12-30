@@ -1,5 +1,6 @@
 import { Stack, Typography, styled } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const StyledTypo = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
@@ -12,21 +13,22 @@ const StyledTypo = styled(Typography)(({ theme }) => ({
   textWrap: "wrap",
 }));
 const SectionTitle = ({ sectionTitle }) => {
+  const { t } = useTranslation();
+
   return (
     <Stack
-      
       display={"flex"}
       alignItems={"center"}
       sx={{ mt: "56px", mb: "133px", minHeight: "90px" }}
     >
-      <StyledTypo>{sectionTitle.main}</StyledTypo>
+      <StyledTypo>{t(sectionTitle.main)}</StyledTypo>
       {sectionTitle.second && (
         <StyledTypo
           sx={{
             color: "colors.greyStrock",
           }}
         >
-          ({sectionTitle.second})
+          ({t(sectionTitle.second)})
         </StyledTypo>
       )}
     </Stack>

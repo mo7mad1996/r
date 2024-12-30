@@ -7,6 +7,7 @@ import Spinner from "@/components/Spinner";
 
 // utils
 import UsePagination from "@/hooks/UsePagination";
+import { useTranslation } from "react-i18next";
 
 // component
 const ProductsSection = ({
@@ -18,6 +19,8 @@ const ProductsSection = ({
   page = 1,
   setPage,
 }) => {
+
+  const {t} = useTranslation()
   const handleChange = (event) => {
     setPage(event.target.value);
   };
@@ -38,7 +41,7 @@ const ProductsSection = ({
             color: "colors.mainBlack",
           }}
         >
-          الصفحات
+          {t("Pages")}
           <Select
             value={page}
             onChange={handleChange}

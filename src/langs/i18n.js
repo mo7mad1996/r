@@ -12,8 +12,8 @@ i18n
       EN: { translation: en },
       AR: { translation: ar },
     },
-    lng: localStorage.getItem("lang") || "EN",
-    fallbackLng: "EN",
+    lng: JSON.parse(localStorage.getItem("lang")) || "EN",
+    fallbackLng: JSON.parse(localStorage.getItem("lang")) || "EN",
     interpolation: {
       escapeValue: false,
     },

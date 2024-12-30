@@ -1098,14 +1098,14 @@ function Support() {
             mb: "54px",
           }}
         >
-          الدعم
+          {t("Support")}
         </Typography>
         <SupportBox>
           <ChatOutlined />
           <Typography
             sx={{ fontWeight: "800", fontSize: "18px", lineHeight: "20.09px" }}
           >
-            المحادثة الفورية
+            {t("Live Chat")}
           </Typography>
         </SupportBox>
         <SupportBox mt="21px">
@@ -1113,7 +1113,7 @@ function Support() {
           <Typography
             sx={{ fontWeight: "800", fontSize: "18px", lineHeight: "20.09px" }}
           >
-            البريد الألكتروني
+            {t("Email")}
           </Typography>
         </SupportBox>
         <Stack

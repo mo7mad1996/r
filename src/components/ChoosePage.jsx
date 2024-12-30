@@ -1,7 +1,9 @@
 import { Box, MenuItem, Select } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const ChoosePage = ({ page, handleChange, totalPages, admin = false }) => {
+  const { t } = useTranslation();
   return (
     <Box
       sx={{
@@ -14,7 +16,7 @@ const ChoosePage = ({ page, handleChange, totalPages, admin = false }) => {
         color: "colors.mainBlack",
       }}
     >
-      الصفحات
+      {t("Pages")}
       <Select
         value={page}
         onChange={handleChange}

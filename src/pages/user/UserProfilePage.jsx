@@ -8,6 +8,7 @@ import {
   StyledTypography,
 } from "@/components/FormElements";
 import axios from "axios";
+import { t } from "i18next";
 
 const UserProfilePage = () => {
   const [userData, setUserData] = useState({
@@ -27,7 +28,7 @@ const UserProfilePage = () => {
   const [isVerified, setIsVerified] = useState(false);
 
   const fetchUserProfile = async () => {
-    const API_URL = `https://joumla.store/api/v1/user/profile/show/${localStorage.getItem(
+    const API_URL = `https://Joumla.store/api/v1/user/profile/show/${localStorage.getItem(
       "userId"
     )}`;
     const token = localStorage.getItem("token");
@@ -68,7 +69,7 @@ const UserProfilePage = () => {
   };
 
   const updateUserProfile = async () => {
-    const API_URL = `https://joumla.store/api/v1/user/profile/update/${localStorage.getItem(
+    const API_URL = `https://Joumla.store/api/v1/user/profile/update/${localStorage.getItem(
       "userId"
     )}`;
     const token = localStorage.getItem("token");
@@ -147,28 +148,30 @@ const UserProfilePage = () => {
         }}
       >
         <FormItem>
-          <StyledTypography>الأسم الأول</StyledTypography>
+          <StyledTypography>{t("First Name")}</StyledTypography>
           <StyledTextField
             value={userData.name}
             onChange={(e) => handleInputChange("name", e.target.value)}
           />
         </FormItem>
         <FormItem>
-          <StyledTypography>اسم الأب</StyledTypography>
+          <StyledTypography>{t("Father's Name")}</StyledTypography>
           <StyledTextField
             value={userData.second_name}
             onChange={(e) => handleInputChange("second_name", e.target.value)}
           />
         </FormItem>
         <FormItem>
-          <StyledTypography>اسم الجد او اللقب</StyledTypography>
+          <StyledTypography>
+            {t("Grandfather's Name or Surname")}
+          </StyledTypography>
           <StyledTextField
             value={userData.family_name}
             onChange={(e) => handleInputChange("family_name", e.target.value)}
           />
         </FormItem>
         <FormItem>
-          <StyledTypography>رقم الهاتف</StyledTypography>
+          <StyledTypography>{t("Phone Number")}</StyledTypography>
           <StyledTextField
             value={userData.phone}
             onChange={(e) => handleInputChange("phone", e.target.value)}
@@ -187,21 +190,21 @@ const UserProfilePage = () => {
           />
         </FormItem>
         <FormItem>
-          <StyledTypography>المحافظة</StyledTypography>
+          <StyledTypography>{t("Governorate")}</StyledTypography>
           <StyledTextField
             value={userData.governorate}
             onChange={(e) => handleInputChange("governorate", e.target.value)}
           />
         </FormItem>
         <FormItem>
-          <StyledTypography>المدينة</StyledTypography>
+          <StyledTypography>{t("City")}</StyledTypography>
           <StyledTextField
             value={userData.city}
             onChange={(e) => handleInputChange("city", e.target.value)}
           />
         </FormItem>
         <FormItem>
-          <StyledTypography>اسم الشارع</StyledTypography>
+          <StyledTypography>{t("Street Name")}</StyledTypography>
           <StyledTextField
             value={userData.street_name}
             onChange={(e) => handleInputChange("street_name", e.target.value)}
@@ -217,7 +220,7 @@ const UserProfilePage = () => {
           />
         </FormItem>
         <FormItem>
-          <StyledTypography>رقم الشقة</StyledTypography>
+          <StyledTypography>{t("Apartment Number")}</StyledTypography>
           <StyledTextField
             value={userData.apartment_number}
             onChange={(e) =>

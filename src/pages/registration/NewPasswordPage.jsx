@@ -56,7 +56,7 @@ const NewPasswordPage = () => {
         }}
       >
         <FormItem sx={{ justifyContent: "space-between", gap: { lg: "54px" } }}>
-          <Typo>البريد الألكترونى أو رقم الهاتف</Typo>
+          <Typo>{t("Email Address or Phone Number")}</Typo>
           <StyledTextField></StyledTextField>
         </FormItem>
         <FormItem sx={{ justifyContent: "space-between", gap: { lg: "54px" } }}>
@@ -80,7 +80,7 @@ const NewPasswordPage = () => {
           ></StyledTextField>
         </FormItem>
         <FormItem sx={{ justifyContent: "space-between", gap: { lg: "54px" } }}>
-          <Typo>تأكيد كلمة المرور الجديدة</Typo>
+          <Typo>{t("Confirm Password")}</Typo>
           <StyledTextField
             type={showPasswordConfirm ? "text" : "password"}
             InputProps={{
