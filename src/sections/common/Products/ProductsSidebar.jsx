@@ -81,10 +81,10 @@ const CustomCheckbox = styled("input")(({ theme }) => ({
 }));
 
 const ProductsSidebar = () => {
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const [showAll, setShowAll] = useState(false);
 
-  const items = ["فلتر 1", "فلتر 2", "فلتر 3", "فلتر 4", "فلتر 5"]; // Example items
+  const items = Array(13).fill("Filter");
 
   return (
     <SideBar>
@@ -92,11 +92,11 @@ const ProductsSidebar = () => {
 
       {/* Existing filters */}
       {[
-        "الأعلى تقيماً",
-        "الأعلى سعراً",
-        "أحدث سعراً",
-        "أفضل العروض",
-        "الأكثر مبيعاً",
+        "Highest Rated",
+        "Highest Price",
+        "Newest Price",
+        "Best Offers",
+        "Best Sellers",
       ].map((label, index) => (
         <StyledListItem key={index}>
           <label
@@ -117,7 +117,7 @@ const ProductsSidebar = () => {
                 textDecoration: "none",
               }}
             >
-              {label}
+              {t(label)}
             </Link>
           </label>
         </StyledListItem>
@@ -130,7 +130,7 @@ const ProductsSidebar = () => {
         </h3>
         <Stack gap={2} justifyContent={"center"} alignItems={"center"}>
           {/* Display the first 3 items */}
-          {items.slice(0, 3).map((item, index) => (
+          {items.map((item, index) => (
             <StyledListItem key={index}>
               <label
                 style={{
@@ -150,7 +150,7 @@ const ProductsSidebar = () => {
                     textDecoration: "none",
                   }}
                 >
-                  {item}
+                  {t(item)} {index}
                 </Link>
               </label>
             </StyledListItem>
@@ -178,7 +178,8 @@ const ProductsSidebar = () => {
                       textDecoration: "none",
                     }}
                   >
-                    {item}
+                    {t(item)}
+                    {index}
                   </Link>
                 </label>
               </StyledListItem>
@@ -189,7 +190,7 @@ const ProductsSidebar = () => {
             sx={{ mt: 2, color: "black" }}
             onClick={() => setShowAll(!showAll)}
           >
-            {showAll ? "إخفاء" : "عرض المزيد"}
+            {t(showAll ? "Show Less" : "Show More")}
           </Button>
         </Stack>
       </Box>
@@ -220,7 +221,7 @@ const ProductsSidebar = () => {
                     textDecoration: "none",
                   }}
                 >
-                  {item}
+                  {t(item)} {index}
                 </Link>
               </label>
             </StyledListItem>
@@ -248,7 +249,7 @@ const ProductsSidebar = () => {
                       textDecoration: "none",
                     }}
                   >
-                    {item}
+                    {item} {index}
                   </Link>
                 </label>
               </StyledListItem>
@@ -259,7 +260,7 @@ const ProductsSidebar = () => {
             sx={{ mt: 2, color: "black" }}
             onClick={() => setShowAll(!showAll)}
           >
-            {showAll ? "إخفاء" : "عرض المزيد"}
+            {t(showAll ? "Show Less" : "Show More")}
           </Button>
         </Stack>
       </Box>
@@ -290,7 +291,7 @@ const ProductsSidebar = () => {
                     textDecoration: "none",
                   }}
                 >
-                  {item}
+                  {item} {index}
                 </Link>
               </label>
             </StyledListItem>
@@ -318,7 +319,7 @@ const ProductsSidebar = () => {
                       textDecoration: "none",
                     }}
                   >
-                    {item}
+                    {item} {index}
                   </Link>
                 </label>
               </StyledListItem>
@@ -329,23 +330,23 @@ const ProductsSidebar = () => {
             sx={{ mt: 2, color: "black" }}
             onClick={() => setShowAll(!showAll)}
           >
-            {showAll ? "إخفاء" : "عرض المزيد"}
+            {t(showAll ? "Show Less" : "Show More")}
           </Button>
         </Stack>
       </Box>
       <Box display={"flex"} justifyContent={"center"} alignItems={"right"}>
-        <h3 style={{ fontWeight: "bold", textAlign: "right" }}> المقاسات </h3>
+        <h3 style={{ fontWeight: "bold", textAlign: "right" }}>
+          {" "}
+          {t("Sizes")}{" "}
+        </h3>
       </Box>
       <Box
         sx={{
           display: "flex",
-          // flexDirection: "column", // Stack items in a column
           flexWrap: "wrap",
-          gap: "20px", // Optional gap between items
-          // pl: "66px", // Add padding as required
+          gap: "20px",
           justifyContent: "center",
           alignItems: "center",
-          // backgroundColor: "red",
         }}
       >
         <Box

@@ -21,8 +21,8 @@ import WithdrawIcon from "../../assets/Seller/SellerDashboard_Icon/FundsOrder.sv
 import SignOutIcon from "../../assets/Seller/SellerDashboard_Icon/Logout.svg";
 
 const items = [
-  { name: "الطلبات", link: "/dashboard/orders", icon: orderIcon },
-  { name: "المنتجات", link: "/dashboard/products", icon: ProductsIcon },
+  { name: "Orders", link: "/dashboard/orders", icon: orderIcon },
+  { name: "Products", link: "/dashboard/products", icon: ProductsIcon },
   { name: "المراجعات", link: "/dashboard/products/reviews", icon: ReviewsIcon },
   { name: "مناطق الشحن", link: "/dashboard/delivery", icon: ShippingIcon },
   { name: "متجري", link: "/dashboard/store", icon: MyStoreIcon },

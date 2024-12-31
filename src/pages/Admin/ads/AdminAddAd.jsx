@@ -21,7 +21,7 @@ const items = [
   {
     id: 1,
     name: "أضف بائع",
-    title: "اسم البائع",
+    title: "Seller Name",
   },
   {
     id: 2,
@@ -97,7 +97,7 @@ const AdminAddAd = () => {
             />
           </Box>
           <UploadButton
-            title="تحميل صورة اعلان جديد"
+            title="Upload a New Advertisement Image"
             overrideStyle={{
               width: "461px",
               height: "92px",
@@ -122,7 +122,7 @@ const AdminAddAd = () => {
                     mt: "18px",
                   }}
                 >
-                  {item.title}{" "}
+                  {t(item.title)}
                 </Typography>
               )}
               {item.id == currentItem && (
@@ -148,7 +148,7 @@ const AdminAddAd = () => {
                     mt: "35px",
                     mb: "72px",
                   }}
-                  defaultValue={item.title}
+                  defaultValue={t(item.title)}
                 ></TextField>
               )}
             </>
@@ -163,12 +163,9 @@ const AdminAddAd = () => {
                 key={item.id}
                 onClick={() => setCurrentItem(item.id)}
               >
-                {item.name}
+                {t(item.name)}
               </StyledButton>
             ))}
-            {/* <StyledButton>أضف قسم</StyledButton> */}
-            {/* <StyledButton>أضف بائع</StyledButton> */}
-            {/* <StyledButton>أضف منتج</StyledButton> */}
           </Stack>
           <Button
             sx={{

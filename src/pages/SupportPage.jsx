@@ -4,10 +4,10 @@ import { Box, Paper, Stack, Typography, styled } from "@mui/material";
 import ChatButton from "../components/LiveChat";
 import { useTranslation } from "react-i18next";
 const items = [
-  { name: "المتجر", link: "/store" },
+  { name: "store", link: "/store" },
   { name: "Joumla Vendors (Stores)", link: "/sellers" },
   { name: "The latest products", link: "/new-products" },
-  { name: "أفضل العروض والخصومات", link: "/best-sale" },
+  { name: "The best offers and discounts", link: "/best-sale" },
 ];
 const StyledBox = styled(Paper)(({ theme }) => ({
   width: "200px",
@@ -54,8 +54,14 @@ const SupportPage = () => {
         }}
       >
         <StyledBox>{t("Live Chat")}</StyledBox>
-        <StyledBox>الواتس آب</StyledBox>
-        <StyledBox>البريد الإليكتروني</StyledBox>
+        <StyledBox>
+          {t("the")}
+          {t("Whatsapp")}
+        </StyledBox>
+        <StyledBox>
+          {t("the")}
+          {t("email")}
+        </StyledBox>
       </Box>
       <ChatButton />
     </>

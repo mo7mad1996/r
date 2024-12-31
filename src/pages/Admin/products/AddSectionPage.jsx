@@ -559,7 +559,7 @@ const AddSectionPage = () => {
                 <MenuItem value={index + 1}>{index + 1}</MenuItem>
               ))}
           </Select>
-          من {totalPages} صفحات{" "}
+          {t('from')} {totalPages} {t("pages")}
         </Box>
       </Box>
       <Typography

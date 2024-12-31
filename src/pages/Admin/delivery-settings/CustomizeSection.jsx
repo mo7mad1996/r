@@ -238,7 +238,7 @@ const CustomizeSection = ({ title }) => {
         </Box>
         <Box>
           <StyledCheckbox> {show && <CheckRounded />}</StyledCheckbox>
-          <Typography>المتاجر</Typography>
+          <Typography>{t("Stores")}</Typography>
         </Box>
       </Stack>
       <Button

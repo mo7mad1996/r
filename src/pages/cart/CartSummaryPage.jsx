@@ -789,7 +789,7 @@ const CartSummaryPage = () => {
                 color: "colors.mainBlack",
               }}
             >
-              كوبونات الخصم
+              {t("Discount Coupons")}
             </Typography>
             <Box sx={{ display: "flex", gap: "90px" }}>
               <TextField

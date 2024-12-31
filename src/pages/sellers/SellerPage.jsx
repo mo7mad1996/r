@@ -9,21 +9,19 @@ import { Context } from "../../components/Context/Context";
 import { useParams } from "react-router-dom";
 
 const SellerPage = () => {
-let params=useParams()
+  let params = useParams();
 
+  let [vendor, setVendor] = useState({});
 
-let [vendor,setVendor]=useState({})
+  let { vendorData } = useContext(Context);
+  async function getVendorInfo(id) {
+    let res = await vendorData(id);
+    setVendor(res?.data?.vendor);
+  }
 
-
-  let {vendorData} = useContext(Context)
-async function getVendorInfo(id){
-  let res= await vendorData(id)
-  setVendor(res?.data?.vendor)
-}
-
-useEffect(()=>{
-  getVendorInfo(params.id)
-},[])
+  useEffect(() => {
+    getVendorInfo(params.id);
+  }, []);
 
   return (
     <>
@@ -109,7 +107,7 @@ useEffect(()=>{
           seller={{
             img: vendor.logo,
             info: vendor.vendor_name,
-            productCount:vendor?.products?.length
+            productCount: vendor?.products?.length,
           }}
         />
         <Typography
@@ -124,11 +122,11 @@ useEffect(()=>{
             mt: "37px",
           }}
         >
-          {t('_____long____text_____')}
+          {t("_____long____text_____")}
         </Typography>
       </Box>
       {/* <SectionTitle
-        sectionTitle={{ main: "المتجر", second: "جميع المنتجات" }}
+        sectionTitle={{ main: "store", second:        "All Products" }}
       /> */}
       <Stack>
         <Box sx={{ display: "flex", gap: "86px", pl: "66px" }}>
@@ -146,7 +144,7 @@ useEffect(()=>{
                 mb: "120px",
               }}
             >
-              (جميع المنتجات)
+              ({t("All Products")})
             </Typography>
             <ProductsSection />
           </Box>

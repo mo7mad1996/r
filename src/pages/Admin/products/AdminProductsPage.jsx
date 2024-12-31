@@ -5,7 +5,7 @@ import logoImg from "../../../assets/dashboard/logo.png";
 import Menu from "../../../sections/Menu/Menu";
 
 const items = [
-  { name: "جميع المنتجات", link: "/admin/dashboard/products/all", num: 500 },
+  { name: "All Products", link: "/admin/dashboard/products/all", num: 500 },
   { name: "اضافة منتج جديد", link: "/admin/dashboard/products/add", num: 100 },
   {
     name: "منتجات في انتظار الموافقة",
@@ -26,7 +26,7 @@ const AdminProductsPage = () => {
         mb: "50px",
       }}
     >
-      <SectionTitle sectionTitle={{ main: "المنتجات" }} />
+      <SectionTitle sectionTitle={{ main:"Products" }} />
       <Stack
         sx={{
           mt: "-70px",

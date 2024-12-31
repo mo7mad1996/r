@@ -7,7 +7,7 @@ import ProductsSidebar from "../../sections/common/Products/ProductsSidebar";
 const BestSalesPage = () => {
   return (
     <Box>
-      <SectionTitle sectionTitle={{ main: "أفضل العروض والخصومات" }} />
+      <SectionTitle sectionTitle={{ main: "The best offers and discounts" }} />
       <Box
         sx={{
           display: "flex",

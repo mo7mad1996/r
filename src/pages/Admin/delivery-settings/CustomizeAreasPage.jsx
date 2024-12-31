@@ -55,7 +55,7 @@ const CustomizeAreas = () => {
             mb: "42px",
           }}
         >
-          البائع (المتجر)
+          {t("Seller")} ({t("store")})
         </StyledTypo>
         <Stack
           sx={{

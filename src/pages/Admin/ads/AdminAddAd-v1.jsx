@@ -7,14 +7,14 @@ import {
   styled,
 } from "@mui/material";
 import React, { useState } from "react";
-import SectionTitle from "../../../sections/common/Products/SectionTitle";
+import SectionTitle from "~/sections/common/Products/SectionTitle";
 
-import adImage from "../../../assets/admin/ads/ad.png";
-import UploadButton from "../../../components/UploadButton";
+import adImage from "~/assets/admin/ads/ad.png";
+import UploadButton from "~/components/UploadButton";
 
 const StyledTextField = styled(TextField)(({ theme, active }) => ({
   height: "60px",
-  borderRadius: "10px",sasd
+  borderRadius: "10px",
   backgroundColor: theme.palette.colors.mainGreen,
   "& input": {
     height: "57px",
@@ -97,7 +97,7 @@ const AdminAddAd = () => {
             />
           </Box>
           <UploadButton
-            title="تحميل صورة اعلان جديد"
+            title="Upload a New Advertisement Image"
             overrideStyle={{
               width: "461px",
               height: "92px",
@@ -119,7 +119,7 @@ const AdminAddAd = () => {
               mt: "18px",
             }}
           >
-            اسم البائع
+            {t("Seller Name")}
           </Typography>
           <TextField
             sx={{
@@ -143,8 +143,8 @@ const AdminAddAd = () => {
               mt: "35px",
               mb: "72px",
             }}
-            defaultValue="اسم البائع"
-          ></TextField>
+            defaultValue={t("Seller Name")}
+          />
           <Stack
             sx={{
               gap: "18px",

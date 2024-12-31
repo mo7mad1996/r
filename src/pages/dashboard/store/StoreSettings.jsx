@@ -14,9 +14,9 @@ import SellerBox from "../../../sections/Dashboard/common/SellerBox";
 import UploadButton from "../../../components/UploadButton";
 
 const items = [
-  { name: "المتجر", link: "/dashboard/store/my-store" },
+  { name: "store", link: "/dashboard/store/my-store" },
   {
-    name: "إعدادات المتجر",
+    name: "Store Settings",
     link: "/dashboard/store/settings",
   },
 ];
@@ -81,7 +81,7 @@ const StoreSettings = () => {
       >
         مرحبا , ممدوح الصيرفي
       </Typography>
-      <SectionTitle sectionTitle={{ main: "المتجر" }} />
+      <SectionTitle sectionTitle={{ main: "store" }} />
       <Stack
         sx={{
           mt: "-70px",
@@ -103,7 +103,9 @@ const StoreSettings = () => {
           }}
         >
           <StyledBox>
-            <StyledLabel>اسم البائع (المتجر)</StyledLabel>
+            <StyledLabel>
+              {t("Seller Name")} ({t("store")})
+            </StyledLabel>
             <StyledInput defaultValue="الشرق الأوسط للملابس"></StyledInput>
           </StyledBox>
           <StyledBox>
@@ -121,18 +123,22 @@ const StoreSettings = () => {
                 },
                 // color: "red!important",
               }}
-            ></StyledInput>
+            />
           </StyledBox>
           <StyledBox>
-            <StyledLabel>البريد الألكترونى</StyledLabel>
+            <StyledLabel>{t("Email")}</StyledLabel>
             <StyledInput defaultValue="SOLY_RONY@YAHOO.COM"></StyledInput>
           </StyledBox>
           <StyledBox>
-            <StyledLabel>رقم السجل التجاري (اختياري)</StyledLabel>
+            <StyledLabel>
+              {t("Commercial Registration Number")} ({t("Optional")})
+            </StyledLabel>
             <StyledInput defaultValue="12345"></StyledInput>
           </StyledBox>
           <StyledBox>
-            <StyledLabel>رقم التسجيل الضريبي(اختياري)</StyledLabel>
+            <StyledLabel>
+              {t("Tax Registration Number")} ({t("Optional")})
+            </StyledLabel>
             <StyledInput defaultValue="56165465165051"></StyledInput>
           </StyledBox>
           <StyledBox>
@@ -157,7 +163,7 @@ const StoreSettings = () => {
               mx: "16px",
             }}
           >
-            اكتب نبذة عن متجرك
+            {t("Write a brief description of your store")}
           </Typography>
           <TextField
             multiline

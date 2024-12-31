@@ -52,7 +52,7 @@ const NewProductsPage = () => {
       <SectionTitle
         sectionTitle={{
           main: t("The latest products"),
-          second: "جميع المنتجات",
+          second: "All Products",
         }}
       />
       <Box

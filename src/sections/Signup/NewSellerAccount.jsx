@@ -7,19 +7,20 @@ import {
   styled,
   Typography,
 } from "@mui/material";
+
+import { TextareaAutosize } from "@mui/base/TextareaAutosize";
 import SectionTitle from "../common/Products/SectionTitle";
 import {
   ConfirmButton,
   FormItem,
   StyledTypography,
   StyledTextField,
-} from "../../components/FormElements";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import sloganImg from "../../assets/login/slogan.png";
-import uploadImg from "../../assets/login/upload.png";
-import userImg from "../../assets/login/user.png";
+} from "~/components/FormElements";
+import sloganImg from "~/assets/login/slogan.png";
+import uploadImg from "~/assets/login/upload.png";
+import userImg from "~/assets/login/user.png";
 import axios from "axios";
-import { Context } from "../../components/Context/Context";
+import { Context } from "~/components/Context/Context";
 import { useTranslation } from "react-i18next";
 
 const VisuallyHiddenInput = styled("input")({
@@ -49,29 +50,6 @@ const UploadButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-const inputFields = [
-  { label: "First Name", name: "first_name" },
-  { label: "Father's Name", name: "second name" },
-  { label: "Grandfather's Name or Surname", name: "grandfather_name" },
-  { label: "Governorate", name: "governorate" },
-  { label: "City", name: "city" },
-  { label: "Street Name", name: "street_name" },
-  { label: "Building Number or Name", name: "residence_number" },
-  { label: "Apartment Number", name: "apartment_number" },
-  { label: "Phone Number", name: "phone" },
-  { label: "Email", name: "email" },
-  { label: "Password", name: "password", type: "password" },
-  {
-    label: "اسم البائع (المتجر)",
-    name: "vendor_name",
-    helperText:
-      "(اسم البائع هو اسم المتجر كما سيظهر للعملاء علي الموقع من فضلك اختاره بعناية )",
-  },
-  { label: "رقم السجل التجاري (اختياري)", name: "trade_register_num" },
-  { label: "رقم التسجيل الضريبى (اختياري)", name: "tax_register_num" },
-  { label: "الرقم القومى", name: "national_id" },
-];
-
 const NewSellerAccount = ({ changeForm }) => {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
@@ -94,6 +72,34 @@ const NewSellerAccount = ({ changeForm }) => {
     ID_card_photo: null,
     personal_photo: null,
   });
+
+  const inputFields = [
+    { label: "First Name", name: "first_name" },
+    { label: "Father's Name", name: "second name" },
+    { label: "Grandfather's Name or Surname", name: "grandfather_name" },
+    { label: "Governorate", name: "governorate" },
+    { label: "City", name: "city" },
+    { label: "Street Name", name: "street_name" },
+    { label: "Building Number or Name", name: "residence_number" },
+    { label: "Apartment Number", name: "apartment_number" },
+    { label: "Phone Number", name: "phone" },
+    { label: "Email", name: "email" },
+    { label: "Password", name: "password", type: "password" },
+    {
+      label: `${t("Seller Name")} (${t("store")})`,
+      name: "vendor_name",
+      helperText: `(${t("Seller helper text")})`,
+    },
+    {
+      label: `${t("Commercial Registration Number")} (${t("Optional")})`,
+      name: "trade_register_num",
+    },
+    {
+      label: `${t("Tax Registration Number")} (${t("Optional")})`,
+      name: "tax_register_num",
+    },
+    { label: "National ID Number", name: "national_id" },
+  ];
 
   const handleFileChange = (e, fieldName) => {
     setFormData({ ...formData, [fieldName]: e.target.files[0] });
@@ -176,7 +182,7 @@ const NewSellerAccount = ({ changeForm }) => {
           />
         }
       >
-        حمل صورة
+        {t("Upload Photos")}
         <VisuallyHiddenInput
           type="file"
           onChange={(e) => handleFileChange(e, fieldName)}
@@ -204,34 +210,32 @@ const NewSellerAccount = ({ changeForm }) => {
         {renderFormFields()}
       </Stack>
 
-      {renderImageUpload("أضف شعار متجرك", sloganImg, "slogan")}
+      {renderImageUpload(t("Add Your Store Logo"), sloganImg, "slogan")}
 
       <Stack sx={{ mt: "94px", alignItems: "center" }}>
-        <StyledText sx={{ mb: "64px" }}>اكتب نبذة عن متجرك</StyledText>
-        <TextField
+        <StyledText sx={{ mb: "64px" }}>
+          {t("Write a brief description of your store")}
+        </StyledText>
+        <Box
+          component="textarea"
           name="description"
-          multiline
-          maxRows={6}
+          rows={6}
           sx={{
-            width: "fit-content",
-            borderRadius: "15px",
-            height: "178px",
+            width: "min(300px,100%)",
+            // height: "178px",
             backgroundColor: "#F6F6F6",
-            "& textarea": { width: "100%", height: "178px" },
-            "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
-              border: "2px solid #505050",
-              borderRadius: "15px",
-            },
+            border: "2px solid #505050",
+            borderRadius: "15px",
           }}
           value={formData.description}
           onChange={handleInputChange}
         />
       </Stack>
 
-      {["من الوجهه", "من الخلف"].map((side, index) => (
+      {[t("From the front"), t("From the back")].map((side, index) => (
         <Stack key={index} sx={{ mt: "138px", alignItems: "center" }}>
           <StyledText sx={{ mb: "64px" }}>
-            صورة البطاقة الشخصية ({side})
+            {t("ID Card Image")}({side})
           </StyledText>
           <Box
             sx={{
@@ -254,7 +258,8 @@ const NewSellerAccount = ({ changeForm }) => {
               />
             }
           >
-            تحميل صورة
+            {t("Upload Photos")}
+
             <VisuallyHiddenInput
               type="file"
               onChange={(e) => handleFileChange(e, "ID_card_photo")}
@@ -264,7 +269,7 @@ const NewSellerAccount = ({ changeForm }) => {
       ))}
 
       <Stack sx={{ mt: "138px", alignItems: "center" }}>
-        <StyledText sx={{ mb: "64px" }}>صورة شخصية</StyledText>
+        <StyledText sx={{ mb: "64px" }}>{t("Profile Picture")}</StyledText>
         <Box
           sx={{
             width: "336px",
@@ -277,7 +282,7 @@ const NewSellerAccount = ({ changeForm }) => {
           <Box
             component="img"
             src={userImg}
-            sx={{ width: "150px", left: "93px" }}
+            sx={{ width: "100%", height: "100%", objectFit: "contain" }}
           />
         </Box>
         <UploadButton
@@ -288,11 +293,11 @@ const NewSellerAccount = ({ changeForm }) => {
             <Box
               component="img"
               src={uploadImg}
-              sx={{ width: "29px", height: "29px", mr: "10px" }}
+              sx={{ width: "29px", mr: "10px" }}
             />
           }
         >
-          تحميل صورة
+          {t("Upload Photos")}
           <VisuallyHiddenInput
             type="file"
             onChange={(e) => handleFileChange(e, "personal_photo")}
@@ -303,10 +308,10 @@ const NewSellerAccount = ({ changeForm }) => {
       <ConfirmButton
         variant="contained"
         disableElevation
-        sx={{ mt: "77px" }}
+        sx={{ mt: "77px", mx: "auto", display: "block" }}
         onClick={handleSubmit}
       >
-        انشاء حساب
+        {t("Create Account")}
       </ConfirmButton>
     </Box>
   );

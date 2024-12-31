@@ -1,5 +1,6 @@
 import { Box, Button, styled } from "@mui/material";
 import uploadImg from "../assets/login/upload.png";
+import { useTranslation } from "react-i18next";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -13,16 +14,18 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 const StyledUploadButton = styled(Button)(({ theme, overrideStyle }) => ({
+  color: "colors.wi8",
   width: "416px",
   [theme.breakpoints.down("sm")]: {
     width: "300px",
     fontSize: "25px",
   },
   height: "60px",
-  color: "colors.wi8",
   fontSize: "28px",
   fontWeight: "800",
   lineHeight: "31.25px",
+  display: "flex",
+  gap: 1,
   backgroundColor: theme.palette.colors.website,
   borderRadius: "10px",
   "&:hover": {
@@ -32,26 +35,24 @@ const StyledUploadButton = styled(Button)(({ theme, overrideStyle }) => ({
 }));
 
 const UploadButton = ({ title, overrideStyle }) => {
+  const { t } = useTranslation();
   return (
     <StyledUploadButton
       component="label"
       variant="contained"
       disableElevation
-      sx={{ mt: "35px" }}
       overrideStyle={overrideStyle}
       endIcon={
         <Box
           component="img"
           src={uploadImg}
           sx={{
-            width: "29px",
             height: "29px",
-            mr: "10px",
           }}
         />
       }
     >
-      {title}
+      <span>{t(title)}</span>
       <VisuallyHiddenInput
         type="file"
         // onChange={(e) => setSlogan(e.target.value)}

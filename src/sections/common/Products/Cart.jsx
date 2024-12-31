@@ -1,14 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Box } from "@mui/material";
-import logoImg from "../../../assets/product/product.png";
+import logoImg from "~/assets/product/product.png";
 // Import local icons
-import trash from "../../../assets/product/trash.svg";
-import addIcon from "../../../assets/product/addIcon.svg";
-import { Context } from "../../../components/Context/Context";
+import trash from "~/assets/product/trash.svg";
+import addIcon from "~/assets/product/addIcon.svg";
+import { Context } from "~/components/Context/Context";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 const Cart = () => {
   let [products, setProducts] = useState([]);
+  const { t } = useTranslation();
 
   let { getUserCart, baseUrl } = useContext(Context);
   async function getUserAllItems() {
@@ -105,7 +107,7 @@ const Cart = () => {
               fontSize: "18px",
             }}
           >
-            الإجمالى الكلى
+            {t("Total Amount")}
           </Box>
           <Box
             sx={{
@@ -114,7 +116,7 @@ const Cart = () => {
               fontSize: "16px",
             }}
           >
-            21,500.00 جنيهاً
+            21,500.00 {t("Currency")}
           </Box>
           <Box
             sx={{
@@ -131,7 +133,7 @@ const Cart = () => {
               borderRadius: "50px",
             }}
           >
-            الإنتقال على عربة التسوق
+            {t("Go to Shopping Cart")}
           </Box>
         </Box>
 

@@ -2,8 +2,11 @@ import React from "react";
 import { Box, Button } from "@mui/material";
 
 import filterImg from "../assets/filter.png";
+import { useTranslation } from "react-i18next";
 
 const FilterBtn = ({ handleOpen }) => {
+  const { t } = useTranslation();
+
   return (
     <Button
       sx={{
@@ -33,7 +36,7 @@ const FilterBtn = ({ handleOpen }) => {
       }
       onClick={handleOpen}
     >
-      تصفية
+      {t("Filter")}
     </Button>
   );
 };

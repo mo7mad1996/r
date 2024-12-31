@@ -1,11 +1,13 @@
 import { Box, Slider, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const minValue = 0;
 const maxValue = 100000;
 
 const FilterSidebar = () => {
   const [value, setValue] = useState([minValue, maxValue]);
+  const { t } = useTranslation();
 
   const range = maxValue - minValue;
   let step;
@@ -59,11 +61,11 @@ const FilterSidebar = () => {
       >
         <Box>
           <Typography>{value[1]}</Typography>
-          <Typography>أختر أعلى قيمة</Typography>
+          <Typography>{t("Select the Highest Value")}</Typography>
         </Box>
         <Box>
           <Typography>{value[0]}</Typography>
-          <Typography>أختر أقل قيمة</Typography>
+          <Typography>{t("Select the Lowest Value")}</Typography>
         </Box>
       </Stack>
       <Stack sx={{ alignItems: "center" }}>

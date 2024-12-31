@@ -44,7 +44,7 @@ const Order = ({ order }) => {
           }}
           onClick={() => navigate(`/user/orders/1?status=${order.statusCode}`)}
         >
-          عرض
+          {t("Offer")}
         </Typography>
       </Box>
       <Box

@@ -29,7 +29,7 @@ const SellerProductsPage = () => {
       >
         مرحبا , ممدوح الصيرفي
       </Typography>
-      <SectionTitle sectionTitle={{ main: "المنتجات" }} />
+      <SectionTitle sectionTitle={{ main: "Products" }} />
       <Stack
         sx={{
           mt: "-70px",

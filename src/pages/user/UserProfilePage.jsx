@@ -8,9 +8,11 @@ import {
   StyledTypography,
 } from "@/components/FormElements";
 import axios from "axios";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const UserProfilePage = () => {
+  const { t } = useTranslation();
+
   const [userData, setUserData] = useState({
     name: "",
     second_name: "",
@@ -178,7 +180,10 @@ const UserProfilePage = () => {
           />
         </FormItem>
         <FormItem>
-          <StyledTypography>البريد الألكتروني</StyledTypography>
+          <StyledTypography>
+            {t("the")}
+            {t("email")}
+          </StyledTypography>
           <StyledTextField value={userData.email} disabled />
         </FormItem>
         <FormItem>

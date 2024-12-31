@@ -65,15 +65,15 @@ export default function MobileComponents() {
         <ArrowDropDownIcon
           sx={{ fontSize: "40px" }}
           id="choose-lang"
-          aria-controls={open ? "choose-lang-menu" : undefined}
+          aria-controls={open ? "choose-lang-Menu" : undefined}
           aria-haspopup="true"
           aria-expanded={open.toString()}
           onClick={handleClick}
         />
       </Language>
-      {/* menu  */}
+      {/* Menu  */}
       <Menu
-        id="choose-lang-menu"
+        id="choose-lang-Menu"
         aria-labelledby="choose-lang"
         anchorEl={anchorEl}
         open={open}

@@ -273,7 +273,7 @@ const AddNewSellerPage = () => {
                 <MenuItem value={index + 1}>{index + 1}</MenuItem>
               ))}
           </Select>
-          من {totalPages}
+          {t('from')}  {totalPages}
           {t("Pages")}{" "}
         </Box>
       </Box>
@@ -286,7 +286,7 @@ const AddNewSellerPage = () => {
           mx: "69px",
         }}
       >
-        {isAds ? "أختر بائع" : "اسم البائع (المتجر)"}
+        {isAds ? "أختر بائع" : `${t("Seller Name")} (${t("store")})`}
       </Typography>
       <Stack
         sx={{
@@ -302,7 +302,7 @@ const AddNewSellerPage = () => {
           <StyledBox key={seller.id} isAds={isAds}>
             <Typography>{seller.name}</Typography>
             <Box>
-              {!isAds && <Button>عرض</Button>}
+              {!isAds && <Button>{t("Offer")}</Button>}
               <Button>{isAds ? "أختر" : "إختيار"}</Button>
             </Box>
           </StyledBox>

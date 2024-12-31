@@ -6,9 +6,9 @@ import Menu from "../../../sections/Menu/Menu";
 import SellerBox from "../../../sections/Dashboard/common/SellerBox";
 
 const items = [
-  { name: "المتجر", link: "/dashboard/store/my-store" },
+  { name: "store", link: "/dashboard/store/my-store" },
   {
-    name: "إعدادات المتجر",
+    name: "Store Settings",
     link: "/dashboard/store/settings",
   },
 ];
@@ -32,7 +32,7 @@ const StoreDashboardPage = () => {
       >
         مرحبا , ممدوح الصيرفي
       </Typography>
-      <SectionTitle sectionTitle={{ main: "المتجر" }} />
+      <SectionTitle sectionTitle={{ main: "store" }} />
       <Stack
         sx={{
           mt: "-70px",

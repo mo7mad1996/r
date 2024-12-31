@@ -16,7 +16,7 @@ const items = [
 const OrdersPage = () => {
   return (
     <>
-      <SectionTitle sectionTitle={{ main: "الطلبات" }} />
+      <SectionTitle sectionTitle={{ main: "Orders" }} />
       <Box sx={{ mt: "153px" }}>
         <OrdersMenu items={items} />
       </Box>

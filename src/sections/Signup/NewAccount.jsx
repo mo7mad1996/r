@@ -48,9 +48,9 @@ const NewAccount = ({ changeForm }) => {
       apartment_number: "",
     },
     validationSchema: Yup.object({
-      name: Yup.string().required("الاسم " + t("Required")),
+      name: Yup.string().required(t("First Name") + t("Required")),
       email: Yup.string()
-        .email("البريد الإلكتروني غير صحيح")
+        .email(t("The email is incorrect"))
         .required(t("Email") + t("Required")),
       phone: Yup.string().required(t("Phone Number") + +t("Required")),
       password: Yup.string()
@@ -63,7 +63,9 @@ const NewAccount = ({ changeForm }) => {
         )
         .required(t("Confirm Password") + t("Is Required")),
       second_name: Yup.string().required(t("Father's Name") + t("Required")),
-      family_name: Yup.string().required("اسم الجد أو اللقب " + t("Required")),
+      family_name: Yup.string().required(
+        t("Grandfather's Name or Surname") + t("Required")
+      ),
       date_of_birth: Yup.date().required("تاريخ الميلاد " + t("Required")),
       governorate: Yup.string().required(t("Governorate") + t("Is Required")),
       city: Yup.string().required(t("City") + t("Is Required")),

@@ -1,43 +1,42 @@
 import { Box, Grid, Stack, Typography, styled } from "@mui/material";
 import React from "react";
-import SectionTitle from "../../sections/common/Products/SectionTitle";
+import SectionTitle from "~/sections/common/Products/SectionTitle";
 
-import accountImg from "../../assets/admin/dashboard/account.png";
-import adsImg from "../../assets/admin/dashboard/ads.png";
-import clientsImg from "../../assets/admin/dashboard/clients.png";
-import couponsImg from "../../assets/admin/dashboard/coupons.png";
-import deliveryImg from "../../assets/admin/dashboard/delivery.png";
-import earningsImg from "../../assets/admin/dashboard/earnings.png";
-import emailImg from "../../assets/admin/dashboard/email.png";
-import employeesImg from "../../assets/admin/dashboard/employees.png";
-import goomlaNewsImg from "../../assets/admin/dashboard/goomla-news.png";
-import logoutImg from "../../assets/admin/dashboard/logout.png";
-import mailNewsImg from "../../assets/admin/dashboard/mail-news.png";
-import notificationsImg from "../../assets/admin/dashboard/notifications.png";
-import ordersImg from "../../assets/admin/dashboard/orders.png";
-import percentageImg from "../../assets/admin/dashboard/percentage.png";
-import productsImg from "../../assets/admin/dashboard/products.png";
-import reportsImg from "../../assets/admin/dashboard/reports.png";
-import reviewsImg from "../../assets/admin/dashboard/reviews.png";
-import sectionsImg from "../../assets/admin/dashboard/sections.png";
-import sellersImg from "../../assets/admin/dashboard/sellers.png";
-import settingsImg from "../../assets/admin/dashboard/settings.png";
-import supportImg from "../../assets/admin/dashboard/support.png";
-import walletImg from "../../assets/admin/dashboard/wallet.png";
-import withdrawImg from "../../assets/admin/dashboard/withdraw.png";
-import storeImg from "../../assets/admin/dashboard/store.png";
+import accountImg from "~/assets/admin/dashboard/account.png";
+import adsImg from "~/assets/admin/dashboard/ads.png";
+import clientsImg from "~/assets/admin/dashboard/clients.png";
+import couponsImg from "~/assets/admin/dashboard/coupons.png";
+import earningsImg from "~/assets/admin/dashboard/earnings.png";
+import emailImg from "~/assets/admin/dashboard/email.png";
+import employeesImg from "~/assets/admin/dashboard/employees.png";
+import goomlaNewsImg from "~/assets/admin/dashboard/goomla-news.png";
+import logoutImg from "~/assets/admin/dashboard/logout.png";
+import mailNewsImg from "~/assets/admin/dashboard/mail-news.png";
+import notificationsImg from "~/assets/admin/dashboard/notifications.png";
+import ordersImg from "~/assets/admin/dashboard/orders.png";
+import percentageImg from "~/assets/admin/dashboard/percentage.png";
+import productsImg from "~/assets/admin/dashboard/products.png";
+import reportsImg from "~/assets/admin/dashboard/reports.png";
+import reviewsImg from "~/assets/admin/dashboard/reviews.png";
+import sectionsImg from "~/assets/admin/dashboard/sections.png";
+import sellersImg from "~/assets/admin/dashboard/sellers.png";
+import settingsImg from "~/assets/admin/dashboard/settings.png";
+import supportImg from "~/assets/admin/dashboard/support.png";
+import walletImg from "~/assets/admin/dashboard/wallet.png";
+import withdrawImg from "~/assets/admin/dashboard/withdraw.png";
+import storeImg from "~/assets/admin/dashboard/store.png";
 import { useNavigate } from "react-router-dom";
 
 const items = [
   {
     id: 0,
-    title: "الطلبات",
+    title: "Orders",
     link: "/admin/dashboard/orders",
     img: ordersImg,
   },
   {
     id: 1,
-    title: "المنتجات",
+    title: "Products",
     link: "/admin/dashboard/products",
     img: productsImg,
   },
@@ -55,7 +54,7 @@ const items = [
   },
   {
     id: 4,
-    title: "المتجر",
+    title: "store",
     link: "/admin/dashboard/store",
     img: storeImg,
   },
@@ -139,7 +138,7 @@ const items = [
   },
   {
     id: 18,
-    title: "كوبونات الخصم",
+    title: "Discount Coupons",
     link: "/admin/dashboard/",
     img: couponsImg,
   },
@@ -233,7 +232,7 @@ const AdminDashboardPage = () => {
           عدد الطلبات الجديدة قيد الإنتظار
         </Typography>
       </Stack>
-      {/* menu  */}
+      {/* Menu  */}
       <Box>
         <Box
           sx={{

@@ -1345,7 +1345,7 @@ function ShoppingInfo() {
         <ExpandMore
           aria-label="more"
           id="long-button"
-          aria-controls={open ? "long-menu" : undefined}
+          aria-controls={open ? "long-Menu" : undefined}
           aria-expanded={open ? "true" : undefined}
           aria-haspopup="true"
           onClick={handleClick}
@@ -1353,7 +1353,7 @@ function ShoppingInfo() {
         />
         {/* choose quantity  */}
         <Menu
-          id="long-menu"
+          id="long-Menu"
           MenuListProps={{
             "aria-labelledby": "long-button",
           }}
@@ -1567,7 +1567,7 @@ function ProductDetails() {
                     gap: "5px",
                   }}
                 >
-                  عرض{" "}
+                  {t("Offer")}
                   <Box
                     sx={{
                       width: "49px",

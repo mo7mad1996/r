@@ -101,7 +101,7 @@ const Orders = ({ statusArray, status, isDashboard }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const openMenu = Boolean(anchorEl);
-  // language menu
+  // language Menu
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -341,16 +341,16 @@ const Orders = ({ statusArray, status, isDashboard }) => {
                           cursor: "pointer",
                         }}
                         id="choose-address"
-                        aria-controls={open ? "choose-address-menu" : undefined}
+                        aria-controls={open ? "choose-address-Menu" : undefined}
                         aria-haspopup="true"
                         aria-expanded={open ? "true" : undefined}
                         onClick={handleClick}
                       />
                     )}
                   </Typography>
-                  {/* menu  */}
+                  {/* Menu  */}
                   <Menu
-                    id="choose-address-menu"
+                    id="choose-address-Menu"
                     aria-labelledby="choose-address"
                     anchorEl={anchorEl}
                     open={openMenu}
@@ -780,23 +780,24 @@ const Orders = ({ statusArray, status, isDashboard }) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-          }}>
-          <Box 
+          }}
+        >
+          <Box
             sx={{
-            width: "558px",
-            height: "77px",
-            borderRadius: "12px",
-            border: "4px solid #008C5D",
-            display:"flex",
-            justifyContent:"center",
-            alignItems:"center",
-            fontSize: "28px",
-            color: "#008C5D",
-            fontWeight: "800",
-          }}>
+              width: "558px",
+              height: "77px",
+              borderRadius: "12px",
+              border: "4px solid #008C5D",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              fontSize: "28px",
+              color: "#008C5D",
+              fontWeight: "800",
+            }}
+          >
             تم تسليم الطلب لمندوب الشحن
-            
-            </Box>
+          </Box>
         </Box>
       </Stack>
       <ModalComponent

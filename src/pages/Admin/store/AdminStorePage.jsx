@@ -10,9 +10,7 @@ import Search from "../../../sections/common/Search";
 const AdminStorePage = () => {
   return (
     <Box>
-      <SectionTitle
-        sectionTitle={{ main: "المتجر", second: "جميع المنتجات" }}
-      />
+      <SectionTitle sectionTitle={{ main: "store", second: "All Products" }} />
       <Box
         sx={{
           mb: "100px",

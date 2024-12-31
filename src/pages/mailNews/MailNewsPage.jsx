@@ -125,7 +125,7 @@ const NewsPage = () => {
                     }}
                     onClick={() => navigate("1")}
                   >
-                    عرض
+                    {t("Offer")}
                   </ControlBtn>
                   <ControlBtn
                     variant="outlined"

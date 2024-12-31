@@ -309,7 +309,7 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
             mb: "20px",
           }}
         >
-          المقاسات
+          {t("Sizes")}
         </Typography>
         <StyledBox
           sx={{
@@ -458,7 +458,7 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
                     <InputBase />
                   </StyledDimension>
                   <StyledDimension>
-                    <Typography>عرض :</Typography>
+                    <Typography>{t("Offer")} :</Typography>
                     <InputBase />
                   </StyledDimension>
                   <StyledDimension>
@@ -581,7 +581,7 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
                 collor: "#292D32",
               }}
             >
-              اسم البائع
+              {t("Seller Name")}
             </Typography>
             <TextField
               defaultValue="صيرفي"

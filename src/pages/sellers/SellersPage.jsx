@@ -39,7 +39,7 @@ const SellersPage = () => {
   return (
     <Box>
       <SectionTitle
-        sectionTitle={{ main: "Joumla sellers", second: "المتاجر" }}
+        sectionTitle={{ main: "Joumla sellers", second: "Stores" }}
       />
       <Stack>
         <Box

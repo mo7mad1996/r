@@ -107,7 +107,7 @@ const CustomizeDelivery = ({ items, title }) => {
             mb: "42px",
           }}
         >
-          البائع (المتجر)
+          {t("Seller")} ({t("Store")})
         </StyledTypo>
         {/* choose all  */}
         <Box

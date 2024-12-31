@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DatePick from "../components/DatePick";
 import { Box, Button, Stack, Typography, styled } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const FilterBtn = styled(Stack)(({ theme }) => ({
   alignItems: "center",
@@ -12,7 +13,9 @@ const FilterBtn = styled(Stack)(({ theme }) => ({
   cursor: "pointer",
 }));
 const DateFilter = ({ handleClose }) => {
+  const { t } = useTranslation();
   const [currentBtn, setCurrentBtn] = useState(0);
+
   return (
     <Stack
       sx={{
@@ -41,7 +44,7 @@ const DateFilter = ({ handleClose }) => {
           //   color: "color.mainBlack",
           // }}
           >
-            من
+            {t("from")}
           </Typography>
           <DatePick />
         </Box>
@@ -54,7 +57,7 @@ const DateFilter = ({ handleClose }) => {
           //   color: "color.mainBlack",
           // }}
           >
-            الى
+            {t("To")}
           </Typography>
           <DatePick />
         </Box>
@@ -72,7 +75,7 @@ const DateFilter = ({ handleClose }) => {
             color: currentBtn == 1 ? "colors.wi8" : "",
           }}
         >
-          اليوم
+          {t("Today")}
         </FilterBtn>
         <FilterBtn
           onClick={() => setCurrentBtn(2)}
@@ -81,7 +84,7 @@ const DateFilter = ({ handleClose }) => {
             color: currentBtn == 2 ? "colors.wi8" : "",
           }}
         >
-          أمس
+          {t("Yesterday")}
         </FilterBtn>
         <FilterBtn
           onClick={() => setCurrentBtn(3)}
@@ -90,7 +93,7 @@ const DateFilter = ({ handleClose }) => {
             color: currentBtn == 3 ? "colors.wi8" : "",
           }}
         >
-          آخر 7 أيام
+          {t("Last 7 Days")}
         </FilterBtn>
         <FilterBtn
           onClick={() => setCurrentBtn(4)}
@@ -99,7 +102,7 @@ const DateFilter = ({ handleClose }) => {
             color: currentBtn == 4 ? "colors.wi8" : "",
           }}
         >
-          آخر 30 يوم
+          {t("Last 30 Days")}
         </FilterBtn>
         <FilterBtn
           onClick={() => setCurrentBtn(5)}
@@ -108,7 +111,7 @@ const DateFilter = ({ handleClose }) => {
             color: currentBtn == 5 ? "colors.wi8" : "",
           }}
         >
-          آخر 3 شهور
+          {t("Last 3 Months")}
         </FilterBtn>
       </Stack>
       <Button
@@ -127,7 +130,7 @@ const DateFilter = ({ handleClose }) => {
         }}
         onClick={handleClose}
       >
-        عرض
+        {t("Show")}
       </Button>
     </Stack>
   );

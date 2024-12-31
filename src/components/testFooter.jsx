@@ -52,7 +52,7 @@ const Footer = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-  // language menu
+  // language Menu
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -630,15 +630,15 @@ const Footer = () => {
             <ArrowDropDownIcon
               sx={{ fontSize: "40px", cursor: "pointer" }}
               id="choose-lang"
-              aria-controls={open ? "choose-lang-menu" : undefined}
+              aria-controls={open ? "choose-lang-Menu" : undefined}
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
               onClick={handleClick}
             />
           </Stack>
-          {/* menu  */}
+          {/* Menu  */}
           <Menu
-            id="choose-lang-menu"
+            id="choose-lang-Menu"
             aria-labelledby="choose-lang"
             anchorEl={anchorEl}
             open={open}

@@ -13,7 +13,7 @@ const items = [
   { name: "Addresses", link: "/dashboard/adresses" },
   { name: "Support", link: "/support" },
   { name: "نشرة چوملا", link: "" },
-  { name: "إعدادت المتجر", link: "" },
+  { name: "Store Settings", link: "" },
   { name: "طلبات السحب", link: "" },
   { name: "التقارير", link: "" },
   { name: "شروط وأحكام بائعين چوملا", link: "" },

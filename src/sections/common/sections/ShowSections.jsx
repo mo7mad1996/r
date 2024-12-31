@@ -109,7 +109,7 @@ const ShowSections = () => {
                 </MenuItem>
               ))}
           </Select>
-          من {totalPages} صفحات{" "}
+          {t("from")} {totalPages} {t("pages")}
         </Box>
       </Box>
       <Box>

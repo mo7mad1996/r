@@ -17,7 +17,7 @@ const items = [
   { name: "الطلبات", link: "/user/orders", icon: Orders },
   { name: "الأشعارات", link: "/user/notifications", icon: Notifications },
   { name: "محفظة چوملا", link: "/user/wallet", icon: Wallet },
-  { name: "كوبونات الخصم", link: "/discount", icon: Copons },
+  { name: "Discount Coupons", link: "/discount", icon: Copons },
   { name: "الملف الشخصي", link: "/user/profile", icon: MyProfile },
   { name: "Addresses", link: "/user/address", icon: addresses },
   { name: "Support and Customer Service", link: "/support", icon: Support },

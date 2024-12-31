@@ -3,9 +3,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 export const navItems = [
   {
-    title: "menu",
+    title: "Menu",
     icon: MenuIcon,
-    path: "/menu",
+    path: "/Menu",
   },
   {
     title: "signup-seller",
@@ -28,7 +28,7 @@ export const navItems = [
     path: "store/best-sale",
   },
   // {
-  //   title: "أفضل العروض والخصومات",
+  //   title: "The best offers and discounts"
   //   path: "best-sale",
   // },
   {

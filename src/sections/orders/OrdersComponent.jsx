@@ -94,7 +94,7 @@ const OrdersComponent = ({ title, orders, ordersPerPage }) => {
                 <MenuItem value={index + 1}>{index + 1}</MenuItem>
               ))}
           </Select>
-          من {totalPages} صفحات{" "}
+          {t("from")} {totalPages} {t("pages")}
         </Box>
         {displayedOrders.map((order) => (
           <Order order={order} key={order.id} />

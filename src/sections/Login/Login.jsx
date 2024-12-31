@@ -99,13 +99,10 @@ const Login = ({ seller = false }) => {
     validationSchema: Yup.object({
       username: Yup.string()
         .required(t("Email Address or Phone Number") + t("Required"))
-        .matches(
-          /^(\d{10}|\S+@\S+\.\S+)$/,
-          "أدخل رقم هاتف صحيح أو بريد إلكتروني صالح"
-        ),
+        .matches(/^(\d{10}|\S+@\S+\.\S+)$/, t("valid username")),
       password: Yup.string()
-        .min(8, "يجب أن تكون كلمة المرور مكونة من 8 أحرف على الأقل")
-        .required(t("Password") + t("Is Required"),
+        .min(8, t("valid password"))
+        .required(t("Password") + t("Is Required")),
     }),
     onSubmit: async (values) => {
       try {
@@ -118,7 +115,7 @@ const Login = ({ seller = false }) => {
         navigate("/");
       } catch (error) {
         console.error(
-          "حدث خطأ أثناء تسجيل الدخول:",
+          t("login error"),
           error.response?.data?.message || error.message
         );
         setError(error.response?.data?.message || error.message);
@@ -128,15 +125,15 @@ const Login = ({ seller = false }) => {
 
   return (
     <>
-      <SectionTitle sectionTitle={{ main: "تسجيل دخول" }} />
+      <SectionTitle sectionTitle={{ main: "login" }} />
       <Stack gap="31px" alignItems={"center"} mt={"-75px"}>
         <StyledBox onClick={handleGoogleLogin}>
           <Box component="img" src={googleImage} />
-          <StyledTypography>تسجيل الدخول بواسطة Google</StyledTypography>
+          <StyledTypography>{t("login via")} Google</StyledTypography>
         </StyledBox>
         <StyledBox onClick={handleFacebookLogin}>
           <Box component="img" src={faceImage} />
-          <StyledTypography>تسجيل الدخول بواسطة Facebook</StyledTypography>
+          <StyledTypography>{t("login via")} Facebook</StyledTypography>
         </StyledBox>
       </Stack>
       <Box sx={{ color: "red", textAlign: "center", fontSize: 30, m: 4 }}>
@@ -152,7 +149,7 @@ const Login = ({ seller = false }) => {
           textAlign: "center",
         }}
       >
-        تسجيل دخول عبر البريد الألكتروني
+        {t("login by email")}
       </Typography>
       <form onSubmit={formik.handleSubmit}>
         <Stack

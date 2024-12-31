@@ -5,7 +5,7 @@ import { Typography } from "@mui/material";
 const AboutPage = () => {
   return (
     <>
-      <SectionTitle sectionTitle={{ main: "نبذه عن الموقع" }} />
+      <SectionTitle sectionTitle={{ main: "About the Website" }} />
       <Typography
         sx={{
           maxWidth: "724px",

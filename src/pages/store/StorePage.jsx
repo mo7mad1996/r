@@ -48,9 +48,7 @@ const StorePage = () => {
   return (
     <Box>
       <Cart />
-      <SectionTitle
-        sectionTitle={{ main: "المتجر", second: "جميع المنتجات" }}
-      />
+      <SectionTitle sectionTitle={{ main: "store", second: "All Products" }} />
       <Box
         sx={{
           display: "flex",

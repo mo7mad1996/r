@@ -518,8 +518,7 @@ const ProductTest = () => {
                         alignItems: "center",
                         gap: "5px",
                       }}
-                    >
-                      عرض{" "}
+                    >{t("Offer")}
                       <Box
                         sx={{
                           width: "49px",
@@ -649,7 +648,7 @@ const ProductTest = () => {
               <ExpandMore
                 aria-label="more"
                 id="long-button"
-                aria-controls={open ? "long-menu" : undefined}
+                aria-controls={open ? "long-Menu" : undefined}
                 aria-expanded={open ? "true" : undefined}
                 aria-haspopup="true"
                 onClick={handleClick}
@@ -657,7 +656,7 @@ const ProductTest = () => {
               />
               {/* choose quantity  */}
               <Menu
-                id="long-menu"
+                id="long-Menu"
                 MenuListProps={{
                   "aria-labelledby": "long-button",
                 }}
@@ -1322,7 +1321,8 @@ const ProductTest = () => {
           <Typography
             sx={{ fontWeight: "800", fontSize: "18px", lineHeight: "20.09px" }}
           >
-            البريد الألكتروني
+            {t("the")}
+            {t("email")}
           </Typography>
         </SupportBox>
         <Stack

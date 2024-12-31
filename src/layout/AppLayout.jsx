@@ -144,7 +144,7 @@ const MyAdsPage = lazy(() => import("@/pages/MyAdsPage"));
 const AboutPage = lazy(() => import("@/pages/AboutPage"));
 const TermsPage = lazy(() => import("@/pages/TermsPage"));
 const UserAcountPage = lazy(() => import("@/pages/user/UserAcountPage"));
-const MenuPage = lazy(() => import("@/pages/menu/MenuPage"));
+const MenuPage = lazy(() => import("@/pages/Menu/MenuPage"));
 // const TestPage = lazy(() => import("@/pages/TestPage"));
 const LoginPage = lazy(() => import("@/pages/registration/LoginPage"));
 const SignupPage = lazy(() => import("@/pages/registration/SignupPage"));
@@ -215,7 +215,7 @@ const AppLayout = () => {
       <Suspense fallback={<Spinner />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/menu" element={<MenuPage />} />
+          <Route path="/Menu" element={<MenuPage />} />
           <Route path="/signup-seller" element={<SignupSellerPage />} />
           <Route path="/store">
             <Route index={true} element={<StorePage />} />

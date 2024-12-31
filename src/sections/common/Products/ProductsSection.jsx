@@ -19,8 +19,7 @@ const ProductsSection = ({
   page = 1,
   setPage,
 }) => {
-
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const handleChange = (event) => {
     setPage(event.target.value);
   };
@@ -72,7 +71,7 @@ const ProductsSection = ({
                 </MenuItem>
               ))}
           </Select>
-          من {totalPages} صفحات{" "}
+          {t("from")} {totalPages} {t("pages")}
         </Box>
       </Box>
       <Box

@@ -12,7 +12,7 @@ const DiscountPage = () => {
 
   return (
     <>
-      <SectionTitle sectionTitle={{ main: "كوبونات الخصم" }} />
+      <SectionTitle sectionTitle={{ main: "Discount Coupons" }} />
       <Stack sx={{ alignItems: "center", gap: "161px", mb: "100px" }}>
         <Stack
           sx={{

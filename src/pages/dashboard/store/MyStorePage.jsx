@@ -42,7 +42,7 @@ const MyStorePage = () => {
         </Typography>
       </Box>
       <Box>
-        <SectionTitle sectionTitle={{ main: "المتجر" }} />
+        <SectionTitle sectionTitle={{ main: "store" }} />
         <Box
           sx={{
             display: "flex",

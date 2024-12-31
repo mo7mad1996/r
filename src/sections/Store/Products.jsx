@@ -464,7 +464,7 @@ const Products = ({ products }) => {
                         navigate(`/store/${product.id}`);
                       }}
                     >
-                      {isStore ? "عرض" : "عرض تفاصيل المنتج"}
+                      {t(isStore ? "Offer" : "عرض تفاصيل المنتج")}
                     </CustomButton>
                   </>
                 )}
@@ -553,7 +553,7 @@ const Products = ({ products }) => {
                           navigate(`/store/${product.id}`);
                         }}
                       >
-                        عرض
+                        {t("Offer")}
                       </CustomButton>
                     </Box>
                   </>
@@ -597,7 +597,7 @@ const Products = ({ products }) => {
                         navigate(`/store/${product.id}`);
                       }}
                     >
-                      عرض
+                      {t("Offer")}
                     </CustomButton>
                   </Box>
                 )}
