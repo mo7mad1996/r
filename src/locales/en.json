@@ -1,4 +1,5 @@
 {
+  "Joumla": "Joumla",
   "hello": "Hello",
   "my account": "My account",
   "Delivery to": "Delivery to",
@@ -144,7 +145,7 @@
   "Add New Address": "Add New Address",
   "Edit": "Edit",
   "Add New Category": "Add New Category",
-  "Home Number": "Home Number ",
+  "Home Number": "Property Number ",
   "Floor": "Floor",
   "Set as Default Address": "Set as Default Address",
   "Add": "Add",
@@ -152,5 +153,9 @@
   "Office": "Office",
   "Work": "Work",
   "Company": "Company",
-  "Other": "Other"
+  "Other": "Other",
+  "Date of Birth": "Date of Birth",
+  "By clicking Register, I confirm that I have read and agree to": "By clicking Register, I confirm that I have read and agree to ",
+  "Terms and Conditions": "Terms and Conditions ",
+  "Sign Up": "Sign Up"
 }

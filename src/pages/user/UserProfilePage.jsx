@@ -187,7 +187,7 @@ const UserProfilePage = () => {
           <StyledTextField value={userData.email} disabled />
         </FormItem>
         <FormItem>
-          <StyledTypography>تاريخ الميلاد</StyledTypography>
+          <StyledTypography>{t("Date of Birth")}</StyledTypography>
           <StyledTextField
             type="date"
             value={userData.date_of_birth}

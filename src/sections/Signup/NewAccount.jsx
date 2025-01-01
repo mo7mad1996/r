@@ -52,7 +52,7 @@ const NewAccount = ({ changeForm }) => {
       email: Yup.string()
         .email(t("The email is incorrect"))
         .required(t("Email") + t("Required")),
-      phone: Yup.string().required(t("Phone Number") + +t("Required")),
+      phone: Yup.string().required(t("Phone Number") + t("Required")),
       password: Yup.string()
         .min(6, "يجب أن تكون كلمة المرور 6 أحرف على الأقل")
         .required(t("Password") + t("Is Required")),
@@ -66,11 +66,11 @@ const NewAccount = ({ changeForm }) => {
       family_name: Yup.string().required(
         t("Grandfather's Name or Surname") + t("Required")
       ),
-      date_of_birth: Yup.date().required("تاريخ الميلاد " + t("Required")),
+      date_of_birth: Yup.date().required(t("Date of Birth") + t("Required")),
       governorate: Yup.string().required(t("Governorate") + t("Is Required")),
       city: Yup.string().required(t("City") + t("Is Required")),
       street_name: Yup.string().required(t("Street Name") + t("Required")),
-      residence_number: Yup.string().required("رقم العقار " + t("Required")),
+      residence_number: Yup.string().required(t("Home Number") + t("Required")),
       apartment_number: Yup.string().required(
         t("Apartment Number") + t("Required")
       ),
@@ -152,7 +152,7 @@ const NewAccount = ({ changeForm }) => {
               />
             </FormItem>
             <FormItem>
-              <StyledTypography>تاريخ الميلاد</StyledTypography>
+              <StyledTypography>{t("Date of Birth")}</StyledTypography>
               <StyledTextField
                 name="date_of_birth"
                 type="date"
@@ -328,7 +328,7 @@ const NewAccount = ({ changeForm }) => {
               }}
               type="submit"
             >
-              تسجيل
+              {t("Sign Up")}
             </ConfirmButton>
             <Typography
               sx={{
@@ -340,9 +340,11 @@ const NewAccount = ({ changeForm }) => {
                 my: "21px",
               }}
             >
-              مع الضغط علي تسجيل أؤكد اني قرأت واوافق علي{" "}
-              <Link underline="none">شروط وأحكام </Link>
-              جوملا
+              {t(
+                "By clicking Register, I confirm that I have read and agree to"
+              )}
+              <Link underline="none">{t("Terms and Conditions")}</Link>
+              {t("Joumla")}
             </Typography>
           </Box>
         </form>

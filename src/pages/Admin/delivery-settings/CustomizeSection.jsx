@@ -85,7 +85,7 @@ const CustomizeSection = ({ title }) => {
           mx: "auto",
         }}
       >
-        چوملا{" "}
+        {t("Joumla")}
       </StyledTypo>
       <Stack
         sx={{
@@ -107,7 +107,7 @@ const CustomizeSection = ({ title }) => {
               width: "314px",
             }}
           >
-            چوملا{" "}
+            {t("Joumla")}
           </StyledTypo>
           <StyledTypo
             sx={{
@@ -234,7 +234,7 @@ const CustomizeSection = ({ title }) => {
             {" "}
             <CheckRounded />
           </StyledCheckbox>
-          <Typography>چوملا</Typography>
+          <Typography> {t("Joumla")}</Typography>
         </Box>
         <Box>
           <StyledCheckbox> {show && <CheckRounded />}</StyledCheckbox>

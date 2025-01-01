@@ -65,7 +65,7 @@ const TermsPage = () => {
                 color={"#0041AE"}
                 sx={{ cursor: "pointer" }}
               >
-                شروط وأحكام
+                {t("Terms and Conditions")}
               </Box>{" "}
               جوملا
             </Typography>

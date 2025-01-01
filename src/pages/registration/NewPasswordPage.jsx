@@ -47,12 +47,8 @@ const NewPasswordPage = () => {
           position: "relative",
           px: { xs: "15px", sm: "45px" },
           gap: { xs: "50px", sm: "61px" },
-          // width: { lg: "fit-content" },
           mx: { xs: "auto" },
-          //   , lg: "0"
           alignItems: { md: "center" },
-          //   left: { xl: "50%" },
-          //   transform: { xl: "translateX(-50%)" },
         }}
       >
         <FormItem sx={{ justifyContent: "space-between", gap: { lg: "54px" } }}>
@@ -112,7 +108,7 @@ const NewPasswordPage = () => {
             mt: "71px",
           }}
         >
-          تسجيل الدخول
+          {t("login")}
         </ConfirmButton>
       </Box>
     </>

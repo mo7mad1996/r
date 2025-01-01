@@ -892,9 +892,11 @@ const CartSummaryPage = () => {
                 mx: "auto",
               }}
             >
-              مع الضغط علي تسجيل أؤكد اني قرأت واوافق علي{" "}
-              <Link underline="none">شروط وأحكام </Link>
-              جوملا
+              {t(
+                "By clicking Register, I confirm that I have read and agree to "
+              )}
+              <Link underline="none">{t("Terms and Conditions")} </Link>
+              {t("Joumla")}
             </Typography>
           </Box>
         </Stack>

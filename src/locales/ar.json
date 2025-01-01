@@ -1,4 +1,5 @@
 {
+  "Joumla": "جوملا",
   "hello": "مرحبا",
   "my account": "حسابي",
   "Delivery to": "التوصيل إلى",
@@ -87,8 +88,8 @@
   "Password": "كلمة المرور",
   "Forgot Password": "نسيت كلمة المرور",
   "Confirm Password": "تأكيد كلمة المرور",
-  "Required": "مطلوب ",
-  "Is Required": "مطلوبه ",
+  "Required": " مطلوب ",
+  "Is Required": " مطلوبه ",
   "valid username": "أدخل رقم هاتف صحيح أو بريد إلكتروني صالح",
   "valid password": "يجب أن تكون كلمة المرور مكونة من 8 أحرف على الأقل",
   "login error": "حدث خطأ أثناء تسجيل الدخول",
@@ -152,5 +153,9 @@
   "Office": "مكتب",
   "Work": "عمل",
   "Company": "شركه",
-  "Other": "اخرى"
+  "Other": "اخرى",
+  "Date of Birth": "تاريخ الميلاد",
+  "By clicking Register, I confirm that I have read and agree to": "مع الضغط علي تسجيل أؤكد اني قرأت واوافق علي ",
+  "Terms and Conditions": "شروط وأحكام ",
+  "Sign Up": "تسجيل"
 }

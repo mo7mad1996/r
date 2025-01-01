@@ -742,7 +742,7 @@ const ProductTest = () => {
                     color: "colors.mainGreen",
                   }}
                 >
-                  چوملا
+                  {t("Joumla")}
                 </Box>
               </Typography>
               <Typography
@@ -773,7 +773,7 @@ const ProductTest = () => {
                   color: "colors.mainGreen",
                 }}
               >
-                چوملا
+                {t("Joumla")}
               </Box>
             </Typography>
           </Box>
@@ -1399,7 +1399,7 @@ const ProductTest = () => {
           منتجات لنفس البائع
         </Typography>
         <ProductsSlider
-          title={"چوملا"}
+          title={"Joumla"}
           products={products.products}
           link={products.link}
         />

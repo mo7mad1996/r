@@ -1173,7 +1173,7 @@ function ProductsForTheSameSeller() {
     <Box>
       <StyledTitle>منتجات لنفس البائع</StyledTitle>
       <ProductsSlider
-        title={"چوملا"}
+        title={"Joumla"}
         products={products.products}
         link={products.link}
       />
@@ -1186,7 +1186,7 @@ function FavoriteProducts() {
     <Box>
       <StyledTitle>المنتجات المفضلة</StyledTitle>
       <ProductsSlider
-        title={"چوملا"}
+        title={"Joumla"}
         products={products.products}
         link={products.link}
       />
@@ -1199,7 +1199,7 @@ function ProductsHaveBeenSeenBefore() {
     <Box>
       <StyledTitle>منتجات تم مشاهدتها من قبل</StyledTitle>
       <ProductsSlider
-        title={"چوملا"}
+        title={"Joumla"}
         products={products.products}
         link={products.link}
       />
@@ -1440,7 +1440,8 @@ function ShoppingInfo() {
               color: "colors.mainGreen",
             }}
           >
-            چوملا
+                        {t("Joumla")}
+
           </Box>
         </Typography>
         <Typography
@@ -1471,7 +1472,8 @@ function ShoppingInfo() {
             color: "colors.mainGreen",
           }}
         >
-          چوملا
+                      {t("Joumla")}
+
         </Box>
       </Typography>
     </Box>

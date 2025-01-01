@@ -222,7 +222,7 @@ const Login = ({ seller = false }) => {
           }}
         >
           <ConfirmButton sx={{ mt: "71px" }} type="submit">
-            استمرار
+            {t("login")}
           </ConfirmButton>
           <Typography
             sx={{
