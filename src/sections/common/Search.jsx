@@ -5,8 +5,9 @@ import SearchIcon from "@mui/icons-material/Search";
 const StyledSearch = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
+  gap: 12,
   justifyContent: "space-between",
-  height: "66px",
+  // height: "66px",
   width: "775px",
   border: "2px solid",
   borderColor: theme.palette.colors.website,
@@ -25,6 +26,7 @@ const Search = ({ placeholder }) => {
           justifyContent: "center",
           backgroundColor: "colors.website",
           borderRadius: "12px",
+          color: "white",
         }}
       >
         <SearchIcon />
@@ -34,6 +36,8 @@ const Search = ({ placeholder }) => {
         sx={{
           position: "relative",
           flex: "1",
+          padding: "7px 12px",
+          display: "block",
         }}
       />
     </StyledSearch>

@@ -420,7 +420,7 @@ const Products = ({ products }) => {
                           );
                         }}
                       >
-                        تعديل
+                        {t("Edit")}
                       </CustomButton>
                       <CustomButton
                         variant="contained"
@@ -544,7 +544,7 @@ const Products = ({ products }) => {
                           );
                         }}
                       >
-                        تعديل
+                        {t("Edit")}
                       </CustomButton>
                       <CustomButton
                         variant="contained"
@@ -629,7 +629,7 @@ const Products = ({ products }) => {
                         );
                       }}
                     >
-                      تعديل
+                      {t("Edit")}
                     </CustomButton>
                   </Box>
                 )}

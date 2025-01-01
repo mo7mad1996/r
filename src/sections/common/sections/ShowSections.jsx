@@ -53,7 +53,7 @@ const ShowSections = () => {
 
   return (
     <Container>
-      <SectionTitle sectionTitle={{ main: "جميع الأقسام" }} />
+      <SectionTitle sectionTitle={{ main: "All Sections" }} />
       {/* <Box sx={{ py: "23px", px: "45px", mx: "30px" }}> */}
       {/* search  */}
       <Box
@@ -61,17 +61,19 @@ const ShowSections = () => {
           position: "relative",
           //   margin: "0 19px",
           display: "flex",
+          flexDirection: "column",
           alignItems: "center",
           gap: "236px",
           mb: "97px",
         }}
       >
-        <Search placeholder="البحث في الأقسام" />
+        <Search placeholder={t("Search in Categories")} />
         <Box
           sx={{
-            position: "absolute",
+            // position: "absolute",
             // top: "-120px",
             // left: "120px",
+            mx: "auto",
             left: "0",
             fontSize: "20px",
             lineHeight: "22px",

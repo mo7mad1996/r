@@ -39,11 +39,11 @@ const ModifyAddress = () => {
       default_address: false,
     },
     validationSchema: Yup.object({
-      address: Yup.string().required("العنوان " + t("Required")),
-      governorate: Yup.string().required(t("Governorate") + t("Is Required"),
-      city: Yup.string().required(t("City") + t("Is Required"),
+      address: Yup.string().required(t("Address") + t("Required")),
+      governorate: Yup.string().required(t("Governorate") + t("Is Required")),
+      city: Yup.string().required(t("City") + t("Is Required")),
       street_name: Yup.string().required(t("Street Name") + t("Required")),
-      residence_number: Yup.string().required("رقم السكن " + t("Required")),
+      residence_number: Yup.string().required(t("Home Number") + t("Required")),
       apartment_number: Yup.string(),
       floor: Yup.string(),
     }),
@@ -96,7 +96,7 @@ const ModifyAddress = () => {
         }}
       >
         <FormItem>
-          <StyledTypography>العنوان</StyledTypography>
+          <StyledTypography>{t("Address")}</StyledTypography>
           <StyledTextField
             name="address"
             value={formik.values.address}
@@ -107,7 +107,7 @@ const ModifyAddress = () => {
           />
         </FormItem>
         <FormItem>
-          <StyledTypography>نوع المكان</StyledTypography>
+          <StyledTypography>{t("Type of Place")}</StyledTypography>
           <StyledSelect
             name="type"
             labelId="demo-simple-select-label"
@@ -118,9 +118,9 @@ const ModifyAddress = () => {
             error={formik.touched.name && Boolean(formik.errors.name)}
             helperText={formik.touched.name && formik.errors.name}
           >
-            {address_type.map((t) => (
-              <MenuItem value={t.key} key={t.key}>
-                {t.value}
+            {address_type.map((ty) => (
+              <MenuItem value={ty.key} key={ty.key}>
+                {t(ty.value)}
               </MenuItem>
             ))}
           </StyledSelect>
@@ -163,7 +163,7 @@ const ModifyAddress = () => {
           />
         </FormItem>
         <FormItem>
-          <StyledTypography>رقم السكن</StyledTypography>
+          <StyledTypography>{t("Home Number")}</StyledTypography>
           <StyledTextField
             name="residence_number"
             value={formik.values.residence_number}
@@ -195,7 +195,7 @@ const ModifyAddress = () => {
           />
         </FormItem>
         <FormItem>
-          <StyledTypography>الدور</StyledTypography>
+          <StyledTypography>{t("Floor")}</StyledTypography>
           <StyledTextField
             name="floor"
             value={formik.values.floor}
@@ -217,6 +217,15 @@ const ModifyAddress = () => {
               alignItems: "center",
             }}
           >
+            <StyledTypography
+              sx={{
+                position: "static !important",
+                transform: "unset !important",
+                width: "auto !important",
+              }}
+            >
+              {t("Set as Default Address")}{" "}
+            </StyledTypography>
             <StyledCheckbox
               name="default_address"
               value={formik.values.default_address}
@@ -231,16 +240,6 @@ const ModifyAddress = () => {
               }
               id="default_address"
             />
-
-            <StyledTypography
-              sx={{
-                position: "static !important",
-                transform: "unset !important",
-                width: "auto !important",
-              }}
-            >
-              تعين كعنوان افتراضي
-            </StyledTypography>
           </Box>
         </FormItem>
       </Stack>
@@ -257,7 +256,7 @@ const ModifyAddress = () => {
           }}
           type="submit"
         >
-          تعديل
+          {t("Edit")}
         </ConfirmButton>
       </Box>
     </form>

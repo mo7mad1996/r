@@ -182,7 +182,7 @@ const UserProfilePage = () => {
         <FormItem>
           <StyledTypography>
             {t("the")}
-            {t("email")}
+            {t("Email")}
           </StyledTypography>
           <StyledTextField value={userData.email} disabled />
         </FormItem>
@@ -216,7 +216,7 @@ const UserProfilePage = () => {
           />
         </FormItem>
         <FormItem>
-          <StyledTypography>رقم السكن</StyledTypography>
+          <StyledTypography>{t("Home Number")}</StyledTypography>
           <StyledTextField
             value={userData.residence_number}
             onChange={(e) =>

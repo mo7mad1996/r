@@ -73,6 +73,9 @@ const Cart = () => {
       <div
         className="cart-container"
         style={{
+          position: "fixed",
+          left: 0,
+          top: 0,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -81,12 +84,11 @@ const Cart = () => {
           paddingTop: "20px",
           backgroundColor: "white",
           borderRight: "1px solid #ccc",
-          width: "8.5%",
+          // width: "fit",
           zIndex: 2,
-          position: "fixed",
+          overflowX: "hidden",
           overflowY: "auto",
-          left: 0,
-          top: 0,
+          padding: "20px",
         }}
       >
         <Box

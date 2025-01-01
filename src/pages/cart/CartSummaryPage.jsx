@@ -643,7 +643,7 @@ const CartSummaryPage = () => {
                     mt: "4px",
                   }}
                 >
-                  العنوان الرئيسي
+                  {t("Main Address")}
                 </Typography>
                 <Button
                   variant="contain"

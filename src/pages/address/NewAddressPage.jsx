@@ -6,7 +6,7 @@ import Address from "../../sections/Address/Address";
 const NewAddressPage = () => {
   return (
     <>
-      <SectionTitle sectionTitle={{ main: "إضافة عنوان جديد" }} />
+      <SectionTitle sectionTitle={{ main: "Add New Address" }} />
       <Address />
     </>
   );

@@ -83,7 +83,7 @@ const ShowAds = ({ title, admin }) => {
                         },
                       }}
                     >
-                      تعديل
+                      {t("Edit")}
                     </Button>
                   </Box>
                 )}

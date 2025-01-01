@@ -36,11 +36,11 @@ const Address = () => {
       default_address: true,
     },
     validationSchema: Yup.object({
-      address: Yup.string().required("العنوان " + t("Required")),
+      address: Yup.string().required(t("Address") + t("Required")),
       governorate: Yup.string().required(t("Governorate") + t("Is Required")),
-      city: Yup.string().required(t("City") + t("Is Required"),
+      city: Yup.string().required(t("City") + t("Is Required")),
       street_name: Yup.string().required(t("Street Name") + t("Required")),
-      residence_number: Yup.string().required("رقم السكن " + t("Required")),
+      residence_number: Yup.string().required(t("Home Number") + t("Required")),
       apartment_number: Yup.string(),
       floor: Yup.string(),
     }),
@@ -71,7 +71,7 @@ const Address = () => {
         }}
       >
         <FormItem>
-          <StyledTypography>العنوان</StyledTypography>
+          <StyledTypography>{t("Address")}</StyledTypography>
           <StyledTextField
             name="address"
             value={formik.values.address}
@@ -82,7 +82,7 @@ const Address = () => {
           />
         </FormItem>
         <FormItem>
-          <StyledTypography>نوع المكان</StyledTypography>
+          <StyledTypography>{t("Type of Place")}</StyledTypography>
           <StyledSelect
             name="type"
             labelId="demo-simple-select-label"
@@ -93,9 +93,9 @@ const Address = () => {
             error={formik.touched.name && Boolean(formik.errors.name)}
             helperText={formik.touched.name && formik.errors.name}
           >
-            {address_type.map((t) => (
-              <MenuItem value={t.key} key={t.key}>
-                {t.value}
+            {address_type.map((ty) => (
+              <MenuItem value={ty.key} key={ty.key}>
+                {t(ty.value)}
               </MenuItem>
             ))}
           </StyledSelect>
@@ -138,7 +138,7 @@ const Address = () => {
           />
         </FormItem>
         <FormItem>
-          <StyledTypography>رقم السكن</StyledTypography>
+          <StyledTypography>{t("Home Number")}</StyledTypography>
           <StyledTextField
             name="residence_number"
             value={formik.values.residence_number}
@@ -170,7 +170,7 @@ const Address = () => {
           />
         </FormItem>
         <FormItem>
-          <StyledTypography>الدور</StyledTypography>
+          <StyledTypography>{t("Floor")}</StyledTypography>
           <StyledTextField
             name="floor"
             value={formik.values.floor}
@@ -214,7 +214,7 @@ const Address = () => {
                 width: "auto !important",
               }}
             >
-              تعين كعنوان افتراضي
+              {t("Set as Default Address")}
             </StyledTypography>
           </Box>
         </FormItem>
@@ -232,7 +232,7 @@ const Address = () => {
           }}
           type="submit"
         >
-          تسجيل
+          {t("Add")}
         </ConfirmButton>
       </Box>
     </form>

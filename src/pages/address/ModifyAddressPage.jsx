@@ -6,7 +6,7 @@ import ModifyAddress from "../../sections/Address/ModifyAddress";
 const ModifyAddressPage = () => {
   return (
     <>
-      <SectionTitle sectionTitle={{ main: "تعديل العنوان" }} />
+      <SectionTitle sectionTitle={{ main: "Main Address" }} />
       <ModifyAddress />
     </>
   );

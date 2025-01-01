@@ -400,7 +400,7 @@
 //                           }}
 //                         >
 //                           {(isPending || isRefused) && "موافقة"}
-//                           {!isPending && !isRefused && "تعديل"}
+//                           {!isPending && !isRefused && "Edit"}
 //                         </Button>
 //                         <Button
 //                           variant="contained"
@@ -469,7 +469,7 @@
 //                           }}
 //                         >
 //                           {(isPending || isRefused) && "موافقة"}
-//                           {!isPending && !isRefused && "تعديل"}
+//                           {!isPending && !isRefused && "Edit"}
 //                         </Button>
 //                         <Button
 //                           variant="contained"

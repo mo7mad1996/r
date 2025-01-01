@@ -518,7 +518,8 @@ const ProductTest = () => {
                         alignItems: "center",
                         gap: "5px",
                       }}
-                    >{t("Offer")}
+                    >
+                      {t("Offer")}
                       <Box
                         sx={{
                           width: "49px",
@@ -1322,7 +1323,7 @@ const ProductTest = () => {
             sx={{ fontWeight: "800", fontSize: "18px", lineHeight: "20.09px" }}
           >
             {t("the")}
-            {t("email")}
+            {t("Email")}
           </Typography>
         </SupportBox>
         <Stack

@@ -10,23 +10,23 @@ export function ContextProvider({ children }) {
   const address_type = [
     {
       key: "Home",
-      value: "منزل",
+      value: "Home",
     },
     {
       key: "Office",
-      value: "مكتب",
+      value: "Office",
     },
     {
       key: "Work",
-      value: "عمل",
+      value: "Work",
     },
     {
       key: "Company",
-      value: "شركة",
+      value: "Company",
     },
     {
       key: "Other",
-      value: "أخرى",
+      value: "Other",
     },
   ];
 

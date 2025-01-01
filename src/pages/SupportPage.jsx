@@ -60,7 +60,7 @@ const SupportPage = () => {
         </StyledBox>
         <StyledBox>
           {t("the")}
-          {t("email")}
+          {t("Email")}
         </StyledBox>
       </Box>
       <ChatButton />

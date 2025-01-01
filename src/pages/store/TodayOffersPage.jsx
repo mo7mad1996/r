@@ -9,7 +9,7 @@ import ProductsSidebar from "../../sections/common/Products/ProductsSidebar";
 const TodayOffersPage = () => {
   return (
     <Box>
-      <SectionTitle sectionTitle={{ main: "عروض اليوم" }} />
+      <SectionTitle sectionTitle={{ main: "Today's offers" }} />
       <Box
         sx={{
           display: "flex",

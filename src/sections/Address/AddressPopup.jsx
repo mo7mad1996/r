@@ -154,7 +154,7 @@ function Location({ address }) {
           lineHeight: "28px",
         }}
       >
-        العنوان الرئيسي{" "}
+        {t("Main Address")}
       </Typography>
     </Stack>
   );

@@ -7,6 +7,7 @@ import useShowModal from "~/hooks/useShowModal";
 import useApi from "@/hooks/useApi";
 import { toast } from "react-toastify";
 import { Context } from "@/components/Context/Context";
+import { useTranslation } from "react-i18next";
 
 const StyledButton = styled(Button)(({ theme }) => ({
   fontSize: "22px",
@@ -35,6 +36,7 @@ const AddressPage = () => {
   const { open, handleOpen, handleClose } = useShowModal();
   const navigate = useNavigate();
   const api = useApi();
+  const { t } = useTranslation();
   const { address_type } = useContext(Context);
 
   // data
@@ -98,7 +100,7 @@ const AddressPage = () => {
             color: "colors.website",
           }}
         >
-          عنوان موجود مسبقا ({addresses.length})
+          {t("Address Already Exists")} ({addresses.length})
         </Typography>
 
         <StyledButton
@@ -107,7 +109,7 @@ const AddressPage = () => {
           }}
           onClick={() => navigate("new")}
         >
-          اضف عنوان جديد
+          {t("Add New Address")}
         </StyledButton>
       </Box>
       {errMessage ? (
@@ -150,10 +152,10 @@ const AddressPage = () => {
                       <Stack sx={{ gap: "11px", mt: "16px" }}>
                         <StyledAddress>{address.address}</StyledAddress>
                         <StyledAddress>
-                          {
+                          {t(
                             address_type.find((e) => e.key == address.type)
                               ?.value
-                          }
+                          )}
                         </StyledAddress>
                         <StyledAddress>
                           {address.residence_number} , {address.street_name} ,{" "}
@@ -173,7 +175,7 @@ const AddressPage = () => {
                         }}
                         onClick={() => navigate(`modify/${address.id}`)}
                       >
-                        تعديل
+                        {t("Edit")}
                       </StyledButton>
                       <StyledButton
                         sx={{
@@ -185,7 +187,9 @@ const AddressPage = () => {
                           },
                         }}
                         onClick={() => {
-                          setMessage("هل ترغب حقا فى حذف هذا العنوان");
+                          setMessage(
+                            t("Do you really want to delete this address?")
+                          );
                           handleOpen();
                           setId(address.id);
                         }}

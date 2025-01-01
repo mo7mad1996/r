@@ -155,7 +155,7 @@ const HomePage = () => {
         <SectionsSlider />
         <Secondgallery data={itemData.slice(0, 4)} />
         <ProductsSlider
-          title={"عروض اليوم"}
+          title={"Today's offers"}
           products={products.products}
           link={"/store"}
         />

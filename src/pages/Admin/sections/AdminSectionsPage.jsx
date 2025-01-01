@@ -4,9 +4,9 @@ import SectionTitle from "../../../sections/common/Products/SectionTitle";
 import Menu from "../../../sections/Menu/Menu";
 
 const items = [
-  { name: "جميع الأقسام", link: "/admin/dashboard/sections/all" },
+  { name: "All Sections", link: "/admin/dashboard/sections/all" },
   {
-    name: "إضافة قسم جديد",
+    name: "Add New Category",
     link: "/admin/dashboard/sections/add",
   },
   {
