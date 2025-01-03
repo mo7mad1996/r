@@ -74,14 +74,14 @@ const CartPage = () => {
   if (errorMessage)
     return (
       <>
-        <SectionTitle sectionTitle={{ main: "{t("Shopping Cart")}" }} />
+        <SectionTitle sectionTitle={{ main: "Shopping Cart" }} />
         <h4>{errorMessage}</h4>;
       </>
     );
 
   return (
     <>
-      <SectionTitle sectionTitle={{ main: "{t("Shopping Cart")}" }} />
+      <SectionTitle sectionTitle={{ main: "Shopping Cart" }} />
       <Stack
         sx={{
           flexDirection: "row",

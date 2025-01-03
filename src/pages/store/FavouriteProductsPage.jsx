@@ -7,7 +7,7 @@ import ProductsSection from "../../sections/common/Products/ProductsSection";
 const FavouriteProductsPage = () => {
   return (
     <Box>
-      <SectionTitle sectionTitle={{ main: "{t("Wishlist")}" }} />
+      <SectionTitle sectionTitle={{ main: "Wishlist" }} />
       <Box
         sx={{
           display: "flex",
