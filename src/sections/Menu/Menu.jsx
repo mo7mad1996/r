@@ -15,7 +15,6 @@ const Menu = ({ items }) => {
       <Stack
         sx={{
           px: { xs: "10px", sm: "80px", md: "100px", lg: "115px", xl: "170px" },
-          mt: "-98px",
           mb: "100px",
           width: "100%",
         }}

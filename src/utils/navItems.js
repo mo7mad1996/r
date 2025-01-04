@@ -60,7 +60,11 @@ export const navItems = [
     path: "support",
   },
   {
-    title: "",
+    title: "Dashboard",
     path: "dashboard",
+  },
+  {
+    title: "Admin",
+    path: "admin/dashboard",
   },
 ];
