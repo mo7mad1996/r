@@ -273,8 +273,9 @@ const AddNewSellerPage = () => {
                 <MenuItem value={index + 1}>{index + 1}</MenuItem>
               ))}
           </Select>
-          {t('from')}  {totalPages}
-          {t("Pages")}{" "}
+          {t("from")}
+          {totalPages}
+          {t("Pages")}
         </Box>
       </Box>
       <Typography

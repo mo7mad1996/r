@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 
 // components
 import Header from "@/components/layouts/mainLayout/Header/index.jsx";
-import Footer from "@/components/Footer";
+import Footer from "@/components/layouts/mainLayout/Footer/index.jsx";
 import Spinner from "@/components/Spinner";
 import AdminAddSection from "@/pages/Admin/sections/AdminAddSection";
 import LatestProducts from "@/components/LatestProducts/LatestProducts";

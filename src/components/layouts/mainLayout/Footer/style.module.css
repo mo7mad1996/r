@@ -1,0 +1,13 @@
+.socialMedia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px;
+}
+
+.socialMedia img {
+  width: 60px;
+  aspect-ratio: 1;
+  object-fit: contain;
+}

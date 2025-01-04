@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SectionTitle from "../../sections/common/Products/SectionTitle";
+import SectionTitle from "~/sections/common/Products/SectionTitle";
 import {
   Box,
   Button,
@@ -8,21 +8,13 @@ import {
   Typography,
   styled,
 } from "@mui/material";
-import {
-  Add,
-  Delete,
-  DeleteOutline,
-  FavoriteBorder,
-  Remove,
-  Share,
-} from "@mui/icons-material";
-import Reviews from "../../components/Reviews";
+import { Add, DeleteOutline } from "@mui/icons-material";
+import Reviews from "~/components/Reviews";
 
-import product1 from "../../assets/orders/product1.png";
-import product2 from "../../assets/orders/product3.png";
 import { useNavigate } from "react-router-dom";
 
 import useApi from "@/hooks/useApi";
+import { useTranslation } from "react-i18next";
 
 const StyledIcons = styled(Box)({
   //   position: "absolute",
@@ -40,6 +32,7 @@ const StyledIcons = styled(Box)({
 const CartPage = () => {
   // config
   const api = useApi();
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   // data
@@ -70,7 +63,6 @@ const CartPage = () => {
   }, []);
 
   // render
-
   if (errorMessage)
     return (
       <>
@@ -99,8 +91,7 @@ const CartPage = () => {
         {/* total items  */}
         <Box
           sx={{
-            width: "549px",
-            height: "345px",
+            // width: "549px",
             border: "1px solid #000000",
             p: "19px 25px 26px",
           }}
@@ -108,12 +99,12 @@ const CartPage = () => {
           <Typography
             sx={{
               fontSize: "26px",
-              fontWeight: " 700",
+              fontWeight: "700",
               lineHeight: "29px",
               color: "#000000",
             }}
           >
-            اجمالي {t("Shopping Cart")}
+            {t("Total")} {t("Shopping Cart")}
           </Typography>
           <Box
             sx={{
@@ -128,7 +119,9 @@ const CartPage = () => {
               // borderBottom: "1px solid #505050",
             }}
           >
-            <Typography>المجموع</Typography>
+            <Typography>
+              {t("Cost")}
+            </Typography>
             <Typography
               sx={{
                 fontWeight: "800",
@@ -173,7 +166,10 @@ const CartPage = () => {
               mb: "49px",
             }}
           >
-            <Typography>الاجمالي</Typography>
+            <Typography>
+              {t("the")}
+              {t("Total")}
+            </Typography>
             <Typography
               sx={{
                 fontWeight: "800",
@@ -213,6 +209,7 @@ const CartPage = () => {
 export default CartPage;
 
 function SingleItem({ product }) {
+  const { t } = useTranslation();
   return (
     <Stack
       sx={{

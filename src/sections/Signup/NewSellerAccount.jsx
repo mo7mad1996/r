@@ -41,11 +41,13 @@ const UploadButton = styled(Button)(({ theme }) => ({
   width: "416px",
   height: "60px",
   color: "colors.wi8",
+  marginTop: 15,
+  gap: 12,
+  display: "flex",
   fontSize: "28px",
   fontWeight: "800",
-  backgroundColor: theme.palette.colors.website,
   borderRadius: "10px",
-  "&:hover": {
+  "&, &:hover": {
     backgroundColor: theme.palette.colors.website,
   },
 }));
@@ -115,7 +117,6 @@ const NewSellerAccount = ({ changeForm }) => {
   const handleSubmit = async () => {
     const form = new FormData();
 
-    // إضافة الحقول وفقًا للأسماء المتوافقة مع الـ backend
     Object.keys(formData).forEach((key) => {
       if (formData[key]) {
         form.append(key, formData[key]);
@@ -128,7 +129,7 @@ const NewSellerAccount = ({ changeForm }) => {
           "Content-Type": "multipart/form-data",
         },
       });
-      changeForm(); // تابع العملية بعد النجاح
+      changeForm();
     } catch (error) {
       console.error("Error submitting form:", error);
     }

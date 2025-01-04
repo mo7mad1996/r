@@ -24,18 +24,19 @@ export const FormItem = styled(Box)(({ theme }) => ({
   },
 }));
 export const StyledTypography = styled(Typography)(({ theme }) => ({
-  fontSize: "28px",
+  fontSize: "20px",
+  marginBottom: ".4em",
+  [theme.breakpoints.up("lg")]: {
+    marginBottom: "30px",
+  },
   fontWeight: "700",
   lineHeight: "31px",
   color: "#000000",
-  marginBottom: "30px",
   [theme.breakpoints.up("lg")]: {
-    // position: "absolute",
     width: "400px",
     textAlign: "start",
     top: "50%",
     transform: "translateY(-50%)",
-    // right: "-415px",
     marginBottom: "0px",
   },
   [theme.breakpoints.between(1200, 1360)]: {

@@ -121,6 +121,8 @@ const Cart = () => {
             21,500.00 {t("Currency")}
           </Box>
           <Box
+            component={Link}
+            to="/cart"
             sx={{
               color: "green",
               fontWeight: "regular",

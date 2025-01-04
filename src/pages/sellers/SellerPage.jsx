@@ -125,9 +125,7 @@ const SellerPage = () => {
           {t("_____long____text_____")}
         </Typography>
       </Box>
-      {/* <SectionTitle
-        sectionTitle={{ main: "store", second:        "All Products" }}
-      /> */}
+
       <Stack>
         <Box sx={{ display: "flex", gap: "86px", pl: "66px" }}>
           <Box mt={"-90px"}>

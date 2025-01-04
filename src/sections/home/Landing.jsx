@@ -78,6 +78,7 @@ const Landing = () => {
           left: "0",
           padding: "1em",
           zIndex: 1,
+          direction: "rtl",
         }}
       >
         <ArrowBox sx={{ cursor: "pointer" }} onClick={handlePrev}>

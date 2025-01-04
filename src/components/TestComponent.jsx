@@ -246,19 +246,25 @@ const TestComponent = ({ products, title, link }) => {
           top: "50%",
           transform: "translateY(-50%)",
           right: "0",
-          //   zIndex: 1300,
+          direction: "rtl",
+          pointerEvents: "none",
+          zIndex: 1,
         }}
       >
-        <ArrowBox onClick={handlePrev}>
-          {/* <Box component={"img"} src={leftArrow}></Box> */}
+        <ArrowBox
+          onClick={handlePrev}
+          sx={{
+            pointerEvents: "all",
+          }}
+        >
           <ChevronRight />
         </ArrowBox>
-        <ArrowBox onClick={handleNext}>
-          {/* <Box
-            component={"img"}
-            src={leftArrow}
-            sx={{ transform: "rotate(180deg)" }}
-          ></Box> */}
+        <ArrowBox
+          onClick={handleNext}
+          sx={{
+            pointerEvents: "all",
+          }}
+        >
           <ChevronLeft />
         </ArrowBox>
       </Box>

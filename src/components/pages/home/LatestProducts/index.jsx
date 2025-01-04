@@ -248,12 +248,25 @@ function Slider({ items }) {
           top: "50%",
           transform: "translateY(-50%)",
           right: "0",
+          direction: "rtl",
+          zIndex: 1,
+          pointerEvents: "none",
         }}
       >
-        <ArrowBox onClick={handlePrev}>
+        <ArrowBox
+          onClick={handlePrev}
+          sx={{
+            pointerEvents: "all",
+          }}
+        >
           <ChevronRight />
         </ArrowBox>
-        <ArrowBox onClick={handleNext}>
+        <ArrowBox
+          onClick={handleNext}
+          sx={{
+            pointerEvents: "all",
+          }}
+        >
           <ChevronLeft />
         </ArrowBox>
       </Box>

@@ -1,6 +1,8 @@
 import { Box, styled } from "@mui/material";
 import React from "react";
 
+import css from "./style.module.css";
+
 const Image = styled("img")({
   objectFit: "cover", // Ensures the image covers its container
 });
@@ -16,34 +18,10 @@ const Gallery = ({ data }) => {
         alignItems: "stretch",
       }}
     >
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row", // Arrange sections in a column
-          width: "100%", // Full width
-          height: "555px",
-          justifyContent: "space-between",
-          gap: "50px",
-          alignItems: "center",
-          // backgroundColor: "#cc0000",
-          padding: "50px",
-        }}
-      >
+      <Box className={css.item_group}>
         {/* First Section: Four Images */}
 
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap", // Allows wrapping to the next row
-            justifyContent: "space-between",
-            alignItems: "center",
-            backgroundColor: "white",
-            width: "50%",
-            padding: "0%",
-            height: "400px", // Adjust height to fit content or set a specific size
-            px: "20px",
-          }}
-        >
+        <Box className={css.item}>
           {data.slice(0, 4).map((item, index) => (
             <Box
               key={index}
@@ -64,20 +42,7 @@ const Gallery = ({ data }) => {
         </Box>
 
         {/* Second Section: Full-Size Image */}
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap", // Allows wrapping to the next row
-            justifyContent: "space-between",
-            alignItems: "center",
-            backgroundColor: "white",
-            width: "50%",
-            padding: "0%",
-            height: "400px", // Adjust height to fit content or set a specific size
-            px: "20px",
-            overflow: "hidden",
-          }}
-        >
+        <Box className={css.item}>
           <Image
             src={data[3] || "https://via.placeholder.com/800"}
             alt="Full-Size Image"
@@ -89,20 +54,7 @@ const Gallery = ({ data }) => {
           />
         </Box>
         {/* third Section: Four Images */}
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap", // Allows wrapping to the next row
-            justifyContent: "space-between",
-            alignItems: "center",
-            backgroundColor: "white",
-            width: "50%",
-            padding: "0%",
-            height: "400px", // Adjust height to fit content or set a specific size
-            px: "20px",
-            overflow: "hidden",
-          }}
-        >
+        <Box className={css.item}>
           {data.slice(0, 4).map((item, index) => (
             <Box
               key={index}
@@ -122,20 +74,7 @@ const Gallery = ({ data }) => {
           ))}
         </Box>
         {/* fourth Section: Full-Size Image */}
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap", // Allows wrapping to the next row
-            justifyContent: "space-between",
-            alignItems: "center",
-            backgroundColor: "white",
-            width: "50%",
-            padding: "0%",
-            height: "400px", // Adjust height to fit content or set a specific size
-            px: "20px",
-            overflow: "hidden",
-          }}
-        >
+        <Box className={css.item}>
           <Image
             src={data[4] || "https://via.placeholder.com/800"}
             alt="Full-Size Image"
@@ -145,34 +84,10 @@ const Gallery = ({ data }) => {
       </Box>
 
       {/* SECOND SECTION IN GALLERY */}
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row", // Arrange sections in a column
-          width: "100%", // Full width
-          height: "555px",
-          justifyContent: "space-between",
-          gap: "50px",
-          alignItems: "center",
-          backgroundColor: "#3e4145",
-          padding: "50px",
-        }}
-      >
+      <Box className={css.item_group}>
         {/* First Section: Four Images */}
 
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap", // Allows wrapping to the next row
-            justifyContent: "space-between",
-            alignItems: "center",
-            backgroundColor: "white",
-            width: "50%",
-            padding: "0%",
-            height: "400px", // Adjust height to fit content or set a specific size
-            px: "20px",
-          }}
-        >
+        <Box className={css.item}>
           {data.slice(0, 4).map((item, index) => (
             <Box
               key={index}
@@ -193,20 +108,7 @@ const Gallery = ({ data }) => {
         </Box>
 
         {/* Second Section: Full-Size Image */}
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap", // Allows wrapping to the next row
-            justifyContent: "space-between",
-            alignItems: "center",
-            backgroundColor: "white",
-            width: "50%",
-            padding: "0%",
-            height: "400px", // Adjust height to fit content or set a specific size
-            px: "20px",
-            overflow: "hidden",
-          }}
-        >
+        <Box className={css.item}>
           <Image
             src={data[3] || "https://via.placeholder.com/800"}
             alt="Full-Size Image"
@@ -218,20 +120,7 @@ const Gallery = ({ data }) => {
           />
         </Box>
         {/* third Section: Four Images */}
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap", // Allows wrapping to the next row
-            justifyContent: "space-between",
-            alignItems: "center",
-            backgroundColor: "white",
-            width: "50%",
-            padding: "0%",
-            height: "400px", // Adjust height to fit content or set a specific size
-            px: "20px",
-            overflow: "hidden",
-          }}
-        >
+        <Box className={css.item}>
           {data.slice(0, 4).map((item, index) => (
             <Box
               key={index}
@@ -251,20 +140,7 @@ const Gallery = ({ data }) => {
           ))}
         </Box>
         {/* fourth Section: Full-Size Image */}
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap", // Allows wrapping to the next row
-            justifyContent: "space-between",
-            alignItems: "center",
-            backgroundColor: "white",
-            width: "50%",
-            padding: "0%",
-            height: "400px", // Adjust height to fit content or set a specific size
-            px: "20px",
-            overflow: "hidden",
-          }}
-        >
+        <Box className={css.item}>
           <Image
             src={data[4] || "https://via.placeholder.com/317x400"}
             alt="Full-Size Image"

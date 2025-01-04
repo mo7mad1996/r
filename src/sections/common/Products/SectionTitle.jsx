@@ -4,10 +4,8 @@ import { useTranslation } from "react-i18next";
 
 const StyledTypo = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
-    // fontSize: "35px",
     textAlign: "center",
   },
-  fontSize: "40px",
   fontWeight: "800",
   lineHeight: "45px",
   textWrap: "wrap",
@@ -16,16 +14,19 @@ const SectionTitle = ({ sectionTitle }) => {
   const { t } = useTranslation();
 
   return (
-    <Stack
-      display={"flex"}
-      alignItems={"center"}
-      sx={{ mt: "56px", mb: "133px", minHeight: "90px" }}
-    >
-      <StyledTypo>{t(sectionTitle.main)}</StyledTypo>
+    <Stack sx={{ display: "flex", alignItems: "center", my: "3em" }}>
+      <StyledTypo
+        sx={{
+          fontSize: { xs: "30px", md: "40px" },
+        }}
+      >
+        {t(sectionTitle.main)}
+      </StyledTypo>
       {sectionTitle.second && (
         <StyledTypo
           sx={{
             color: "colors.greyStrock",
+            fontSize: { xs: "20px", md: "30px" },
           }}
         >
           ({t(sectionTitle.second)})

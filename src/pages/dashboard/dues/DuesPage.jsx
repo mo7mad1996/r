@@ -62,7 +62,10 @@ const DuesPage = () => {
                       justifyContent: "space-between",
                     }}
                   >
-                    <Typography>المجموع</Typography>
+                    <Typography>
+                      {t("the")}
+                      {t("Total")}
+                    </Typography>
                     <Typography>30 ج.م</Typography>
                   </StyledBox>
                   <StyledBox
@@ -95,7 +98,7 @@ const DuesPage = () => {
         }}
         onClick={() => navigate("total")}
       >
-        اجمالي مستحقاتي
+        {t("Total")} مستحقاتي
       </Button>
     </Stack>
   );

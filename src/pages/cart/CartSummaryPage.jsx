@@ -524,7 +524,7 @@ const CartSummaryPage = () => {
           >
             <Stack gap="56px">
               <StyledTextBox>
-                <Typography variant="h6">اجمالي السلع</Typography>
+                <Typography variant="h6">{t("Total")} السلع</Typography>
                 <Typography variant="h6">1500ج.م</Typography>
               </StyledTextBox>
               <StyledTextBox>
@@ -536,7 +536,7 @@ const CartSummaryPage = () => {
                 <Typography variant="h6">12ج.م</Typography>
               </StyledTextBox>
               <StyledTextBox>
-                <Typography variant="h6">الاجمالي المطلوب</Typography>
+                <Typography variant="h6">{t("Total")} المطلوب</Typography>
                 <Typography variant="h6">1572ج.م</Typography>
               </StyledTextBox>
               {/* <StyledTextBox>
@@ -563,7 +563,9 @@ const CartSummaryPage = () => {
                 },
               }}
             >
-              <Typography>اجمالي المبلغ المطلوب سداده</Typography>
+              <Typography>
+                {t("Total")} {t("The Total Amount Due")}
+              </Typography>
               <Typography>1542 ج.م</Typography>
             </Box>
           </Stack>
@@ -851,7 +853,7 @@ const CartSummaryPage = () => {
               },
             }}
           >
-            <Typography>المبلغ الاجمالي المطلوب سداده</Typography>
+            <Typography>{t("The Total Amount Due")}</Typography>
             <Typography>0 ج.م</Typography>
           </Box>
           {/* confirm  */}

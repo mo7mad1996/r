@@ -246,19 +246,27 @@ const ProductsSlider = ({ products, title, link }) => {
           top: "50%",
           transform: "translateY(-50%)",
           right: "0",
+          direction: "rtl",
+          zIndex: 1,
+          pointerEvents: "none",
+
           //   zIndex: 1300,
         }}
       >
-        <ArrowBox onClick={handlePrev}>
-          {/* <Box component={"img"} src={leftArrow}></Box> */}
+        <ArrowBox
+          onClick={handlePrev}
+          sx={{
+            pointerEvents: "all",
+          }}
+        >
           <ChevronRight />
         </ArrowBox>
-        <ArrowBox onClick={handleNext}>
-          {/* <Box
-            component={"img"}
-            src={leftArrow}
-            sx={{ transform: "rotate(180deg)" }}
-          ></Box> */}
+        <ArrowBox
+          onClick={handleNext}
+          sx={{
+            pointerEvents: "all",
+          }}
+        >
           <ChevronLeft />
         </ArrowBox>
       </Box>
