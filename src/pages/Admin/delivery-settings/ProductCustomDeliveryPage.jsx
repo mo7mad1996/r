@@ -28,7 +28,6 @@ const ProductCustomDeliveryPage = () => {
           <SectionTitle sectionTitle={{ main: "تخصيص الشحن لمنتج" }} />
           <Box
             sx={{
-              //   mt: "-150px",
               mb: "34px",
               mx: "20px",
             }}
@@ -39,7 +38,6 @@ const ProductCustomDeliveryPage = () => {
             sx={{
               position: "relative",
               mx: "30px",
-              mb: "-50px",
             }}
           >
             <Typography

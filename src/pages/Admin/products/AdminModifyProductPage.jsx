@@ -18,7 +18,6 @@ const AdminModifyProductPage = () => {
             fontWeight: "800",
             lineHeight: "45px",
             textAlign: "center",
-            mt: "-160px",
 
             "& span": {
               color: "colors.mainGreen",

@@ -20,11 +20,7 @@ const AdminAdsPage = () => {
       }}
     >
       <SectionTitle sectionTitle={{ main: "Joumla ads" }} />
-      <Stack
-        sx={{
-          mt: "-70px",
-        }}
-      >
+      <Stack>
         <Box sx={{ mt: "98px" }}>
           <Menu items={items} dashboard={true} />
         </Box>

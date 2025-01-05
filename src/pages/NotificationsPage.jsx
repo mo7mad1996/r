@@ -51,7 +51,7 @@ const NotificationsPage = () => {
             <StyledTypo>الأربعاء , 10 أغسطس 2024 ,5:35 pm</StyledTypo>
             <StyledStack>
               <Typography>
-                تم اضافة 500 ج.م مستحقاتك عن الطلب رقم 3101
+                تم اضافة 500 {t("Currency")} مستحقاتك عن الطلب رقم 3101
               </Typography>
             </StyledStack>
           </Stack>

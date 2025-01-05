@@ -515,7 +515,6 @@ const AddSectionPage = () => {
           display: "flex",
           alignItems: "center",
           // gap: "236px",
-          mt: "-50px",
           mb: "102px",
         }}
       >
@@ -523,7 +522,6 @@ const AddSectionPage = () => {
         <Box
           sx={{
             position: "absolute",
-            // top: "-120px",
             left: "120px",
             fontSize: "20px",
             lineHeight: "22px",

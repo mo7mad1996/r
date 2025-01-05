@@ -121,14 +121,14 @@ const ProductReviewPage = () => {
                   color: "colors.mainGreen",
                 }}
               >
-                500 ج.م
+                500 {t("Currency")}
               </Typography>
               <Typography
                 sx={{
                   color: "#838181",
                 }}
               >
-                <s>700</s> ج.م
+                <s>700</s> {t("Currency")}
               </Typography>
             </Box>
           </Stack>

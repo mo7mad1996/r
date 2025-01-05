@@ -154,7 +154,9 @@ const WithdrawPage = () => {
               </StyledBox>
               <StyledBox sx={{ width: "590px" }}>
                 <Typography>المبلغ</Typography>
-                <Typography>{withdraw.cost} ج.م</Typography>
+                <Typography>
+                  {withdraw.cost} {t("Currency")}
+                </Typography>
               </StyledBox>
               <StyledBox sx={{ width: "590px", position: "relative" }}>
                 <Typography>تاريخ الطلب</Typography>

@@ -41,9 +41,6 @@ const SellerAccountPage = () => {
       </Typography>
       <SectionTitle sectionTitle={{ main: "حسابى" }} />
       <Stack
-        sx={{
-          mt: "-70px",
-        }}
       >
         <SellerBox />
         {/* <Stack

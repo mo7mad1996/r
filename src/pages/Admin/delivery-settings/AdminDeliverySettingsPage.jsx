@@ -41,11 +41,7 @@ const AdminDeliverySettingsPage = () => {
       }}
     >
       <SectionTitle sectionTitle={{ main: "اعدادات الشحن" }} />
-      <Stack
-        sx={{
-          mt: "-70px",
-        }}
-      >
+      <Stack>
         <Box sx={{ mt: "98px" }}>
           <Menu items={items} dashboard={true} />
         </Box>

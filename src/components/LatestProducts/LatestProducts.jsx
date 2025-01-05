@@ -8,7 +8,7 @@
 //     styled,
 //   } from "@mui/material";
 //   import React from "react";
-  
+
 //   import {
 //     AddShoppingCart,
 //     Favorite,
@@ -34,7 +34,7 @@
 //     top: "190px",
 //     left: "23px",
 //     // transform: "translateX(-50%)",
-  
+
 //     "& button": {
 //       position: "relative",
 //       width: "50px",
@@ -76,12 +76,11 @@
 //     const isAds = location.pathname.includes("/ads");
 //     const { open, handleOpen, handleClose, message, setMessage } = useShowModal();
 //   const {addToCart} = useContext(Context)
-  
+
 //     async function addToUserCart(id){
 //       let res = await addToCart(id)
 //     }
-  
-  
+
 //     return (
 //       <>
 //         <Grid container spacing={["40px"]}>
@@ -232,7 +231,7 @@
 //                       color: "colors.mainGreen",
 //                     }}
 //                   >
-//                     {Math.ceil(product.price_afte_discount)} ج.م
+//                     {Math.ceil(product.price_afte_discount)} {t("Currency")}
 //                   </Typography>
 //                   <Typography
 //                     sx={{
@@ -252,7 +251,7 @@
 //                       },
 //                     }}
 //                   >
-//                     {product.main_price} ج.م
+//                     {product.main_price} {t("Currency")}
 //                   </Typography>
 //                 </Box>
 //                 <Box
@@ -660,19 +659,13 @@
 //       </>
 //     );
 //   };
-  
+
 //   export default LatestProducts;
 
-
-
-
-import React from 'react'
+import React from "react";
 
 function LatestProducts() {
-  return (
-    <div>LatestProducts</div>
-  )
+  return <div>LatestProducts</div>;
 }
 
-export default LatestProducts
-  
+export default LatestProducts;

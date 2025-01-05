@@ -66,7 +66,7 @@ const DuesPage = () => {
                       {t("the")}
                       {t("Total")}
                     </Typography>
-                    <Typography>30 ج.م</Typography>
+                    <Typography>30 {t("Currency")}</Typography>
                   </StyledBox>
                   <StyledBox
                     sx={{

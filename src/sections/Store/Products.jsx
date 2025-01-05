@@ -238,7 +238,7 @@ const Products = ({ products }) => {
                     color: "colors.mainGreen",
                   }}
                 >
-                  {Math.ceil(product.price_afte_discount)} ج.م
+                  {Math.ceil(product.price_afte_discount)} {t("Currency")}
                 </Typography>
                 <Typography
                   sx={{
@@ -258,7 +258,7 @@ const Products = ({ products }) => {
                     },
                   }}
                 >
-                  {product.main_price} ج.م
+                  {product.main_price} {t("Currency")}
                 </Typography>
               </Box>
               <Box

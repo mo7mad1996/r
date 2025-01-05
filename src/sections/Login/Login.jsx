@@ -126,7 +126,7 @@ const Login = ({ seller = false }) => {
   return (
     <>
       <SectionTitle sectionTitle={{ main: "login" }} />
-      <Stack gap="31px" alignItems={"center"} mt={"-75px"}>
+      <Stack gap="31px" alignItems={"center"}>
         <StyledBox onClick={handleGoogleLogin}>
           <Box component="img" src={googleImage} />
           <StyledTypography>{t("login via")} Google</StyledTypography>
@@ -206,8 +206,6 @@ const Login = ({ seller = false }) => {
             sx={{
               fontSize: "22px",
               fontWeight: "700",
-              lineHeight: "25px",
-              mt: "-39px",
               color: "colors.darkIcons",
             }}
           >

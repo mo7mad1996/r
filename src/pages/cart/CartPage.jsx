@@ -119,16 +119,14 @@ const CartPage = () => {
               // borderBottom: "1px solid #505050",
             }}
           >
-            <Typography>
-              {t("Cost")}
-            </Typography>
+            <Typography>{t("Cost")}</Typography>
             <Typography
               sx={{
                 fontWeight: "800",
                 color: "colors.mainGreen",
               }}
             >
-              1000 ج.م
+              1000 {t("Currency")}
             </Typography>
           </Box>
           <Box
@@ -176,7 +174,7 @@ const CartPage = () => {
                 color: "colors.mainGreen",
               }}
             >
-              1000 ج.م
+              1000 {t("Currency")}
             </Typography>
           </Box>
           <Box
@@ -340,7 +338,7 @@ function SingleItem({ product }) {
                 color: "colors.mainGreen",
               }}
             >
-              {product.product.price} ج.م
+              {product.product.price} {t("Currency")}
             </Typography>
             <Typography
               sx={{
@@ -360,7 +358,7 @@ function SingleItem({ product }) {
                 },
               }}
             >
-              700 ج.م
+              700 {t("Currency")}
             </Typography>
           </Box>
           <Box

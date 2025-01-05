@@ -225,7 +225,6 @@ const AddNewSellerPage = () => {
           display: "flex",
           alignItems: "center",
           // gap: "236px",
-          mt: "-50px",
           mb: "102px",
         }}
       >

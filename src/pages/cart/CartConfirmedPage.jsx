@@ -86,7 +86,7 @@ const CartConfirmedPage = () => {
         </StyledBox>
         <StyledBox>
           <Typography>إجمالى قيمة الطلب :</Typography>
-          <Typography>1542 ج.م</Typography>
+          <Typography>1542 {t("Currency")}</Typography>
         </StyledBox>
         <StyledBox>
           <Typography>اسم العميل :</Typography>

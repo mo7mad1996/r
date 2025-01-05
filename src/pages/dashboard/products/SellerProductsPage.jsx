@@ -30,11 +30,7 @@ const SellerProductsPage = () => {
         مرحبا , ممدوح الصيرفي
       </Typography>
       <SectionTitle sectionTitle={{ main: "Products" }} />
-      <Stack
-        sx={{
-          mt: "-70px",
-        }}
-      >
+      <Stack>
         <Box
           sx={{
             display: "flex",

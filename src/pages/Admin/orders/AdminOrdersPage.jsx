@@ -38,11 +38,7 @@ const AdminOrdersPage = () => {
       }}
     >
       <SectionTitle sectionTitle={{ main: "الطلبات" }} />
-      <Stack
-        sx={{
-          mt: "-70px",
-        }}
-      >
+      <Stack>
         <Box sx={{ mt: "98px" }}>
           <Menu items={items} dashboard={true} />
         </Box>

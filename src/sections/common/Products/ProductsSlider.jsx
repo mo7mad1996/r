@@ -10,6 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
+
 // import required modules
 import { Navigation } from "swiper/modules";
 
@@ -81,8 +82,6 @@ const ProductsSlider = ({ products, title, link }) => {
       sx={{
         position: "relative",
         backgroundColor: "colors.wi8",
-        // pt: "63px",
-        // pb: "10px",
         py: "25px",
         px: { xs: "36px", sm: "77px" },
         my: "24px",
@@ -162,20 +161,6 @@ const ProductsSlider = ({ products, title, link }) => {
                   mt: "16px",
                 }}
               >
-                {/* <Box
-                  component={"img"}
-                  sx={{
-                    // width: "240px",
-                    // height: "240px",
-                    width: "138px",
-                    height: "182px",
-                    cursor: "pointer",
-                  }}
-                  src={productImg}
-                  onClick={() => {
-                    navigate("/store/1");
-                  }}
-                /> */}
                 <ProductPagination />
                 <Box>
                   <Typography
@@ -209,7 +194,7 @@ const ProductsSlider = ({ products, title, link }) => {
                         // mt: "5px",
                       }}
                     >
-                      {product.price} ج.م
+                      {product.price} {t("Currency")}
                     </Typography>
                     <Typography
                       sx={{
@@ -228,7 +213,7 @@ const ProductsSlider = ({ products, title, link }) => {
                         },
                       }}
                     >
-                      {product.oldPrice} ج.م
+                      {product.oldPrice} {t("Currency")}
                     </Typography>
                   </Box>
                 </Box>
@@ -249,8 +234,6 @@ const ProductsSlider = ({ products, title, link }) => {
           direction: "rtl",
           zIndex: 1,
           pointerEvents: "none",
-
-          //   zIndex: 1300,
         }}
       >
         <ArrowBox

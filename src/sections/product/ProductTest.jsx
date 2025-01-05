@@ -335,14 +335,14 @@ const ProductTest = () => {
                   color: "colors.mainGreen",
                 }}
               >
-                {PRODUCT.price} ج.م
+                {PRODUCT.price} {t("Currency")}
               </Typography>
               <Typography
                 sx={{
                   color: "#838181",
                 }}
               >
-                <s>{PRODUCT.discount}</s> ج.م
+                <s>{PRODUCT.discount}</s> {t("Currency")}
               </Typography>
             </Box>
             <ProductCustom>

@@ -42,7 +42,7 @@ const WithdrawAgree = ({ handleClose }) => {
           color: "colors.mainBlack",
         }}
       >
-        برجاء الموافقة علي سحب مبلغ 1000 ج.م من مستحقاتي
+        برجاء الموافقة علي سحب مبلغ 1000 {t("Currency")} من مستحقاتي
       </Typography>
       <Button
         sx={{

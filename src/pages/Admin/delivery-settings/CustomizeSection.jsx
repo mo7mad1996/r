@@ -50,7 +50,6 @@ const CustomizeSection = ({ title }) => {
           borderRadius: "10px",
           backgroundColor: "#D9D9D9",
           mx: "auto",
-          mt: "-50px",
         }}
       >
         <Typography
@@ -190,7 +189,7 @@ const CustomizeSection = ({ title }) => {
               borderRadius: "5px",
             }}
           >
-            ج.م{" "}
+            {t("Currency")}{" "}
           </StyledTypo>
         </Box>
       </Stack>

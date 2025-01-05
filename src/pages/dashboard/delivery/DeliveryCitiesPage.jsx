@@ -52,11 +52,7 @@ const DeliveryCitiesPage = () => {
         مرحبا , ممدوح الصيرفي
       </Typography>
       <SectionTitle sectionTitle={{ main: "محافظات الشحن" }} />
-      <Stack
-        sx={{
-          mt: "-150px",
-        }}
-      >
+      <Stack>
         <SellerBox />
       </Stack>
       <ShowCities cities={cities} />

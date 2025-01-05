@@ -165,11 +165,11 @@ const CartSummaryPage = () => {
                 >
                   كاميرا كانون اصدار حديث
                 </Typography>
-                <Typography variant="h6">1000 ج.م</Typography>
+                <Typography variant="h6">1000 {t("Currency")}</Typography>
               </StyledTextBox>
               <StyledTextBox>
                 <Typography variant="h6">رسوم الشحن</Typography>
-                <Typography variant="h6">30 ج.م</Typography>
+                <Typography variant="h6">30 {t("Currency")}</Typography>
               </StyledTextBox>
               {/* <StyledTextBox>
                 <Typography variant="h6">رسوم التحصيل</Typography>
@@ -179,7 +179,7 @@ const CartSummaryPage = () => {
                     color: "colors.mainGreen",
                   }}
                 >
-                  12 ج.م
+                  12 {t("Currency")}
                 </Typography>
               </StyledTextBox> */}
 
@@ -355,15 +355,15 @@ const CartSummaryPage = () => {
                 >
                   زيت نعناع فلفى
                 </Typography>
-                <Typography variant="h6">1000 ج.م</Typography>
+                <Typography variant="h6">1000 {t("Currency")}</Typography>
               </StyledTextBox>
               <StyledTextBox>
                 <Typography variant="h6">رسوم الشحن</Typography>
-                <Typography variant="h6">30 ج.م</Typography>
+                <Typography variant="h6">30 {t("Currency")}</Typography>
               </StyledTextBox>
               {/* <StyledTextBox>
                 <Typography variant="h6">رسوم التحصيل</Typography>
-                <Typography variant="h6">12 ج.م</Typography>
+                <Typography variant="h6">12 {t("Currency")}</Typography>
               </StyledTextBox> */}
             </Stack>
             <Box
@@ -525,23 +525,23 @@ const CartSummaryPage = () => {
             <Stack gap="56px">
               <StyledTextBox>
                 <Typography variant="h6">{t("Total")} السلع</Typography>
-                <Typography variant="h6">1500ج.م</Typography>
+                <Typography variant="h6">1500{t("Currency")}</Typography>
               </StyledTextBox>
               <StyledTextBox>
                 <Typography variant="h6">رسوم الشحن</Typography>
-                <Typography variant="h6">60 ج.م</Typography>
+                <Typography variant="h6">60 {t("Currency")}</Typography>
               </StyledTextBox>
               <StyledTextBox>
                 <Typography variant="h6">رسوم الدفع عند الاستلام</Typography>
-                <Typography variant="h6">12ج.م</Typography>
+                <Typography variant="h6">12{t("Currency")}</Typography>
               </StyledTextBox>
               <StyledTextBox>
                 <Typography variant="h6">{t("Total")} المطلوب</Typography>
-                <Typography variant="h6">1572ج.م</Typography>
+                <Typography variant="h6">1572{t("Currency")}</Typography>
               </StyledTextBox>
               {/* <StyledTextBox>
                 <Typography variant="h6">خصم</Typography>
-                <Typography variant="h6">-30 ج.م</Typography>
+                <Typography variant="h6">-30 {t("Currency")}</Typography>
               </StyledTextBox> */}
             </Stack>
             <Box
@@ -566,7 +566,7 @@ const CartSummaryPage = () => {
               <Typography>
                 {t("Total")} {t("The Total Amount Due")}
               </Typography>
-              <Typography>1542 ج.م</Typography>
+              <Typography>1542 {t("Currency")}</Typography>
             </Box>
           </Stack>
           {/* location  */}
@@ -767,7 +767,7 @@ const CartSummaryPage = () => {
                     ml: "-70px",
                   }}
                 >
-                  1600 ج.م
+                  1600 {t("Currency")}
                 </Typography>
               </Stack>
             </Stack>
@@ -854,7 +854,7 @@ const CartSummaryPage = () => {
             }}
           >
             <Typography>{t("The Total Amount Due")}</Typography>
-            <Typography>0 ج.م</Typography>
+            <Typography>0 {t("Currency")}</Typography>
           </Box>
           {/* confirm  */}
           <Box

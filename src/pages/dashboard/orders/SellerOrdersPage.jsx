@@ -8,8 +8,18 @@ import Orders from "../../../assets/Seller/SellerDashboard_Icon/Ordera.svg";
 import NewOrders from "../../../assets/Seller/SellerDashboard_Icon/NewOrders.svg";
 
 const items = [
-  { name: "جميع الطلبات", link: "/dashboard/orders/all", num: 45 ,icon:Orders},
-  { name: "الطلبات الجديدة", link: "/dashboard/orders/new", num: 45,icon:NewOrders },
+  {
+    name: "جميع الطلبات",
+    link: "/dashboard/orders/all",
+    num: 45,
+    icon: Orders,
+  },
+  {
+    name: "الطلبات الجديدة",
+    link: "/dashboard/orders/new",
+    num: 45,
+    icon: NewOrders,
+  },
   {
     name: "الطلبات قيد التنفيذ",
     link: "/dashboard/orders/progress",
@@ -53,11 +63,7 @@ const SellerOrdersPage = () => {
         مرحبا , ممدوح الصيرفي
       </Typography>
       <SectionTitle sectionTitle={{ main: "الطلبات" }} />
-      <Stack
-        sx={{
-          mt: "-70px",
-        }}
-      >
+      <Stack>
         <Box
           sx={{
             display: "flex",

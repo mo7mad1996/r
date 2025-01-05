@@ -51,7 +51,7 @@ const TotalDues = () => {
               }}
             >
               <Typography>إجمالي قيمة الطلبات المكتملة</Typography>
-              <Typography>1350ج.م</Typography>
+              <Typography>1350{t("Currency")}</Typography>
             </StyledBox>
             <StyledBox
               sx={{
@@ -61,7 +61,7 @@ const TotalDues = () => {
               }}
             >
               <Typography>عمولة چوملا (10) %</Typography>
-              <Typography>135 ج.م</Typography>
+              <Typography>135 {t("Currency")}</Typography>
             </StyledBox>
             <StyledBox
               sx={{
@@ -74,7 +74,7 @@ const TotalDues = () => {
               }}
             >
               <Typography>إجمالي السحب</Typography>
-              <Typography>500 ج.م</Typography>
+              <Typography>500 {t("Currency")}</Typography>
             </StyledBox>
           </Stack>
           <Stack
@@ -127,7 +127,7 @@ const TotalDues = () => {
                 color: "colors.website",
               }}
             >
-              715 ج.م
+              715 {t("Currency")}
             </Typography>
           </StyledBox>
           <Stack

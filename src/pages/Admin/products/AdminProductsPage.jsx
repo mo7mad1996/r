@@ -26,12 +26,8 @@ const AdminProductsPage = () => {
         mb: "50px",
       }}
     >
-      <SectionTitle sectionTitle={{ main:"Products" }} />
-      <Stack
-        sx={{
-          mt: "-70px",
-        }}
-      >
+      <SectionTitle sectionTitle={{ main: "Products" }} />
+      <Stack>
         <Stack
           sx={{
             // gap: "15px",

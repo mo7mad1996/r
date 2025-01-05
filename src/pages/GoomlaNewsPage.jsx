@@ -17,7 +17,6 @@ const GoomlaNewsPage = () => {
         sx={{
           mx: "152px",
           mb: "92px",
-          mt: "-30px",
           display: "flex",
           justifyContent: "end",
         }}

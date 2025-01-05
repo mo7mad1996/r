@@ -24,11 +24,7 @@ const AdminSectionsPage = () => {
       }}
     >
       <SectionTitle sectionTitle={{ main: "الأقسام" }} />
-      <Stack
-        sx={{
-          mt: "-70px",
-        }}
-      >
+      <Stack>
         <Box sx={{ mt: "98px" }}>
           <Menu items={items} dashboard={true} />
         </Box>

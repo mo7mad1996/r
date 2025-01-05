@@ -206,7 +206,7 @@ function Slider({ items }) {
                           // mt: "5px",
                         }}
                       >
-                        {item.price_afte_discount} ج.م
+                        {item.price_afte_discount} {t("Currency")}
                       </Typography>
                       {item.percentage_discount && (
                         <Typography
@@ -226,7 +226,7 @@ function Slider({ items }) {
                             },
                           }}
                         >
-                          {item.main_price} ج.م
+                          {item.main_price} {t("Currency")}
                         </Typography>
                       )}
                     </Box>

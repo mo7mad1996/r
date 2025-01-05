@@ -458,7 +458,7 @@ function ProductInfo({ product }) {
             color: "colors.website",
           }}
         >
-          {Math.ceil(product.price_afte_discount)} ج.م
+          {Math.ceil(product.price_afte_discount)} {t("Currency")}
         </Typography>
         {product.percentage_discount && (
           <Typography
@@ -479,7 +479,7 @@ function ProductInfo({ product }) {
               },
             }}
           >
-            {Math.ceil(product.main_price)} ج.م
+            {Math.ceil(product.main_price)} {t("Currency")}
           </Typography>
         )}
       </Box>
@@ -1440,8 +1440,7 @@ function ShoppingInfo() {
               color: "colors.mainGreen",
             }}
           >
-                        {t("Joumla")}
-
+            {t("Joumla")}
           </Box>
         </Typography>
         <Typography
@@ -1472,8 +1471,7 @@ function ShoppingInfo() {
             color: "colors.mainGreen",
           }}
         >
-                      {t("Joumla")}
-
+          {t("Joumla")}
         </Box>
       </Typography>
     </Box>

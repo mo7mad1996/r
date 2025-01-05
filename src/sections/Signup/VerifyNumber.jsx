@@ -95,7 +95,6 @@ const VerifyNumber = ({ changeForm }) => {
           fontSize: "20px",
           fontWeight: "300",
           lineHeight: "28px",
-          mt: "-90px",
         }}
       >
         <Typography>لقد أرسلنا رمز من اربع عناصر الي </Typography>

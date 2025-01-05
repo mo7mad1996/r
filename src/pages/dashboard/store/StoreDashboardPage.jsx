@@ -33,11 +33,7 @@ const StoreDashboardPage = () => {
         مرحبا , ممدوح الصيرفي
       </Typography>
       <SectionTitle sectionTitle={{ main: "store" }} />
-      <Stack
-        sx={{
-          mt: "-70px",
-        }}
-      >
+      <Stack>
         {/* <Box
           sx={{
             display: "flex",

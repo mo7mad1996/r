@@ -195,7 +195,7 @@ const MailNewsItemPage = () => {
                   mb: "6px",
                 }}
               >
-                استخدم الكود:{" "}
+                {t("Use")} {t("Code")}:{" "}
                 <Typography
                   variant="span"
                   sx={{
@@ -207,9 +207,9 @@ const MailNewsItemPage = () => {
               </Typography>
               <Typography sx={{ mb: "20px" }}>
                 {" "}
-                للحصول على خصم 50 ج.م
+                {t("To Get a Discount")}50
               </Typography>
-              <Typography>هذا الكود صالح لمدة 3 ايام</Typography>{" "}
+              <Typography>{t("This code is valid for")} 3 ايام</Typography>{" "}
             </StyledCard>
           </Stack>
         </Stack>

@@ -50,11 +50,7 @@ const DeliveryAreasPage = () => {
         مرحبا , ممدوح الصيرفي
       </Typography>
       <SectionTitle sectionTitle={{ main: "مناطق الشحن" }} />
-      <Stack
-        sx={{
-          mt: "-150px",
-        }}
-      >
+      <Stack>
         <SellerBox />
       </Stack>
       <Box

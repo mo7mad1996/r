@@ -162,13 +162,13 @@ const items = [
   },
   {
     id: 22,
-    title: "عملاء چوملا",
+    title: "Joumla Customers",
     link: "/admin/dashboard/",
     img: clientsImg,
   },
   {
     id: 23,
-    title: "تسجيل خروج",
+    title: "logout",
     link: "/logout",
     img: logoutImg,
   },
@@ -199,7 +199,7 @@ const AdminDashboardPage = () => {
   const navigate = useNavigate();
   return (
     <Stack>
-      <SectionTitle sectionTitle={{ main: "لوحة تحكم المدير" }} />
+      <SectionTitle sectionTitle={{ main: "Admin Dashboard" }} />
       <Stack
         sx={{
           width: "499px",

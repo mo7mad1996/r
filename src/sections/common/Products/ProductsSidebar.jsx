@@ -335,10 +335,7 @@ const ProductsSidebar = () => {
         </Stack>
       </Box>
       <Box display={"flex"} justifyContent={"center"} alignItems={"right"}>
-        <h3 style={{ fontWeight: "bold", textAlign: "right" }}>
-          {" "}
-          {t("Sizes")}{" "}
-        </h3>
+        <h3 style={{ fontWeight: "bold", textAlign: "right" }}>{t("Sizes")}</h3>
       </Box>
       <Box
         sx={{
@@ -352,7 +349,6 @@ const ProductsSidebar = () => {
         <Box
           sx={{
             position: "relative",
-            backgroundColor: "red",
             width: "50px",
             height: "50px",
             display: "flex",
@@ -368,7 +364,6 @@ const ProductsSidebar = () => {
         <Box
           sx={{
             position: "relative",
-            backgroundColor: "red",
             width: "50px",
             height: "50px",
             display: "flex",
@@ -384,7 +379,7 @@ const ProductsSidebar = () => {
         <Box
           sx={{
             position: "relative",
-            backgroundColor: "red",
+
             width: "50px",
             height: "50px",
             display: "flex",
@@ -400,7 +395,7 @@ const ProductsSidebar = () => {
         <Box
           sx={{
             position: "relative",
-            backgroundColor: "red",
+
             width: "50px",
             height: "50px",
             display: "flex",
@@ -416,7 +411,7 @@ const ProductsSidebar = () => {
         <Box
           sx={{
             position: "relative",
-            backgroundColor: "red",
+
             width: "50px",
             height: "50px",
             display: "flex",
@@ -432,7 +427,7 @@ const ProductsSidebar = () => {
         <Box
           sx={{
             position: "relative",
-            backgroundColor: "red",
+
             width: "50px",
             height: "50px",
             display: "flex",
@@ -448,7 +443,7 @@ const ProductsSidebar = () => {
         <Box
           sx={{
             position: "relative",
-            backgroundColor: "red",
+
             width: "50px",
             height: "50px",
             display: "flex",
@@ -464,7 +459,6 @@ const ProductsSidebar = () => {
         <Box
           sx={{
             position: "relative",
-            backgroundColor: "red",
             width: "50px",
             height: "50px",
             display: "flex",
@@ -480,7 +474,6 @@ const ProductsSidebar = () => {
         <Box
           sx={{
             position: "relative",
-            backgroundColor: "red",
             width: "50px",
             height: "50px",
             display: "flex",
@@ -496,7 +489,6 @@ const ProductsSidebar = () => {
         <Box
           sx={{
             position: "relative",
-            backgroundColor: "red",
             width: "50px",
             height: "50px",
             display: "flex",
@@ -512,7 +504,6 @@ const ProductsSidebar = () => {
         <Box
           sx={{
             position: "relative",
-            backgroundColor: "red",
             width: "50px",
             height: "50px",
             display: "flex",
@@ -528,7 +519,6 @@ const ProductsSidebar = () => {
         <Box
           sx={{
             position: "relative",
-            backgroundColor: "red",
             width: "50px",
             height: "50px",
             display: "flex",

@@ -129,7 +129,7 @@ export default function MobileComponents() {
               onClick={() => {
                 setProfile(!profile);
               }}
-              sx={{ fontSize: "30px", mr: "-5px" }}
+              sx={{ fontSize: "30px" }}
             />
           </MUI.Box>
 

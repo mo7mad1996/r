@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Box } from "@mui/material";
-import logoImg from "~/assets/product/product.png";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { Link } from "react-router-dom";
+
 // Import local icons
 import trash from "~/assets/product/trash.svg";
 import addIcon from "~/assets/product/addIcon.svg";
@@ -69,99 +71,42 @@ const Cart = () => {
           }
         `}
       </style>
-
       <div
         className="cart-container"
         style={{
           position: "fixed",
           left: 0,
           top: 0,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "start",
           height: "100vh",
-          paddingTop: "20px",
-          backgroundColor: "white",
-          borderRight: "1px solid #ccc",
-          // width: "fit",
+
           zIndex: 2,
-          overflowX: "hidden",
-          overflowY: "auto",
-          padding: "20px",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: "20px",
-            width: "100%",
-            paddingTop: "20px",
-          }}
-        >
+        <ToggleOpen>
           <Box
             sx={{
-              color: "black",
-              fontWeight: "bold",
-              fontSize: "18px",
-            }}
-          >
-            {t("Total Amount")}
-          </Box>
-          <Box
-            sx={{
-              color: "green",
-              fontWeight: "bold",
-              fontSize: "16px",
-            }}
-          >
-            21,500.00 {t("Currency")}
-          </Box>
-          <Box
-            component={Link}
-            to="/cart"
-            sx={{
-              color: "green",
-              fontWeight: "regular",
-              fontSize: "10px",
-              width: "99.5%",
-              height: "30px",
-              display: "flex",
-              textAlign: "center",
-              alignItems: "center",
-              justifyContent: "center",
-              border: "2px solid green",
-              borderRadius: "50px",
-            }}
-          >
-            {t("Go to Shopping Cart")}
-          </Box>
-        </Box>
-
-        {products?.map((product, index) => (
-          <Box
-            key={index}
-            id={product.di}
-            sx={{
+              borderRight: "1px solid #ccc",
+              backgroundColor: "white",
+              padding: "20px",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              justifyContent: "center",
               gap: "20px",
               width: "100%",
-              marginTop: "20px",
+              height: "100%",
+
+              paddingTop: "20px",
             }}
           >
-            <img
-              src={product?.product?.image}
-              alt={product.product.name}
-              style={{
-                width: "80%",
+            <Box
+              sx={{
+                color: "black",
+                fontWeight: "bold",
+                fontSize: "18px",
               }}
-            />
+            >
+              {t("Total Amount")}
+            </Box>
             <Box
               sx={{
                 color: "green",
@@ -169,79 +114,183 @@ const Cart = () => {
                 fontSize: "16px",
               }}
             >
-              {product.product.price_afte_discount}
+              21,500.00 {t("Currency")}
             </Box>
             <Box
+              component={Link}
+              to="/cart"
               sx={{
-                display: "flex",
                 color: "green",
-                fontWeight: "bold",
-                fontSize: "12px",
-                width: "80%",
+                fontWeight: "regular",
+                fontSize: "10px",
+                width: "99.5%",
                 height: "30px",
+                display: "flex",
                 textAlign: "center",
                 alignItems: "center",
                 justifyContent: "center",
                 border: "2px solid green",
-                borderRadius: "5px",
+                borderRadius: "50px",
               }}
             >
-              <Box
-                sx={{
-                  width: "50%",
-                  height: "100%",
-                  borderLeft: "1px solid black",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-                onClick={(e) => {
-                  deleteFromCart(product.product.id);
-                }}
-              >
-                <img
-                  src={trash}
-                  alt="Add Icon"
-                  style={{ width: "40%", height: "auto" }}
-                />
-              </Box>
-              <Box
-                sx={{
-                  height: "100%",
-                  width: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "20px",
-                }}
-              >
-                {product.quantity}
-              </Box>
-              <Box
-                sx={{
-                  height: "100%",
-                  borderRight: "1px solid black",
-                  width: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-                onClick={() => {
-                  updateQuantity(product.di, product.quantity + 1);
-                }}
-              >
-                <img
-                  src={addIcon}
-                  alt="Delete Icon"
-                  style={{ width: "40%", height: "auto" }}
-                />
-              </Box>
+              {t("Go to Shopping Cart")}
             </Box>
           </Box>
-        ))}
+
+          {products?.map((product, index) => (
+            <Box
+              key={index}
+              id={product.di}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "20px",
+                width: "100%",
+                marginTop: "20px",
+              }}
+            >
+              <img
+                src={product?.product?.image}
+                alt={product.product.name}
+                style={{
+                  width: "80%",
+                }}
+              />
+              <Box
+                sx={{
+                  color: "green",
+                  fontWeight: "bold",
+                  fontSize: "16px",
+                }}
+              >
+                {product.product.price_afte_discount}
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  color: "green",
+                  fontWeight: "bold",
+                  fontSize: "12px",
+                  width: "80%",
+                  height: "30px",
+                  textAlign: "center",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "2px solid green",
+                  borderRadius: "5px",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: "50%",
+                    height: "100%",
+                    borderLeft: "1px solid black",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                  onClick={(e) => {
+                    deleteFromCart(product.product.id);
+                  }}
+                >
+                  <img
+                    src={trash}
+                    alt="Add Icon"
+                    style={{ width: "40%", height: "auto" }}
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    height: "100%",
+                    width: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "20px",
+                  }}
+                >
+                  {product.quantity}
+                </Box>
+                <Box
+                  sx={{
+                    height: "100%",
+                    borderRight: "1px solid black",
+                    width: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                  onClick={() => {
+                    updateQuantity(product.di, product.quantity + 1);
+                  }}
+                >
+                  <img
+                    src={addIcon}
+                    alt="Delete Icon"
+                    style={{ width: "40%", height: "auto" }}
+                  />
+                </Box>
+              </Box>
+            </Box>
+          ))}
+        </ToggleOpen>
       </div>
     </>
   );
 };
 
 export default Cart;
+
+function ToggleOpen({ children }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <Box
+      sx={{
+        position: "relative",
+        pointerEvents: "none",
+        transition: ".3s",
+
+        transform: `translateX(${isOpen ? 0 : "-100%"})`,
+      }}
+    >
+      <Box
+        onClick={() => setIsOpen((v) => !v)}
+        sx={{
+          background: "white",
+          position: "absolute",
+          top: "50vh",
+          pointerEvents: "auto",
+          right: 0,
+          display: "grid",
+          placeContent: "center",
+          padding: "1em",
+          border: "1px solid #ccc",
+          transform: "translate(100%, -50%) translateX(-1px)",
+          cursor: "pointer",
+          borderLeft: "none",
+        }}
+      >
+        {isOpen ? <IoIosArrowBack /> : <IoIosArrowForward />}
+      </Box>
+      <Box
+        sx={{
+          overflow: "hidden",
+          height: "100vh",
+          pointerEvents: "auto",
+        }}
+      >
+        <Box
+          sx={{
+            overflow: "auto",
+            height: "100%",
+          }}
+        >
+          {children}
+        </Box>
+      </Box>
+    </Box>
+  );
+}

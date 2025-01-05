@@ -232,22 +232,22 @@ const Orders = ({ statusArray, status, isDashboard }) => {
                 <StyledBox>
                   <Typography>قيمة الطلب</Typography>
                   <Typography sx={{ color: "colors.website" }}>
-                    1400ج.م
+                    1400{t("Currency")}
                   </Typography>
                 </StyledBox>
                 <StyledBox>
                   <Typography>رسوم الشحن</Typography>
-                  <Typography>50 ج.م</Typography>
+                  <Typography>50 {t("Currency")}</Typography>
                 </StyledBox>
                 <StyledBox>
                   <Typography>رسوم الدفع عند الأستلام</Typography>
-                  <Typography>10 ج.م</Typography>
+                  <Typography>10 {t("Currency")}</Typography>
                 </StyledBox>
                 {isDashboard && (
                   <>
                     <StyledBox>
                       <Typography>عمولة چوملا </Typography>
-                      <Typography>140 ج.م</Typography>
+                      <Typography>140 {t("Currency")}</Typography>
                     </StyledBox>
 
                     <StyledBox
@@ -260,7 +260,7 @@ const Orders = ({ statusArray, status, isDashboard }) => {
                       }}
                     >
                       <Typography>مستحقاتك</Typography>
-                      <Typography>1260 ج.م</Typography>
+                      <Typography>1260 {t("Currency")}</Typography>
                     </StyledBox>
                   </>
                 )}
@@ -274,7 +274,7 @@ const Orders = ({ statusArray, status, isDashboard }) => {
                   }}
                 >
                   <Typography>الأجمالي</Typography>
-                  <Typography>1450 ج.م</Typography>
+                  <Typography>1450 {t("Currency")}</Typography>
                 </StyledBox>
                 {!isDashboard && (
                   <>
@@ -574,14 +574,14 @@ const Orders = ({ statusArray, status, isDashboard }) => {
                             color: "colors.mainGreen",
                           }}
                         >
-                          {order.price} ج.م
+                          {order.price} {t("Currency")}
                         </Typography>
                         {/* <Typography
                           sx={{
                             color: "#838181",
                           }}
                         >
-                          <s>700</s> ج.م
+                          <s>700</s> {t("Currency")}
                         </Typography> */}
                       </Box>
                       <Box

@@ -104,7 +104,7 @@ const WithdrawPopup = ({ handleClose }) => {
                 textAlign: "center",
               }}
             >
-              1600 ج.م
+              1600 {t("Currency")}
             </Typography>
             <Typography
               sx={{
@@ -143,7 +143,7 @@ const WithdrawPopup = ({ handleClose }) => {
               }}
             >
               <InputBase defaultValue={1700} />
-              <Typography sx={{ mt: "-10px" }}>ج.م</Typography>
+              <Typography sx={{ mt: "-10px" }}>{t("Currency")}</Typography>
             </Box>
             <Button
               sx={{

@@ -218,7 +218,7 @@
 //                     color: "colors.mainGreen",
 //                   }}
 //                 >
-//                   {product.price} ج.م
+//                   {product.price} {t("Currency")}
 //                 </Typography>
 //                 <Typography
 //                   sx={{
@@ -238,7 +238,7 @@
 //                     },
 //                   }}
 //                 >
-//                   {product.oldPrice} ج.م
+//                   {product.oldPrice} {t("Currency")}
 //                 </Typography>
 //               </Box>
 //               <Box

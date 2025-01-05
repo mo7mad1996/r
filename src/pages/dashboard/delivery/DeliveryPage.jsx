@@ -34,11 +34,7 @@ const DeliveryPage = () => {
         مرحبا , ممدوح الصيرفي
       </Typography>
       <SectionTitle sectionTitle={{ main: "مناطق الشحن" }} />
-      <Stack
-        sx={{
-          mt: "-70px",
-        }}
-      >
+      <Stack>
         {/* <Box
           sx={{
             display: "flex",

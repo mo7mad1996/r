@@ -21,7 +21,6 @@ const RegisterSuccess = ({ seller }) => {
           borderRadius: "50%",
           backgroundColor: "#D9D9D9",
           mx: "auto",
-          mt: "-66px",
           mb: "100px",
           display: "flex",
           justifyContent: "center",

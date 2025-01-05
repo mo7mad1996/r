@@ -127,15 +127,15 @@ const Orders = ({ statusArray }) => {
                 </StyledBox>
                 <StyledBox>
                   <Typography>قيمة الطلب</Typography>
-                  <Typography>1440 ج.م</Typography>
+                  <Typography>1440 {t("Currency")}</Typography>
                 </StyledBox>
                 <StyledBox>
                   <Typography>رسوم الشحن</Typography>
-                  <Typography>50 ج.م</Typography>
+                  <Typography>50 {t("Currency")}</Typography>
                 </StyledBox>
                 <StyledBox>
                   <Typography>رسوم الدفع عند الأستلام</Typography>
-                  <Typography>10 ج.م</Typography>
+                  <Typography>10 {t("Currency")}</Typography>
                 </StyledBox>
                 <StyledBox
                   sx={{
@@ -147,7 +147,7 @@ const Orders = ({ statusArray }) => {
                   }}
                 >
                   <Typography>الأجمالي</Typography>
-                  <Typography>1500 ج.م</Typography>
+                  <Typography>1500 {t("Currency")}</Typography>
                 </StyledBox>
               </Stack>
             </Box>
@@ -334,14 +334,14 @@ const Orders = ({ statusArray }) => {
                               color: "colors.mainGreen",
                             }}
                           >
-                            480 ج.م
+                            480 {t("Currency")}
                           </Typography>
                           <Typography
                             sx={{
                               color: "#838181",
                             }}
                           >
-                            <s>700</s> ج.م
+                            <s>700</s> {t("Currency")}
                           </Typography>
                         </Box>
                         <Box

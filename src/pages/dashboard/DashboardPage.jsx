@@ -63,9 +63,6 @@ const DashboardPage = () => {
       </Typography>
       <SectionTitle sectionTitle={{ main: "لوحة تحكم البائع" }} />
       <Stack
-        sx={{
-          mt: "-70px",
-        }}
       >
         {/* <Box
           sx={{
