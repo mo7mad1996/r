@@ -321,7 +321,10 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
         </StyledBox>
         <StyledBox>
           <StyledTypography>السعر</StyledTypography>
-          <StyledTextField placeholder="50 {t("Currency")}" sx={{ mb: "84px" }} />
+          <StyledTextField
+            placeholder={`50 ${t("Currency")}`}
+            sx={{ mb: "84px" }}
+          />
         </StyledBox>
       </Stack>
       <CustomButton sx={{}}>اضافة مقاس جديد</CustomButton>
@@ -349,7 +352,7 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
         </StyledBox>
         <StyledBox sx={{ mb: "103px" }}>
           <StyledTypography>السعر</StyledTypography>
-          <StyledTextField placeholder="50 {t("Currency")}" />
+          <StyledTextField placeholder={`50 ${t("Currency")}`} />
         </StyledBox>
       </Stack>
       <CustomButton sx={{}}>اضافة مقاس جديد</CustomButton>
