@@ -1,5 +1,5 @@
 import React from "react";
-import ShowProducts from "../../../sections/Dashboard/products/ShowProducts";
+import ShowProducts from "~/sections/Dashboard/products/ShowProducts";
 
 const AdminPendingProductsPage = () => {
   return (

@@ -70,7 +70,7 @@ const ProductCustomDeliveryPage = () => {
               pl: { xs: "39px", sm: "40px", md: "66px" },
             }}
           >
-            <Box mt={"95px"} sx={{ position: "relative" }}>
+            <Box sx={{ position: "relative" }}>
               <ProductsSidebar />
             </Box>
             <Box>

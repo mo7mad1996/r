@@ -15,12 +15,8 @@ const FavouriteProductsPage = () => {
           pl: { xs: "39px", sm: "40px", md: "66px" },
         }}
       >
-        <Box mt={"60px"} sx={{ position: "relative" }}>
-          <ProductsSidebar />
-        </Box>
-        <Box>
-          <ProductsSection />
-        </Box>
+        <ProductsSidebar />
+        <ProductsSection />
       </Box>
     </Box>
   );

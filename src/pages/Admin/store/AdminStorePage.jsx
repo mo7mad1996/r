@@ -27,12 +27,8 @@ const AdminStorePage = () => {
           // mt: "60px",
         }}
       >
-        <Box mt={"60px"} sx={{ position: "relative" }}>
-          <ProductsSidebar />
-        </Box>
-        <Box>
-          <ProductsSection />
-        </Box>
+        <ProductsSidebar />
+        <ProductsSection />
       </Box>
     </Box>
   );

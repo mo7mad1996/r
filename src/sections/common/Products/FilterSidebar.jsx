@@ -36,19 +36,21 @@ const FilterSidebar = () => {
   return (
     <Box
       sx={{
-        width: "fit-content",
         display: "flex",
-        mb: "47px",
-        gap: "2px",
-        py: "20px",
+        my: "1em",
+        justifyContent: "space-between",
+        py: "1em",
       }}
     >
       <Stack
         sx={{
+          display: "flex",
+          flexDirection: "column",
+          flex: "1",
           justifyContent: "space-between",
-          height: "110%",
+          alignSelf: "stretch",
           position: "relative",
-          top: "-15px",
+
           "& p": {
             fontFamily: "Almarai",
             fontSize: { xs: "12px", sm: "16px" },
@@ -69,31 +71,6 @@ const FilterSidebar = () => {
         </Box>
       </Stack>
       <Stack sx={{ alignItems: "center" }}>
-        {/* <Box
-          sx={{
-            width: "35px",
-            height: "35px",
-            borderRadius: "50%",
-            backgroundColor: "#D9D9D9",
-            position: "relative",
-          }}
-        ></Box>
-        <Box
-          sx={{
-            width: "10px",
-            height: "290px",
-            backgroundColor: "colors.mainGreen",
-            my: "-2px",
-          }}
-        ></Box>
-        <Box
-          sx={{
-            width: "35px",
-            height: "35px",
-            borderRadius: "50%",
-            backgroundColor: "#D9D9D9",
-          }}
-        ></Box> */}
         <Slider
           getAriaLabel={() => "Temperature range"}
           min={0}
@@ -102,17 +79,17 @@ const FilterSidebar = () => {
           onChange={handleChange}
           step={step}
           orientation="vertical"
-          valueLabelDisplay="auto"
+          valueLabelDisplay="off"
           size="medium"
           sx={{
             color: "colors.mainGreen",
             // height: "290px",
-            height: "307.5px",
+            height: "15em",
             width: "10px",
             ".MuiSlider-thumb": {
               color: "#D9D9D9",
-              width: "35px",
-              height: "35px",
+              width: "1.4em",
+              height: "1.4em",
               boxShadow: "none",
               "&:focus, &:hover, &.Mui-active": {
                 boxShadow: "none",
@@ -124,14 +101,7 @@ const FilterSidebar = () => {
                 boxShadow: "none",
               },
             },
-            ".MuiSlider-track": {
-              // color: "red",
-              // height: "290px",
-              // width: "10px",
-            },
           }}
-
-          // getAriaValueText={valuetext}
         />
       </Stack>
     </Box>

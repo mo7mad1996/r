@@ -49,7 +49,13 @@ const ProductsSection = ({
         </Box>
       </>
     );
-  return <div>No data found</div>;
+  return (
+    <Box
+      sx={{ textAlign: "center", fontWeight: 800, fontSize: 40, color: "#777" }}
+    >
+      No data found
+    </Box>
+  );
 };
 
 export default ProductsSection;

@@ -1,15 +1,19 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Box, Stack, ListItem, styled, Button } from "@mui/material";
-
-import FilterSidebar from "./FilterSidebar";
-
-import faceIcon from "../../../assets/store/face.png";
-import instaIcon from "../../../assets/store/insta.png";
-import whatsIcon from "../../../assets/store/whats.png";
-import phoneIcon from "../../../assets/store/phone.png";
 import { useTranslation } from "react-i18next";
 
+// components
+import PerfectScrollbar from "react-perfect-scrollbar";
+import { Link } from "react-router-dom";
+import { Box, Stack, ListItem, styled, Button } from "@mui/material";
+import FilterSidebar from "./FilterSidebar";
+
+// assets
+import faceIcon from "~/assets/store/face.png";
+import instaIcon from "~/assets/store/insta.png";
+import whatsIcon from "~/assets/store/whats.png";
+import phoneIcon from "~/assets/store/phone.png";
+
+// styled
 const SideBar = styled(Stack)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     width: "145px",
@@ -18,14 +22,12 @@ const SideBar = styled(Stack)(({ theme }) => ({
     width: "248px",
   },
   alignItems: "center",
-  mt: "382px",
   position: "sticky",
   top: "50px",
   marginBottom: "30px",
-  height: "600px",
-  overflowX: "auto",
+  height: "80vh",
+  overflowX: "hidden",
 }));
-
 const StyledListItem = styled(ListItem)({
   textAlign: "center",
 });
@@ -53,7 +55,6 @@ const CustomRadioButton = styled("input")(({ theme }) => ({
     backgroundColor: "white", // White inner circle for checked state
   },
 }));
-
 const CustomCheckbox = styled("input")(({ theme }) => ({
   width: "20px",
   height: "20px",
@@ -80,6 +81,7 @@ const CustomCheckbox = styled("input")(({ theme }) => ({
   },
 }));
 
+// component
 const ProductsSidebar = () => {
   const { t } = useTranslation();
   const [showAll, setShowAll] = useState(false);
@@ -88,78 +90,54 @@ const ProductsSidebar = () => {
 
   return (
     <SideBar>
-      <FilterSidebar />
+      <PerfectScrollbar
+        options={{ suppressScrollX: false }}
+        className="visible-x"
+      >
+        <FilterSidebar />
 
-      {/* Existing filters */}
-      {[
-        "Highest Rated",
-        "Highest Price",
-        "Newest Price",
-        "Best Offers",
-        "Best Sellers",
-      ].map((label, index) => (
-        <StyledListItem key={index}>
-          <label
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: "10px",
-            }}
-          >
-            <CustomCheckbox type="checkbox" />
-            <Link
-              to="#"
+        {/* Existing filters */}
+        {[
+          "Highest Rated",
+          "Highest Price",
+          "Newest Price",
+          "Best Offers",
+          "Best Sellers",
+        ].map((label, index) => (
+          <StyledListItem key={index}>
+            <label
               style={{
-                fontWeight: "bold",
-                color: "black",
-                fontSize: "17px",
-                textDecoration: "none",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "10px",
               }}
             >
-              {t(label)}
-            </Link>
-          </label>
-        </StyledListItem>
-      ))}
-
-      {/* New section for "Categories" */}
-      <Box mt={5}>
-        <h3 style={{ fontWeight: "bold", textAlign: "right" }}>
-          {t("Categories")}
-        </h3>
-        <Stack gap={2} justifyContent={"center"} alignItems={"center"}>
-          {/* Display the first 3 items */}
-          {items.map((item, index) => (
-            <StyledListItem key={index}>
-              <label
+              <CustomCheckbox type="checkbox" />
+              <Link
+                to="#"
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: "10px",
+                  fontWeight: "bold",
+                  color: "black",
+                  fontSize: "17px",
+                  textDecoration: "none",
                 }}
               >
-                <CustomRadioButton type="radio" />
-                <Link
-                  to="#"
-                  style={{
-                    fontWeight: "bold",
-                    color: "black",
-                    fontSize: "17px",
-                    textDecoration: "none",
-                  }}
-                >
-                  {t(item)} {index}
-                </Link>
-              </label>
-            </StyledListItem>
-          ))}
+                {t(label)}
+              </Link>
+            </label>
+          </StyledListItem>
+        ))}
 
-          {/* Display the rest of the items if showAll is true */}
-          {showAll &&
-            items.slice(3).map((item, index) => (
-              <StyledListItem key={index + 3}>
+        {/* New section for "Categories" */}
+        <Box mt={5}>
+          <h3 style={{ fontWeight: "bold", textAlign: "right" }}>
+            {t("Categories")}
+          </h3>
+          <Stack gap={2} justifyContent={"center"} alignItems={"center"}>
+            {/* Display the first 3 items */}
+            {items.map((item, index) => (
+              <StyledListItem key={index}>
                 <label
                   style={{
                     display: "flex",
@@ -178,59 +156,129 @@ const ProductsSidebar = () => {
                       textDecoration: "none",
                     }}
                   >
-                    {t(item)}
-                    {index}
+                    {t(item)} {index}
                   </Link>
                 </label>
               </StyledListItem>
             ))}
 
-          {/* Button to toggle showing more items */}
-          <Button
-            sx={{ mt: 2, color: "black" }}
-            onClick={() => setShowAll(!showAll)}
-          >
-            {t(showAll ? "Show Less" : "Show More")}
-          </Button>
-        </Stack>
-      </Box>
-      {/* New section for "Categories" */}
-      <Box mt={5}>
-        <h3 style={{ fontWeight: "bold", textAlign: "right" }}>
-          {t("Categories")}{" "}
-        </h3>
-        <Stack gap={2} justifyContent={"center"} alignItems={"center"}>
-          {/* Display the first 3 items */}
-          {items.slice(0, 3).map((item, index) => (
-            <StyledListItem key={index}>
-              <label
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: "10px",
-                }}
-              >
-                <CustomRadioButton type="radio" />
-                <Link
-                  to="#"
+            {/* Display the rest of the items if showAll is true */}
+            {showAll &&
+              items.slice(3).map((item, index) => (
+                <StyledListItem key={index + 3}>
+                  <label
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: "10px",
+                    }}
+                  >
+                    <CustomRadioButton type="radio" />
+                    <Link
+                      to="#"
+                      style={{
+                        fontWeight: "bold",
+                        color: "black",
+                        fontSize: "17px",
+                        textDecoration: "none",
+                      }}
+                    >
+                      {t(item)}
+                      {index}
+                    </Link>
+                  </label>
+                </StyledListItem>
+              ))}
+
+            {/* Button to toggle showing more items */}
+            <Button
+              sx={{ mt: 2, color: "black" }}
+              onClick={() => setShowAll(!showAll)}
+            >
+              {t(showAll ? "Show Less" : "Show More")}
+            </Button>
+          </Stack>
+        </Box>
+        {/* New section for "Categories" */}
+        <Box mt={5}>
+          <h3 style={{ fontWeight: "bold", textAlign: "right" }}>
+            {t("Categories")}{" "}
+          </h3>
+          <Stack gap={2} justifyContent={"center"} alignItems={"center"}>
+            {/* Display the first 3 items */}
+            {items.slice(0, 3).map((item, index) => (
+              <StyledListItem key={index}>
+                <label
                   style={{
-                    fontWeight: "bold",
-                    color: "black",
-                    fontSize: "17px",
-                    textDecoration: "none",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: "10px",
                   }}
                 >
-                  {t(item)} {index}
-                </Link>
-              </label>
-            </StyledListItem>
-          ))}
+                  <CustomRadioButton type="radio" />
+                  <Link
+                    to="#"
+                    style={{
+                      fontWeight: "bold",
+                      color: "black",
+                      fontSize: "17px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    {t(item)} {index}
+                  </Link>
+                </label>
+              </StyledListItem>
+            ))}
 
-          {/* Display the rest of the items if showAll is true */}
-          {showAll &&
-            items.slice(3).map((item, index) => (
-              <StyledListItem key={index + 3}>
+            {/* Display the rest of the items if showAll is true */}
+            {showAll &&
+              items.slice(3).map((item, index) => (
+                <StyledListItem key={index + 3}>
+                  <label
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: "10px",
+                    }}
+                  >
+                    <CustomRadioButton type="radio" />
+                    <Link
+                      to="#"
+                      style={{
+                        fontWeight: "bold",
+                        color: "black",
+                        fontSize: "17px",
+                        textDecoration: "none",
+                      }}
+                    >
+                      {item} {index}
+                    </Link>
+                  </label>
+                </StyledListItem>
+              ))}
+
+            {/* Button to toggle showing more items */}
+            <Button
+              sx={{ mt: 2, color: "black" }}
+              onClick={() => setShowAll(!showAll)}
+            >
+              {t(showAll ? "Show Less" : "Show More")}
+            </Button>
+          </Stack>
+        </Box>
+        {/* New section for "Categories" */}
+        <Box mt={5}>
+          <h3 style={{ fontWeight: "bold", textAlign: "right" }}>
+            {t("Categories")}2
+          </h3>
+          <Stack gap={2} justifyContent={"center"} alignItems={"center"}>
+            {/* Display the first 3 items */}
+            {items.slice(0, 3).map((item, index) => (
+              <StyledListItem key={index}>
                 <label
                   style={{
                     display: "flex",
@@ -255,307 +303,268 @@ const ProductsSidebar = () => {
               </StyledListItem>
             ))}
 
-          {/* Button to toggle showing more items */}
-          <Button
-            sx={{ mt: 2, color: "black" }}
-            onClick={() => setShowAll(!showAll)}
-          >
-            {t(showAll ? "Show Less" : "Show More")}
-          </Button>
-        </Stack>
-      </Box>
-      {/* New section for "Categories" */}
-      <Box mt={5}>
-        <h3 style={{ fontWeight: "bold", textAlign: "right" }}>
-          {t("Categories")}2
-        </h3>
-        <Stack gap={2} justifyContent={"center"} alignItems={"center"}>
-          {/* Display the first 3 items */}
-          {items.slice(0, 3).map((item, index) => (
-            <StyledListItem key={index}>
-              <label
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: "10px",
-                }}
-              >
-                <CustomRadioButton type="radio" />
-                <Link
-                  to="#"
-                  style={{
-                    fontWeight: "bold",
-                    color: "black",
-                    fontSize: "17px",
-                    textDecoration: "none",
-                  }}
-                >
-                  {item} {index}
-                </Link>
-              </label>
-            </StyledListItem>
-          ))}
-
-          {/* Display the rest of the items if showAll is true */}
-          {showAll &&
-            items.slice(3).map((item, index) => (
-              <StyledListItem key={index + 3}>
-                <label
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    gap: "10px",
-                  }}
-                >
-                  <CustomRadioButton type="radio" />
-                  <Link
-                    to="#"
+            {/* Display the rest of the items if showAll is true */}
+            {showAll &&
+              items.slice(3).map((item, index) => (
+                <StyledListItem key={index + 3}>
+                  <label
                     style={{
-                      fontWeight: "bold",
-                      color: "black",
-                      fontSize: "17px",
-                      textDecoration: "none",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: "10px",
                     }}
                   >
-                    {item} {index}
-                  </Link>
-                </label>
-              </StyledListItem>
-            ))}
+                    <CustomRadioButton type="radio" />
+                    <Link
+                      to="#"
+                      style={{
+                        fontWeight: "bold",
+                        color: "black",
+                        fontSize: "17px",
+                        textDecoration: "none",
+                      }}
+                    >
+                      {item} {index}
+                    </Link>
+                  </label>
+                </StyledListItem>
+              ))}
 
-          {/* Button to toggle showing more items */}
-          <Button
-            sx={{ mt: 2, color: "black" }}
-            onClick={() => setShowAll(!showAll)}
+            {/* Button to toggle showing more items */}
+            <Button
+              sx={{ mt: 2, color: "black" }}
+              onClick={() => setShowAll(!showAll)}
+            >
+              {t(showAll ? "Show Less" : "Show More")}
+            </Button>
+          </Stack>
+        </Box>
+        <Box display={"flex"} justifyContent={"center"} alignItems={"right"}>
+          <h3 style={{ fontWeight: "bold", textAlign: "right" }}>
+            {t("Sizes")}
+          </h3>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "20px",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Box
+            sx={{
+              position: "relative",
+              width: "50px",
+              height: "50px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "5px",
+              fontSize: "22px",
+              backgroundColor: "#D9D9D9",
+            }}
           >
-            {t(showAll ? "Show Less" : "Show More")}
-          </Button>
+            S
+          </Box>
+          <Box
+            sx={{
+              position: "relative",
+              width: "50px",
+              height: "50px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "5px",
+              fontSize: "22px",
+              backgroundColor: "#D9D9D9",
+            }}
+          >
+            M
+          </Box>
+          <Box
+            sx={{
+              position: "relative",
+
+              width: "50px",
+              height: "50px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "5px",
+              fontSize: "22px",
+              backgroundColor: "#D9D9D9",
+            }}
+          >
+            L
+          </Box>
+          <Box
+            sx={{
+              position: "relative",
+
+              width: "50px",
+              height: "50px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "5px",
+              fontSize: "22px",
+              backgroundColor: "#D9D9D9",
+            }}
+          >
+            XL
+          </Box>
+          <Box
+            sx={{
+              position: "relative",
+
+              width: "50px",
+              height: "50px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "5px",
+              fontSize: "22px",
+              backgroundColor: "#D9D9D9",
+            }}
+          >
+            2XL
+          </Box>
+          <Box
+            sx={{
+              position: "relative",
+
+              width: "50px",
+              height: "50px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "5px",
+              fontSize: "22px",
+              backgroundColor: "#D9D9D9",
+            }}
+          >
+            3XL
+          </Box>
+          <Box
+            sx={{
+              position: "relative",
+
+              width: "50px",
+              height: "50px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "5px",
+              fontSize: "22px",
+              backgroundColor: "#D9D9D9",
+            }}
+          >
+            36
+          </Box>
+          <Box
+            sx={{
+              position: "relative",
+              width: "50px",
+              height: "50px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "5px",
+              fontSize: "22px",
+              backgroundColor: "#D9D9D9",
+            }}
+          >
+            37
+          </Box>
+          <Box
+            sx={{
+              position: "relative",
+              width: "50px",
+              height: "50px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "5px",
+              fontSize: "22px",
+              backgroundColor: "#D9D9D9",
+            }}
+          >
+            38
+          </Box>
+          <Box
+            sx={{
+              position: "relative",
+              width: "50px",
+              height: "50px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "5px",
+              fontSize: "22px",
+              backgroundColor: "#D9D9D9",
+            }}
+          >
+            39
+          </Box>
+          <Box
+            sx={{
+              position: "relative",
+              width: "50px",
+              height: "50px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "5px",
+              fontSize: "22px",
+              backgroundColor: "#D9D9D9",
+            }}
+          >
+            40
+          </Box>
+          <Box
+            sx={{
+              position: "relative",
+              width: "50px",
+              height: "50px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "5px",
+              fontSize: "22px",
+              backgroundColor: "#D9D9D9",
+            }}
+          >
+            41
+          </Box>
+        </Box>
+
+        {/* Other content (social media links) */}
+        <Stack gap={2} justifyContent={"center"} alignItems={"center"} mt={5}>
+          <Box
+            component={"img"}
+            src={faceIcon}
+            sx={{ cursor: "pointer", width: "60px", height: "60px" }}
+          />
+          <Box
+            component={"img"}
+            src={whatsIcon}
+            sx={{ cursor: "pointer", width: "60px", height: "60px" }}
+          />
+          <Box
+            component={"img"}
+            src={instaIcon}
+            sx={{ cursor: "pointer", width: "60px", height: "60px" }}
+          />
+          <Box
+            component={"img"}
+            src={phoneIcon}
+            sx={{ cursor: "pointer", width: "60px", height: "60px" }}
+          />
         </Stack>
-      </Box>
-      <Box display={"flex"} justifyContent={"center"} alignItems={"right"}>
-        <h3 style={{ fontWeight: "bold", textAlign: "right" }}>{t("Sizes")}</h3>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "20px",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Box
-          sx={{
-            position: "relative",
-            width: "50px",
-            height: "50px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "5px",
-            fontSize: "22px",
-            backgroundColor: "#D9D9D9",
-          }}
-        >
-          S
-        </Box>
-        <Box
-          sx={{
-            position: "relative",
-            width: "50px",
-            height: "50px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "5px",
-            fontSize: "22px",
-            backgroundColor: "#D9D9D9",
-          }}
-        >
-          M
-        </Box>
-        <Box
-          sx={{
-            position: "relative",
-
-            width: "50px",
-            height: "50px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "5px",
-            fontSize: "22px",
-            backgroundColor: "#D9D9D9",
-          }}
-        >
-          L
-        </Box>
-        <Box
-          sx={{
-            position: "relative",
-
-            width: "50px",
-            height: "50px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "5px",
-            fontSize: "22px",
-            backgroundColor: "#D9D9D9",
-          }}
-        >
-          XL
-        </Box>
-        <Box
-          sx={{
-            position: "relative",
-
-            width: "50px",
-            height: "50px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "5px",
-            fontSize: "22px",
-            backgroundColor: "#D9D9D9",
-          }}
-        >
-          2XL
-        </Box>
-        <Box
-          sx={{
-            position: "relative",
-
-            width: "50px",
-            height: "50px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "5px",
-            fontSize: "22px",
-            backgroundColor: "#D9D9D9",
-          }}
-        >
-          3XL
-        </Box>
-        <Box
-          sx={{
-            position: "relative",
-
-            width: "50px",
-            height: "50px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "5px",
-            fontSize: "22px",
-            backgroundColor: "#D9D9D9",
-          }}
-        >
-          36
-        </Box>
-        <Box
-          sx={{
-            position: "relative",
-            width: "50px",
-            height: "50px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "5px",
-            fontSize: "22px",
-            backgroundColor: "#D9D9D9",
-          }}
-        >
-          37
-        </Box>
-        <Box
-          sx={{
-            position: "relative",
-            width: "50px",
-            height: "50px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "5px",
-            fontSize: "22px",
-            backgroundColor: "#D9D9D9",
-          }}
-        >
-          38
-        </Box>
-        <Box
-          sx={{
-            position: "relative",
-            width: "50px",
-            height: "50px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "5px",
-            fontSize: "22px",
-            backgroundColor: "#D9D9D9",
-          }}
-        >
-          39
-        </Box>
-        <Box
-          sx={{
-            position: "relative",
-            width: "50px",
-            height: "50px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "5px",
-            fontSize: "22px",
-            backgroundColor: "#D9D9D9",
-          }}
-        >
-          40
-        </Box>
-        <Box
-          sx={{
-            position: "relative",
-            width: "50px",
-            height: "50px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "5px",
-            fontSize: "22px",
-            backgroundColor: "#D9D9D9",
-          }}
-        >
-          41
-        </Box>
-      </Box>
-
-      {/* Other content (social media links) */}
-      <Stack gap={2} justifyContent={"center"} alignItems={"center"} mt={5}>
-        <Box
-          component={"img"}
-          src={faceIcon}
-          sx={{ cursor: "pointer", width: "60px", height: "60px" }}
-        />
-        <Box
-          component={"img"}
-          src={whatsIcon}
-          sx={{ cursor: "pointer", width: "60px", height: "60px" }}
-        />
-        <Box
-          component={"img"}
-          src={instaIcon}
-          sx={{ cursor: "pointer", width: "60px", height: "60px" }}
-        />
-        <Box
-          component={"img"}
-          src={phoneIcon}
-          sx={{ cursor: "pointer", width: "60px", height: "60px" }}
-        />
-      </Stack>
+      </PerfectScrollbar>
     </SideBar>
   );
 };

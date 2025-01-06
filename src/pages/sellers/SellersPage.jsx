@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
-import SectionTitle from "../../sections/common/Products/SectionTitle";
+import SectionTitle from "~/sections/common/Products/SectionTitle";
 
-import sellerImage from "../../assets/seller.png";
 import { Box, Grid, Stack, Typography } from "@mui/material";
-import Reviews from "../../components/Reviews";
-import MainButton from "../../components/MainButton";
+import Reviews from "~/components/Reviews";
+import MainButton from "~/components/MainButton";
 import { useNavigate } from "react-router-dom";
 
-import { sellers } from "../../utils/sellers";
-import UsePagination from "../../hooks/UsePagination";
-import usePaginate from "../../hooks/usePaginate";
-import { Context } from "../../components/Context/Context";
+import { sellers } from "~/utils/sellers";
+import UsePagination from "~/hooks/UsePagination";
+import usePaginate from "~/hooks/usePaginate";
+import { Context } from "~/components/Context/Context";
+
+// component
 const SellersPage = () => {
   const navigate = useNavigate();
   const { allVendors } = useContext(Context);
@@ -54,111 +55,112 @@ const SellersPage = () => {
             // spacing={"10px"}
             columns={[12, 12, 12, 12, 15]}
           >
-            {vendors.map((seller) => (
-              <Grid
-                id={seller.id}
-                item
-                xs={8}
-                sm={6}
-                md={4}
-                lg={3}
-                xl={3}
-                sx={{
-                  mx: { xs: "auto", sm: "0" },
-                }}
-              >
-                <Stack
+            {vendors &&
+              vendors.map((seller) => (
+                <Grid
+                  id={seller.id}
+                  item
+                  xs={8}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  xl={3}
                   sx={{
-                    alignItems: { xs: "center", sm: "start" },
+                    mx: { xs: "auto", sm: "0" },
                   }}
                 >
-                  <Box
-                    component={"img"}
-                    src={seller.ID_card_photo}
-                    sx={{ maxWidth: "221.06px", height: "181.84px" }}
-                  ></Box>
-                  <Typography
+                  <Stack
                     sx={{
-                      fontSize: " 20px",
-                      fontWeight: "700",
-                      lineHeight: "22px",
-                      textAlign: "right",
-                      color: "colors.mainBlack",
-                      mt: "16px",
-                      mb: "26px",
+                      alignItems: { xs: "center", sm: "start" },
                     }}
                   >
-                    {seller.vendor_name}
-                  </Typography>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "3px",
-                      // width: "200px",
-                      // justifyContent: "space-between",
-                      // mt: "26px",
-                      // mb: "25px",
-                      // mr: "26px",
-                    }}
-                  >
-                    <Reviews />
+                    <Box
+                      component={"img"}
+                      src={seller.ID_card_photo}
+                      sx={{ maxWidth: "221.06px", height: "181.84px" }}
+                    ></Box>
                     <Typography
                       sx={{
-                        fontFamily: "Poppins",
-                        fontSize: "16px",
-                        fontWeight: "500",
-                        lineHeight: "24px",
-                        color: "colors.greyStrock",
-                        // textAlign: "right",
-                      }}
-                    >
-                      {/* {seller.reviewsNum} */}
-                    </Typography>
-                  </Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "4px",
-                      my: "15px",
-                      // width: "200px",
-                      // justifyContent: "space-between",
-                      // mr: "26px",
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        fontSize: "20px",
+                        fontSize: " 20px",
                         fontWeight: "700",
-                        lineHeight: "22.32px",
+                        lineHeight: "22px",
                         textAlign: "right",
                         color: "colors.mainBlack",
+                        mt: "16px",
+                        mb: "26px",
                       }}
                     >
-                      عدد المنتجات
+                      {seller.vendor_name}
                     </Typography>
-                    <Typography
+                    <Box
                       sx={{
-                        fontSize: "20px",
-                        fontWeight: "600",
-                        lineHeight: "30px",
-                        textAlign: "right",
-                        color: "colors.greyStrock",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "3px",
+                        // width: "200px",
+                        // justifyContent: "space-between",
+                        // mt: "26px",
+                        // mb: "25px",
+                        // mr: "26px",
                       }}
                     >
-                      {seller.products.length}
-                    </Typography>
-                  </Box>
-                  <MainButton
-                    content={"عرض منتجات البائع"}
-                    onClick={() => {
-                      navigate(`${seller.id}`);
-                    }}
-                  />
-                </Stack>
-              </Grid>
-            ))}
+                      <Reviews />
+                      <Typography
+                        sx={{
+                          fontFamily: "Poppins",
+                          fontSize: "16px",
+                          fontWeight: "500",
+                          lineHeight: "24px",
+                          color: "colors.greyStrock",
+                          // textAlign: "right",
+                        }}
+                      >
+                        {/* {seller.reviewsNum} */}
+                      </Typography>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "4px",
+                        my: "15px",
+                        // width: "200px",
+                        // justifyContent: "space-between",
+                        // mr: "26px",
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          fontSize: "20px",
+                          fontWeight: "700",
+                          lineHeight: "22.32px",
+                          textAlign: "right",
+                          color: "colors.mainBlack",
+                        }}
+                      >
+                        عدد المنتجات
+                      </Typography>
+                      <Typography
+                        sx={{
+                          fontSize: "20px",
+                          fontWeight: "600",
+                          lineHeight: "30px",
+                          textAlign: "right",
+                          color: "colors.greyStrock",
+                        }}
+                      >
+                        {seller.products.length}
+                      </Typography>
+                    </Box>
+                    <MainButton
+                      content={"عرض منتجات البائع"}
+                      onClick={() => {
+                        navigate(`${seller.id}`);
+                      }}
+                    />
+                  </Stack>
+                </Grid>
+              ))}
           </Grid>
         </Box>
         {/* Pagination */}

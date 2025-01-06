@@ -12,9 +12,7 @@ const SectionPage = () => {
     // <>
     //   <SectionTitle sectionTitle={{ main: "قسم الألكترونيات" }} />
     //   <Box sx={{ display: "flex", gap: "86px", pl: "66px" }}>
-    //     <Box mt={"60px"}>
     //       <ProductsSidebar />
-    //     </Box>
     //     <ProductsSection />
     //   </Box>
     // </>
@@ -28,7 +26,6 @@ const SectionPage = () => {
           pl: { xs: "39px", sm: "40px", md: "66px" },
         }}
       >
-        <Box mt={"60px"} sx={{ position: "relative" }}>
           <Box
             sx={{
               position: "absolute",
@@ -39,10 +36,7 @@ const SectionPage = () => {
             <Search placeholder={t("Search in products")} />
           </Box>
           <ProductsSidebar />
-        </Box>
-        <Box>
           <ProductsSection />
-        </Box>
       </Box>
     </Box>
   );

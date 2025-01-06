@@ -215,7 +215,7 @@ const AdminDashboardPage = () => {
           sx={{
             fontSize: "50px",
             fontWeight: "700",
-            lineheight: "56px",
+            lineHeight: "56px",
             color: "colors.mainGreen",
           }}
         >
