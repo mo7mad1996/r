@@ -1,7 +1,12 @@
-import { Box, Grid, Stack, Typography, styled } from "@mui/material";
-import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
+// component
+import { Box, Stack, Typography, styled } from "@mui/material";
+import { Container } from "@mui/material";
 import SectionTitle from "~/sections/common/Products/SectionTitle";
 
+// assets
 import accountImg from "~/assets/admin/dashboard/account.png";
 import adsImg from "~/assets/admin/dashboard/ads.png";
 import clientsImg from "~/assets/admin/dashboard/clients.png";
@@ -25,7 +30,6 @@ import supportImg from "~/assets/admin/dashboard/support.png";
 import walletImg from "~/assets/admin/dashboard/wallet.png";
 import withdrawImg from "~/assets/admin/dashboard/withdraw.png";
 import storeImg from "~/assets/admin/dashboard/store.png";
-import { useNavigate } from "react-router-dom";
 
 const items = [
   {
@@ -79,7 +83,7 @@ const items = [
   {
     id: 8,
     title: "my account",
-    link: "/admin/dashboard/",
+    link: "/admin/dashboard/my_account",
     img: accountImg,
   },
   {
@@ -173,11 +177,10 @@ const items = [
     img: logoutImg,
   },
 ];
-const StyledBox = styled(Stack)(({ theme }) => ({
-  // width: "200px",
+export const StyledBox = styled(Stack)(({ theme }) => ({
+  width: "200px",
   height: "200px",
   borderRadius: "5px",
-  // border: "1px solid #000000",
   boxShadow: "2.5px 2.5px 8px 4px #00000040",
   justifyContent: "center",
   alignItems: "center",
@@ -196,25 +199,17 @@ const StyledBox = styled(Stack)(({ theme }) => ({
   },
 }));
 const AdminDashboardPage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
+
   return (
     <Stack>
       <SectionTitle sectionTitle={{ main: "Admin Dashboard" }} />
-      <Stack
-        sx={{
-          width: "499px",
-          height: "115px",
-          alignItems: "center",
-          justifyContent: "space-between",
-          mx: "auto",
-          mt: "121px",
-          mb: "108px",
-        }}
-      >
+
+      <div className="text-center my-12">
         <Typography
           sx={{
             fontSize: "50px",
-            fontWeight: "700",
             lineHeight: "56px",
             color: "colors.mainGreen",
           }}
@@ -224,45 +219,35 @@ const AdminDashboardPage = () => {
         <Typography
           sx={{
             fontSize: "35px",
-            fontWeight: "800",
             lineHeight: "39px",
             color: "#292D32",
           }}
         >
           عدد الطلبات الجديدة قيد الإنتظار
         </Typography>
-      </Stack>
+      </div>
+
       {/* Menu  */}
-      <Box>
-        <Box
-          sx={{
-            width: "1160px",
-            mx: "auto",
-            mb: "100px",
-          }}
-        >
-          <Grid container spacing="40px">
-            {items.map((item) => (
-              <Grid item key={item.id} lg={2.4}>
-                <StyledBox
-                  onClick={() => navigate(item.link)}
-                  sx={[
-                    item.link == "/logout" && {
-                      backgroundColor: "colors.mainRed",
-                      "& p": {
-                        color: "#fff",
-                      },
-                    },
-                  ]}
-                >
-                  <Box component="img" src={item.img} />
-                  <Typography>{item.title}</Typography>
-                </StyledBox>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
-      </Box>
+      <Container classname="mb-12">
+        <div className="flex gap-12 flex-wrap justify-center">
+          {items.map((item) => (
+            <StyledBox
+              onClick={() => navigate(item.link)}
+              sx={[
+                item.link == "/logout" && {
+                  backgroundColor: "colors.mainRed",
+                  "& p": {
+                    color: "#fff",
+                  },
+                },
+              ]}
+            >
+              <Box component="img" src={item.img} />
+              <Typography>{t(item.title)}</Typography>
+            </StyledBox>
+          ))}
+        </div>
+      </Container>
     </Stack>
   );
 };

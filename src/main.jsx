@@ -2,7 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { theme } from "~/utils/theme";
 
-// Swiper styles
+// css
+import "react-toastify/dist/ReactToastify.css";
+import "react-perfect-scrollbar/dist/css/styles.css";
 import "swiper/css";
 import "swiper/css/navigation";
 

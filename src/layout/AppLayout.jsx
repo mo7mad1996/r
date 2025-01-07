@@ -54,7 +54,10 @@ const WithdrawPage = lazy(() =>
   import("@/pages/dashboard/withdraw/WithdrawPage")
 );
 const AdminDashboardPage = lazy(() =>
-  import("@/pages/Admin/AdminDashboardPage")
+  import("@/pages/Admin/AdminDashboard/Page")
+);
+const My_account = lazy(() =>
+  import("@/pages/Admin/AdminDashboard/My_account/index.jsx")
 );
 const AdminOrdersPage = lazy(() =>
   import("@/pages/Admin/orders/AdminOrdersPage")
@@ -327,6 +330,7 @@ const AppLayout = () => {
           {/* admin  */}
           <Route path="admin/dashboard">
             <Route index element={<AdminDashboardPage />} />
+            <Route path="my_account" element={<My_account />} />
             <Route path="orders">
               <Route index={true} element={<AdminOrdersPage />} />
               <Route path="all" element={<AllOrdersPage />} />

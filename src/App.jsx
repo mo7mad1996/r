@@ -1,12 +1,6 @@
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import ar from "date-fns/locale/ar-EG";
 
-// css
-import "react-toastify/dist/ReactToastify.css";
-import "react-perfect-scrollbar/dist/css/styles.css";
-import "swiper/css";
-import "swiper/css/navigation";
-
 // components
 import { BrowserRouter } from "react-router-dom";
 import { ContextProvider } from "@/components/Context/Context";
