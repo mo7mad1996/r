@@ -12,11 +12,11 @@ export default function My_account() {
   const links = [
     {
       title: "Profile",
-      link: "#",
+      link: "/admin/dashboard/profile",
     },
     {
       title: "Addresses",
-      link: "#",
+      link: "/user/address",
     },
     {
       title: "Notifications",

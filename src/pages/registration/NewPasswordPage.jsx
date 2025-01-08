@@ -16,7 +16,7 @@ import {
 } from "../../components/FormElements";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-const Typo = styled(StyledTypography)(({ theme }) => ({
+export const Typo = styled(StyledTypography)(({ theme }) => ({
   [theme.breakpoints.up("lg")]: {
     position: "relative",
     width: "355px",

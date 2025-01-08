@@ -17,16 +17,16 @@ import {
   ConfirmButton,
   FormItem,
   StyledTextField,
-} from "../../components/FormElements";
+} from "~/components/FormElements";
 
 import SectionTitle from "../common/Products/SectionTitle";
 
-import faceImage from "../../assets/login/face.png";
-import googleImage from "../../assets/login/google.png";
-import { Context } from "../../components/Context/Context";
+import faceImage from "~/assets/login/face.png";
+import googleImage from "~/assets/login/google.png";
+import { Context } from "~/components/Context/Context";
 import { useTranslation } from "react-i18next";
 
-const StyledBox = styled(Box)(({ theme }) => ({
+export const StyledBox = styled(Box)(({ theme }) => ({
   backgroundColor: "#F6F6F6",
   width: "658px",
   height: "100px",
@@ -41,7 +41,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
     height: "100px",
   },
 }));
-const StyledTypography = styled(Typography)(({ theme }) => ({
+export const StyledTypography = styled(Typography)(({ theme }) => ({
   fontSize: "28px",
   fontWeight: "700",
   lineHeight: "31px",
@@ -53,7 +53,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
     fontSize: "20px",
   },
 }));
-const StyledLink = styled(Link)(({ theme }) => ({
+export const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
   color: theme.palette.colors.mainGreen,
 }));

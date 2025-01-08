@@ -1,20 +1,12 @@
-import {
-  Box,
-  Button,
-  InputBase,
-  Stack,
-  Typography,
-  styled,
-} from "@mui/material";
-import React, { useState } from "react";
-import SectionTitle from "../../sections/common/Products/SectionTitle";
+import { Box, Stack, Typography } from "@mui/material";
 
-import Orders from "../../sections/orders/Orders";
-import Search from "../../sections/common/Search";
-import FilterBtn from "../../components/FilterBtn";
-import ModalComponent from "../../components/ModalComponent";
-import DateFilter from "../../components/DateFilter";
-import useShowModal from "../../hooks/useShowModal";
+import SectionTitle from "~/sections/common/Products/SectionTitle";
+import Orders from "~/sections/orders/Orders";
+import Search from "~/sections/common/Search";
+import FilterBtn from "~/components/FilterBtn";
+import ModalComponent from "~/components/ModalComponent";
+import DateFilter from "~/components/DateFilter";
+import useShowModal from "~/hooks/useShowModal";
 
 const statusArray = [
   {
