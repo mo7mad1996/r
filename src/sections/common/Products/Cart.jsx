@@ -78,7 +78,7 @@ const Cart = () => {
           left: 0,
           top: 0,
           height: "100vh",
-
+          pointerEvents: "none",
           zIndex: 2,
         }}
       >

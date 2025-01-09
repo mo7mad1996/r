@@ -15,17 +15,18 @@ const VisuallyHiddenInput = styled("input")({
 });
 const StyledUploadButton = styled(Button)(({ theme, overrideStyle }) => ({
   color: "colors.wi8",
-  width: "416px",
+  width: "100%",
+  maxWidth: "416px",
   [theme.breakpoints.down("sm")]: {
-    width: "300px",
+    // width: "300px",
     fontSize: "25px",
   },
-  height: "60px",
+  flexWrap: "wrap",
   fontSize: "28px",
   fontWeight: "800",
   lineHeight: "31.25px",
   display: "flex",
-  gap: 1,
+  gap: "1em",
   backgroundColor: theme.palette.colors.website,
   borderRadius: "10px",
   "&:hover": {
@@ -41,7 +42,7 @@ const UploadButton = ({ title, overrideStyle }) => {
       component="label"
       variant="contained"
       disableElevation
-      overrideStyle={overrideStyle}
+      overridestyle={overrideStyle}
       endIcon={
         <Box
           component="img"
@@ -52,7 +53,7 @@ const UploadButton = ({ title, overrideStyle }) => {
         />
       }
     >
-      <span>{t(title)}</span>
+      <span> {t(title)} </span>
       <VisuallyHiddenInput
         type="file"
         // onChange={(e) => setSlogan(e.target.value)}

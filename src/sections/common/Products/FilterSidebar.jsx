@@ -39,6 +39,7 @@ const FilterSidebar = () => {
         display: "flex",
         my: "1em",
         justifyContent: "space-between",
+
         py: "1em",
       }}
     >

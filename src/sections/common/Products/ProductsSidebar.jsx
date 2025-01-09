@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 // components
@@ -13,19 +13,17 @@ import instaIcon from "~/assets/store/insta.png";
 import whatsIcon from "~/assets/store/whats.png";
 import phoneIcon from "~/assets/store/phone.png";
 
+// icons
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+
 // styled
 const SideBar = styled(Stack)(({ theme }) => ({
-  [theme.breakpoints.down("sm")]: {
-    width: "145px",
-  },
-  [theme.breakpoints.up("sm")]: {
-    width: "248px",
-  },
+  width: "248px",
   alignItems: "center",
   position: "sticky",
   top: "50px",
   marginBottom: "30px",
-  height: "80vh",
+  height: "100%",
   overflowX: "hidden",
 }));
 const StyledListItem = styled(ListItem)({
@@ -89,11 +87,8 @@ const ProductsSidebar = () => {
   const items = Array(13).fill("Filter");
 
   return (
-    <SideBar>
-      <PerfectScrollbar
-        options={{ suppressScrollX: false }}
-        className="visible-x"
-      >
+    <ToggleOpen>
+      <SideBar>
         <FilterSidebar />
 
         {/* Existing filters */}
@@ -564,9 +559,58 @@ const ProductsSidebar = () => {
             sx={{ cursor: "pointer", width: "60px", height: "60px" }}
           />
         </Stack>
-      </PerfectScrollbar>
-    </SideBar>
+      </SideBar>
+    </ToggleOpen>
   );
 };
 
 export default ProductsSidebar;
+
+function ToggleOpen({ children }) {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    function check() {
+      // md screen
+      if (innerWidth < 768) setOpen(false);
+      else setOpen(true);
+    }
+
+    check();
+    addEventListener("resize", check);
+    return () => removeEventListener("resize", check);
+  }, []);
+
+  return (
+    <div
+      style={{
+        transform: `translateX(${open ? 0 : "100%"})`,
+      }}
+      className="flex fixed md:static top-0 right-0 h-full md:h-[90vh] bg-white z-10 md:z-0 transition-all md:translate-x-0"
+    >
+      <Box
+        className="bg-white absolute grid md:hidden"
+        onClick={() => setOpen((v) => !v)}
+        sx={{
+          top: "50vh",
+          pointerEvents: "auto",
+          left: 0,
+          placeContent: "center",
+          padding: "1em",
+          border: "1px solid #ccc",
+          transform: "translate(-100%, -50%) translateX(1px)",
+          cursor: "pointer",
+          borderRight: "none",
+        }}
+      >
+        {open ? <IoIosArrowForward /> : <IoIosArrowBack />}
+      </Box>
+      <PerfectScrollbar
+        options={{ suppressScrollX: false }}
+        className="visible-x"
+      >
+        <div>{children}</div>
+      </PerfectScrollbar>
+    </div>
+  );
+}

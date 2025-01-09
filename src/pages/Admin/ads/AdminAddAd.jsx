@@ -98,7 +98,7 @@ const AdminAddAd = () => {
           </Box>
           <UploadButton
             title="Upload a New Advertisement Image"
-            overrideStyle={{
+            overridestyle={{
               width: "461px",
               height: "92px",
               borderRadius: "15px",

@@ -12,31 +12,41 @@ import {
   styled,
 } from "@mui/material";
 import React from "react";
-import SectionTitle from "../../../sections/common/Products/SectionTitle";
 
-import defaultImg from "../../../assets/product/default.png";
-import UploadButton from "../../../components/UploadButton";
+import defaultImg from "~/assets/product/default.png";
+import UploadButton from "~/components/UploadButton";
 import { ExpandMore } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 const StyledBox = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  gap: "30px",
+  flexDirection: "column",
+  gap: "1em",
+  [theme.breakpoints.up("md")]: {
+    flexDirection: "row",
+  },
 }));
 const StyledTypography = styled(Typography)(({ theme }) => ({
   fontSize: "25px",
   fontWeight: "800",
   lineHeight: "28px",
   color: "#292D32",
-  width: "200px",
-  textAlign: "end",
+  textAlign: "start",
+  width: "100%",
+  [theme.breakpoints.up("md")]: {
+    width: "320px",
+    textAlign: "end",
+  },
 }));
 const StyledTextField = styled(TextField)(({ theme }) => ({
-  width: "589px",
   height: "53px",
   borderRadius: "5px",
   border: "1px solid",
   borderColor: "colors.mainBlack",
+  width: "100%",
+  maxWidth: "589px",
+
   "& input": {
     height: "100%",
     fontSize: "22px",
@@ -60,7 +70,8 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
   },
 }));
 const CustomButton = styled(Button)(({ theme }) => ({
-  width: "239px",
+  maxWidth: "239px",
+  px: "1em",
   height: "56px",
   borderRadius: "5px",
   "&, &:hover": {
@@ -82,7 +93,8 @@ const CustomListItem = styled(ListItem)({
   },
 
   "& > p": {
-    width: "149px",
+    maxWidth: "149px",
+    width: "100%",
   },
 });
 const StyledDimension = styled(Box)(({ theme }) => ({
@@ -104,44 +116,27 @@ const StyledDimension = styled(Box)(({ theme }) => ({
 }));
 const AddModifyProduct = ({ isNew = true, admin }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
   return (
-    <Stack>
+    <Stack className="mx-auto">
       {/* product images  */}
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "133px",
-        }}
-      >
-        <Stack sx={{ gap: "52px" }}>
-          <Box
-            component="img"
+      <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-2 md:gap-32 p-2 md:p-32">
+        <div className="flex gap-2 md:gap-32 flex-row md:flex-col">
+          <img
             src={defaultImg}
-            sx={{
-              width: "237px",
-              height: "188px",
-            }}
+            className="h-full max-h-[200px] flex-1 w-1/2 md:w-full"
           />
-          <Box
-            component="img"
+          <img
             src={defaultImg}
-            sx={{
-              width: "237px",
-              height: "188px",
-            }}
+            className="h-full max-h-[200px] flex-1 w-1/2 md:w-full"
           />
-        </Stack>
-        <Box
-          component="img"
-          src={defaultImg}
-          sx={{
-            width: "552px",
-            height: "438px",
-          }}
-        />
-      </Box>
+        </div>
+        <div>
+          <img src={defaultImg} className="max-w-[552px] w-full h-auto" />
+        </div>
+      </div>
+
       {/* upload  */}
       <Box
         sx={{
@@ -150,42 +145,39 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
           mx: "auto",
         }}
       >
-        <UploadButton title={isNew ? "إضافة صور المنتج" : "تغيير صور المنتج"} />
+        <UploadButton
+          title={isNew ? "إضافة صور المنتج" : "تغيير صور المنتج "}
+        />
       </Box>
+
       {/* product info  */}
-      <Stack sx={{ gap: "33px", mx: "auto" }}>
-        <StyledBox sx={{}}>
-          <StyledTypography sx={{}}>اسم المنتج</StyledTypography>
-          <StyledTextField sx={{}} />
+      <Stack sx={{ gap: "33px", mx: "auto", p: 1 }}>
+        <StyledBox>
+          <StyledTypography>اسم المنتج</StyledTypography>
+          <StyledTextField />
         </StyledBox>
-        <StyledBox sx={{}}>
-          <StyledTypography sx={{}}>السعر</StyledTypography>
-          <StyledTextField sx={{}} />
+        <StyledBox>
+          <StyledTypography>السعر</StyledTypography>
+          <StyledTextField />
         </StyledBox>
-        <StyledBox sx={{}}>
+        <StyledBox>
           <StyledTypography
             sx={{
               position: "relative",
               "&::after": {
                 content: "'(اختياري)'",
-                display: "block",
-                position: "absolute",
                 fontFamily: "Poppins",
                 fontSize: "18px",
-                fontWeight: "500",
-                lineHeight: "27px",
                 color: "colors.darkIcons",
-                left: "0",
-                top: "31px",
               },
             }}
           >
             السعر بعد الخصم
           </StyledTypography>
-          <StyledTextField sx={{}} />
+          <StyledTextField />
         </StyledBox>
-        <StyledBox sx={{}}>
-          <StyledTypography sx={{}}>القسم</StyledTypography>
+        <StyledBox>
+          <StyledTypography>القسم</StyledTypography>
           <StyledTextField
             sx={{
               position: "relative",
@@ -212,27 +204,21 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
             }}
           />
         </StyledBox>
-        <StyledBox sx={{}}>
+        <StyledBox>
           <StyledTypography
             sx={{
               position: "relative",
               "&::after": {
                 content: "'(اختياري)'",
-                display: "block",
-                position: "absolute",
                 fontFamily: "Poppins",
                 fontSize: "18px",
-                fontWeight: "500",
-                lineHeight: "27px",
                 color: "colors.darkIcons",
-                left: "0",
-                top: "31px",
               },
             }}
           >
             الوسم
           </StyledTypography>
-          {/* <StyledTextField sx={{}} /> */}
+          {/* <StyledTextField   /> */}
           {/* autocomplete  */}
           <Autocomplete
             multiple
@@ -245,7 +231,7 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
               <TextField
                 multiline
                 sx={{
-                  width: "589px",
+                  // width: "589px",
                   borderRadius: "5px",
                   border: "1px solid",
                   borderColor: "colors.mainBlack",
@@ -327,7 +313,7 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
           />
         </StyledBox>
       </Stack>
-      <CustomButton sx={{}}>اضافة مقاس جديد</CustomButton>
+      <CustomButton>اضافة مقاس جديد</CustomButton>
       <Stack sx={{ mt: "100px", mx: "auto" }}>
         <Typography
           sx={{
@@ -355,9 +341,9 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
           <StyledTextField placeholder={`50 ${t("Currency")}`} />
         </StyledBox>
       </Stack>
-      <CustomButton sx={{}}>اضافة مقاس جديد</CustomButton>
+      <CustomButton>اضافة مقاس جديد</CustomButton>
       {/* product details  */}
-      <Stack sx={{ mt: "83px", mb: "14px", mx: "auto", width: "800px" }}>
+      <Stack sx={{ mt: "83px", mb: "14px", mx: "auto" }}>
         <Box
           sx={{
             display: "flex",
@@ -413,9 +399,11 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
           </Box>
         </Box>
         <Stack
-          sx={{
-            width: { md: "940px" },
-          }}
+          sx={
+            {
+              // width: { md: "940px" },
+            }
+          }
         >
           <Typography
             sx={{
@@ -461,7 +449,7 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
                     <InputBase />
                   </StyledDimension>
                   <StyledDimension>
-                    <Typography>{t("Offer")} :</Typography>
+                    <Typography>{t("Width")} :</Typography>
                     <InputBase />
                   </StyledDimension>
                   <StyledDimension>
@@ -550,7 +538,6 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
           {isNew ? (
             <CustomButton
               sx={{
-                width: "265px",
                 mb: "50px",
               }}
             >
@@ -560,7 +547,6 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
             <CustomButton
               onClick={() => navigate("/admin/dashboard/add-seller")}
               sx={{
-                width: "265px",
                 mb: "50px",
               }}
             >
@@ -572,16 +558,18 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              gap: "45px",
+              flexDirection: { xs: "column", md: "row" },
+              gap: "1em",
               mb: "37px",
             }}
           >
             <Typography
               sx={{
+                width: "100%",
                 fontSize: "22px",
                 fontWeight: "800",
                 lineHeight: "25px",
-                collor: "#292D32",
+                color: "#292D32",
               }}
             >
               {t("Seller Name")}
@@ -589,14 +577,14 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
             <TextField
               defaultValue="صيرفي"
               sx={{
-                width: "589px",
                 height: "53px",
                 p: "0",
                 "& .MuiInputBase": {
                   p: "0",
                 },
                 "& input": {
-                  p: "0 185px",
+                  p: "0",
+                  px: "20px",
                   // textAlign: "center",
                   height: "100%",
                   fontSize: "24px",
@@ -616,7 +604,6 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
           </Box>
           <CustomButton
             sx={{
-              width: "265px",
               mb: "50px",
             }}
           >
@@ -624,26 +611,15 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
           </CustomButton>
         </>
       )}
+      <div className="hidden"></div>
     </Stack>
   );
 };
 
 export default AddModifyProduct;
-const tags = [
+const tags = Array.from({ length: 10 }, () => [
   { title: "بنطلون رجالي" },
   { title: "تيشرت رجالي" },
-  { title: "بنطلون رجالي" },
-  { title: "تيشرت رجالي" },
-  { title: "بنطلون رجالي" },
-  { title: "تيشرت رجالي" },
-  { title: "بنطلون رجالي" },
-  { title: "تيشرت رجالي" },
-  { title: "بنطلون رجالي" },
-  { title: "تيشرت رجالي" },
-  { title: "بنطلون رجالي" },
-  { title: "تيشرت رجالي" },
-  { title: "بنطلون رجالي" },
-  { title: "تيشرت رجالي" },
-  { title: "بنطلون رجالي" },
-  { title: "تيشرت رجالي" },
-];
+]).flat();
+
+console.log(tags);

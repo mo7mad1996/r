@@ -72,7 +72,7 @@ const AdminAddSection = () => {
           </Typography>
           <UploadButton
             title="أضف صورة القسم"
-            overrideStyle={{
+            overridestyle={{
               width: "461px",
               height: "92px",
               borderRadius: "15px",
