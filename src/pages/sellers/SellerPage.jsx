@@ -7,10 +7,11 @@ import Reviews from "../../components/Reviews";
 import Seller from "../../sections/sellers/Seller";
 import { Context } from "../../components/Context/Context";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const SellerPage = () => {
   let params = useParams();
-
+  const { t } = useTranslation();
   let [vendor, setVendor] = useState({});
 
   let { vendorData } = useContext(Context);

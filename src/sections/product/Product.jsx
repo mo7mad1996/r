@@ -32,6 +32,7 @@ import whatsIcon from "../../assets/store/whats.png";
 import phoneIcon from "../../assets/store/phone.png";
 import ProductsSlider from "../../sections/common/Products/ProductsSlider";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const products = {
   title: "",
@@ -223,6 +224,7 @@ const Product = () => {
   // config
   const api = useApi();
   const params = useParams();
+  const { t } = useTranslation();
 
   // data
   const [product, setProduct] = useState({});

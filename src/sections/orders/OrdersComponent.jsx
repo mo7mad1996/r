@@ -10,8 +10,11 @@ import Order from "./Order";
 import ModalComponent from "../../components/ModalComponent";
 import DateFilter from "../../components/DateFilter";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const OrdersComponent = ({ title, orders, ordersPerPage }) => {
+  const { t } = useTranslation();
+
   const { open, handleOpen, handleClose } = useShowModal();
   const itemsPerPage = ordersPerPage ? ordersPerPage : 10;
   const {

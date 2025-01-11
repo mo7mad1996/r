@@ -12,6 +12,7 @@ import logoImg from "../../../assets/dashboard/logo.png";
 import Menu from "../../../sections/Menu/Menu";
 import SellerBox from "../../../sections/Dashboard/common/SellerBox";
 import UploadButton from "../../../components/UploadButton";
+import { useTranslation } from "react-i18next";
 
 const items = [
   { name: "store", link: "/dashboard/store/my-store" },
@@ -62,6 +63,8 @@ const StyledBox = styled(Box)(({ theme }) => ({
   gap: "62px",
 }));
 const StoreSettings = () => {
+  const { t } = useTranslation();
+
   return (
     <Stack
       sx={{

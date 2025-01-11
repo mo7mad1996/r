@@ -1,6 +1,7 @@
 import { Box, Stack, Typography, styled } from "@mui/material";
 import React from "react";
 import SectionTitle from "../../../sections/common/Products/SectionTitle";
+import { useTranslation } from "react-i18next";
 
 const StyledBox = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -12,6 +13,8 @@ const StyledBox = styled(Box)(({ theme }) => ({
   },
 }));
 const TotalDues = () => {
+  const { t } = useTranslation();
+
   return (
     <Stack
       sx={{

@@ -13,6 +13,7 @@ import { AddShoppingCart, FavoriteBorder, Share } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import Reviews from "../../components/Reviews";
 import MainButton from "../../components/MainButton";
+import { useTranslation } from "react-i18next";
 
 const StyledRating = styled(Rating)(({ theme }) => ({
   "& .MuiRating-iconEmpty": {
@@ -40,6 +41,8 @@ const StyledIcons = styled(Box)({
 });
 const Products = ({ products }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
   return (
     <Grid container spacing={["40px"]}>
       {products.map((product) => (

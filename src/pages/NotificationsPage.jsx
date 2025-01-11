@@ -6,9 +6,12 @@ import DateFilter from "../components/DateFilter";
 import useShowModal from "../hooks/useShowModal";
 import FilterBtn from "../components/FilterBtn";
 import { StyledStack, StyledTypo } from "../sections/common/StyledElements";
+import { useTranslation } from "react-i18next";
 
 const NotificationsPage = () => {
   const { open, handleOpen, handleClose } = useShowModal();
+  const { t } = useTranslation();
+
   return (
     <>
       <SectionTitle sectionTitle={{ main: "الأشعارات" }} />

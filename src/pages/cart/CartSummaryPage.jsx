@@ -24,6 +24,7 @@ import {
   Remove,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const StyledTextBox = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -66,6 +67,8 @@ const StyledPaymentBox = styled(Box)(({ theme }) => ({
 }));
 const CartSummaryPage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
   const [checked, setChecked] = useState(3);
 
   return (

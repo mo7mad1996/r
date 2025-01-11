@@ -5,10 +5,12 @@ import ModalComponent from "../../components/ModalComponent";
 import useShowModal from "../../hooks/useShowModal";
 
 import useApi from "@/hooks/useApi";
+import { useTranslation } from "react-i18next";
 
 const OrdersMenu = ({ items }) => {
   const { open, handleOpen, handleClose, message, setMessage } = useShowModal();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const api = useApi();
   const [orders, setOrders] = useState([]);

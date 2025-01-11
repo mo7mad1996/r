@@ -8,9 +8,11 @@ import usePaginate from "@/hooks/usePaginate";
 import useShowModal from "@/hooks/useShowModal";
 import ModalComponent from "@/components/ModalComponent";
 import DeleteAdsPopup from "./DeleteAdsPopup";
+import { useTranslation } from "react-i18next";
 
 const ShowAds = ({ title, admin }) => {
   const { open, handleOpen, handleClose } = useShowModal();
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
   const itemsPerPage = 20;

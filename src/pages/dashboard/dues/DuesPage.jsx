@@ -2,6 +2,7 @@ import { Box, Button, Grid, Stack, Typography, styled } from "@mui/material";
 import React from "react";
 import SectionTitle from "../../../sections/common/Products/SectionTitle";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const StyledBox = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -22,7 +23,9 @@ const StyledBox = styled(Box)(({ theme }) => ({
   },
 }));
 const DuesPage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
+
   return (
     <Stack>
       <SectionTitle sectionTitle={{ main: "مستحقاتى" }} />

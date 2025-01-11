@@ -2,6 +2,9 @@ import { Button, Stack, Typography } from "@mui/material";
 import React from "react";
 
 const WithdrawAgree = ({ handleClose }) => {
+  const { t } = useTranslation();
+
+
   return (
     <Stack
       sx={{

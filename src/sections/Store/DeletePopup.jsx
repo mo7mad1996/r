@@ -8,6 +8,7 @@ import {
   styled,
 } from "@mui/material";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const StyledTypo = styled(Typography)(({ theme }) => ({
   fontSize: "40px",
@@ -17,6 +18,7 @@ const StyledTypo = styled(Typography)(({ theme }) => ({
   textAlign: "center",
 }));
 const DeletePopup = ({ handleClose, refused }) => {
+  const { t } = useTranslation();
   const [showSuccess, setShowSuccess] = useState(false);
   return (
     <Box

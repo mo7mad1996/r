@@ -11,6 +11,7 @@ import SectionTitle from "~/sections/common/Products/SectionTitle";
 
 import adImage from "~/assets/admin/ads/ad.png";
 import UploadButton from "~/components/UploadButton";
+import { useTranslation } from "react-i18next";
 
 const StyledTextField = styled(TextField)(({ theme, active }) => ({
   height: "60px",
@@ -37,6 +38,7 @@ const StyledTextField = styled(TextField)(({ theme, active }) => ({
 const AdminAddAd = () => {
   const [sectionValue, setSectionValue] = useState("");
   const [sectionInput, setSectionInput] = useState(false);
+  const { t } = useTranslation();
 
   const handleSectionInputChange = (event) => {
     setSectionValue(event.target.value);

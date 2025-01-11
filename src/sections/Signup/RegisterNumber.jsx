@@ -17,8 +17,11 @@ import {
   StyledTextField,
   StyledTypography,
 } from "../../components/FormElements";
+import { useTranslation } from "react-i18next";
 
 const RegisterNumber = ({ changeForm }) => {
+  const { t } = useTranslation();
+
   return (
     <>
       <SectionTitle sectionTitle={{ main: "ما هو رقم هاتفك ؟" }} />

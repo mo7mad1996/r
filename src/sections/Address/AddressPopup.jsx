@@ -2,11 +2,13 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useApi from "@/hooks/useApi";
+import { useTranslation } from "react-i18next";
 
 const AddressPopup = ({ handleClose }) => {
   // config
   const api = useApi();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   // data
   const [loading, setLoading] = useState(false);

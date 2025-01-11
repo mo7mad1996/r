@@ -2,6 +2,7 @@ import { Box, Button, Stack, Typography, styled } from "@mui/material";
 import React, { useState } from "react";
 import SectionTitle from "../../../sections/common/Products/SectionTitle";
 import { CheckRounded } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 const StyledTypo = styled(Typography)(({ theme }) => ({
   height: "89px",
@@ -32,6 +33,8 @@ const StyledCheckbox = styled(Box)(({ theme }) => ({
   },
 }));
 const CustomizeSection = ({ title }) => {
+  const { t } = useTranslation();
+
   const [show, setShow] = useState(false);
   return (
     <Stack

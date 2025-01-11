@@ -1,8 +1,11 @@
 import { Box, Checkbox, Typography } from "@mui/material";
 import React from "react";
 import SectionTitle from "../sections/common/Products/SectionTitle";
+import { useTranslation } from "react-i18next";
 
 const TermsPage = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <SectionTitle sectionTitle={{ main: "شروط وأحكام عملاء چوملا" }} />

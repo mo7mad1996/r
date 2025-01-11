@@ -15,6 +15,7 @@ import {
   StyledTypography,
 } from "../../components/FormElements";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 export const Typo = styled(StyledTypography)(({ theme }) => ({
   [theme.breakpoints.up("lg")]: {
@@ -29,6 +30,8 @@ export const Typo = styled(StyledTypography)(({ theme }) => ({
   },
 }));
 const NewPasswordPage = () => {
+  const { t } = useTranslation();
+
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
 

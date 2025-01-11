@@ -7,6 +7,7 @@ import userAvatar from "../../../assets/product/user.png";
 import productImg from "../../../assets/cart/product1.png";
 import productImg1 from "../../../assets/orders/product1.png";
 import { useLocation, useSearchParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 const StyledTypography = styled(Typography)({
   fontFamily: "Allerta Stencil",
   fontSize: "22px",
@@ -16,10 +17,12 @@ const StyledTypography = styled(Typography)({
   color: "#292d32",
 });
 const ProductReviewPage = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const [searchParams] = useSearchParams();
   const isAdmin = location.pathname.startsWith("/admin");
   const isPending = searchParams.get("pending");
+
   return (
     <Stack>
       <SectionTitle sectionTitle={{ main: "مراجعات المنتج" }} />

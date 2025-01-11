@@ -17,6 +17,7 @@ import product2 from "../../assets/orders/product2.png";
 import product3 from "../../assets/orders/product3.png";
 import useShowModal from "../../hooks/useShowModal";
 import EvaluationOrder from "./EvaluationOrder";
+import { useTranslation } from "react-i18next";
 
 const ADDRESSES = [
   "السيوف شماعة تقطاع ش الشيح حسين سليمان",
@@ -94,6 +95,7 @@ const CompletedButton = styled(Button)(({ theme }) => ({
 }));
 const Orders = ({ statusArray, status, isDashboard }) => {
   const [message, setMessage] = useState("");
+  const { t } = useTranslation();
   const { open, handleOpen, handleClose } = useShowModal();
   const [review, setReview] = useState(false);
   const navigate = useNavigate();

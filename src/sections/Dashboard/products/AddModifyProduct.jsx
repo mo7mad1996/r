@@ -125,11 +125,11 @@ const AddModifyProduct = ({ isNew = true, admin }) => {
         <div className="flex gap-2 md:gap-32 flex-row md:flex-col">
           <img
             src={defaultImg}
-            className="h-full max-h-[200px] flex-1 w-1/2 md:w-full"
+            className="h-full max-h-[200px] flex-1 md:w-full"
           />
           <img
             src={defaultImg}
-            className="h-full max-h-[200px] flex-1 w-1/2 md:w-full"
+            className="h-full max-h-[200px] flex-1 md:w-full"
           />
         </div>
         <div>

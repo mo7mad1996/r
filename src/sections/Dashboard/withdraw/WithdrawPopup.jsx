@@ -5,9 +5,11 @@ import WithdrawRefuse from "./WithdrawRefuse";
 import { Close } from "@mui/icons-material";
 
 import useApi from "@/hooks/useApi";
+import { useTranslation } from "react-i18next";
 
 const WithdrawPopup = ({ handleClose }) => {
   // config
+  const { t } = useTranslation();
   const api = useApi();
 
   // data

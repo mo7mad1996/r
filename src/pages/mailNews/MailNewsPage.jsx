@@ -9,6 +9,7 @@ import ModalComponent from "../../components/ModalComponent";
 import DateFilter from "../../components/DateFilter";
 import useShowModal from "../../hooks/useShowModal";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const ControlBtn = styled(Button)(({ theme }) => ({
   width: "180px",
@@ -25,8 +26,11 @@ const ControlBtn = styled(Button)(({ theme }) => ({
   },
 }));
 const NewsPage = () => {
-  const { open, handleOpen, handleClose } = useShowModal();
+  const { t } = useTranslation();
   const navigate = useNavigate();
+
+  const { open, handleOpen, handleClose } = useShowModal();
+
   return (
     <>
       <SectionTitle sectionTitle={{ main: "النشرة البريدية" }} />

@@ -7,6 +7,7 @@ import useShowModal from "../../../hooks/useShowModal";
 import ModalComponent from "../../../components/ModalComponent";
 import DateFilter from "../../../components/DateFilter";
 import WithdrawPopup from "../../../sections/Dashboard/withdraw/WithdrawPopup";
+import { useTranslation } from "react-i18next";
 
 const withdraws = [
   {
@@ -65,6 +66,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
   },
 }));
 const WithdrawPage = () => {
+  const { t } = useTranslation();
   const { open, handleOpen, handleClose } = useShowModal();
   const [isWithdraw, setIsWithdraw] = useState(false);
 

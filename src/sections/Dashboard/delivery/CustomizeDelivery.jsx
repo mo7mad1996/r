@@ -6,6 +6,7 @@ import ChoosePage from "../../../components/ChoosePage";
 import usePaginate from "../../../hooks/usePaginate";
 import UsePagination from "../../../hooks/UsePagination";
 import { CheckRounded } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 const StyledCheckbox = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -38,6 +39,8 @@ const StyledMiniBox = styled(Box)(({ theme }) => ({
   backgroundColor: "#F8F9FB",
 }));
 const CustomizeDelivery = ({ items, title }) => {
+  const { t } = useTranslation();
+
   const [selectedItems, setselectedItems] = useState(items);
   const [selectAll, setSelectedAll] = useState(false);
   const itemsPerPage = 14;

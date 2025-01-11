@@ -12,9 +12,11 @@ import FilterBtn from "../../../components/FilterBtn";
 import ModalComponent from "../../../components/ModalComponent";
 import DateFilter from "../../../components/DateFilter";
 import useShowModal from "../../../hooks/useShowModal";
+import { useTranslation } from "react-i18next";
 
 const ShowProducts = ({ title, admin, secondTitle }) => {
   const { open, handleOpen, handleClose } = useShowModal();
+  const { t } = useTranslation();
 
   const itemsPerPage = 12;
   const {

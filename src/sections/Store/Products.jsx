@@ -25,6 +25,7 @@ import DeletePopup from "./DeletePopup";
 import CustomCheckbox from "../Dashboard/delivery/CustomCheckbox";
 import { useEffect, useContext } from "react";
 import { Context } from "../../components/Context/Context";
+import { useTranslation } from "react-i18next";
 
 const StyledIcons = styled(Box)(({ theme }) => ({
   position: "absolute",
@@ -64,6 +65,7 @@ const CustomButton = styled(Button)(({ theme }) => ({
 }));
 const Products = ({ products }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const location = useLocation();
   const isDashboard = location.pathname.startsWith("/dashboard");
   const isAdmin = location.pathname.startsWith("/admin");

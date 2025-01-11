@@ -1,6 +1,7 @@
 import { CheckRounded, Share } from "@mui/icons-material";
 import { Box, Button, Stack, Typography, styled } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 const StyledBox = styled(Box)(({ theme }) => ({
@@ -27,6 +28,8 @@ const StyledBox = styled(Box)(({ theme }) => ({
 
 const CartConfirmedPage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
   return (
     <>
       <Stack

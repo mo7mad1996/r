@@ -1,6 +1,7 @@
 import { CheckCircle, Close } from "@mui/icons-material";
 import { Box, Button, Stack, Typography, styled } from "@mui/material";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 const StyledTypo = styled(Typography)(({ theme }) => ({
   fontSize: "40px",
   fontWeight: "800",
@@ -10,6 +11,8 @@ const StyledTypo = styled(Typography)(({ theme }) => ({
 }));
 const DeleteAdsPopup = ({ handleClose }) => {
   const [showSuccess, setShowSuccess] = useState(false);
+  const { t } = useTranslation();
+
   return (
     <Stack
       sx={{

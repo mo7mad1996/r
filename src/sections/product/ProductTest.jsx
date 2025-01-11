@@ -32,6 +32,7 @@ import instaIcon from "../../assets/store/insta.png";
 import whatsIcon from "../../assets/store/whats.png";
 import phoneIcon from "../../assets/store/phone.png";
 import ProductsSlider from "../../sections/common/Products/ProductsSlider";
+import { useTranslation } from "react-i18next";
 
 // import productImage from "../assets/home/shoes.png";
 const products = {
@@ -175,6 +176,7 @@ const ITEM_HEIGHT = 48;
 const totalQuantity = 100;
 
 const ProductTest = () => {
+  const { t } = useTranslation();
   const [size, setSize] = useState(PRODUCT.sizes[0]);
   const [color, setColor] = useState(PRODUCT.colors[0]);
   const [quantity, setQuantity] = useState(1);

@@ -4,6 +4,7 @@ import product from "../../assets/cart/product1.png";
 import OrdersStatus from "./OrdersStatus";
 import { useNavigate } from "react-router-dom";
 import ModalComponent from "../../components/ModalComponent";
+import { useTranslation } from "react-i18next";
 
 const StyledBox = styled(Box)(({ theme }) => ({
   width: "652px",
@@ -48,6 +49,7 @@ const CompletedButton = styled(Button)(({ theme }) => ({
   textAlign: "center",
 }));
 const Orders = ({ statusArray }) => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
   const handleOpen = () => setOpen(true);

@@ -5,6 +5,7 @@ import Search from "../../../sections/common/Search";
 import useShowModal from "../../../hooks/useShowModal";
 import ModalComponent from "../../../components/ModalComponent";
 import DeliveryPopup from "../../../sections/Dashboard/delivery/DeliveryPopup";
+import { useTranslation } from "react-i18next";
 
 const items = [
   { id: 0, name: "الصيرفي ستور" },
@@ -32,6 +33,8 @@ const StyledTypo = styled(Typography)(({ theme }) => ({
 const StyledBox = styled(Box)(({ theme }) => ({}));
 const CustomizeAreas = () => {
   const { open, handleOpen, handleClose } = useShowModal();
+  const { t } = useTranslation();
+
 
   return (
     <Stack>

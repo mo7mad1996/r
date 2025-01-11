@@ -4,6 +4,7 @@ import { Box, Stack, Typography, styled } from "@mui/material";
 
 import img1 from "../../assets/mailNews/mail1.png";
 import img2 from "../../assets/mailNews/mail2.png";
+import { useTranslation } from "react-i18next";
 
 const StyledTitle = styled(Typography)(({ theme }) => ({
   fontSize: "30px",
@@ -28,6 +29,8 @@ const StyledCard = styled(Box)(({ theme }) => ({
   },
 }));
 const MailNewsItemPage = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <SectionTitle sectionTitle={{ main: "عرض نشرة بريدية" }} />

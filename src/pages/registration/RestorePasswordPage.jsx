@@ -10,6 +10,7 @@ import {
 import { CallOutlined } from "@mui/icons-material";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import VerifyNumber from "../../sections/Signup/VerifyNumber";
+import { useTranslation } from "react-i18next";
 
 const Typo = styled(StyledTypography)(({ theme }) => ({
   [theme.breakpoints.up("lg")]: {
@@ -23,9 +24,11 @@ const Typo = styled(StyledTypography)(({ theme }) => ({
   },
 }));
 const RestorePasswordPage = () => {
+  const { t } = useTranslation();
   //   const navigate = useNavigate();
-  let [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const confirm = searchParams.get("type");
+
   return (
     <>
       {confirm !== "confirm" && (

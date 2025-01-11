@@ -13,6 +13,7 @@ import UsePagination from "../../../hooks/UsePagination";
 import SectionTitle from "../../../sections/common/Products/SectionTitle";
 import Search from "../../../sections/common/Search";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const sellers = [
   {
@@ -203,7 +204,9 @@ const StyledBox = styled(Box)(({ theme, isAds }) => ({
   },
 }));
 const AddNewSellerPage = () => {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
+
   const isAds = pathname.includes("ads");
   const itemsPerPage = 13;
   const { page, setPage, displayedItems, totalPages } = usePaginate({
